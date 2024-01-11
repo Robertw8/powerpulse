@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from '.';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
@@ -9,6 +9,7 @@ const ProfilePage = lazy(() => import('../pages/ProfilePage'));
 const DiaryPage = lazy(() => import('../pages/DiaryPage'));
 const ProductsPage = lazy(() => import('../pages/ProductsPage'));
 const ExercisesPage = lazy(() => import('../pages/ExercisesPage'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ export const App: React.FC = () => {
           <Route path="diary" element={<DiaryPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="exercises" element={<ExercisesPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
