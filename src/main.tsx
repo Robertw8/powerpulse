@@ -13,7 +13,7 @@ import { store } from './redux';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/dynamo-fit/">
+    <BrowserRouter basename="/fitness-app-frontend/">
       <Provider store={store}>
         <Global styles={GlobalStyles} />
         <ConfigProvider theme={theme}>
