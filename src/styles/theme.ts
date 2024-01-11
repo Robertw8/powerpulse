@@ -22,4 +22,4 @@ const themeExamples = {
   },
 };
 
-export default theme;
+export { theme, themeExamples };
