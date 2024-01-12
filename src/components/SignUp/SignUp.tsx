@@ -2,8 +2,9 @@
 import { useFormik } from 'formik';
 
 import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import { BlockSingUp, ContainerSingUp, FormContainer, ImgSingUp, InputSingUp, ParagraphSignUp, TitleSignUp, BtnSingUp } from './SingUp.styled';
-import  SignUpSchema  from './SingUpSchema';
+import { BlockSignUp, ContainerSignUp, FormContainer, ImgSignUp, ParagraphSignUp, TitleSignUp, BtnSignUp, WidthInput} from './SignUp.styled';
+import  SignUpSchema  from './SignUpSchema';
+import { StyledInput } from '../InputPrimary/InputPrimary.styled';
 
 
 const SignUpForm = () => {
@@ -21,25 +22,27 @@ const SignUpForm = () => {
   });
 
   return (
-    <ContainerSingUp>
-      <BlockSingUp>
+    <ContainerSignUp>
+      <BlockSignUp>
         <TitleSignUp>Sign up</TitleSignUp>
         <ParagraphSignUp>
           Thank you for your interest in our platform. To complete the registration process, please provide us with the
           following information.
         </ParagraphSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
-          <InputSingUp
+  <WidthInput>
+          <StyledInput
             bordercolor={formik.errors.name && formik.touched.name ? 'error' : 'default'}
             name="name"
             type="text"
             placeholder="Name"
             onChange={formik.handleChange}
             value={formik.values.name}
-          />
+            />
+            </WidthInput>
           {formik.errors.name && formik.touched.name && <div>{formik.errors.name}</div>}
-
-          <InputSingUp
+<WidthInput>
+          <StyledInput
             bordercolor={formik.errors.email && formik.touched.email ? 'error' : 'default'}
             id="email"
             name="email"
@@ -47,10 +50,11 @@ const SignUpForm = () => {
             placeholder="Email"
             onChange={formik.handleChange}
             value={formik.values.email}
-          />
+            />
+            </WidthInput>
           {formik.errors.email && formik.touched.email && <div>{formik.errors.email}</div>}
-
-          <InputSingUp
+<WidthInput>
+          <StyledInput
             bordercolor={formik.errors.password && formik.touched.password ? 'error' : 'default'}
             id="password"
             name="password"
@@ -59,16 +63,18 @@ const SignUpForm = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
+</WidthInput>
           {formik.errors.password && formik.touched.password && <div>{formik.errors.password}</div>}
 
-          <BtnSingUp htmlType="submit" type="primary">
+          <BtnSignUp htmlType="submit" type="primary">
             Sign Up
-          </BtnSingUp>
+          </BtnSignUp>
         </FormContainer>
-      </BlockSingUp>
-      <ImgSingUp src={imgForWelcomePage} alt="The girl shows an example of a forward leg kick" />
-    </ContainerSingUp>
+      </BlockSignUp>
+      <ImgSignUp src={imgForWelcomePage} alt="The girl shows an example of a forward leg kick" />
+    </ContainerSignUp>
   );
 };
 
 export default SignUpForm;
+
