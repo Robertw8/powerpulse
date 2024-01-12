@@ -4,6 +4,7 @@ const theme = {
     colorPrimary: '#E6533C',
     borderRadius: 12,
     fontFamily: 'Roboto, sans-serif',
+    fontSize: 16,
   },
 };
 
@@ -15,6 +16,9 @@ const themeExamples = {
     lightOrange: '#EF8964',
     beige: '#EFA082',
     white: '#EFEDE8',
+    white30: '#EFEDE84D',
+    red: '#D80027',
+    gray: '#1C1C1C',
   },
   radiuses: {
     primary: 12,
