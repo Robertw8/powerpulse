@@ -1,5 +1,6 @@
 {
   "name": "fitness-app-frontend",
+  "homepage": "https://robertw8.github.io/fitness-app-frontend/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^2.0.1",
