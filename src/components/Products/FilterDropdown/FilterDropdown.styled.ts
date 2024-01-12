@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+interface DropdownListProps {
+  visible: boolean;
+}
+
 const Dropdown = styled.div`
   position: relative;
 
@@ -22,7 +26,7 @@ const Dropdown = styled.div`
   }
 `;
 
-const DropdownList = styled.ul`
+const DropdownList = styled.ul<DropdownListProps>`
   position: absolute;
   top: 80%;
   left: 0;
