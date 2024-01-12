@@ -19,6 +19,12 @@ const GlobalStyles = css`
   button {
     cursor: pointer;
   }
+
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+  }
 `;
 
 export default GlobalStyles;
