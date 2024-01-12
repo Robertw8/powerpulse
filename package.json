@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "@reduxjs/toolkit": "^2.0.1",
     "antd": "^5.12.8",
+    "axios": "^1.6.5",
     "formik": "^2.4.5",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
