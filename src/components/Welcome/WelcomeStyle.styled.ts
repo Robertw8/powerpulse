@@ -1,9 +1,7 @@
-import { styled } from 'styled-components';
+import styled from '@emotion/styled';
 
-const WelcomeStyle = styled.div`
-.photo-welcome-page{
-float: right;
-}
+const WelcomeWrapper = styled.div`
+
 `;
 
-export default WelcomeStyle; 
+export default WelcomeWrapper; 
