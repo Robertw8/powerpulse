@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { InputPrimary } from '../../InputPrimary';
 import { Icon } from '../../Icon';
 import { FilterDropdown } from '..';
+import { Container } from '../..';
 
 import { SearchInputWrapper, SearchIconContainer } from './Filters.styled';
 
@@ -10,8 +11,8 @@ const Filters: React.FC = () => {
   const [inputFocus, setInputFocus] = useState(false);
 
   return (
-    <div style={{ width: 800, margin: '0 auto' }}>
-      {/* <Container> */}
+    // <div style={{ width: 800, margin: '0 auto' }}>
+    <Container>
       <div className="filters wrapper" style={{ gap: '20px' }}>
         <SearchInputWrapper
           onFocus={() => setInputFocus(true)}
@@ -20,11 +21,7 @@ const Filters: React.FC = () => {
           onMouseLeave={() => setInputHover(false)}
           style={{ marginBottom: 40 }}
         >
-          <InputPrimary
-            placeholder="Search"
-            width="100%"
-            bordercolor="default"
-          />
+          <InputPrimary placeholder="Search" bordercolor="default" />
           <SearchIconContainer>
             <Icon
               name="search"
@@ -47,8 +44,8 @@ const Filters: React.FC = () => {
           </FilterDropdown>
         </div>
       </div>
-      {/* </Container> */}
-    </div>
+    </Container>
+    // </div>
   );
 };
 
