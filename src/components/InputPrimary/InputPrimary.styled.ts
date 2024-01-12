@@ -17,7 +17,7 @@ const checkValidationStatus = (status: 'default' | 'success' | 'error') => {
 };
 
 const StyledInput = styled(Input)<StyledInputProps>`
-  width: ${({ width }) => width};
+  width: 100%;
   height: 46px;
   padding: 14px;
 
