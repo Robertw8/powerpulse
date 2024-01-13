@@ -3,9 +3,11 @@
 import { Button } from 'antd';
 
 const PrimaryButton: React.FC<{
-  type: 'link' | 'text' | 'default' | 'primary' | 'dashed';
-}> = ({ type }) => {
-  return <Button type={type}>Button</Button>;
+  type: 'link' | 'text' | 'default' | 'primary' | 'dashed', 
+  name: string,
+  size: "large" | "middle" | "small",
+}> = ({ type, name, size } ) => {
+  return <Button type={type} size={size} >{name}</Button>;
 };
 
 export default PrimaryButton;
