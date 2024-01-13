@@ -20,7 +20,7 @@ import { useState } from 'react';
 
 const Profile = () => {
   const [buttonHover, setButtonHover] = useState(false);
-  const [buttonFocus, setButtonFocus] = useState(false);
+  // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
   return (
     <>
       <Wrap>
@@ -37,7 +37,7 @@ const Profile = () => {
                   name="add-foto"
                   width="24px"
                   height="24px"
-                  stroke={buttonHover || buttonFocus ? '#efede8' : '#e6533c'}
+                  stroke={buttonHover ? '#efede8' : '#e6533c'}
                 />
               </BtnAvatar>
             </UserAvatar>
