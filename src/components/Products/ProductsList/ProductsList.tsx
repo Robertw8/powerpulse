@@ -1,24 +1,32 @@
-import { List } from './ProductsList.styled';
-import { ProductsItem } from '..';
+import { List, ListWrapper } from './ProductsList.styled';
+import { NotFoundMessage, ProductsItem } from '..';
 
 const ProductsList: React.FC = () => {
+  const test = false;
+
   return (
-    <List className="scrollbar-outer">
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-      <ProductsItem recommended={true} />
-      <ProductsItem recommended={false} />
-    </List>
+    <ListWrapper>
+      {test ? (
+        <List className="scrollbar-outer">
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+          <ProductsItem recommended={true} />
+          <ProductsItem recommended={false} />
+        </List>
+      ) : (
+        <NotFoundMessage />
+      )}
+    </ListWrapper>
   );
 };
 

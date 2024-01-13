@@ -3,7 +3,12 @@ import { Layout } from './Layout';
 import { Header } from './Header';
 import { PrimaryButton } from './PrimaryButton';
 import { Container } from './Container';
-import { ProductsList, ProductsItem, Filters } from './Products';
+import {
+  ProductsList,
+  ProductsItem,
+  Filters,
+  NotFoundMessage,
+} from './Products';
 
 export {
   App,
@@ -14,4 +19,5 @@ export {
   ProductsList,
   ProductsItem,
   Filters,
+  NotFoundMessage,
 };
