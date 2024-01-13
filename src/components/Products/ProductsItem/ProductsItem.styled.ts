@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
 
-const Item = styled.div`
+const Item = styled.li`
   width: 100%;
   height: 150px;
   padding: 16px;
@@ -9,6 +9,7 @@ const Item = styled.div`
 
   border-radius: 12px;
   background-color: #efede80d;
+  transition-duration: 150ms;
 
   @media screen and (min-width: 376px) {
     width: 335px;
@@ -20,6 +21,10 @@ const Item = styled.div`
 
   @media screen and (min-width: 1441px) {
     width: 405px;
+  }
+
+  &:hover {
+    background-color: #efede80a;
   }
 `;
 
