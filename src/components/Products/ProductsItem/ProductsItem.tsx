@@ -24,7 +24,6 @@ interface ProductsItemProps {
 
 const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
   const [buttonHover, setButtonHover] = useState(false);
-  const [buttonFocus, setButtonFocus] = useState(false);
 
   return (
     <Item>
@@ -38,14 +37,12 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
           type="text"
           onMouseEnter={() => setButtonHover(true)}
           onMouseLeave={() => setButtonHover(false)}
-          onFocus={() => setButtonFocus(true)}
-          onBlur={() => setButtonFocus(false)}
         >
           Add
           <Icon
             name="arrow-secondary"
             width="16px"
-            stroke={buttonHover || buttonFocus ? '#efede8' : '#e6533c'}
+            stroke={buttonHover ? '#efede8' : '#e6533c'}
           />
         </AddButton>
       </TopRow>

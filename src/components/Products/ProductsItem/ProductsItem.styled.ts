@@ -65,15 +65,14 @@ const AddButton = styled(Button)`
   gap: 8px;
   align-items: center;
 
-  padding: 0;
+  padding: 3px 6px;
   margin-left: 16px;
 
   font-size: 14px;
   line-height: calc(18 / 14);
   color: #e6533c;
 
-  &:hover,
-  :focus {
+  &:hover {
     color: #efede8 !important;
     transform: translateX(5px);
   }
