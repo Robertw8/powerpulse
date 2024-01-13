@@ -1,13 +1,20 @@
-
 import { useFormik } from 'formik';
-
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import { BlockSignUp, ContainerSignUp, FormContainer, ImgSignUp, ParagraphSignUp, TitleSignUp, BtnSignUp, WidthInput} from './SignUp.styled';
-import  SignUpSchema  from './SignUpSchema';
+import { BlockSignUp, ContainerSignUp, FormContainer, ImgSignUp, ParagraphSignUp, TitleSignUp, BtnSignUp, WidthInput } from './SignUp.styled';
+ import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import { useDispatch } from 'react-redux';
+import SignUpSchema from './SignUpSchema';
 import { StyledInput } from '../InputPrimary/InputPrimary.styled';
-
+import { registerUser } from '..//..//redux/auth/SignUp/operations';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const setToken = (token) => {
+    localStorage.setItem('token', token);
+  };
+ 
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -15,9 +22,19 @@ const SignUpForm = () => {
       password: '',
     },
     validationSchema: SignUpSchema,
-    onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
+     onSubmit: async (values: { name: string; email: string; password: string}, { resetForm }) =>{
+      try {
+      const response = await dispatch(registerUser(values));
       resetForm();
+     const token = response.payload.data.token;
+        console.log(token);
+      if (token) {
+        setToken(token);
+        return navigate('/profile');
+      }
+      } catch (error) {
+        console.error('Registration failed', error);
+      }
     },
   });
 
@@ -30,8 +47,8 @@ const SignUpForm = () => {
           following information.
         </ParagraphSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
-  <WidthInput>
-          <StyledInput
+         <WidthInput>
+           <StyledInput
             bordercolor={formik.errors.name && formik.touched.name ? 'error' : 'default'}
             name="name"
             type="text"
@@ -41,7 +58,7 @@ const SignUpForm = () => {
             />
             </WidthInput>
           {formik.errors.name && formik.touched.name && <div>{formik.errors.name}</div>}
-<WidthInput>
+          <WidthInput>
           <StyledInput
             bordercolor={formik.errors.email && formik.touched.email ? 'error' : 'default'}
             id="email"
@@ -53,7 +70,7 @@ const SignUpForm = () => {
             />
             </WidthInput>
           {formik.errors.email && formik.touched.email && <div>{formik.errors.email}</div>}
-<WidthInput>
+          <WidthInput>
           <StyledInput
             bordercolor={formik.errors.password && formik.touched.password ? 'error' : 'default'}
             id="password"
@@ -63,7 +80,7 @@ const SignUpForm = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
-</WidthInput>
+          </WidthInput>
           {formik.errors.password && formik.touched.password && <div>{formik.errors.password}</div>}
 
           <BtnSignUp htmlType="submit" type="primary">
@@ -77,4 +94,3 @@ const SignUpForm = () => {
 };
 
 export default SignUpForm;
-
