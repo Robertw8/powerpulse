@@ -1,14 +1,10 @@
-import { Filters } from '../components/Products/Filters';
-import { ProductsItem } from '../components/';
-import { Container } from '../components';
+import { Container, Filters, ProductsList } from '../components';
 
 const ProductsPage: React.FC = () => {
   return (
     <Container>
       <Filters />
-      <div style={{ marginTop: 50 }}>
-        <ProductsItem recommended={false} />
-      </div>
+      <ProductsList />
     </Container>
   );
 };
