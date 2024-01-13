@@ -32,6 +32,7 @@ const DropdownList = styled.ul<DropdownListProps>`
   left: 0;
 
   width: 100%;
+  max-height: 228px;
   padding: 14px 28px 14px 14px;
 
   background-color: #1c1c1c;
@@ -43,6 +44,10 @@ const DropdownList = styled.ul<DropdownListProps>`
   transform-origin: top;
 
   transform: scaleY(${({ visible }) => (visible ? 1 : 0)});
+
+  @media screen and (min-width: 769px) {
+    max-height: 276px;
+  }
 `;
 
 const DropdownItem = styled.li`
