@@ -1,5 +1,4 @@
 import { Container } from '..';
-import { PrimaryButton } from '..';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
@@ -10,7 +9,6 @@ const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
           ? 'це хедер для авторизованого юзера'
           : 'це хедер для НЕ авторизованого юзера'}
       </div>
-      <PrimaryButton type="primary" />
       <div style={{ marginTop: 50, display: 'flex', gap: '30px' }}>
         <Link to="/">Home</Link>
         <Link to="/welcome">Welcome</Link>

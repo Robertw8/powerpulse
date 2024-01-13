@@ -1,7 +1,13 @@
+import { Container } from "../components";
 import { Welcome } from "../components/Welcome"
 
+
 const WelcomePage: React.FC = () => {
-  return <Welcome/>;
+  return (
+    <Container>
+      <Welcome />
+    </Container>
+  );
 };
 
 export default WelcomePage;
