@@ -49,4 +49,4 @@ const Btn = styled(Button)`
   }
 `;
 
-export { Btn, Label, TextRadio, BloodWrap, Input };
+export { Btn, Label, TextRadio, BloodWrap };
