@@ -9,6 +9,7 @@ import {
   Filters,
   NotFoundMessage,
 } from './Products';
+import { PageTitle } from './PageTitle';
 
 export {
   App,
@@ -20,4 +21,5 @@ export {
   ProductsItem,
   Filters,
   NotFoundMessage,
+  PageTitle,
 };
