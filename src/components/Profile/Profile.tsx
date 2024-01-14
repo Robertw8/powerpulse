@@ -1,5 +1,5 @@
 // import { useFormik } from 'formik';
-// import { PrimaryButton } from '..';
+import { PrimaryButton } from '..';
 import {
   Btn,
   Title,
@@ -14,6 +14,10 @@ import {
   UserAvatar,
   BtnAvatar,
   TextValue,
+  UserName,
+  UserWrap,
+  UserStatus,
+  ImgUserAvatar,
 } from './Profile.styled';
 import { Icon } from '../Icon';
 import { useState } from 'react';
@@ -24,14 +28,16 @@ const Profile = () => {
   return (
     <>
       <Wrap>
-        <Title>Profile Settings</Title>
+        {/* <Title>Profile Settings</Title> */}
         <div>
           <ImgWrap>
-            <Icon
-              name="user"
-              iconWidth={{ mobile: '64px', tablet: '64px' }}
-              iconHeight={{ mobile: '64px', tablet: '64px' }}
-            />
+            <ImgUserAvatar>
+              <Icon
+                name="user"
+                iconWidth={{ mobile: '64px', tablet: '102px' }}
+                iconHeight={{ mobile: '64px', tablet: '102px' }}
+              />
+            </ImgUserAvatar>
             <UserAvatar>
               <BtnAvatar
                 onMouseEnter={() => setButtonHover(true)}
@@ -39,13 +45,18 @@ const Profile = () => {
               >
                 <Icon
                   name="add-foto"
-                  iconWidth={{ mobile: '24px', tablet: '24px' }}
-                  iconHeight={{ mobile: '24px', tablet: '24px' }}
+                  iconWidth={{ mobile: '24px', tablet: '32px' }}
+                  iconHeight={{ mobile: '24px', tablet: '32px' }}
                   stroke={buttonHover ? '#efede8' : '#e6533c'}
                 />
               </BtnAvatar>
             </UserAvatar>
           </ImgWrap>
+
+          <UserWrap>
+            <UserName>Name Name</UserName>
+            <UserStatus>User</UserStatus>
+          </UserWrap>
 
           <BlockWrap>
             <BlockData>
@@ -86,7 +97,7 @@ const Profile = () => {
           </TextWrap>
 
           <div>
-            {/* <PrimaryButton  type="primary" name="Save!" size='large'/> */}
+            <PrimaryButton type="primary" text="Save" sizes="extraSmall" />
             <Btn htmlType="submit" type="primary">
               Save
             </Btn>
