@@ -6,12 +6,6 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
 
-  svg {
-    width: 20px;
-    height: 20px;
-    fill: #fff;
-  }
-
   @media screen and (max-width: 1439px) {
     display: block;
   }
