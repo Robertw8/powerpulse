@@ -2,7 +2,6 @@
 import { PrimaryButton } from '..';
 import {
   Btn,
-  Title,
   ImgWrap,
   Text,
   TextWrap,
