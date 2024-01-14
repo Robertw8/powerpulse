@@ -1,7 +1,4 @@
-// import { useFormik } from 'formik';
-import { PrimaryButton } from '..';
 import {
-  Btn,
   ImgWrap,
   Text,
   TextWrap,
@@ -10,24 +7,23 @@ import {
   Wrap,
   TitleBlock,
   TextBlockWrap,
-  UserAvatar,
+  UserAvatarImg,
   BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
   UserStatus,
   ImgUserAvatar,
-} from './Profile.styled';
-import { Icon } from '../Icon';
+} from './UserCard.styled';
+import { Icon } from '../../Icon';
 import { useState } from 'react';
 
-const Profile = () => {
+const UserCard = () => {
   const [buttonHover, setButtonHover] = useState(false);
   // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
   return (
     <>
       <Wrap>
-        {/* <Title>Profile Settings</Title> */}
         <div>
           <ImgWrap>
             <ImgUserAvatar>
@@ -37,7 +33,7 @@ const Profile = () => {
                 iconHeight={{ mobile: '64px', tablet: '102px' }}
               />
             </ImgUserAvatar>
-            <UserAvatar>
+            <UserAvatarImg>
               <BtnAvatar
                 onMouseEnter={() => setButtonHover(true)}
                 onMouseLeave={() => setButtonHover(false)}
@@ -49,7 +45,7 @@ const Profile = () => {
                   stroke={buttonHover ? '#efede8' : '#e6533c'}
                 />
               </BtnAvatar>
-            </UserAvatar>
+            </UserAvatarImg>
           </ImgWrap>
 
           <UserWrap>
@@ -94,17 +90,10 @@ const Profile = () => {
               goals.
             </Text>
           </TextWrap>
-
-          <div>
-            <PrimaryButton type="primary" text="Save" sizes="extraSmall" />
-            <Btn htmlType="submit" type="primary">
-              Save
-            </Btn>
-          </div>
         </div>
       </Wrap>
     </>
   );
 };
 
-export default Profile;
+export default UserCard;
