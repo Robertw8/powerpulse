@@ -1,7 +1,7 @@
 import { Title } from './PageTitle.styled';
 
-const PageTitle: React.FC<{ children: string }> = ({ children }) => {
-  return <Title>{children}</Title>;
+const PageTitle: React.FC<{ text: string }> = ({ text }) => {
+  return <Title>{text}</Title>;
 };
 
 export default PageTitle;

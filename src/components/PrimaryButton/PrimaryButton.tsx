@@ -1,13 +1,31 @@
-//? Як приклад з ант дизайну дістав кнопку, по моєму 1 в 1 з макетом, тож можна просто цю юзати
+import { CustomButton } from './PrimaryButton.styled';
+import { ButtonProps } from 'antd';
 
-import { Button } from 'antd';
+interface PrimaryButtonProps extends ButtonProps {
+  type: 'link' | 'text' | 'default' | 'primary' | 'dashed';
+  text: string;
+  sizes: 'large' | 'middle' | 'small' | 'extraSmall';
+  padding?: string;
+  fontSize?: number;
+}
 
-const PrimaryButton: React.FC<{
-  type: 'link' | 'text' | 'default' | 'primary' | 'dashed', 
-  name: string,
-  size: "large" | "middle" | "small",
-}> = ({ type, name, size } ) => {
-  return <Button type={type} size={size} >{name}</Button>;
+const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+  type,
+  text,
+  sizes,
+  padding,
+  fontSize,
+}) => {
+  return (
+    <CustomButton
+      type={type}
+      sizes={sizes}
+      fontSize={fontSize}
+      padding={padding}
+    >
+      {text}
+    </CustomButton>
+  );
 };
 
 export default PrimaryButton;
