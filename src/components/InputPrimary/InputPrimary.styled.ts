@@ -5,15 +5,10 @@ interface StyledInputProps extends InputProps {
   bordercolor: 'default' | 'success' | 'error';
 }
 
-const checkValidationStatus = (status: 'default' | 'success' | 'error') => {
-  switch (status) {
-    case 'default':
-      return '#EFEDE84D';
-    case 'success':
-      return '#3CBF61';
-    case 'error':
-      return '#D80027';
-  }
+const validationStatuses: { [key: string]: string } = {
+  default: '#EFEDE84D',
+  success: '#3CBF61',
+  error: '#D80027',
 };
 
 const StyledInput = styled(Input)<StyledInputProps>`
@@ -26,7 +21,7 @@ const StyledInput = styled(Input)<StyledInputProps>`
   line-height: calc(18 / 14);
 
   background-color: transparent;
-  border-color: ${({ bordercolor }) => checkValidationStatus(bordercolor)};
+  border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
 
   &:hover,
   &:focus {
