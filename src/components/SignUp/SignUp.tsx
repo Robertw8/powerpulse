@@ -1,20 +1,30 @@
 import { useFormik } from 'formik';
-import { BlockSignUp, ContainerSignUp, FormContainer, ImgSignUp, ParagraphSignUp, TitleSignUp, BtnSignUp, WidthInput } from './SignUp.styled';
- import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import {
+  BlockSignUp,
+  ContainerSignUp,
+  FormContainer,
+  ImgSignUp,
+  ParagraphSignUp,
+  TitleSignUp,
+  BtnSignUp,
+  WidthInput,
+} from './SignUp.styled';
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import { useDispatch } from 'react-redux';
 import SignUpSchema from './SignUpSchema';
 import { StyledInput } from '../InputPrimary/InputPrimary.styled';
 import { registerUser } from '..//..//redux/auth/SignUp/operations';
 import { useNavigate } from 'react-router-dom';
+import { AppDispatch } from '../../redux';
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  
-  const setToken = (token) => {
+
+  const setToken = (token: string) => {
     localStorage.setItem('token', token);
   };
- 
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -22,16 +32,20 @@ const SignUpForm = () => {
       password: '',
     },
     validationSchema: SignUpSchema,
-     onSubmit: async (values: { name: string; email: string; password: string}, { resetForm }) =>{
+    onSubmit: async (
+      values: { name: string; email: string; password: string },
+      { resetForm }
+    ) => {
       try {
-      const response = await dispatch(registerUser(values));
-      resetForm();
-     const token = response.payload.data.token;
+        const response = await dispatch(registerUser(values));
+        resetForm();
+        const token = (response.payload as { data?: { token: string } })?.data
+          ?.token;
         console.log(token);
-      if (token) {
-        setToken(token);
-        return navigate('/profile');
-      }
+        if (token) {
+          setToken(token);
+          return navigate('/profile');
+        }
       } catch (error) {
         console.error('Registration failed', error);
       }
@@ -43,52 +57,72 @@ const SignUpForm = () => {
       <BlockSignUp>
         <TitleSignUp>Sign up</TitleSignUp>
         <ParagraphSignUp>
-          Thank you for your interest in our platform. To complete the registration process, please provide us with the
-          following information.
+          Thank you for your interest in our platform. To complete the
+          registration process, please provide us with the following
+          information.
         </ParagraphSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
-         <WidthInput>
-           <StyledInput
-            bordercolor={formik.errors.name && formik.touched.name ? 'error' : 'default'}
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            />
-            </WidthInput>
-          {formik.errors.name && formik.touched.name && <div>{formik.errors.name}</div>}
           <WidthInput>
-          <StyledInput
-            bordercolor={formik.errors.email && formik.touched.email ? 'error' : 'default'}
-            id="email"
-            name="email"
-            type="text"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
+            <StyledInput
+              bordercolor={
+                formik.errors.name && formik.touched.name ? 'error' : 'default'
+              }
+              name="name"
+              type="text"
+              placeholder="Name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
             />
-            </WidthInput>
-          {formik.errors.email && formik.touched.email && <div>{formik.errors.email}</div>}
-          <WidthInput>
-          <StyledInput
-            bordercolor={formik.errors.password && formik.touched.password ? 'error' : 'default'}
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-          />
           </WidthInput>
-          {formik.errors.password && formik.touched.password && <div>{formik.errors.password}</div>}
+          {formik.errors.name && formik.touched.name && (
+            <div>{formik.errors.name}</div>
+          )}
+          <WidthInput>
+            <StyledInput
+              bordercolor={
+                formik.errors.email && formik.touched.email
+                  ? 'error'
+                  : 'default'
+              }
+              id="email"
+              name="email"
+              type="text"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+          </WidthInput>
+          {formik.errors.email && formik.touched.email && (
+            <div>{formik.errors.email}</div>
+          )}
+          <WidthInput>
+            <StyledInput
+              bordercolor={
+                formik.errors.password && formik.touched.password
+                  ? 'error'
+                  : 'default'
+              }
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              value={formik.values.password}
+            />
+          </WidthInput>
+          {formik.errors.password && formik.touched.password && (
+            <div>{formik.errors.password}</div>
+          )}
 
           <BtnSignUp htmlType="submit" type="primary">
             Sign Up
           </BtnSignUp>
         </FormContainer>
       </BlockSignUp>
-      <ImgSignUp src={imgForWelcomePage} alt="The girl shows an example of a forward leg kick" />
+      <ImgSignUp
+        src={imgForWelcomePage}
+        alt="The girl shows an example of a forward leg kick"
+      />
     </ContainerSignUp>
   );
 };

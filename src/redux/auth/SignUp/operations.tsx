@@ -1,28 +1,38 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { singUp, SignIn } from '../../../services/apiRequest';
+import {
+  singUp,
+  SignIn,
+  SignInArgs,
+  SignUpArgs,
+  AuthResponse,
+} from '../../../services/apiRequest';
 
-  export const registerUser = createAsyncThunk(
+const registerUser = createAsyncThunk(
   'auth/register',
-  async (data: { name: string, email: string, password: string }, thunkAPI) => {
+  async (data: SignUpArgs, thunkAPI) => {
     try {
-    const response = await singUp(data);
-      return response; 
+      const response = await singUp(data);
+      return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error instanceof Error ? error.message : 'An unknown error occurred');
+      return thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : 'An unknown error occurred'
+      );
     }
   }
 );
 
-
- export const loginUser = createAsyncThunk(
+const loginUser = createAsyncThunk(
   'auth/login',
-  async (dataUser, thunkAPI) => {
+  async (dataUser: SignInArgs, thunkAPI) => {
     try {
-      return SignIn(dataUser);
+      const response: AuthResponse = await SignIn(dataUser);
+      return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : 'An error occurred'
+      );
     }
   }
 );
 
-  
+export { registerUser, loginUser };

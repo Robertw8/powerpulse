@@ -9,7 +9,7 @@ import {
 } from 'redux-persist';
 import persistStore from 'redux-persist/es/persistStore';
 import persistReducer from 'redux-persist/es/persistReducer';
-import storage from 'redux-persist/lib/storage';  
+import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './auth/SignUp/slice';
 
@@ -26,21 +26,20 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
-
-
+export type AppDispatch = typeof store.dispatch;
 
 // store.js
 // import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // import {registerReducer }  from './auth/SignUp/slice'; // Оновіть шлях відповідно
 // import {
 //   FLUSH,
-//   PAUSE, 
+//   PAUSE,
 //   PERSIST,
 //   PURGE,
 //   REGISTER,
@@ -68,5 +67,3 @@ export const persistor = persistStore(store);
 // });
 
 // export const persistor = persistStore(store);
-
-
