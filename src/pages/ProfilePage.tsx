@@ -1,11 +1,12 @@
 import { Container, PageTitle } from '../components';
-import { Profile } from '../components/Profile';
+import { UserCard, UserForm } from '../components/Profile';
 
 const ProfilePage: React.FC = () => {
   return (
     <Container>
       <PageTitle text="Profile Settings" />
-      <Profile />
+      <UserCard />
+      <UserForm />
     </Container>
   );
 };

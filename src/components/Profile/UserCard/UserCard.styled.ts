@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Button } from 'antd';
 
 const Wrap = styled.div`
   display: flex;
@@ -45,7 +44,7 @@ const ImgUserAvatar = styled.div`
   top: 15px;
 `;
 
-const UserAvatar = styled.div`
+const UserAvatarImg = styled.div`
   position: relative;
   top: 10px;
 
@@ -148,23 +147,7 @@ const Text = styled.p`
   }
 `;
 
-const Btn = styled(Button)`
-  width: 115px;
-  height: 42px;
-  border: none;
-  background-color: #e6533c;
-  color: #efede8;
-  // margin-top: 64px;
-  // padding: 12px 40px;
-
-  &:hover,
-  &:focus {
-    background-color: #ef8964;
-  }
-`;
-
 export {
-  Btn,
   ImgWrap,
   Text,
   TextWrap,
@@ -173,7 +156,7 @@ export {
   Wrap,
   TitleBlock,
   TextBlockWrap,
-  UserAvatar,
+  UserAvatarImg,
   BtnAvatar,
   TextValue,
   UserName,
