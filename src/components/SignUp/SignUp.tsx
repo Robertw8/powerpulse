@@ -12,7 +12,7 @@ import {
 import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import { useDispatch } from 'react-redux';
 import SignUpSchema from './SignUpSchema';
-import { StyledInput } from '../InputPrimary/InputPrimary.styled';
+import { InputPrimary } from '../InputPrimary';
 import { registerUser } from '..//..//redux/auth/SignUp/operations';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../redux';
@@ -63,7 +63,7 @@ const SignUpForm = () => {
         </ParagraphSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
-            <StyledInput
+            <InputPrimary
               bordercolor={
                 formik.errors.name && formik.touched.name ? 'error' : 'default'
               }
@@ -78,7 +78,7 @@ const SignUpForm = () => {
             <div>{formik.errors.name}</div>
           )}
           <WidthInput>
-            <StyledInput
+            <InputPrimary
               bordercolor={
                 formik.errors.email && formik.touched.email
                   ? 'error'
@@ -96,7 +96,7 @@ const SignUpForm = () => {
             <div>{formik.errors.email}</div>
           )}
           <WidthInput>
-            <StyledInput
+            <InputPrimary
               bordercolor={
                 formik.errors.password && formik.touched.password
                   ? 'error'

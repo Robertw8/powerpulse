@@ -10,7 +10,7 @@ import {
   WidthInput,
 } from '../SignUp/SignUp.styled';
 import SignInSchema from './SignInSchema';
-import { StyledInput } from '../InputPrimary/InputPrimary.styled';
+import { InputPrimary } from '../InputPrimary';
 import { loginUser } from '..//..//redux/auth/SignUp/operations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -55,7 +55,7 @@ const SignInForm = () => {
         <TitleSignUp>Sign In</TitleSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
-            <StyledInput
+            <InputPrimary
               bordercolor={
                 formik.errors.email && formik.touched.email
                   ? 'error'
@@ -73,7 +73,7 @@ const SignInForm = () => {
             <div>{formik.errors.email}</div>
           )}
           <WidthInput>
-            <StyledInput
+            <InputPrimary
               bordercolor={
                 formik.errors.password && formik.touched.password
                   ? 'error'

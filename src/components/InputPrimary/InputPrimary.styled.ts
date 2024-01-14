@@ -20,12 +20,15 @@ const StyledInput = styled(Input)<StyledInputProps>`
   font-size: 14px;
   line-height: calc(18 / 14);
 
-  background-color: transparent;
+  background-color: transparent !important;
   border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
+  box-shadow: 0;
 
   &:hover,
-  &:focus {
-    border-color: #e6533c;
+  &:focus,
+  &:focus-within {
+    background-color: transparent !important;
+    border-color: #e6533c !important;
   }
 
   &::placeholder {
@@ -37,6 +40,21 @@ const StyledInput = styled(Input)<StyledInputProps>`
     height: 52px;
     font-size: 16px;
     line-height: calc(24 / 16);
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus input:-webkit-autofill {
+    -webkit-text-fill-color: #efede8;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 174, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0) 51%,
+      rgba(0, 174, 255, 0.03) 100%
+    );
   }
 `;
 
