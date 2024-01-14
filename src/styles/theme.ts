@@ -1,4 +1,3 @@
-//! Тема для ant-design, якщо вам потрібен інший колір для компоненту з ліби, змініть його у самому компоненті, тут нічого не змінювати
 const theme = {
   token: {
     colorPrimary: '#E6533C',
@@ -8,8 +7,14 @@ const theme = {
   },
 };
 
-//? Об'єкт з усіма кольорами та радіусами бордерів, якщо у когось є ідея як його використовувати а не тільки копіювати звідси кольори - дайте знати пліз
-const themeExamples = {
+interface Palette {
+  colors: { [key: string]: string };
+  radiuses: { [key: string]: string };
+  fontSizes: { [key: string]: number };
+  weights: { [key: string]: number };
+}
+
+const Palette: Palette = {
   colors: {
     black: '#040404',
     orange: '#E6533C',
@@ -17,13 +22,31 @@ const themeExamples = {
     beige: '#EFA082',
     white: '#EFEDE8',
     white30: '#EFEDE84D',
+    white20: '#EFEDE833',
     red: '#D80027',
     gray: '#1C1C1C',
   },
   radiuses: {
-    primary: 12,
-    secondary: 8,
+    primary: '12px',
+    secondary: '8px',
+    round: '50%',
+  },
+  fontSizes: {
+    huge: 72,
+    extraLarge: 48,
+    large: 32,
+    medium: 24,
+    small: 18,
+    default: 16,
+    tiny: 14,
+    caption: 12,
+  },
+  weights: {
+    black: 900,
+    bold: 700,
+    semiBold: 600,
+    normal: 400,
   },
 };
 
-export { theme, themeExamples };
+export { theme, Palette };
