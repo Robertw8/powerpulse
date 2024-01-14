@@ -9,29 +9,65 @@ const Label = styled.label`
   margin: 0 0 5px;
 `;
 
+const BloodWrap = styled.div`
+  position: relative;
+  display: flex;
+  gap: 8px;
+`;
+
+const LableRadio = styled.label`
+  display: flex;
+  height: 20px;
+`;
+
+const Input = styled.input`
+  position: relative;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+
+  &:checked + span {
+    border: 2px solid #ef8964;
+  }
+  &:checked + span:after {
+    opacity: 1;
+  }
+`;
+
+const CheckRadio = styled.span`
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #9a9a9a;
+  border-radius: 50%;
+  display: flex;
+  position: relative;
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #ef8964;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+`;
+
 const TextRadio = styled.span`
   color: #efede8;
   font-size: 14px;
   line-height: 18px;
   margin: 0 0 0 8px;
-`;
-
-// const Input = styled.input`
-//   display: flex;
-//   flex-direction: column;
-//   width: 18px;
-//   height: 18px;
-//   border-radius: 10px;
-//   border: 2px solid #636366;
-
-//   &:checked {
-//     background: red;
-//   }
-// `;
-
-const BloodWrap = styled.div`
-  display: flex;
-  gap: 8px;
 `;
 
 const Btn = styled(Button)`
@@ -49,4 +85,4 @@ const Btn = styled(Button)`
   }
 `;
 
-export { Btn, Label, TextRadio, BloodWrap };
+export { Btn, Label, TextRadio, BloodWrap, Input, CheckRadio, LableRadio };
