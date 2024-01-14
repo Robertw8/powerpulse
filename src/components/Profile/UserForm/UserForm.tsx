@@ -1,5 +1,13 @@
 // import { PrimaryButton } from '../..';
-import { BloodWrap, Btn, Label, TextRadio } from './UserForm.styled';
+import {
+  BloodWrap,
+  Btn,
+  Label,
+  TextRadio,
+  Input,
+  CheckRadio,
+  LableRadio,
+} from './UserForm.styled';
 import { initialValues, schema } from './UserFormSchema';
 import { useFormik } from 'formik';
 import { StyledInput } from '../../InputPrimary/InputPrimary.styled';
@@ -110,70 +118,80 @@ const UserForm = () => {
 
           <Label>Blood</Label>
           <BloodWrap>
-            <label>
-              <input
+            <LableRadio>
+              <Input
                 name="blood"
                 type="radio"
-                onChange={formik.handleChange}
+                onChange={() => formik.setFieldValue('blood', 1)}
+                // checked={formik.values.blood === 1}
                 value={1}
               />
+              <CheckRadio />
               <TextRadio>1</TextRadio>
-            </label>
-            <label>
-              <input
+            </LableRadio>
+            <LableRadio>
+              <Input
                 name="blood"
                 type="radio"
-                onChange={formik.handleChange}
+                onChange={() => formik.setFieldValue('blood', 2)}
+                // checked={formik.values.blood === 2}
                 value={2}
               />
+              <CheckRadio />
               <TextRadio>2</TextRadio>
-            </label>
-            <label>
-              <input
+            </LableRadio>
+            <LableRadio>
+              <Input
                 name="blood"
                 type="radio"
-                onChange={formik.handleChange}
+                onChange={() => formik.setFieldValue('blood', 3)}
+                // checked={formik.values.blood === 3}
                 value={3}
               />
+              <CheckRadio />
               <TextRadio>3</TextRadio>
-            </label>
-            <label>
-              <input
+            </LableRadio>
+            <LableRadio>
+              <Input
                 name="blood"
                 type="radio"
-                onChange={formik.handleChange}
+                onChange={() => formik.setFieldValue('blood', 4)}
+                // checked={formik.values.blood === 4}
                 value={4}
               />
+              <CheckRadio />
               <TextRadio>4</TextRadio>
-            </label>
+            </LableRadio>
             {formik.errors.blood && formik.touched.blood && (
               <div>{formik.errors.blood}</div>
             )}
           </BloodWrap>
 
-          <div>
-            <label>
-              <input
+          <BloodWrap>
+            <LableRadio>
+              <Input
                 name="sex"
                 type="radio"
                 onChange={formik.handleChange}
                 value="male"
               />
+              <CheckRadio />
               <TextRadio>Male</TextRadio>
-            </label>
-            <label>
-              <input
+            </LableRadio>
+            <LableRadio>
+              <Input
                 name="sex"
                 type="radio"
                 onChange={formik.handleChange}
                 value="female"
               />
+              <CheckRadio />
               <TextRadio>Female</TextRadio>
-            </label>
+            </LableRadio>
             {formik.errors.sex && formik.touched.sex && (
               <div>{formik.errors.sex}</div>
             )}
-          </div>
+          </BloodWrap>
 
           <div>
             <div>
