@@ -3,21 +3,32 @@ import sprite from '../../assets/images/sprite.svg';
 
 interface IconProps {
   name: string;
-  width: string;
-  height?: string;
+  iconWidth: {
+    mobile: string;
+    tablet: string;
+  };
+  iconHeight?: {
+    mobile: string;
+    tablet: string;
+  };
   fill?: string;
   stroke?: string;
 }
 
 const Icon: React.FC<IconProps> = ({
   name,
-  width = '20px',
-  height = '20px',
+  iconWidth,
+  iconHeight,
   fill,
   stroke,
 }) => {
   return (
-    <StyledIcon width={width} height={height} fill={fill} stroke={stroke}>
+    <StyledIcon
+      iconWidth={iconWidth}
+      iconHeight={iconHeight}
+      fill={fill}
+      stroke={stroke}
+    >
       <use xlinkHref={`${sprite}#icon-${name}`}></use>
     </StyledIcon>
   );
