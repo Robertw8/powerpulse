@@ -21,7 +21,7 @@ const ResponsiveContainer = styled.div`
 
   @media screen and (min-width: 1441px) {
     width: 1440px;
-    padding: 0 32px;
+    padding: 0 96px;
   }
 `;
 
