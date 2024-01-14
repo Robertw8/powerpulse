@@ -25,8 +25,8 @@ const Filters: React.FC = () => {
           <SearchIconContainer>
             <Icon
               name="search"
-              width="18px"
-              height="18px"
+              iconWidth={{ mobile: '18px', tablet: '18px' }}
+              iconHeight={{ mobile: '18px', tablet: '18px' }}
               stroke={inputHover || inputFocus ? '#E6533C' : '#EFEDE8'}
             />
           </SearchIconContainer>

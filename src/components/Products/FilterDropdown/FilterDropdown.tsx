@@ -18,7 +18,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({ children, items }) => {
       {children}
       <Icon
         name="chevron"
-        width="18px"
+        iconWidth={{ mobile: '18px', tablet: '18px' }}
         stroke={dropdownHover ? '#E6533C' : '#EFEDE8'}
       />
       <DropdownList visible={dropdownHover}>

@@ -41,7 +41,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
           Add
           <Icon
             name="arrow-secondary"
-            width="16px"
+            iconWidth={{ mobile: '16px', tablet: '16px' }}
             stroke={buttonHover ? '#efede8' : '#e6533c'}
           />
         </AddButton>
@@ -49,7 +49,12 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
       <BottomRow>
         <NameRow>
           <NameIconWrapper>
-            <Icon name="running" width="18px" fill="#EFEDE8" stroke="#EFEDE8" />
+            <Icon
+              name="running"
+              iconWidth={{ mobile: '16px', tablet: '16px' }}
+              fill="#EFEDE8"
+              stroke="#EFEDE8"
+            />
           </NameIconWrapper>
           <Name>Rice semolina Garnets gluten-free</Name>
         </NameRow>
