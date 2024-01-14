@@ -13,7 +13,6 @@ const BloodWrap = styled.div`
   position: relative;
   display: flex;
   gap: 8px;
-  /* height: 30px; */
 `;
 
 const LableRadio = styled.label`
