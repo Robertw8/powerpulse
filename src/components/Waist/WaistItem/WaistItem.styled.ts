@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import { themeExamples } from "../../../styles/index"
+import { palette } from '../../../styles/index';
 
 const WaistItemLi = styled.li`
   width: 100%;
   min-height: 141px;
   padding: 16px;
   border-radius: 12px;
-  border: 1px solid ${themeExamples.colors.white30};
-  background: ${themeExamples.colors.gray};
+  border: 1px solid ${palette.colors.white30};
+  background: ${palette.colors.gray};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,7 +37,7 @@ const CardLabel = styled.p`
   font-size: 12px;
   font-weight: 700;
   line-height: normal;
-  color: ${themeExamples.colors.white};
+  color: ${palette.colors.white};
 
   padding: 5px 7.5px;
   border-radius: 4px;
@@ -48,7 +48,7 @@ const CardLabel = styled.p`
 const BtnLabel = styled.button`
   background: transparent;
   border: none;
-  color: ${themeExamples.colors.orange};
+  color: ${palette.colors.orange};
   font-size: 16px;
   line-height: 1.5;
   display: flex;
@@ -59,10 +59,10 @@ const BtnLabel = styled.button`
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${themeExamples.colors.white};
+    color: ${palette.colors.white};
   }
   &:focus {
-    color: ${themeExamples.colors.white};
+    color: ${palette.colors.white};
   }
 `;
 
@@ -84,7 +84,7 @@ const Title = styled.h3`
   position: relative;
   font-size: 24px;
   line-height: 1.333;
-  color:${themeExamples.colors.white};
+  color: ${palette.colors.white};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -97,7 +97,6 @@ const Title = styled.h3`
 `;
 
 const SvgExerciseRun = styled.svg`
-
   width: 16px;
   height: 16px;
 `;
@@ -105,7 +104,7 @@ const SpanExerciseRun = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${themeExamples.colors.beige};
+  background-color: ${palette.colors.beige};
   border-radius: 50%;
   width: 24px;
   height: 24px;
@@ -121,16 +120,26 @@ const ListItem = styled.li`
   display: flex;
   flex-direction: row;
   gap: 4px;
-  color:${themeExamples.colors.white};
+  color: ${palette.colors.white};
   font-size: 12px;
   line-height: 1.5;
 `;
 
 const ListItemValue = styled.span`
-  color: ${themeExamples.colors.white30};
+  color: ${palette.colors.white30};
 `;
 
 export {
-    ListItem, ListItemValue, List, WaistItemLi, BtnLabel, BtnWrapper, CardLabel,
-    SpanExerciseRun, SvgExercise, ExercisesTitleBox, Title, SvgExerciseRun
+  ListItem,
+  ListItemValue,
+  List,
+  WaistItemLi,
+  BtnLabel,
+  BtnWrapper,
+  CardLabel,
+  SpanExerciseRun,
+  SvgExercise,
+  ExercisesTitleBox,
+  Title,
+  SvgExerciseRun,
 };

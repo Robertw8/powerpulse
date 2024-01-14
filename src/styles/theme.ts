@@ -14,7 +14,7 @@ interface Palette {
   weights: { [key: string]: number };
 }
 
-const Palette: Palette = {
+const palette: Palette = {
   colors: {
     black: '#040404',
     orange: '#E6533C',
@@ -49,4 +49,4 @@ const Palette: Palette = {
   },
 };
 
-export { theme, Palette };
+export { theme, palette };

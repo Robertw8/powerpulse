@@ -1,4 +1,4 @@
-import { theme, themeExamples } from './theme';
+import { theme, palette } from './theme';
 
 export { default as GlobalStyles } from './GlobalStyles';
-export { theme, themeExamples };
+export { theme, palette };
