@@ -1,6 +1,5 @@
 import { Container } from '..';
-
-import { MobileMenuBtn } from '../MobileMenuBtn/MobileMenuBtn';
+// import { MobileMenuBtn } from '../MobileMenuBtn/MobileMenuBtn';
 
 // import { PrimaryButton } from '..';
 
@@ -44,6 +43,7 @@ const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
             </>
           )}
         </UserContainer>
+
         <div style={{ marginTop: 50, display: 'flex', gap: '30px' }}>
           <Link to="/">Home</Link>
           <Link to="/welcome">Welcome</Link>
