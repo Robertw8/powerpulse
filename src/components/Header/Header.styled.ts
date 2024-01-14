@@ -3,12 +3,11 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
-  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 24px 20px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 
   background-color: var('--black-color');
 
