@@ -1,7 +1,7 @@
 import { date, number, object, string } from 'yup';
 
 interface FormValues {
-  // name: string;
+  name: string;
   height: number;
   currentWeight: number;
   desiredWeight: number;
@@ -12,7 +12,7 @@ interface FormValues {
 }
 //formik initialValues
 const initialValues: FormValues = {
-  // name: '',
+  name: '',
   height: 0,
   currentWeight: 0,
   desiredWeight: 0,
@@ -24,7 +24,7 @@ const initialValues: FormValues = {
 
 //yup validation
 const schema = object({
-  // name: string().required('Required field'),
+  name: string().required('Required field'),
   height: number().min(150, 'minimum 150(cm)').required('Required field'),
   currentWeight: number().min(35, 'minimum 35(kg)').required('Required field'),
   desiredWeight: number().min(35, 'minimum 35(kg)').required('Required field'),

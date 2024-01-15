@@ -9,7 +9,13 @@ const Label = styled.label`
   margin: 0 0 5px;
 `;
 
-const BloodWrap = styled.div`
+const BlockWrap = styled.div`
+  display: flex;
+  gap: 21px;
+  margin: 0 0 32px;
+`;
+
+const RadioWrap = styled.div`
   position: relative;
   display: flex;
   gap: 8px;
@@ -17,7 +23,7 @@ const BloodWrap = styled.div`
 
 const LableRadio = styled.label`
   display: flex;
-  height: 20px;
+  height: 28px;
 `;
 
 const Input = styled.input`
@@ -85,4 +91,13 @@ const Btn = styled(Button)`
   }
 `;
 
-export { Btn, Label, TextRadio, BloodWrap, Input, CheckRadio, LableRadio };
+export {
+  Btn,
+  Label,
+  TextRadio,
+  RadioWrap,
+  Input,
+  CheckRadio,
+  LableRadio,
+  BlockWrap,
+};

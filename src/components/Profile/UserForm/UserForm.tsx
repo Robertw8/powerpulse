@@ -1,49 +1,72 @@
 // import { PrimaryButton } from '../..';
 import {
-  BloodWrap,
+  RadioWrap,
   Btn,
   Label,
   TextRadio,
   Input,
   CheckRadio,
   LableRadio,
+  BlockWrap,
 } from './UserForm.styled';
 import { initialValues, schema } from './UserFormSchema';
 import { useFormik } from 'formik';
 import { StyledInput } from '../../InputPrimary/InputPrimary.styled';
+import { apiService } from '../../../services';
 
 const UserForm = () => {
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: schema,
-    onSubmit: (values, action) => {
-      console.log('yes');
-      console.log(values);
-      console.log(action);
+    onSubmit: async values => {
+      const userData = {
+        name: values.name,
+        height: values.height,
+        currentWeight: values.currentWeight,
+        desiredWeight: values.desiredWeight,
+        birthday: values.birthday,
+        blood: values.blood,
+        sex: values.sex,
+        levelActivity: values.levelActivity,
+      };
+
+      try {
+        const { data } = await apiService({
+          method: 'patch',
+          url: '/users',
+          data: userData,
+        });
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
   return (
     <>
       <div>
-        <Label htmlFor="name">Name</Label>
-        <StyledInput
-          id="name"
-          name="name"
-          type="text"
-          placeholder="name"
-          bordercolor="default"
-        />
-        <Label htmlFor="email">Email</Label>
-        <StyledInput
-          id="email"
-          name="name"
-          type="text"
-          placeholder="email"
-          bordercolor="default"
-        />
-
         <form onSubmit={formik.handleSubmit}>
+          <Label htmlFor="name">Name</Label>
+          <StyledInput
+            id="name"
+            name="name"
+            type="text"
+            placeholder="name"
+            bordercolor="default"
+            onChange={formik.handleChange}
+            value={formik.values.name}
+          />
+          <Label htmlFor="email">Email</Label>
+          <StyledInput
+            id="email"
+            name="email"
+            type="text"
+            placeholder="email"
+            bordercolor="default"
+          />
+
           <Label htmlFor="height">Height</Label>
           <StyledInput
             bordercolor={
@@ -117,138 +140,156 @@ const UserForm = () => {
           )}
 
           <Label>Blood</Label>
-          <BloodWrap>
-            <LableRadio>
-              <Input
-                name="blood"
-                type="radio"
-                onChange={() => formik.setFieldValue('blood', 1)}
-                // checked={formik.values.blood === 1}
-                value={1}
-              />
-              <CheckRadio />
-              <TextRadio>1</TextRadio>
-            </LableRadio>
-            <LableRadio>
-              <Input
-                name="blood"
-                type="radio"
-                onChange={() => formik.setFieldValue('blood', 2)}
-                // checked={formik.values.blood === 2}
-                value={2}
-              />
-              <CheckRadio />
-              <TextRadio>2</TextRadio>
-            </LableRadio>
-            <LableRadio>
-              <Input
-                name="blood"
-                type="radio"
-                onChange={() => formik.setFieldValue('blood', 3)}
-                // checked={formik.values.blood === 3}
-                value={3}
-              />
-              <CheckRadio />
-              <TextRadio>3</TextRadio>
-            </LableRadio>
-            <LableRadio>
-              <Input
-                name="blood"
-                type="radio"
-                onChange={() => formik.setFieldValue('blood', 4)}
-                // checked={formik.values.blood === 4}
-                value={4}
-              />
-              <CheckRadio />
-              <TextRadio>4</TextRadio>
-            </LableRadio>
-            {formik.errors.blood && formik.touched.blood && (
-              <div>{formik.errors.blood}</div>
-            )}
-          </BloodWrap>
+          <BlockWrap>
+            <RadioWrap>
+              <LableRadio>
+                <Input
+                  name="blood"
+                  type="radio"
+                  onChange={() => formik.setFieldValue('blood', 1)}
+                  // checked={formik.values.blood === 1}
+                  value={1}
+                />
+                <CheckRadio />
+                <TextRadio>1</TextRadio>
+              </LableRadio>
+              <LableRadio>
+                <Input
+                  name="blood"
+                  type="radio"
+                  onChange={() => formik.setFieldValue('blood', 2)}
+                  // checked={formik.values.blood === 2}
+                  value={2}
+                />
+                <CheckRadio />
+                <TextRadio>2</TextRadio>
+              </LableRadio>
+              <LableRadio>
+                <Input
+                  name="blood"
+                  type="radio"
+                  onChange={() => formik.setFieldValue('blood', 3)}
+                  // checked={formik.values.blood === 3}
+                  value={3}
+                />
+                <CheckRadio />
+                <TextRadio>3</TextRadio>
+              </LableRadio>
+              <LableRadio>
+                <Input
+                  name="blood"
+                  type="radio"
+                  onChange={() => formik.setFieldValue('blood', 4)}
+                  // checked={formik.values.blood === 4}
+                  value={4}
+                />
+                <CheckRadio />
+                <TextRadio>4</TextRadio>
+              </LableRadio>
+              {formik.errors.blood && formik.touched.blood && (
+                <div>{formik.errors.blood}</div>
+              )}
+            </RadioWrap>
 
-          <BloodWrap>
-            <LableRadio>
-              <Input
-                name="sex"
-                type="radio"
-                onChange={formik.handleChange}
-                value="male"
-              />
-              <CheckRadio />
-              <TextRadio>Male</TextRadio>
-            </LableRadio>
-            <LableRadio>
-              <Input
-                name="sex"
-                type="radio"
-                onChange={formik.handleChange}
-                value="female"
-              />
-              <CheckRadio />
-              <TextRadio>Female</TextRadio>
-            </LableRadio>
-            {formik.errors.sex && formik.touched.sex && (
-              <div>{formik.errors.sex}</div>
-            )}
-          </BloodWrap>
+            <RadioWrap>
+              <LableRadio>
+                <Input
+                  name="sex"
+                  type="radio"
+                  onChange={formik.handleChange}
+                  value="male"
+                />
+                <CheckRadio />
+                <TextRadio>Male</TextRadio>
+              </LableRadio>
+              <LableRadio>
+                <Input
+                  name="sex"
+                  type="radio"
+                  onChange={formik.handleChange}
+                  value="female"
+                />
+                <CheckRadio />
+                <TextRadio>Female</TextRadio>
+              </LableRadio>
+              {formik.errors.sex && formik.touched.sex && (
+                <div>{formik.errors.sex}</div>
+              )}
+            </RadioWrap>
+          </BlockWrap>
 
           <div>
             <div>
-              <label>
-                <input
+              <LableRadio>
+                <Input
                   name="levelActivity"
                   type="radio"
-                  onChange={formik.handleChange}
+                  onChange={() => formik.setFieldValue('levelActivity', 1)}
                   value={1}
                 />
-                Sedentary lifestyle (little or no physical activity)
-              </label>
+                <CheckRadio />
+                <TextRadio>
+                  Sedentary lifestyle (little or no physical activity)
+                </TextRadio>
+              </LableRadio>
             </div>
             <div>
-              <label>
-                <input
+              <LableRadio>
+                <Input
                   name="levelActivity"
                   type="radio"
-                  onChange={formik.handleChange}
+                  onChange={() => formik.setFieldValue('levelActivity', 2)}
                   value={2}
                 />
-                Light activity (light exercises/sports 1-3 days per week)
-              </label>
+                <CheckRadio />
+                <TextRadio>
+                  Light activity (light exercises/sports 1-3 days per week)
+                </TextRadio>
+              </LableRadio>
             </div>
             <div>
-              <label>
-                <input
+              <LableRadio>
+                <Input
                   name="levelActivity"
                   type="radio"
-                  onChange={formik.handleChange}
+                  onChange={() => formik.setFieldValue('levelActivity', 3)}
                   value={3}
                 />
-                Moderately active (moderate exercises/sports 3-5 days per week)
-              </label>
+                <CheckRadio />
+                <TextRadio>
+                  Moderately active (moderate exercises/sports 3-5 days per
+                  week)
+                </TextRadio>
+              </LableRadio>
             </div>
             <div>
-              <label>
-                <input
+              <LableRadio>
+                <Input
                   name="levelActivity"
                   type="radio"
-                  onChange={formik.handleChange}
+                  onChange={() => formik.setFieldValue('levelActivity', 4)}
                   value={4}
                 />
-                Very active (intense exercises/sports 6-7 days per week)
-              </label>
+                <CheckRadio />
+                <TextRadio>
+                  Very active (intense exercises/sports 6-7 days per week)
+                </TextRadio>
+              </LableRadio>
             </div>
             <div>
-              <label>
-                <input
+              <LableRadio>
+                <Input
                   name="levelActivity"
                   type="radio"
-                  onChange={formik.handleChange}
+                  onChange={() => formik.setFieldValue('levelActivity', 5)}
                   value={5}
                 />
-                Extremely active (very strenuous exercises/sports and physical
-                work)
-              </label>
+                <CheckRadio />
+                <TextRadio>
+                  Extremely active (very strenuous exercises/sports and physical
+                  work)
+                </TextRadio>
+              </LableRadio>
             </div>
             {formik.errors.levelActivity && formik.touched.levelActivity && (
               <div>{formik.errors.levelActivity}</div>
