@@ -1,10 +1,9 @@
 import axios, { AxiosResponse, AxiosError, AxiosRequestConfig } from 'axios';
-import { setToken } from '.';
+import { clearToken, setToken } from '.';
 
 axios.defaults.baseURL = 'https://goit-be.onrender.com/';
 
 const TOKEN = localStorage.getItem('token'); //! temp
- 
 
 interface ApiServiceOptions {
   method: 'get' | 'post' | 'patch' | 'put' | 'delete';
@@ -16,6 +15,7 @@ interface ApiServiceOptions {
 interface ApiServiceResponse<T> {
   data: T | null;
   error: AxiosError<string> | null;
+  token?: string;
 }
 
 const apiService = async <T>({
@@ -25,14 +25,22 @@ const apiService = async <T>({
   config,
 }: ApiServiceOptions): Promise<ApiServiceResponse<T>> => {
   try {
-    setToken(TOKEN);
-
     const response: AxiosResponse<T> = await axios.request({
       method,
       url,
       data,
       ...config,
+      headers: { Authorization: TOKEN ? `Bearer ${TOKEN}` : null },
     });
+    setToken(TOKEN);
+
+    if (url === 'users/logout') {
+      clearToken();
+      return {
+        data: response.data,
+        error: null,
+      };
+    }
 
     return {
       data: response.data,
@@ -47,3 +55,4 @@ const apiService = async <T>({
 };
 
 export default apiService;
+export type { ApiServiceResponse };
