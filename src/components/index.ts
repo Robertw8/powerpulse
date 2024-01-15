@@ -1,25 +1,12 @@
-import App from './App';
-import { Layout } from './Layout';
-import { Header } from './Header';
-import { PrimaryButton } from './PrimaryButton';
-import { Container } from './Container';
-import {
+export { default as App } from './App';
+export { Layout } from './Layout';
+export { Header } from './Header';
+export { PrimaryButton } from './PrimaryButton';
+export { Container } from './Container';
+export {
   ProductsList,
   ProductsItem,
   Filters,
   NotFoundMessage,
 } from './Products';
-import { PageTitle } from './PageTitle';
-
-export {
-  App,
-  Layout,
-  Header,
-  PrimaryButton,
-  Container,
-  ProductsList,
-  ProductsItem,
-  Filters,
-  NotFoundMessage,
-  PageTitle,
-};
+export { PageTitle } from './PageTitle';

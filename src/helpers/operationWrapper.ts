@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-interface RequestWrapperArgs<R> {
+interface OperationWrapper<R> {
   path: string;
   handler: () => Promise<R>;
 }
 
-const operationWrapper = <P, R>({ path, handler }: RequestWrapperArgs<R>) => {
+const operationWrapper = <P, R>({ path, handler }: OperationWrapper<R>) => {
   return createAsyncThunk<R, P>(path, async (_, thunkAPI) => {
     try {
       return await handler();

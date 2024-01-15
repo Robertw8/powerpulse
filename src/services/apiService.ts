@@ -25,6 +25,7 @@ const apiService = async <T>({
 }: ApiServiceOptions): Promise<ApiServiceResponse<T>> => {
   try {
     setToken(TOKEN);
+
     const response: AxiosResponse<T> = await axios.request({
       method,
       url,
