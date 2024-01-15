@@ -19,7 +19,7 @@ const OrangeText = styled.span`
   font-size: 14px;
   line-height: calc(18 / 14);
 
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     margin-top: 16px;
   }
 

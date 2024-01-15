@@ -1,33 +1,41 @@
 import { List, ListWrapper } from './ProductsList.styled';
-import { NotFoundMessage, ProductsItem } from '..';
+import { ProductsItem } from '..';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getProducts, selectProducts } from '../../../redux/products';
+import { AppDispatch } from '../../../redux';
 
 const ProductsList: React.FC = () => {
-  const test = false;
+  const dispatch = useDispatch<AppDispatch>();
+  const products = useSelector(selectProducts);
+
+  useEffect(() => {
+    dispatch(getProducts({}));
+  }, [dispatch]);
+
+  console.log(products);
 
   return (
     <ListWrapper>
-      {test ? (
-        <List className="scrollbar-outer">
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-          <ProductsItem recommended={true} />
-          <ProductsItem recommended={false} />
-        </List>
-      ) : (
-        <NotFoundMessage />
-      )}
+      (
+      <List className="scrollbar-outer">
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+        <ProductsItem recommended={true} />
+        <ProductsItem recommended={false} />
+      </List>
+      )
     </ListWrapper>
   );
 };
-
 export default ProductsList;
