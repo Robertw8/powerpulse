@@ -7,7 +7,13 @@ const ExercisesListItem = styled.li`
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    cursor: pointer;
     border: 1px solid rgba(239, 237, 232, 0.2);
+    transition-duration: 300ms;
+    :hover,
+    :active {
+      border-color: #e6533c;
+    }
 
   @media screen and (min-width: 769px) and (max-width: 1440px) {
     width: 224px;

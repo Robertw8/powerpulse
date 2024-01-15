@@ -5,19 +5,15 @@ import { CategoryList } from './ExercisesCategories.styled';
 import { Dispatch, SetStateAction } from 'react';
 
 interface ExercisesCategoriesProps {
-  currentCategory: string;
   changeCategory: Dispatch<SetStateAction<string>>;
 }
 
 const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({
-  currentCategory,
-  changeCategory,
+  changeCategory
 }) => {
   const onChange = (key: string) => {
     changeCategory(key);
   };
-
-  console.log(currentCategory);
 
   const items: TabsProps['items'] = [
     {
