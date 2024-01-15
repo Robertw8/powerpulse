@@ -15,7 +15,7 @@ import {
     TextValue,
   } from './Diary.styled';
   import { Icon } from '../Icon';
-import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
+import { DiaryNotFoundItems } from './DiaryNotFoundItems';
   
 //   import { useState } from 'react';
   
