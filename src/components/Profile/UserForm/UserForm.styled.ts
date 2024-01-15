@@ -1,24 +1,75 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
 
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1441px) {
+    flex-direction: row-reverse;
+    gap: 30px;
+  }
+`;
+
+const LabelWrapBlock = styled.div`
+  display: flex;
+  gap: 14px;
+
+  @media screen and (min-width: 769px) {
+    gap: 0;
+  }
+`;
+
+const LabelWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 14px;
+  width: 100%;
+
+  @media screen and (min-width: 769px) {
+    margin: 0 14px 14px 0;
+    width: 100%;
+  }
+`;
+
 const Label = styled.label`
   color: rgba(239, 237, 232, 0.5);
   font-size: 12px;
   line-height: 18px;
   display: inline-block;
   margin: 0 0 5px;
+
+  @media screen and (min-width: 769px) {
+    font-size: 14px;
+    margin: 0 0 8px;
+  }
 `;
 
-const BlockWrap = styled.div`
+const BlockWrapRadio = styled.div`
   display: flex;
   gap: 21px;
   margin: 0 0 32px;
 `;
 
-const RadioWrap = styled.div`
-  position: relative;
+const BlockWrapInput = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+  }
+`;
+
+const RadioWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const RadioWrapBlock = styled.div`
+  position: relative;
   gap: 8px;
+  display: flex;
+  flex-direction: row;
 `;
 
 const LableRadio = styled.label`
@@ -46,7 +97,7 @@ const Input = styled.input`
 `;
 
 const CheckRadio = styled.span`
-  top: 0px;
+  top: 2px;
   left: 0px;
   cursor: pointer;
   width: 18px;
@@ -69,11 +120,25 @@ const CheckRadio = styled.span`
   }
 `;
 
+const ErrorText = styled.div`
+  color: #d80027;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  margin: 5px 0 0;
+`;
+
 const TextRadio = styled.span`
   color: #efede8;
   font-size: 14px;
   line-height: 18px;
   margin: 0 0 0 8px;
+
+  @media screen and (min-width: 769px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 const Btn = styled(Button)`
@@ -99,5 +164,11 @@ export {
   Input,
   CheckRadio,
   LableRadio,
-  BlockWrap,
+  BlockWrapRadio,
+  BlockWrapInput,
+  LabelWrap,
+  LabelWrapBlock,
+  ErrorText,
+  Wrap,
+  RadioWrapBlock,
 };

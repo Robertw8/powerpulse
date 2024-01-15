@@ -6,21 +6,6 @@ const Wrap = styled.div`
   justify-content: center;
 `;
 
-// const Title = styled.h1`
-//   margin: 40px 0;
-//   font-size: 24px;
-//   font-weight: 700;
-//   line-height: 28px;
-
-//   @media screen and (min-width: 769px) {
-//     font-size: 32px;
-//     line-height: 44px;
-//   }
-
-//   @media screen and (min-width: 1441px) {
-//   }
-// `;
-
 const ImgWrap = styled.div`
   width: 90px;
   height: 90px;
@@ -35,7 +20,8 @@ const ImgWrap = styled.div`
   @media screen and (min-width: 769px) {
     width: 150px;
     height: 150px;
-    margin: 22px auto 30px;
+    margin: 0 auto 30px;
+    justify-content: flex-start;
   }
 `;
 
@@ -143,6 +129,7 @@ const Text = styled.p`
 
   @media screen and (min-width: 769px) {
     font-size: 16px;
+    line-height: 24px;
     width: 410px;
   }
 `;
