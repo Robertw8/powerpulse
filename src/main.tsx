@@ -6,19 +6,22 @@ import { Global } from '@emotion/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyles, theme } from './styles';
-import { store } from './redux';
+import { persistor, store } from './redux';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/fitness-app-frontend/">
       <Provider store={store}>
         <Global styles={GlobalStyles} />
-        <ConfigProvider theme={theme}>
-          <App />
-        </ConfigProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <ConfigProvider theme={theme}>
+            <App />
+          </ConfigProvider>
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
