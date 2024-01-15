@@ -7,8 +7,6 @@ import persistReducer from 'redux-persist/es/persistReducer';
 
 interface AuthState extends UnknownAction {
   token: string;
-  email: string;
-  name:string;
   isLoggedIn: boolean;
   isLoading: boolean;
   error: string | null;
@@ -17,13 +15,13 @@ interface AuthState extends UnknownAction {
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'email', 'name']
+  whitelist: ['token']
 };
 
+
+
 const initialState: AuthState = {
-  token: localStorage.getItem('token') || '',
-  email: localStorage.getItem('email') || '',
-  name: localStorage.getItem('name') || '',
+  token: '',
   isLoggedIn: false,
   isLoading: false,
   error: null,
@@ -50,14 +48,11 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, { payload, meta}) => {
-        state.token = payload.token;
-        state.name =  meta.arg.name;
-        state.email =  meta.arg.email;
+      .addCase(registerUser.fulfilled, (state, { payload}) => {
+        state.token = payload.data.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
-        localStorage.setItem('token', payload.token);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -68,15 +63,11 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, { payload,meta }) => {
-        state.token = payload.token;
-        state.email = meta.arg.email;
-        state.name = meta.arg.name || ''; 
+      .addCase(loginUser.fulfilled, (state, { payload}) => {
+        state.token = payload.data.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
-        localStorage.setItem('token', payload.token);
-         localStorage.removeItem('name');
   
       })
       .addCase(loginUser.rejected, (state, action) => {

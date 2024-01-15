@@ -21,10 +21,6 @@ const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const setToken = (token: string) => {
-    localStorage.setItem('token', token);
-  };
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -38,7 +34,6 @@ const SignInForm = () => {
           ?.token;
 
         if (token) {
-          setToken(token);
           return navigate('/profile');
         }
         resetForm();

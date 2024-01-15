@@ -12,6 +12,7 @@ const registerUser = createAsyncThunk(
   async (data: SignUpArgs, thunkAPI) => {
     try {
       const response = await singUp(data);
+      
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(

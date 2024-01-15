@@ -3,8 +3,11 @@ import { setToken } from '.';
 
 
 interface AuthResponse {
+data: {
+    token: string;
+    email: string;
+  };
   token: string;
-  email: string;
 }
 
 interface SignUpArgs {
@@ -16,7 +19,6 @@ interface SignUpArgs {
 interface SignInArgs {
   email: string;
   password: string;
-  name?: string;
 }
 
 const instance = axios.create({
