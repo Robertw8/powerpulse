@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
 
 import { UnknownAction } from '@reduxjs/toolkit';
 import { registerUser, loginUser } from '../SignUp/operations';
+import persistReducer from 'redux-persist/es/persistReducer';
 
 interface AuthState extends UnknownAction {
   token: string;
@@ -9,6 +11,12 @@ interface AuthState extends UnknownAction {
   isLoading: boolean;
   error: string | null;
 }
+
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 const initialState: AuthState = {
   token: localStorage.getItem('token') || '',
@@ -67,4 +75,7 @@ const authSlice = createSlice({
   },
 });
 
-export const authReducer = authSlice.reducer;
+export const persistedAuthReducer = persistReducer(
+  persistConfig,
+  authSlice.reducer
+);
