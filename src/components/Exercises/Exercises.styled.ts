@@ -1,9 +1,22 @@
 import styled from '@emotion/styled';
 
 const ExercisesWrap = styled.div`
-    padding-top: 40px;
     padding-bottom: 80px;
     width: 100%;
+    
+    & .ant-carousel .slick-dots button {
+        width: 14px;
+        height: 14px;
+        border-radius: 50px;
+        border: 5px solid rgba(239, 237, 232, 0.1);
+    }
+    & .ant-carousel .slick-dots {
+        margin-bottom: -64px;
+    }
+    & .ant-carousel .slick-dots li.slick-active button {
+        border: 5px solid #E6533C;
+        background: #040404;
+    }
 `;
 
 const TopWrap = styled.div`

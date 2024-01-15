@@ -10,7 +10,7 @@ const ExercisesList = styled.ul`
 
     @media screen and (min-width: 769px) {
         flex-direction: row;
-        gap: 32px 16px;
+        gap: 32px 15px;
     }
 `
 

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
 import { PageTitle } from '..';
+import { ExercisesSlider } from './ExercisesSlider';
 import { ExercisesCategories } from './ExercisesCategories';
-import { ExercisesSubcategoriesList } from './ExercisesSubcategoriesList';
 
 import { ExercisesWrap, TopWrap } from './Exercises.styled';
 
 const Exercises: React.FC = () => {
+  
   const [currentCategory, setcurrentCategory] = useState('bodyPart');
   const [exercisesList] = useState([
     {
@@ -53,11 +54,12 @@ const Exercises: React.FC = () => {
       <TopWrap>
         <PageTitle text={'Exercises'} />
         <ExercisesCategories
-          currentCategory={currentCategory}
           changeCategory={setcurrentCategory}
         />
       </TopWrap>
-      <ExercisesSubcategoriesList exercisesList={exercisesList} />
+      <ExercisesSlider
+        exercisesList={exercisesList}
+        currentCategory={currentCategory}/>
     </ExercisesWrap>
   );
 };
