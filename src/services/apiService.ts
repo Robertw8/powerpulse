@@ -4,6 +4,7 @@ import { setToken } from '.';
 axios.defaults.baseURL = 'https://goit-be.onrender.com/';
 
 const TOKEN = localStorage.getItem('token'); //! temp
+ 
 
 interface ApiServiceOptions {
   method: 'get' | 'post' | 'patch' | 'put' | 'delete';

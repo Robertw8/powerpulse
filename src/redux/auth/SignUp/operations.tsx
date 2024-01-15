@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   singUp,
-  SignIn,
+  signIn,
   SignInArgs,
   SignUpArgs,
   AuthResponse,
@@ -25,7 +25,7 @@ const loginUser = createAsyncThunk(
   'auth/login',
   async (dataUser: SignInArgs, thunkAPI) => {
     try {
-      const response: AuthResponse = await SignIn(dataUser);
+      const response: AuthResponse = await signIn(dataUser);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(

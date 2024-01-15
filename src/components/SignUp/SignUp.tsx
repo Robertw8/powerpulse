@@ -1,4 +1,15 @@
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+
+import SignUpSchema from './SignUpSchema';
+import { InputPrimary } from '../InputPrimary';
+
+import { registerUser } from '..//..//redux/auth/SignUp/operations';
+import { AppDispatch } from '../../redux';
+
+
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
   BlockSignUp,
   ContainerSignUp,
@@ -9,13 +20,7 @@ import {
   BtnSignUp,
   WidthInput,
 } from './SignUp.styled';
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import { useDispatch } from 'react-redux';
-import SignUpSchema from './SignUpSchema';
-import { InputPrimary } from '../InputPrimary';
-import { registerUser } from '..//..//redux/auth/SignUp/operations';
-import { useNavigate } from 'react-router-dom';
-import { AppDispatch } from '../../redux';
+
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -41,7 +46,6 @@ const SignUpForm = () => {
         resetForm();
         const token = (response.payload as { data?: { token: string } })?.data
           ?.token;
-        console.log(token);
         if (token) {
           setToken(token);
           return navigate('/profile');

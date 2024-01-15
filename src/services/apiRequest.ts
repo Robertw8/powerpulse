@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { setToken } from '.';
+
 
 interface AuthResponse {
   token: string;
+  email: string;
 }
 
 interface SignUpArgs {
@@ -13,15 +16,14 @@ interface SignUpArgs {
 interface SignInArgs {
   email: string;
   password: string;
+  name?: string;
 }
 
 const instance = axios.create({
   baseURL: 'https://goit-be.onrender.com/',
 });
 
-const setToken = (token: string) => {
-  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-};
+
 
 const singUp = async (data: SignUpArgs): Promise<AuthResponse> => {
   const response = await instance.post<AuthResponse>('users/register', data);
@@ -29,11 +31,11 @@ const singUp = async (data: SignUpArgs): Promise<AuthResponse> => {
   return response.data;
 };
 
-const SignIn = async (dataUser: SignInArgs): Promise<AuthResponse> => {
+const signIn = async (dataUser: SignInArgs): Promise<AuthResponse> => {
   const { data } = await instance.post<AuthResponse>('users/login', dataUser);
   setToken(data.token);
   return data as AuthResponse;
 };
 
 export type { AuthResponse, SignUpArgs, SignInArgs };
-export { singUp, SignIn };
+export { singUp, signIn };

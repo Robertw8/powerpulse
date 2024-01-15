@@ -11,10 +11,11 @@ import {
 } from '../SignUp/SignUp.styled';
 import SignInSchema from './SignInSchema';
 import { InputPrimary } from '../InputPrimary';
-import { loginUser } from '..//..//redux/auth/SignUp/operations';
+import { loginUser } from '../../redux/auth/SignUp/operations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../redux';
+import { SignInArgs } from '../../services/apiRequest';
 
 const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -30,18 +31,16 @@ const SignInForm = () => {
       password: '',
     },
     validationSchema: SignInSchema,
-    onSubmit: async (values, { resetForm }) => {
+    onSubmit: async (values: SignInArgs, { resetForm }) => {
       try {
         const response = await dispatch(loginUser(values));
-
-        const token = (response.payload as { data?: { token: string } })?.data
+           const token = (response.payload as { data?: { token: string } })?.data
           ?.token;
 
         if (token) {
           setToken(token);
           return navigate('/profile');
         }
-
         resetForm();
       } catch (error) {
         console.error('Вхід не вдається', error);
