@@ -26,10 +26,6 @@ const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const setToken = (token: string) => {
-    localStorage.setItem('token', token);
-  };
-
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -47,7 +43,6 @@ const SignUpForm = () => {
         const token = (response.payload as { data?: { token: string } })?.data
           ?.token;
         if (token) {
-          setToken(token);
           return navigate('/profile');
         }
       } catch (error) {
