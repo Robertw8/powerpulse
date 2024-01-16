@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Layout, PrivateRoute, RestrictedRoute } from '.';
 import routes from '../routes';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,10 +20,13 @@ export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
   const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
+    navigate(path);
     dispatch(getCurrentUser({}));
-  }, [dispatch, navigate]);
+  }, [dispatch, navigate, path]);
 
   console.log(user);
 
