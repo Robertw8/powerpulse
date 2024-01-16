@@ -1,15 +1,15 @@
-import { operationWrapper } from "../../../helpers";
-import { apiService } from "../../../services";
+import { operationWrapper } from '../../../helpers';
+import { apiService } from '../../../services';
 
+const getWaistExercises = operationWrapper(
+  'exercises/getWaistExercises',
+  async () => {
+    const response = await apiService({
+      method: 'get',
+      url: 'exercises',
+    });
+    return response.data;
+  }
+);
 
-const getWaistExercises = operationWrapper({
-    path: "exercises/getWaistExercises",
-    handler: async () => {
-        const response = await apiService({
-            method: "get", url: "exercises"
-        });
-        return response.data;
-    }
-});
-
-export {getWaistExercises};
+export { getWaistExercises };
