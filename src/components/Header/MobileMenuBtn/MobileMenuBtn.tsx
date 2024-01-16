@@ -1,13 +1,11 @@
 import { Button } from './MobileMenuBtn.styled';
-import Icon from '../Icon/Icon';
+import Icon from '../../Icon/Icon';
 
 interface MobileMenuBtnProps {
   onClick: () => void;
 }
 
-export const MobileMenuBtn: React.FC<MobileMenuBtnProps> = ({
-  onClick,
-}) => {
+export const MobileMenuBtn: React.FC<MobileMenuBtnProps> = ({ onClick }) => {
   return (
     <Button onClick={onClick}>
       <Icon
