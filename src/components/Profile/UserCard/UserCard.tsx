@@ -15,12 +15,19 @@ import {
   UserStatus,
   ImgUserAvatar,
 } from './UserCard.styled';
+import React from 'react';
 import { Icon } from '../../Icon';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/rootReducer';
 
-const UserCard = () => {
+const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
   // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
+  const userData = useSelector((state: RootState) => state.auth.user);
+  // const { name, } = userData;
+  // console.log(userData);
+
   return (
     <>
       <Wrap>
@@ -49,7 +56,7 @@ const UserCard = () => {
           </ImgWrap>
 
           <UserWrap>
-            <UserName>Name Name</UserName>
+            <UserName>{userData.name}</UserName>
             <UserStatus>User</UserStatus>
           </UserWrap>
 
