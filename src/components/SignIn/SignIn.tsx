@@ -11,7 +11,7 @@ import {
 } from '../SignUp/SignUp.styled';
 import SignInSchema from './SignInSchema';
 import { InputPrimary } from '../InputPrimary';
-import { loginUser } from '../../redux/auth/SignUp/operations';
+import { loginUser } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../redux';
@@ -30,7 +30,7 @@ const SignInForm = () => {
     onSubmit: async (values: SignInArgs, { resetForm }) => {
       try {
         const response = await dispatch(loginUser(values));
-           const token = (response.payload as { data?: { token: string } })?.data
+        const token = (response.payload as { data?: { token: string } })?.data
           ?.token;
 
         if (token) {

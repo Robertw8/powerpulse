@@ -1,45 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-
-import { UnknownAction } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from '../SignUp/operations';
 import persistReducer from 'redux-persist/es/persistReducer';
 
-interface AuthState extends UnknownAction {
-  token: string;
-  isLoggedIn: boolean;
-  isLoading: boolean;
-  error: string | null;
-}
-
-const persistConfig = {
-  key: 'auth',
-  storage,
-  whitelist: ['token']
-};
-
-
-
-const initialState: AuthState = {
-  token: '',
-  isLoggedIn: false,
-  isLoading: false,
-  error: null,
-  type: '',
-};
-
-
+import { registerUser, loginUser, getCurrentUser } from './operations';
+import initialState from './initialState';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
     logoutUser: state => {
-      state.token = '';
+      state.token = null;
       state.isLoggedIn = false;
       state.isLoading = false;
       state.error = null;
-      localStorage.removeItem('token');
     },
   },
   extraReducers: builder => {
@@ -48,35 +22,50 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state, { payload}) => {
-        state.token = payload.data.token;
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
+        state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(registerUser.rejected, (state, action) => {
+      .addCase(registerUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        const payload = action.payload as string;
-        state.error = payload;
+        state.error = payload as string;
       })
       .addCase(loginUser.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(loginUser.fulfilled, (state, { payload}) => {
-        state.token = payload.data.token;
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
+        state.token = payload.token;
         state.isLoggedIn = true;
         state.isLoading = false;
         state.error = null;
-  
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
-        const payload = action.payload as string;
-        state.error = payload;
+        state.error = payload as string;
+      })
+      .addCase(getCurrentUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(getCurrentUser.rejected, state => {
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
       });
   },
 });
+
+const persistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const persistedAuthReducer = persistReducer(
   persistConfig,
