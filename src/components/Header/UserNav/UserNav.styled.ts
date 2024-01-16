@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles/theme';
 import { NavLink } from 'react-router-dom';
 
 export const NavList = styled.ul`
@@ -15,7 +16,7 @@ export const LinkStyled = styled(NavLink)`
   transition: background-color 250ms linear;
   text-decoration: none;
   &.active {
-    background: #e6533c;
+    background: ${palette.colors.orange};
   }
 
   &:hover,

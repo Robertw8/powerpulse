@@ -1,5 +1,6 @@
-import { NavLink } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
+import { palette } from '../../../styles/theme';
 
 export const Overlay = styled.div`
   position: fixed;
@@ -19,7 +20,7 @@ export const MenuWrapper = styled.div`
   height: 100vh;
   width: 200px;
   padding: 19px 20px 21px 20px;
-  background-color: var(--orange-color);
+  background-color: ${palette.colors.orange};
   z-index: 2;
 
   @media screen and (min-width: 768px) {

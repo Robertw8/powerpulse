@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles/theme';
 
 import { Link } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ export const HeaderContainer = styled.header`
   padding-bottom: 24px;
   /* margin: 0 auto; */
 
-  background-color: var('--black-color');
+  background-color: ${palette.colors.black};
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;
