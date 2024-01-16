@@ -14,7 +14,7 @@ import { persistor, store } from './redux';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/fitness-app-frontend/">
+    <BrowserRouter basename="/">
       <Provider store={store}>
         <Global styles={GlobalStyles} />
         <PersistGate loading={null} persistor={persistor}>
