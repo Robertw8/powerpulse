@@ -1,6 +1,7 @@
 import { useState, useEffect, FC } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { logOut } from '../operation';
+
 import {
   MenuWrapper,
   Overlay,
@@ -17,7 +18,7 @@ interface MobileMenuProps {
 
 const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const closeMenu = () => {
     setMenuIsOpen(false);
@@ -53,7 +54,8 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
 
   const handleLogOut = () => {
     closeMenu();
-    dispatch(logOut());
+    // dispatch(logOut());
+    console.log('Logged out');
   };
 
   return (
