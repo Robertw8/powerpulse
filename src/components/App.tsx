@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout, PrivateRoute, RestrictedRoute } from '.';
 import routes from '../routes';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,14 +19,10 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const path = location.pathname;
 
   useEffect(() => {
-    navigate(path);
     dispatch(getCurrentUser({}));
-  }, [dispatch, navigate, path]);
+  }, [dispatch]);
 
   console.log(user);
 
