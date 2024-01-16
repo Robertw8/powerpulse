@@ -54,13 +54,13 @@ export const App: React.FC = () => {
           <Route
             path={routes.PROFILE}
             element={
-              <PrivateRoute component={<ProfilePage />} redirectTo="/welcome" />
+              <PrivateRoute component={<ProfilePage />} redirectTo="/profile" />
             }
           />
           <Route
             path={routes.DIARY}
             element={
-              <PrivateRoute component={<DiaryPage />} redirectTo="/welcome" />
+              <PrivateRoute component={<DiaryPage />} redirectTo="/diary" />
             }
           />
           <Route
@@ -68,7 +68,7 @@ export const App: React.FC = () => {
             element={
               <PrivateRoute
                 component={<ProductsPage />}
-                redirectTo="/welcome"
+                redirectTo="/products"
               />
             }
           />
@@ -77,7 +77,7 @@ export const App: React.FC = () => {
             element={
               <PrivateRoute
                 component={<ExercisesPage />}
-                redirectTo="/welcome"
+                redirectTo="/exercises"
               />
             }
           />

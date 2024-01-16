@@ -1,10 +1,14 @@
 import { AxiosError, AxiosRequestConfig } from 'axios';
 
+interface RequestConfig extends AxiosRequestConfig {
+  [key: string]: unknown;
+}
+
 interface ApiServiceOptions {
   method: 'get' | 'post' | 'patch' | 'put' | 'delete';
   url: string;
   data?: { [key: string]: unknown };
-  config?: AxiosRequestConfig;
+  config?: RequestConfig;
 }
 
 interface ApiServiceResponse<T> {
