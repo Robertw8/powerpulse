@@ -1,5 +1,5 @@
 interface Routes {
-  WELCOME: string;
+  HOME: string;
   SIGNUP: string;
   SIGNIN: string;
   PROFILE: string;
@@ -9,7 +9,7 @@ interface Routes {
 }
 
 const routes: Routes = {
-  WELCOME: '/welcome',
+  HOME: '/',
   SIGNUP: '/signup',
   SIGNIN: '/signin',
   PROFILE: '/profile',

@@ -1,6 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Layout, PrivateRoute, RestrictedRoute } from '.';
+import { Layout } from '.';
 import routes from '../routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../redux';
@@ -30,57 +30,13 @@ export const App: React.FC = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <RestrictedRoute
-                component={<WelcomePage />}
-                redirectTo="/diary"
-              />
-            }
-          />
-          <Route
-            path={routes.SIGNUP}
-            element={
-              <RestrictedRoute component={<SignUpPage />} redirectTo="/diary" />
-            }
-          />
-          <Route
-            path={routes.SIGNIN}
-            element={
-              <RestrictedRoute component={<SignInPage />} redirectTo="/diary" />
-            }
-          />
-          <Route
-            path={routes.PROFILE}
-            element={
-              <PrivateRoute component={<ProfilePage />} redirectTo="/profile" />
-            }
-          />
-          <Route
-            path={routes.DIARY}
-            element={
-              <PrivateRoute component={<DiaryPage />} redirectTo="/diary" />
-            }
-          />
-          <Route
-            path={routes.PRODUCTS}
-            element={
-              <PrivateRoute
-                component={<ProductsPage />}
-                redirectTo="/products"
-              />
-            }
-          />
-          <Route
-            path={routes.EXERCISES}
-            element={
-              <PrivateRoute
-                component={<ExercisesPage />}
-                redirectTo="/exercises"
-              />
-            }
-          />
+          <Route index element={<WelcomePage />} />
+          <Route path={routes.SIGNUP} element={<SignUpPage />} />
+          <Route path={routes.SIGNIN} element={<SignInPage />} />
+          <Route path={routes.PROFILE} element={<ProfilePage />} />
+          <Route path={routes.DIARY} element={<DiaryPage />} />
+          <Route path={routes.PRODUCTS} element={<ProductsPage />} />
+          <Route path={routes.EXERCISES} element={<ExercisesPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

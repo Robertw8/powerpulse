@@ -1,11 +1,23 @@
+import { Container, PageTitle, Diary } from '../components';
 
-import { Container, PageTitle } from "../components";
-import Diary from "../components/Diary/Diary";
-
-
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks';
 
 const DiaryPage: React.FC = () => {
-  return <Container><PageTitle text="Diary"/><Diary/></Container>;
+  const { isLoggedIn, isRefreshing } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    !isLoggedIn && !isRefreshing && navigate('/');
+  }, [isLoggedIn, isRefreshing, navigate]);
+
+  return (
+    <Container>
+      <PageTitle text="Diary" />
+      <Diary />
+    </Container>
+  );
 };
 
 export default DiaryPage;
