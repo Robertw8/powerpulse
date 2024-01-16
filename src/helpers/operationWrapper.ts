@@ -1,22 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-interface OperationWrapper<R, P = object> {
-  path: string;
-  handler: (data: P) => Promise<R>;
-  data?: P;
-}
-
-const operationWrapper = <R, P extends object>(
-  { path, handler, data }: OperationWrapper<R, P> = {} as OperationWrapper<R, P>
+export const operationWrapper = <Returned, ThunkArg>(
+  path: string,
+  handler: (args: ThunkArg, thunkAPI) => Promise<Returned>
 ) => {
-  return createAsyncThunk<R, P>(path, async (requestData, thunkAPI) => {
+  return createAsyncThunk<Returned, ThunkArg>(path, async (args, thunkAPI) => {
     try {
-      const requestDataToUse = data ? { ...data, ...requestData } : requestData;
-      return await handler(requestDataToUse);
+      return await handler(args, thunkAPI);
     } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error instanceof Error ? error.message : 'An error occurred'
-      );
+      return thunkAPI.rejectWithValue({
+        message: error instanceof Error ? error.message : 'An error occurred',
+      });
     }
   });
 };

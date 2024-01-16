@@ -5,9 +5,8 @@ import { useFormik } from 'formik';
 import SignUpSchema from './SignUpSchema';
 import { InputPrimary } from '../InputPrimary';
 
-import { registerUser } from '..//..//redux/auth/SignUp/operations';
+import { registerUser } from '../../redux/auth/operations';
 import { AppDispatch } from '../../redux';
-
 
 import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
@@ -20,7 +19,6 @@ import {
   BtnSignUp,
   WidthInput,
 } from './SignUp.styled';
-
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
