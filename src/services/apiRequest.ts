@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { setToken } from '.';
 
-
 interface AuthResponse {
-data: {
+  data: {
     token: string;
     email: string;
   };
@@ -14,18 +13,18 @@ interface SignUpArgs {
   name: string;
   email: string;
   password: string;
+  [key: string]: unknown;
 }
 
 interface SignInArgs {
   email: string;
   password: string;
+  [key: string]: unknown;
 }
 
 const instance = axios.create({
   baseURL: 'https://goit-be.onrender.com/',
 });
-
-
 
 const singUp = async (data: SignUpArgs): Promise<AuthResponse> => {
   const response = await instance.post<AuthResponse>('users/register', data);
