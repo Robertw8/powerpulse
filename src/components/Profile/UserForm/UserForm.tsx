@@ -12,7 +12,6 @@ import {
   LabelWrap,
   LabelWrapBlock,
   ErrorText,
-  Wrap,
   RadioWrapBlock,
 } from './UserForm.styled';
 import { initialValues, schema } from './UserFormSchema';
