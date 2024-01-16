@@ -1,4 +1,12 @@
-type Routes = { [key: string]: string };
+interface Routes {
+  WELCOME: string;
+  SIGNUP: string;
+  SIGNIN: string;
+  PROFILE: string;
+  DIARY: string;
+  PRODUCTS: string;
+  EXERCISES: string;
+}
 
 const routes: Routes = {
   WELCOME: '/welcome',

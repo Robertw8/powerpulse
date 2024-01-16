@@ -10,3 +10,5 @@ export {
   NotFoundMessage,
 } from './Products';
 export { PageTitle } from './PageTitle';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as RestrictedRoute } from './RestrictedRoute';
