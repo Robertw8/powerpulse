@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Layout, PrivateRoute, RestrictedRoute } from '.';
 import routes from '../routes';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,10 +19,19 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const user = useSelector(selectUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
-  }, [dispatch]);
+
+    navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'));
+    window.onbeforeunload = () => {
+      window.sessionStorage.setItem(
+        'lastRoute',
+        JSON.stringify(window.location.pathname)
+      );
+    };
+  }, [dispatch, navigate]);
 
   console.log(user);
 
