@@ -40,7 +40,7 @@ export const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
-            path={routes.WELCOME}
+            index
             element={
               <RestrictedRoute
                 component={<WelcomePage />}
