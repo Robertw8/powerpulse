@@ -1,18 +1,15 @@
-import { SerializedError, createAsyncThunk } from '@reduxjs/toolkit';
-
-type ErrorHandler = (error: unknown, thunkAPI) => SerializedError;
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const operationWrapper = <Returned, ThunkArg>(
   path: string,
   handler: (args: ThunkArg, thunkAPI) => Promise<Returned>,
-  errorHandler: ErrorHandler
+  errorHandler = () => 'An error occurred'
 ) => {
   return createAsyncThunk<Returned, ThunkArg>(path, async (args, thunkAPI) => {
     try {
       return await handler(args, thunkAPI);
     } catch (error) {
-      if (errorHandler)
-        return thunkAPI.rejectWithValue(errorHandler(error, thunkAPI));
+      if (errorHandler) return thunkAPI.rejectWithValue(errorHandler());
 
       return thunkAPI.rejectWithValue(
         error instanceof Error ? error.message : 'An error occurred'
