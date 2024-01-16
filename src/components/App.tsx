@@ -23,14 +23,6 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
-
-    // navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'));
-    // window.onbeforeunload = () => {
-    //   window.sessionStorage.setItem(
-    //     'lastRoute',
-    //     JSON.stringify(window.location.pathname)
-    //   );
-    // };
   }, [dispatch, navigate]);
 
   console.log(user);
