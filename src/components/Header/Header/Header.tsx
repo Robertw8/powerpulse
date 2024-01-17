@@ -3,6 +3,8 @@ import { UserBar } from '../UserBar/UserBar';
 import { UserNav } from '../UserNav/UserNav';
 import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
 import { MobileMenuBtn } from '../MobileMenuBtn/MobileMenuBtn';
+import MobileMenu from '../MobileMenu/MobileMenu';
+import useAuth from '../../../hooks/useAuth';
 import Icon from '../../Icon/Icon';
 import { Container } from '../..';
 import {
@@ -11,10 +13,11 @@ import {
   UserContainer,
   HeaderWrap,
   UserBarWrapper,
+  NavWrap,
 } from './Header.styled';
 
-const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
-  // const { isLoggedIn } = useAuth();
+const Header: React.FC = () => {
+  const { isLoggedIn } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const onClickMenuBtn = () => {
     setIsOpen(!isOpen);
@@ -23,7 +26,7 @@ const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
     <Container>
       <HeaderContainer
         style={
-          testAuth
+          isLoggedIn
             ? { borderBottom: '1px solid rgba(239, 237, 232, 0.20)' }
             : { borderBottom: 'none' }
         }
@@ -37,17 +40,20 @@ const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
             />
             <span>PowerPulse</span>
           </LinkLogo>
-          {/* 
-          {testAuth && ( */}
-
-          <UserContainer>
-            <UserNav />
-            <UserBarWrapper>
-              <UserBar />
-              <LogOutBtn />
-              <MobileMenuBtn onClick={onClickMenuBtn} />
-            </UserBarWrapper>
-          </UserContainer>
+         
+          {isLoggedIn && (
+            <UserContainer>
+              <NavWrap>
+                <UserNav />
+              </NavWrap>
+              <UserBarWrapper>
+                <UserBar />
+                <LogOutBtn />
+                <MobileMenuBtn onClick={onClickMenuBtn} />
+                <MobileMenu isOpen={isOpen} />
+              </UserBarWrapper>
+            </UserContainer>
+          )}
         </HeaderWrap>
       </HeaderContainer>
     </Container>

@@ -42,7 +42,7 @@ export const LinkLogo = styled(Link)`
     font-size: 19px;
   }
 `;
-export const Nav = styled.nav`
+export const NavWrap = styled.nav`
   margin-right: 32px;
 
   @media screen and (max-width: 1439px) {
