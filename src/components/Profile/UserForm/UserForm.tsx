@@ -16,18 +16,26 @@ import {
   WrapForm,
 } from './UserForm.styled';
 import React from 'react';
-import { initialValues, schema } from './UserFormSchema';
+import { FormValues, schema } from './UserFormSchema';
 import { useFormik } from 'formik';
 import { StyledInput } from '../../InputPrimary/InputPrimary.styled';
 import { apiService } from '../../../services';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/rootReducer';
+import useAuth from '../../../hooks/useAuth';
 
 const UserForm: React.FC = () => {
-  const currentUser = useSelector((state: RootState) => state.auth.user);
-  // const [valueUser, setValue] = useState(currentUser);
+  const { user } = useAuth();
+  // const currentUser = useSelector((state: RootState) => state.auth.user);
 
-  // console.log(currentUser);
+  const initialValues: FormValues = {
+    name: user?.name || '',
+    height: user?.settings?.height || 0,
+    currentWeight: user?.settings?.currentWeight || 0,
+    desiredWeight: user?.settings?.desiredWeight || 0,
+    birthday: user?.settings?.birthday.split('T')[0] || '2000-10-10',
+    blood: user?.settings?.blood || null,
+    sex: user?.settings?.sex || '',
+    levelActivity: user?.settings?.levelActivity || null,
+  };
 
   const formik = useFormik({
     initialValues: initialValues,
@@ -45,12 +53,11 @@ const UserForm: React.FC = () => {
       };
 
       try {
-        const { data } = await apiService({
+        await apiService({
           method: 'patch',
           url: '/users',
           data: userData,
         });
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -68,7 +75,7 @@ const UserForm: React.FC = () => {
                 id="name"
                 name="name"
                 type="text"
-                placeholder={currentUser.name}
+                // placeholder={currentUser.name}
                 bordercolor="default"
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -81,7 +88,7 @@ const UserForm: React.FC = () => {
                 name="email"
                 type="text"
                 // defaultValue={currentUser.email}
-                placeholder={currentUser.email}
+                placeholder={user.email}
                 bordercolor="default"
                 disabled
               />
@@ -101,10 +108,9 @@ const UserForm: React.FC = () => {
                   id="height"
                   name="height"
                   type="number"
-                  // placeholder={currentUser.settings.height} // ! Закоментував бо через це падав сайт, чомусь воно undefined
+                  // placeholder={currentUser.settings.height}
                   onChange={formik.handleChange}
-                  // value={formik.values.height}
-                  // value={currentUser.settings.height}
+                  value={formik.values.height}
                 />
                 {formik.errors.height && formik.touched.height && (
                   <ErrorText>{formik.errors.height}</ErrorText>
@@ -122,9 +128,9 @@ const UserForm: React.FC = () => {
                   id="currentWeight"
                   name="currentWeight"
                   type="number"
-                  // placeholder={currentUser.settings.currentWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
+                  // placeholder={currentUser.settings.currentWeight}
                   onChange={formik.handleChange}
-                  // value={formik.values.currentWeight}
+                  value={formik.values.currentWeight}
                 />
                 {formik.errors.currentWeight &&
                   formik.touched.currentWeight && (
@@ -145,9 +151,9 @@ const UserForm: React.FC = () => {
                   id="desiredWeight"
                   name="desiredWeight"
                   type="number"
-                  // placeholder={currentUser.settings.desiredWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
+                  // placeholder={currentUser.settings.desiredWeight}
                   onChange={formik.handleChange}
-                  // value={formik.values.desiredWeight}
+                  value={formik.values.desiredWeight}
                 />
                 {formik.errors.desiredWeight &&
                   formik.touched.desiredWeight && (
@@ -239,6 +245,7 @@ const UserForm: React.FC = () => {
                     name="sex"
                     type="radio"
                     onChange={formik.handleChange}
+                    checked={formik.values.sex === 'male'}
                     value="male"
                   />
                   <CheckRadio />
@@ -249,6 +256,7 @@ const UserForm: React.FC = () => {
                     name="sex"
                     type="radio"
                     onChange={formik.handleChange}
+                    checked={formik.values.sex === 'female'}
                     value="female"
                   />
                   <CheckRadio />
@@ -268,6 +276,7 @@ const UserForm: React.FC = () => {
                   name="levelActivity"
                   type="radio"
                   onChange={() => formik.setFieldValue('levelActivity', 1)}
+                  checked={formik.values.levelActivity === 1}
                   value={1}
                 />
                 <CheckRadio />
@@ -282,6 +291,7 @@ const UserForm: React.FC = () => {
                   name="levelActivity"
                   type="radio"
                   onChange={() => formik.setFieldValue('levelActivity', 2)}
+                  checked={formik.values.levelActivity === 2}
                   value={2}
                 />
                 <CheckRadio />
@@ -296,6 +306,7 @@ const UserForm: React.FC = () => {
                   name="levelActivity"
                   type="radio"
                   onChange={() => formik.setFieldValue('levelActivity', 3)}
+                  checked={formik.values.levelActivity === 3}
                   value={3}
                 />
                 <CheckRadio />
@@ -311,6 +322,7 @@ const UserForm: React.FC = () => {
                   name="levelActivity"
                   type="radio"
                   onChange={() => formik.setFieldValue('levelActivity', 4)}
+                  checked={formik.values.levelActivity === 4}
                   value={4}
                 />
                 <CheckRadio />
