@@ -101,6 +101,7 @@ const NameRow = styled.div`
 const Name = styled.p`
   font-size: 18px;
   line-height: calc(22 / 18);
+  text-transform: capitalize;
 
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -150,6 +151,19 @@ const SpecificationName = styled.p`
 
 const SpecificationValue = styled.p`
   color: #efa082;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 30px;
+  white-space: nowrap;
+
+  @media screen and (min-width: 376px) {
+    max-width: 70px;
+  }
+
+  @media screen and (min-width: 1441px) {
+    max-width: 120px;
+  }
 `;
 
 export {

@@ -17,21 +17,30 @@ import {
   SpecificationValue,
 } from './ProductsItem.styled';
 import { Icon } from '../../Icon';
+import { Product } from '../../../redux/products/types';
+import { useAuth } from '../../../hooks';
 
 interface ProductsItemProps {
-  recommended: boolean;
+  product: Product;
 }
 
-const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
+const ProductsItem: React.FC<ProductsItemProps> = ({ product }) => {
   const [buttonHover, setButtonHover] = useState(false);
+  const { groupBloodNotAllowed } = product;
+  const { user } = useAuth();
+  const userBloodGroup = user.settings.blood;
+
+  const isRecommended = userBloodGroup
+    ? groupBloodNotAllowed[userBloodGroup]
+    : undefined;
 
   return (
     <Item>
       <TopRow>
         <Badge>DIET</Badge>
         <Status>
-          <StatusRound recommended={recommended}></StatusRound>
-          {recommended ? 'Recommended' : 'Not recommended'}
+          <StatusRound recommended={isRecommended || false}></StatusRound>
+          {isRecommended ? 'Recommended' : 'Not recommended'}
         </Status>
         <AddButton
           type="text"
@@ -56,20 +65,20 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ recommended }) => {
               stroke="#EFEDE8"
             />
           </NameIconWrapper>
-          <Name>Rice semolina Garnets gluten-free</Name>
+          <Name>{product.title}</Name>
         </NameRow>
         <SpecificationsList>
           <SpecificationsItem>
             <SpecificationName>Calories:</SpecificationName>
-            <SpecificationValue>340</SpecificationValue>
+            <SpecificationValue>{product.calories}</SpecificationValue>
           </SpecificationsItem>
           <SpecificationsItem>
             <SpecificationName>Category:</SpecificationName>
-            <SpecificationValue>Cereals</SpecificationValue>
+            <SpecificationValue>{product.category}</SpecificationValue>
           </SpecificationsItem>
           <SpecificationsItem>
             <SpecificationName>Weight:</SpecificationName>
-            <SpecificationValue>100</SpecificationValue>
+            <SpecificationValue>{product.weight}</SpecificationValue>
           </SpecificationsItem>
         </SpecificationsList>
       </BottomRow>
