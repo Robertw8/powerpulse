@@ -11,24 +11,12 @@ import {
 } from './WaistList.styled';
 import { WaistExercises } from '../../../redux/Waist/sliceExercises';
 import images from '../../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-// import { List, ListWrapper } from '../../Products/ProductsList/ProductsList.styled';
 export interface WaistProps {
-  // waistItem: {
-  //   data: {
-  //     name: string;
-  //     burnedCalories: number;
-  //     target: string;
-  //     bodyPart: string;
-  //   };
-  // };
-
-  // name, burnedCalories, target, bodyPart
-
   data: WaistExercises;
 }
 
-const WaistList: React.FC<WaistProps> = props => {
-  const { data } = props || {};
+const WaistList: React.FC<WaistProps> = data => {
+  // const { data } = props || {};
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -42,13 +30,14 @@ const WaistList: React.FC<WaistProps> = props => {
     exercises &&
     exercises.filter(
       exercise =>
-        exercise.bodyPart || exercise.target || exercise.equipment === data.name
+        exercise.bodyPart ||
+        exercise.target ||
+        exercise.equipment === data.data.name
     );
 
   return (
     <WaistListContainer>
       <WaistItemUl>
-        {/* <ListWrapper> <List className='scrollbar-outer'> */}
         {visibleExercises && visibleExercises.length ? (
           visibleExercises
             .slice(0, 50)
@@ -59,10 +48,8 @@ const WaistList: React.FC<WaistProps> = props => {
             categorie later!!!
           </NoExercisesTitle>
         )}
-        {/* </List> */}
       </WaistItemUl>
       <ImgWaist src={images} alt="image" />
-      {/* </ListWrapper> */}
     </WaistListContainer>
   );
 };

@@ -14,8 +14,8 @@ import {
 } from './WaistItem.styled';
 import sprite from '../../../assets/images/sprite.svg';
 
-// import  WaistProps  from '../WaistList'; 
-import React from 'react';
+import React, { useState } from 'react';
+import { BasicModalWindow } from '../ModalWindow/BasicModalWindow';
 
 interface List {
   burnedCalories: string;
@@ -49,13 +49,22 @@ const texts: Texts = {
   },
 };
 const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const { name, burnedCalories, target, bodyPart } = waistItem.date;
   return (
     <>
       <WaistItemLi>
         <BtnWrapper>
           <CardLabel>{texts.cardLabel}</CardLabel>
-          <BtnLabel type="button">
+          <BtnLabel type="button" onClick={() => setModalOpen(true)}>
+            <BasicModalWindow
+              isOpen={modalOpen}
+              onClose={() => setModalOpen(false)}
+              burnedCalories={burnedCalories}
+              // bodyPart={bodyPart}
+              // target={target}
+            />
             {texts.btnLabel}
             <span>
               <SvgExercise>
@@ -92,4 +101,4 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
   );
 };
 
-export default  WaistItem ;
+export default WaistItem;
