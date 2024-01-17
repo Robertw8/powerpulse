@@ -40,7 +40,7 @@ const Header: React.FC = () => {
             />
             <span>PowerPulse</span>
           </LinkLogo>
-         
+
           {isLoggedIn && (
             <UserContainer>
               <NavWrap>

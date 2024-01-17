@@ -56,16 +56,20 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
 
   const handleLogOut = (): void => {
     closeMenu();
+
     dispatch(logOutUser());
+
   };
 
   return (
     <>
+
       {menuIsOpen && <Backdrop onClick={closeMenu} />}
       <MenuWrap
         className={menuIsOpen ? 'shown' : 'hidden'}
         onClick={handleBackdropClick}
       >
+
         <CloseBtn onClick={closeMenu}>
           <Icon
             name="x"

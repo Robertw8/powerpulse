@@ -1,11 +1,8 @@
-// import { useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux';
 import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
-
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../redux';
 
 export const LogOutBtn = () => {
   const dispatch = useDispatch<AppDispatch>();
