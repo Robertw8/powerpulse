@@ -83,6 +83,12 @@ const GlobalStyles = css`
       background-color: #ef8964;
       border-radius: 12px;
     }
+
+    @media screen and (max-width: 768px) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 `;
 

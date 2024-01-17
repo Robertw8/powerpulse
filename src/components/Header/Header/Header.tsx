@@ -3,7 +3,6 @@ import { UserBar } from '../UserBar/UserBar';
 import { UserNav } from '../UserNav/UserNav';
 import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
 import { MobileMenuBtn } from '../MobileMenuBtn/MobileMenuBtn';
-import { Link } from 'react-router-dom';
 import Icon from '../../Icon/Icon';
 import { Container } from '../..';
 import {
@@ -49,12 +48,6 @@ const Header: React.FC<{ testAuth: boolean }> = ({ testAuth }) => {
               <MobileMenuBtn onClick={onClickMenuBtn} />
             </UserBarWrapper>
           </UserContainer>
-          {/* )} */}
-          <div style={{ marginTop: 50, display: 'flex', gap: '30px' }}>
-            <Link to="/welcome">Welcome</Link>
-            <Link to="/signup">Signup</Link>
-            <Link to="/signin">Signin</Link>
-          </div>
         </HeaderWrap>
       </HeaderContainer>
     </Container>

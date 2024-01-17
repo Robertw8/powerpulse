@@ -1,29 +1,29 @@
 import { User, InitialAuthState } from './types';
 
 const user: User = {
-  email: null,
-  name: null,
-  dailyCalories: null,
-  dailyActivity: null,
+  email: '',
+  name: '',
+  dailyCalories: '',
+  dailyActivity: '',
   settings: {
-    height: null,
-    currentWeight: null,
-    desiredWeight: null,
-    birthday: null,
-    blood: null,
-    sex: null,
-    levelActivity: null,
+    height: '',
+    currentWeight: '',
+    desiredWeight: '',
+    birthday: '',
+    blood: '',
+    sex: '',
+    levelActivity: '',
   },
 };
 
 const initialState: InitialAuthState = {
   user,
-  token: null,
+  token: '',
   isLoggedIn: false,
   isLoading: false,
   isRefreshing: false,
-  error: null,
-  type: null,
+  error: '',
+  type: '',
 };
 
 export default initialState;

@@ -14,10 +14,25 @@ import {
 } from './WaistItem.styled';
 import sprite from '../../../assets/images/sprite.svg';
 
+// import  WaistProps  from '../WaistList'; 
+import React from 'react';
+
 interface List {
-  [key: string]: string;
+  burnedCalories: string;
+  bodyPart: string;
+  target: string;
 }
 
+export interface WaistProps {
+  waistItem: {
+    date: {
+      name: string;
+      burnedCalories: number;
+      target: string;
+      bodyPart: string;
+    };
+  };
+}
 interface Texts {
   cardLabel: string;
   btnLabel: string;
@@ -33,7 +48,8 @@ const texts: Texts = {
     target: 'Target:',
   },
 };
-const WaistItem = () => {
+const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
+  const { name, burnedCalories, target, bodyPart } = waistItem.date;
   return (
     <>
       <WaistItemLi>
@@ -55,21 +71,25 @@ const WaistItem = () => {
               <use href={`${sprite}#icon-running-figure`}></use>
             </SvgExerciseRun>
           </SpanExerciseRun>
-          <Title> Air bike</Title>
+          <Title>{name}</Title>
         </ExercisesTitleBox>
-
         <List>
-          {Object.keys(texts.list).map(e => (
-            <ListItem key={e}>
-              {texts.list[e]}
-              <ListItemValue>Data</ListItemValue>
-            </ListItem>
-          ))}
+          <ListItem>
+            {texts.list.burnedCalories}
+            <ListItemValue>{burnedCalories}</ListItemValue>
+          </ListItem>
+          <ListItem>
+            {texts.list.bodyPart}
+            <ListItemValue>{bodyPart}</ListItemValue>
+          </ListItem>
+          <ListItem>
+            {texts.list.target}
+            <ListItemValue>{target}</ListItemValue>
+          </ListItem>
         </List>
       </WaistItemLi>
     </>
   );
 };
 
-export default WaistItem;
-
+export default  WaistItem ;

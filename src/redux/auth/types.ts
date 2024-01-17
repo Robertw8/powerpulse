@@ -1,30 +1,29 @@
-type NullableString = string | null;
-type NullableNumber = number | null;
+type OptionalString = string | undefined;
 
 interface User {
-  email: NullableString;
-  name: NullableString;
-  dailyCalories: NullableNumber;
-  dailyActivity: NullableNumber;
+  email: OptionalString;
+  name: OptionalString;
+  dailyCalories: OptionalString;
+  dailyActivity: OptionalString;
   settings: {
-    height: NullableNumber;
-    currentWeight: NullableNumber;
-    desiredWeight: NullableNumber;
-    birthday: NullableString;
-    blood: NullableNumber;
-    sex: NullableString;
-    levelActivity: NullableNumber;
+    height: OptionalString;
+    currentWeight: OptionalString;
+    desiredWeight: OptionalString;
+    birthday: OptionalString;
+    blood: OptionalString;
+    sex: OptionalString;
+    levelActivity: OptionalString;
   };
 }
 
 interface InitialAuthState {
   user: User;
-  token: NullableString;
+  token: OptionalString;
   isLoggedIn: boolean;
   isLoading: boolean;
   isRefreshing: boolean;
-  error: NullableString;
-  type: NullableString;
+  error: OptionalString;
+  type: OptionalString;
 }
 
 export type { User, InitialAuthState };

@@ -8,9 +8,9 @@ export const operationWrapper = <Returned, ThunkArg>(
     try {
       return await handler(args, thunkAPI);
     } catch (error) {
-      return thunkAPI.rejectWithValue({
-        message: error instanceof Error ? error.message : 'An error occurred',
-      });
+      return thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : 'An error occurred'
+      );
     }
   });
 };

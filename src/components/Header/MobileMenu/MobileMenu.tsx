@@ -1,99 +1,101 @@
-// import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 // import { useDispatch } from 'react-redux';
-// // import { logOut } from '../operation';
-// import {
-//   MenuWrapper,
-//   Overlay,
-//   CloseButton,
-//   Logout,
-//   NavMenu,
-//   NavMenuLink,
-// } from './MobileMenu.styled';
-// import Icon from '../../Icon/Icon';
+// import { logOut } from '../operation';
 
-// interface MobileMenuProps {
-//   isOpen: boolean;
-// }
+import {
+  MenuWrapper,
+  Overlay,
+  CloseButton,
+  Logout,
+  NavMenu,
+  NavMenuLink,
+} from './MobileMenu.styled';
+import Icon from '../../Icon/Icon';
 
-// const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
-//   const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
-//   const dispatch = useDispatch();
+interface MobileMenuProps {
+  isOpen: boolean;
+}
 
-//   const closeMenu = () => {
-//     setMenuIsOpen(false);
-//   };
+const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
+  const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
+  // const dispatch = useDispatch();
 
-//   const handleEscKey = (event: KeyboardEvent) => {
-//     if (event.key === 'Escape') {
-//       closeMenu();
-//     }
-//   };
+  const closeMenu = () => {
+    setMenuIsOpen(false);
+  };
 
-//   const handleBackdropClick = (
-//     event: React.MouseEvent<HTMLDivElement, MouseEvent>
-//   ) => {
-//     if (event.target === event.currentTarget) {
-//       closeMenu();
-//     }
-//   };
+  const handleEscKey = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  };
 
-//   useEffect(() => {
-//     if (menuIsOpen) {
-//       window.addEventListener('keydown', handleEscKey);
-//     }
+  const handleBackdropClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (event.target === event.currentTarget) {
+      closeMenu();
+    }
+  };
 
-//   //   return () => {
-//   //     window.removeEventListener('keydown', handleEscKey);
-//   //   };
-//   // }, [menuIsOpen]);
+  useEffect(() => {
+    if (menuIsOpen) {
+      window.addEventListener('keydown', handleEscKey);
+    }
 
-//   useEffect(() => {
-//     setMenuIsOpen(isOpen);
-//   }, [isOpen]);
+    return () => {
+      window.removeEventListener('keydown', handleEscKey);
+    };
+  }, [menuIsOpen]);
 
-//   const handleLogOut = () => {
-//     closeMenu();
-//     // dispatch(logOut());
-//   };
+  useEffect(() => {
+    setMenuIsOpen(isOpen);
+  }, [isOpen]);
 
-//   return (
-//     <>
-//       {menuIsOpen && <Overlay onClick={closeMenu}></Overlay>}
-//       <MenuWrapper
-//         className={menuIsOpen ? 'shown' : 'hidden'}
-//         onClick={handleBackdropClick}
-//       >
-//         <CloseButton onClick={closeMenu}>
-//           <Icon
-//             name="x"
-//             iconWidth={{ mobile: '24px', tablet: '32px' }}
-//             iconHeight={{ mobile: '24px', tablet: '32px' }}
-//             stroke="#ffffff"
-//           />
-//         </CloseButton>
-//         <NavMenu>
-//           <NavMenuLink to="/diary" onClick={closeMenu}>
-//             Diary
-//           </NavMenuLink>
-//           <NavMenuLink to="/products" onClick={closeMenu}>
-//             Products
-//           </NavMenuLink>
-//           <NavMenuLink to="/exercises" onClick={closeMenu}>
-//             Exercises
-//           </NavMenuLink>
-//         </NavMenu>
-//         <Logout type="button" onClick={handleLogOut}>
-//           <span>Logout</span>
-//           <Icon
-//             name="logout"
-//             iconWidth={{ mobile: '20px', tablet: '20px' }}
-//             iconHeight={{ mobile: '20px', tablet: '20px' }}
-//             stroke="#fff"
-//           />
-//         </Logout>
-//       </MenuWrapper>
-//     </>
-//   );
-// };
+  const handleLogOut = () => {
+    closeMenu();
+    // dispatch(logOut());
+    console.log('Logged out');
+  };
 
-// export default MobileMenu;
+  return (
+    <>
+      {menuIsOpen && <Overlay onClick={closeMenu}></Overlay>}
+      <MenuWrapper
+        className={menuIsOpen ? 'shown' : 'hidden'}
+        onClick={handleBackdropClick}
+      >
+        <CloseButton onClick={closeMenu}>
+          <Icon
+            name="x"
+            iconWidth={{ mobile: '24px', tablet: '32px' }}
+            iconHeight={{ mobile: '24px', tablet: '32px' }}
+            stroke="#ffffff"
+          />
+        </CloseButton>
+        <NavMenu>
+          <NavMenuLink to="/diary" onClick={closeMenu}>
+            Diary
+          </NavMenuLink>
+          <NavMenuLink to="/products" onClick={closeMenu}>
+            Products
+          </NavMenuLink>
+          <NavMenuLink to="/exercises" onClick={closeMenu}>
+            Exercises
+          </NavMenuLink>
+        </NavMenu>
+        <Logout type="button" onClick={handleLogOut}>
+          <span>Logout</span>
+          <Icon
+            name="logout"
+            iconWidth={{ mobile: '20px', tablet: '20px' }}
+            iconHeight={{ mobile: '20px', tablet: '20px' }}
+            stroke="#fff"
+          />
+        </Logout>
+      </MenuWrapper>
+    </>
+  );
+};
+
+export default MobileMenu;

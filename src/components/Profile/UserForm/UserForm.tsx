@@ -13,13 +13,22 @@ import {
   LabelWrapBlock,
   ErrorText,
   RadioWrapBlock,
+  WrapForm,
 } from './UserForm.styled';
+import React from 'react';
 import { initialValues, schema } from './UserFormSchema';
 import { useFormik } from 'formik';
 import { StyledInput } from '../../InputPrimary/InputPrimary.styled';
 import { apiService } from '../../../services';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/rootReducer';
 
-const UserForm = () => {
+const UserForm: React.FC = () => {
+  const currentUser = useSelector((state: RootState) => state.auth.user);
+  // const [valueUser, setValue] = useState(currentUser);
+
+  // console.log(currentUser);
+
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: schema,
@@ -50,7 +59,7 @@ const UserForm = () => {
 
   return (
     <>
-      <div>
+      <WrapForm>
         <form onSubmit={formik.handleSubmit}>
           <BlockWrapInput>
             <LabelWrap>
@@ -59,7 +68,7 @@ const UserForm = () => {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="name"
+                placeholder={currentUser.name}
                 bordercolor="default"
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -71,8 +80,10 @@ const UserForm = () => {
                 id="email"
                 name="email"
                 type="text"
-                placeholder="email"
+                // defaultValue={currentUser.email}
+                placeholder={currentUser.email}
                 bordercolor="default"
+                disabled
               />
             </LabelWrap>
           </BlockWrapInput>
@@ -90,9 +101,10 @@ const UserForm = () => {
                   id="height"
                   name="height"
                   type="number"
-                  placeholder="0"
+                  // placeholder={currentUser.settings.height} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
-                  value={formik.values.height}
+                  // value={formik.values.height}
+                  // value={currentUser.settings.height}
                 />
                 {formik.errors.height && formik.touched.height && (
                   <ErrorText>{formik.errors.height}</ErrorText>
@@ -110,9 +122,9 @@ const UserForm = () => {
                   id="currentWeight"
                   name="currentWeight"
                   type="number"
-                  placeholder="0"
+                  // placeholder={currentUser.settings.currentWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
-                  value={formik.values.currentWeight}
+                  // value={formik.values.currentWeight}
                 />
                 {formik.errors.currentWeight &&
                   formik.touched.currentWeight && (
@@ -133,9 +145,9 @@ const UserForm = () => {
                   id="desiredWeight"
                   name="desiredWeight"
                   type="number"
-                  placeholder="0"
+                  // placeholder={currentUser.settings.desiredWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
-                  value={formik.values.desiredWeight}
+                  // value={formik.values.desiredWeight}
                 />
                 {formik.errors.desiredWeight &&
                   formik.touched.desiredWeight && (
@@ -154,7 +166,7 @@ const UserForm = () => {
                   id="birthday"
                   name="birthday"
                   type="date"
-                  placeholder="0"
+                  // placeholder={currentUser.settings.birthday}
                   onChange={formik.handleChange}
                   value={formik.values.birthday}
                 />
@@ -174,7 +186,8 @@ const UserForm = () => {
                     name="blood"
                     type="radio"
                     onChange={() => formik.setFieldValue('blood', 1)}
-                    // checked={formik.values.blood === 1}
+                    checked={formik.values.blood === 1}
+                    // checked={currentUser.settings.blood === 1}
                     value={1}
                   />
                   <CheckRadio />
@@ -185,7 +198,7 @@ const UserForm = () => {
                     name="blood"
                     type="radio"
                     onChange={() => formik.setFieldValue('blood', 2)}
-                    // checked={formik.values.blood === 2}
+                    checked={formik.values.blood === 2}
                     value={2}
                   />
                   <CheckRadio />
@@ -196,7 +209,7 @@ const UserForm = () => {
                     name="blood"
                     type="radio"
                     onChange={() => formik.setFieldValue('blood', 3)}
-                    // checked={formik.values.blood === 3}
+                    checked={formik.values.blood === 3}
                     value={3}
                   />
                   <CheckRadio />
@@ -207,7 +220,7 @@ const UserForm = () => {
                     name="blood"
                     type="radio"
                     onChange={() => formik.setFieldValue('blood', 4)}
-                    // checked={formik.values.blood === 4}
+                    checked={formik.values.blood === 4}
                     value={4}
                   />
                   <CheckRadio />
@@ -331,7 +344,7 @@ const UserForm = () => {
             Save
           </Btn>
         </form>
-      </div>
+      </WrapForm>
     </>
   );
 };

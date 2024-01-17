@@ -14,6 +14,7 @@ const List = styled.ul`
   flex-direction: column;
   row-gap: 20px;
   overflow-y: auto;
+  border-radius: 12px;
 
   @media screen and (min-width: 769px) {
     flex-wrap: wrap;
@@ -24,7 +25,6 @@ const List = styled.ul`
   }
 
   @media screen and (min-width: 1441px) {
-    max-height: 490px;
     max-width: 840px;
   }
 `;
