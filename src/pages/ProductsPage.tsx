@@ -1,4 +1,4 @@
-import { Container, Filters, ProductsList, PrimaryButton } from '../components';
+import { Container, Filters, ProductsList } from '../components';
 
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,6 @@ const ProductsPage: React.FC = () => {
     <Container>
       <Filters />
       <ProductsList />
-      <PrimaryButton type="primary" text="Button" sizes="large" />
     </Container>
   );
 };

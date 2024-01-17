@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { persistedAuthReducer } from './auth/slice';
 import { productsReducer } from './products';
-import { exercisesReducer } from './auth/Waist';
+import { exercisesReducer } from './Waist';
 
 const rootReducer = combineReducers({
   auth: persistedAuthReducer,

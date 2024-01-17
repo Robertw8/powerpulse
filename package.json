@@ -19,6 +19,7 @@
     "antd": "^5.12.8",
     "axios": "^1.6.5",
     "formik": "^2.4.5",
+    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

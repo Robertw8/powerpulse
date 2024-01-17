@@ -1,3 +1,3 @@
 export { getProducts } from './operations';
-export { selectProducts } from './selectors';
+export { selectProducts, selectIsLoading } from './selectors';
 export { productsReducer } from './slice';

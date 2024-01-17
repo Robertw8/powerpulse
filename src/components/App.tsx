@@ -2,10 +2,9 @@ import { lazy, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from '.';
 import routes from '../routes';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux';
 import { getCurrentUser } from '../redux/auth/operations';
-import { selectUser } from '../redux/auth/selectors';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
@@ -18,13 +17,10 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const user = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
   }, [dispatch]);
-
-  console.log(user);
 
   return (
     <>

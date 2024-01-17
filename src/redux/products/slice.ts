@@ -1,22 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getProducts } from '.';
-
-interface Product {
-  weight: number;
-  calories: number;
-  category: string;
-  title: string;
-  groupBloodNotAllowed: { [key: string]: boolean };
-}
-
-interface InitialState {
-  products: Product[];
-  isLoading: boolean;
-}
+import { Product, InitialState } from './types';
 
 const initialState: InitialState = {
   products: [],
   isLoading: false,
+  error: '',
 };
 
 const slice = createSlice({
@@ -25,12 +14,16 @@ const slice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(getProducts.fulfilled, (state, action) => {
-        state.products = action.payload as Product[];
-        state.isLoading = false;
-      })
       .addCase(getProducts.pending, state => {
         state.isLoading = true;
+      })
+      .addCase(getProducts.fulfilled, (state, action) => {
+        state.products = [...state.products, ...action.payload] as Product[];
+        state.isLoading = false;
+      })
+      .addCase(getProducts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
       });
   },
 });

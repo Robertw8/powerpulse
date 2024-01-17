@@ -101,7 +101,7 @@ const UserForm: React.FC = () => {
                   id="height"
                   name="height"
                   type="number"
-                  placeholder={currentUser.settings.height}
+                  // placeholder={currentUser.settings.height} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
                   // value={formik.values.height}
                   // value={currentUser.settings.height}
@@ -122,7 +122,7 @@ const UserForm: React.FC = () => {
                   id="currentWeight"
                   name="currentWeight"
                   type="number"
-                  placeholder={currentUser.settings.currentWeight}
+                  // placeholder={currentUser.settings.currentWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
                   // value={formik.values.currentWeight}
                 />
@@ -145,7 +145,7 @@ const UserForm: React.FC = () => {
                   id="desiredWeight"
                   name="desiredWeight"
                   type="number"
-                  placeholder={currentUser.settings.desiredWeight}
+                  // placeholder={currentUser.settings.desiredWeight} // ! Закоментував бо через це падав сайт, чомусь воно undefined
                   onChange={formik.handleChange}
                   // value={formik.values.desiredWeight}
                 />
