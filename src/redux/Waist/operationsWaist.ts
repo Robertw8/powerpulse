@@ -1,5 +1,5 @@
-import { operationWrapper } from '../../../helpers';
-import { apiService } from '../../../services';
+import { operationWrapper } from '../../helpers';
+import { apiService } from '../../services';
 
 const getWaistExercises = operationWrapper(
   'exercises/getWaistExercises',
