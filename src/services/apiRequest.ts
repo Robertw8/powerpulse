@@ -38,5 +38,6 @@ const signIn = async (dataUser: SignInArgs): Promise<AuthResponse> => {
   return data as AuthResponse;
 };
 
+
 export type { AuthResponse, SignUpArgs, SignInArgs };
 export { singUp, signIn };
