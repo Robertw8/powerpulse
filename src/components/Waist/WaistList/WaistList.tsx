@@ -2,15 +2,15 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import { getWaistExercises, selectWaist } from '../../../redux/auth/Waist';
+import { getWaistExercises, selectWaist } from '../../../redux/Waist';
 import {
   ImgWaist,
   NoExercisesTitle,
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import { WaistExercises } from '../../../redux/auth/Waist/sliceExercises';
-import images from "../../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg"
+import { WaistExercises } from '../../../redux/Waist/sliceExercises';
+import images from '../../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 // import { List, ListWrapper } from '../../Products/ProductsList/ProductsList.styled';
 export interface WaistProps {
   // waistItem: {
@@ -21,15 +21,14 @@ export interface WaistProps {
   //     bodyPart: string;
   //   };
   // };
-  
+
   // name, burnedCalories, target, bodyPart
 
   data: WaistExercises;
 }
 
-const WaistList: React.FC<WaistProps> = (props) => {
-  
-  const { data  } = props || {};
+const WaistList: React.FC<WaistProps> = props => {
+  const { data } = props || {};
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -38,24 +37,22 @@ const WaistList: React.FC<WaistProps> = (props) => {
   }, [dispatch]);
 
   const exercises = useSelector(selectWaist);
-  console.log(exercises)
-  const visibleExercises = exercises && exercises.filter(
-    exercise =>
-      exercise.bodyPart || exercise.target || exercise.equipment === data.name
-  );
+  console.log(exercises);
+  const visibleExercises =
+    exercises &&
+    exercises.filter(
+      exercise =>
+        exercise.bodyPart || exercise.target || exercise.equipment === data.name
+    );
 
   return (
-    
-     <WaistListContainer>
-      <WaistItemUl> 
+    <WaistListContainer>
+      <WaistItemUl>
         {/* <ListWrapper> <List className='scrollbar-outer'> */}
         {visibleExercises && visibleExercises.length ? (
           visibleExercises
             .slice(0, 50)
-            .map(el => 
-            <WaistItem key={el._id} waistItem={{ date: el }} 
-   
-            />)
+            .map(el => <WaistItem key={el._id} waistItem={{ date: el }} />)
         ) : (
           <NoExercisesTitle>
             There is not exercises downloaded else, plaese try choose this
@@ -65,9 +62,8 @@ const WaistList: React.FC<WaistProps> = (props) => {
         {/* </List> */}
       </WaistItemUl>
       <ImgWaist src={images} alt="image" />
-   {/* </ListWrapper> */}
-     </WaistListContainer>
- 
+      {/* </ListWrapper> */}
+    </WaistListContainer>
   );
 };
 
