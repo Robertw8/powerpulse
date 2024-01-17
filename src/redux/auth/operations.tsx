@@ -1,53 +1,30 @@
 import {
-  // singUp,
-  // signIn,
   SignInArgs,
   SignUpArgs,
 } from '../../services/apiRequest';
 import { operationWrapper } from '../../helpers';
-import { apiService, setToken } from '../../services';
-
-// const registerUser = createAsyncThunk(
-//   'auth/register',
-//   async (data: SignUpArgs, thunkAPI) => {
-//     try {
-//       const response = await singUp(data);
-
-//       return response;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(
-//         error instanceof Error ? error.message : 'An unknown error occurred'
-//       );
-//     }
-//   }
-// );
-
-// const loginUser = createAsyncThunk(
-//   'auth/login',
-//   async (dataUser: SignInArgs, thunkAPI) => {
-//     try {
-//       const response: AuthResponse = await signIn(dataUser);
-//       return response;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(
-//         error instanceof Error ? error.message : 'An error occurred'
-//       );
-//     }
-//   }
-// );
+import { apiService,clearToken,setToken } from '../../services';
+import toast from 'react-hot-toast';
 
 const registerUser = operationWrapper(
   'auth/register',
   async (data: SignUpArgs) => {
-    const response = await apiService({
+    const response = await apiService(
+      {
       method: 'post',
       url: 'users/register',
       data,
-    });
-    setToken(response.data.token);
+    },
+      () => {
+   toast.error('error')
+    return ''
+      } 
+    );
+      setToken(response.data.token);
+  return response.data;
+  },
 
-    return response.data;
-  }
+
 );
 
 const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
@@ -55,9 +32,13 @@ const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
     method: 'post',
     url: 'users/login',
     data,
-  });
+  },
+      () => {
+    toast.error('Check the correctness of the password for mail !')
+    return ''
+      } 
+    );
   setToken(response.data.token);
-
   return response.data;
 });
 
@@ -79,4 +60,20 @@ const getCurrentUser = operationWrapper(
   }
 );
 
-export { registerUser, loginUser, getCurrentUser };
+
+const logOutUser = operationWrapper(
+  'auth/logout',
+  async () => {
+    await apiService(
+      {
+        method: 'post',
+        url: 'users/logout',
+      }
+      );
+    clearToken()
+  },
+
+
+);
+
+export { registerUser, loginUser, getCurrentUser, logOutUser };
