@@ -12,8 +12,7 @@ export const LogOutBtn = () => {
   return (
     <LogoutBtn
       type="button"
-      to="/"
-      // onClick={handleLogOut}
+      //  onClick={handleLogOut}
     >
       <Text>Logout</Text>
       <Icon
