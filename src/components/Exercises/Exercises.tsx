@@ -1,65 +1,59 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
+
+import { apiService } from '../../services';
 
 import { PageTitle } from '..';
 import { ExercisesSlider } from './ExercisesSlider';
 import { ExercisesCategories } from './ExercisesCategories';
 
-import { ExercisesWrap, TopWrap } from './Exercises.styled';
+import { ExercisesWrap, TopWrap, LoaderWrap } from './Exercises.styled';
+
+export type Category = 'Body parts' | 'Muscles' | 'Equipment';
 
 const Exercises: React.FC = () => {
   
-  const [currentCategory, setcurrentCategory] = useState('bodyPart');
-  const [exercisesList] = useState([
-    {
-      _id: '650f35ece3f5522fc6396289',
-      filter: 'Body parts',
-      name: 'back',
-      imgURL: 'https://ftp.goit.study/img/power-pulse/filters/back_wzzphw.jpg',
-    },
-    {
-      _id: '650f35ece3f5522fc639628a',
-      filter: 'Body parts',
-      name: 'cardio',
-      imgURL:
-        'https://ftp.goit.study/img/power-pulse/filters/cardio_pkkceg.jpg',
-    },
-    {
-      _id: '650f35ece3f5522fc639628b',
-      filter: 'Body parts',
-      name: 'chest',
-      imgURL: 'https://ftp.goit.study/img/power-pulse/filters/chest_rqs6fw.jpg',
-    },
-    {
-      _id: '650f35ece3f5522fc63962568b',
-      filter: 'Body parts',
-      name: 'chest',
-      imgURL: 'https://ftp.goit.study/img/power-pulse/filters/chest_rqs6fw.jpg',
-    },
-    {
-      _id: '650f35ece3f5522fc6396238b',
-      filter: 'Body parts',
-      name: 'chest',
-      imgURL: 'https://ftp.goit.study/img/power-pulse/filters/chest_rqs6fw.jpg',
-    },
-    {
-      _id: '650f35ece3f5522fc6239628b',
-      filter: 'Body parts',
-      name: 'chest',
-      imgURL: 'https://ftp.goit.study/img/power-pulse/filters/chest_rqs6fw.jpg',
-    },
-  ]);
+  const [currentCategory, setCurrentCategory] = useState<Category>('Body parts');
+  const [exercisesList, setExercisesList] = useState([]);
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(10);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
+
+  useEffect(() => {
+
+    window.screen.width >= 768 && window.screen.width < 1440 ? setLimit(9) : setLimit(10);
+
+    const responce = apiService({
+      method: 'get', url: `/exercises/${currentCategory}?page=${page}&limit=${limit}`
+    });
+    setIsLoading(true);
+    responce
+      .then(({ data }) => setExercisesList(data))
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
+  },[currentCategory, limit, page])
 
   return (
     <ExercisesWrap>
+      
       <TopWrap>
+          {isLoading &&
+        <LoaderWrap>
+            <Spin indicator={<LoadingOutlined style={{ fontSize: 34 }} spin />} />
+        </LoaderWrap>}
         <PageTitle text={'Exercises'} />
         <ExercisesCategories
-          changeCategory={setcurrentCategory}
+          changeCategory={setCurrentCategory}
+          setPage={setPage}
         />
       </TopWrap>
       <ExercisesSlider
         exercisesList={exercisesList}
-        currentCategory={currentCategory}/>
+        currentCategory={currentCategory}
+        setPage={setPage} />
     </ExercisesWrap>
   );
 };

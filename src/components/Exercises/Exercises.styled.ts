@@ -19,11 +19,23 @@ const ExercisesWrap = styled.div`
     }
 `;
 
+const LoaderWrap = styled.div`
+    position: absolute;
+    top: 76px;
+    left: 150px;
+
+    @media screen and (max-width: 767px) {
+    top: 35px;
+    left: 130px;
+    }
+    `
+
 const TopWrap = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 40px;
+    position: relative;
 
     @media screen and (min-width: 769px) {
         flex-direction: row;
@@ -32,4 +44,4 @@ const TopWrap = styled.div`
   }
 `
 
-export { ExercisesWrap, TopWrap };
+export { ExercisesWrap, TopWrap, LoaderWrap };

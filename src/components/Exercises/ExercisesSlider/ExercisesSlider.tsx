@@ -1,6 +1,8 @@
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 
+import {NotFoundMessage} from '../../Products'
+
 type Props = {
     exercisesList: Array<{
         _id: string;
@@ -8,25 +10,33 @@ type Props = {
         name: string;
         imgURL: string;}>;
     currentCategory: string;
+    setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Slider: React.FC<Props> = ({ exercisesList, currentCategory }) => {
+const Slider: React.FC<Props> = ({ exercisesList, currentCategory, setPage }) => {
     
     const onChange = (currentSlide: number) => {
-        console.log(currentSlide + 1);
+        if (currentCategory) console.log(currentCategory);
+        setPage(currentSlide + 1);
     };
-
-    if (currentCategory)
         
     return(
-    <Carousel afterChange={onChange}>
-        <div>
-            <ExercisesSubcategoriesList exercisesList={exercisesList} />
-        </div>
-        <div>
-            <ExercisesSubcategoriesList exercisesList={exercisesList} />
-        </div>
-        </Carousel>
+        <>{exercisesList.length ?
+            <Carousel afterChange={onChange}>
+                <div>
+                    <ExercisesSubcategoriesList exercisesList={exercisesList} />
+                </div>
+                <div>
+                    <ExercisesSubcategoriesList exercisesList={exercisesList} />
+                </div>
+                <div>
+                    <ExercisesSubcategoriesList exercisesList={exercisesList} />
+                </div>
+                <div>
+                    <ExercisesSubcategoriesList exercisesList={exercisesList} />
+                </div>
+            </Carousel> : <NotFoundMessage/>}
+        </>
     )
 };
 

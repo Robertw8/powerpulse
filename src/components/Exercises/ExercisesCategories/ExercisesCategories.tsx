@@ -1,41 +1,44 @@
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 
+import { Category } from '../Exercises';
+
 import { CategoryList } from './ExercisesCategories.styled';
 import { Dispatch, SetStateAction } from 'react';
 
 interface ExercisesCategoriesProps {
-  changeCategory: Dispatch<SetStateAction<string>>;
+  changeCategory: Dispatch<SetStateAction<Category>>;
+  setPage:Dispatch<SetStateAction<number>>
 }
 
-const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({
-  changeCategory
-}) => {
-  const onChange = (key: string) => {
+const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({ changeCategory, setPage }) => {
+  
+  const onChange = (key: Category):void => {
     changeCategory(key);
+    setPage(1);
   };
 
   const items: TabsProps['items'] = [
     {
-      key: 'bodyPart',
+      key: 'Body parts',
       label: 'Body parts',
       children: 'Content of Body parts',
     },
     {
-      key: 'target',
+      key: 'Muscles',
       label: 'Muscles',
       children: 'Content of Muscles',
     },
     {
-      key: 'equipment',
+      key: 'Equipment',
       label: 'Equipment',
-      children: 'Content of Tab Pane 3',
+      children: 'Content of Equipment',
     },
   ];
 
   return (
     <CategoryList>
-      <Tabs defaultActiveKey="body-parts" items={items} onChange={onChange} />
+      <Tabs defaultActiveKey="Body parts" items={items} onChange={onChange} />
     </CategoryList>
   );
 };
