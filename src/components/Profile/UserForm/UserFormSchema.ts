@@ -2,13 +2,13 @@ import { date, number, object, string } from 'yup';
 
 interface FormValues {
   name: string;
-  height: number;
-  currentWeight: number;
-  desiredWeight: number;
+  height: string | number;
+  currentWeight: string | number;
+  desiredWeight: string | number;
   birthday: string;
-  blood: null | 1 | 2 | 3 | 4;
-  sex: '' | 'male' | 'female';
-  levelActivity: null | 1 | 2 | 3 | 4 | 5;
+  blood: 1 | 2 | 3 | 4 | string | null; // От це треба переробити якось бо в UserForm TS сварився що невідома строка не може бути присвоєна типу 1 | 2 | 3 | 4 | null, тепер помилок нема але і 1 | 2 | 3 | 4 тепер марний
+  sex: '' | 'male' | 'female' | string; // Тут те ж саме
+  levelActivity: 1 | 2 | 3 | 4 | 5 | string | null; // І тут те ж саме
 }
 //formik initialValues
 // const initialValues: FormValues = {
@@ -36,4 +36,5 @@ const schema = object({
   levelActivity: number().required('Required field'),
 });
 
-export { FormValues, schema };
+export { schema };
+export type { FormValues };

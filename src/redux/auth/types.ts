@@ -9,7 +9,7 @@ interface User {
     height: OptionalString;
     currentWeight: OptionalString;
     desiredWeight: OptionalString;
-    birthday: OptionalString;
+    birthday: string;
     blood: OptionalString;
     sex: OptionalString;
     levelActivity: OptionalString;
