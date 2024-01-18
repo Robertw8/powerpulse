@@ -1,14 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useAuth } from '../../hooks';
 
-import SignUpSchema from './SignUpSchema';
-import { InputPrimary } from '../InputPrimary';
-
-import { registerUser } from '../../redux/auth/operations';
-import { AppDispatch } from '../../redux';
-
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
   BlockSignUp,
   ContainerSignUp,
@@ -19,10 +13,17 @@ import {
   BtnSignUp,
   WidthInput,
 } from './SignUp.styled';
+import { InputPrimary } from '../InputPrimary';
+
+import SignUpSchema from './SignUpSchema';
+import { registerUser } from '../../redux/auth/operations';
+import { AppDispatch } from '../../redux';
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const { isLoading } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -111,7 +112,7 @@ const SignUpForm = () => {
             <div>{formik.errors.password}</div>
           )}
 
-          <BtnSignUp htmlType="submit" type="primary">
+          <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign Up
           </BtnSignUp>
         </FormContainer>

@@ -1,5 +1,8 @@
 import { useFormik } from 'formik';
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import { useAuth } from '../../hooks';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import {
   BlockSignUp,
   ContainerSignUp,
@@ -9,18 +12,18 @@ import {
   BtnSignUp,
   WidthInput,
 } from '../SignUp/SignUp.styled';
-import SignInSchema from './SignInSchema';
 import { InputPrimary } from '../InputPrimary';
+
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import SignInSchema from './SignInSchema';
 import { loginUser } from '../../redux/auth/operations';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { AppDispatch } from '../../redux';
 import { SignInArgs } from '../../services/apiRequest';
-
 
 const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const { isLoading } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +36,7 @@ const SignInForm = () => {
         const response = await dispatch(loginUser(values));
         const token = (response.payload as { data?: { token: string } })?.data
           ?.token;
-        
+
         if (token) {
           return navigate('/profile');
         }
@@ -86,7 +89,7 @@ const SignInForm = () => {
             <div>{formik.errors.password}</div>
           )}
 
-          <BtnSignUp htmlType="submit" type="primary">
+          <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
         </FormContainer>
