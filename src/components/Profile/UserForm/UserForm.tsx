@@ -8,9 +8,6 @@ import {
   CheckRadio,
   LableRadio,
   BlockWrapRadio,
-  BlockWrapInput,
-  LabelWrap,
-  LabelWrapBlock,
   ErrorText,
   RadioWrapBlock,
   WrapForm,
@@ -18,9 +15,10 @@ import {
 import React from 'react';
 import { FormValues, schema } from './UserFormSchema';
 import { useFormik } from 'formik';
-import { StyledInput } from '../../InputPrimary/InputPrimary.styled';
 import { apiService } from '../../../services';
 import useAuth from '../../../hooks/useAuth';
+import { errorWrapper } from '../../../helpers';
+import { UserFormInput } from './UserFormInput';
 
 const UserForm: React.FC = () => {
   const { user } = useAuth();
@@ -52,15 +50,22 @@ const UserForm: React.FC = () => {
         levelActivity: values.levelActivity,
       };
 
-      try {
-        await apiService({
-          method: 'patch',
-          url: '/users',
-          data: userData,
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      const data = await apiService({
+        method: 'patch',
+        url: '/users',
+        data: userData,
+      });
+      errorWrapper(data);
+
+      // try {
+      //   await apiService({
+      //     method: 'patch',
+      //     url: '/users',
+      //     data: userData,
+      //   });
+      // } catch (error) {
+      //   console.log(error.message);
+      // }
     },
   });
 
@@ -68,120 +73,7 @@ const UserForm: React.FC = () => {
     <>
       <WrapForm>
         <form onSubmit={formik.handleSubmit}>
-          <BlockWrapInput>
-            <LabelWrap>
-              <Label htmlFor="name">Name</Label>
-              <StyledInput
-                id="name"
-                name="name"
-                type="text"
-                // placeholder={currentUser.name}
-                bordercolor="default"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-              />
-            </LabelWrap>
-            <LabelWrap>
-              <Label htmlFor="email">Email</Label>
-              <StyledInput
-                id="email"
-                name="email"
-                type="text"
-                // defaultValue={currentUser.email}
-                placeholder={user.email}
-                bordercolor="default"
-                disabled
-              />
-            </LabelWrap>
-          </BlockWrapInput>
-
-          <BlockWrapInput>
-            <LabelWrapBlock>
-              <LabelWrap>
-                <Label htmlFor="height">Height</Label>
-                <StyledInput
-                  bordercolor={
-                    formik.errors.height && formik.touched.height
-                      ? 'error'
-                      : 'default'
-                  }
-                  id="height"
-                  name="height"
-                  type="number"
-                  // placeholder={currentUser.settings.height}
-                  onChange={formik.handleChange}
-                  value={formik.values.height}
-                />
-                {formik.errors.height && formik.touched.height && (
-                  <ErrorText>{formik.errors.height}</ErrorText>
-                )}
-              </LabelWrap>
-
-              <LabelWrap>
-                <Label htmlFor="currentWeight">Current Weight</Label>
-                <StyledInput
-                  bordercolor={
-                    formik.errors.currentWeight && formik.touched.currentWeight
-                      ? 'error'
-                      : 'default'
-                  }
-                  id="currentWeight"
-                  name="currentWeight"
-                  type="number"
-                  // placeholder={currentUser.settings.currentWeight}
-                  onChange={formik.handleChange}
-                  value={formik.values.currentWeight}
-                />
-                {formik.errors.currentWeight &&
-                  formik.touched.currentWeight && (
-                    <ErrorText>{formik.errors.currentWeight}</ErrorText>
-                  )}
-              </LabelWrap>
-            </LabelWrapBlock>
-
-            <LabelWrapBlock>
-              <LabelWrap>
-                <Label htmlFor="desiredWeight">Desired Weight</Label>
-                <StyledInput
-                  bordercolor={
-                    formik.errors.desiredWeight && formik.touched.desiredWeight
-                      ? 'error'
-                      : 'default'
-                  }
-                  id="desiredWeight"
-                  name="desiredWeight"
-                  type="number"
-                  // placeholder={currentUser.settings.desiredWeight}
-                  onChange={formik.handleChange}
-                  value={formik.values.desiredWeight}
-                />
-                {formik.errors.desiredWeight &&
-                  formik.touched.desiredWeight && (
-                    <ErrorText>{formik.errors.desiredWeight}</ErrorText>
-                  )}
-              </LabelWrap>
-
-              <LabelWrap>
-                <Label htmlFor="birthday">Date of birth</Label>
-                <StyledInput
-                  bordercolor={
-                    formik.errors.birthday && formik.touched.birthday
-                      ? 'error'
-                      : 'default'
-                  }
-                  id="birthday"
-                  name="birthday"
-                  type="date"
-                  // placeholder={currentUser.settings.birthday}
-                  onChange={formik.handleChange}
-                  value={formik.values.birthday}
-                />
-                {formik.errors.birthday && formik.touched.birthday && (
-                  <ErrorText>{formik.errors.birthday}</ErrorText>
-                )}
-              </LabelWrap>
-            </LabelWrapBlock>
-          </BlockWrapInput>
+          <UserFormInput formik={formik} user={user} />
 
           <Label>Blood</Label>
           <BlockWrapRadio>
@@ -193,7 +85,6 @@ const UserForm: React.FC = () => {
                     type="radio"
                     onChange={() => formik.setFieldValue('blood', 1)}
                     checked={formik.values.blood === 1}
-                    // checked={currentUser.settings.blood === 1}
                     value={1}
                   />
                   <CheckRadio />
@@ -352,7 +243,12 @@ const UserForm: React.FC = () => {
           </div>
 
           {/* <PrimaryButton type="primary" text="Save" sizes="extraSmall" /> */}
-          <Btn htmlType="submit" type="primary">
+          <Btn
+            htmlType="submit"
+            type="primary"
+            style={{ background: 'tomato' }}
+            disabled={!(formik.isValid && formik.dirty)}
+          >
             Save
           </Btn>
         </form>

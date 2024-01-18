@@ -6,6 +6,12 @@ const Wrap = styled.div`
   justify-content: center;
 `;
 
+const InputFile = styled.input`
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+`;
+
 const ImgWrap = styled.div`
   width: 90px;
   height: 90px;
@@ -150,4 +156,5 @@ export {
   UserWrap,
   UserStatus,
   ImgUserAvatar,
+  InputFile,
 };

@@ -10,17 +10,6 @@ interface FormValues {
   sex: '' | 'male' | 'female' | string; // Тут те ж саме
   levelActivity: 1 | 2 | 3 | 4 | 5 | string | null; // І тут те ж саме
 }
-//formik initialValues
-// const initialValues: FormValues = {
-//   name: '',
-//   height: 0,
-//   currentWeight: 0,
-//   desiredWeight: 0,
-//   birthday: '',
-//   blood: null,
-//   sex: '',
-//   levelActivity: null,
-// };
 
 //yup validation
 const schema = object({
