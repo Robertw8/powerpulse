@@ -4,7 +4,8 @@ import {
 } from '../../services/apiRequest';
 import { operationWrapper } from '../../helpers';
 import { apiService,clearToken,setToken } from '../../services';
-import toast from 'react-hot-toast';
+
+import  {toast}  from 'react-hot-toast';
 
 const registerUser = operationWrapper(
   'auth/register',
@@ -15,8 +16,24 @@ const registerUser = operationWrapper(
       url: 'users/register',
       data,
     },
-      () => {
-   toast.error('error')
+      (error) => {
+ if (error.response && error.response.status === 409) {
+         toast.error('Such a user with an email or name already exists!', {
+          position: "top-center",
+           style: {
+            backgroundColor: "#686868",
+            color: '#fff',
+           },
+        });
+    } else {
+        toast.error('Sorry, server error, please wait !', {
+          position: "top-center",
+           style: {
+            backgroundColor: "#686868",
+            color: '#fff',
+           },
+        });
+    }  
     return ''
       } 
     );
@@ -33,14 +50,32 @@ const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
     url: 'users/login',
     data,
   },
-      () => {
-    toast.error('Check the correctness of the password for mail !')
+    (error) => {
+      if (error.response && error.response.status === 401) {
+         toast.error('Check the correctness of the password for mail !', {
+          position: "top-center",
+           style: {
+            backgroundColor: "#686868",
+            color: '#fff',
+           },
+        });
+    } else {
+
+        toast.error('Sorry, server error, please wait !', {
+          position: "top-center",
+           style: {
+            backgroundColor: "#686868",
+            color: '#fff',
+           },
+        });
+    }  
     return ''
-      } 
+      }    
     );
   setToken(response.data.token);
   return response.data;
 });
+
 
 const getCurrentUser = operationWrapper(
   'auth/getCurrentUser',

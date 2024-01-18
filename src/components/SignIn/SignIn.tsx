@@ -1,6 +1,6 @@
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -14,8 +14,8 @@ import {
 } from '../SignUp/SignUp.styled';
 import { InputPrimary } from '../InputPrimary';
 
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import SignInSchema from './SignInSchema';
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import { loginUser } from '../../redux/auth/operations';
 import { AppDispatch } from '../../redux';
 import { SignInArgs } from '../../services/apiRequest';
@@ -32,18 +32,17 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-      try {
-        const response = await dispatch(loginUser(values));
-        const token = (response.payload as { data?: { token: string } })?.data
-          ?.token;
+      await dispatch(loginUser(values));
 
-        if (token) {
-          return navigate('/profile');
-        }
-        resetForm();
-      } catch (error) {
-        console.error('Вхід не вдається', error);
+      const response = await dispatch(loginUser(values));
+      const token = (response.payload as { data?: { token: string } })?.data
+        ?.token;
+
+      if (token) {
+        return navigate('/profile');
       }
+
+      resetForm();
     },
   });
 
