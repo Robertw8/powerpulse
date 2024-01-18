@@ -11,7 +11,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyles, theme } from './styles';
 import { persistor, store } from './redux';
-
+import { Toaster } from 'react-hot-toast';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/fitness-app-frontend/">
@@ -19,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Global styles={GlobalStyles} />
         <PersistGate loading={null} persistor={persistor}>
           <ConfigProvider theme={theme}>
+            <Toaster />
             <App />
           </ConfigProvider>
         </PersistGate>
