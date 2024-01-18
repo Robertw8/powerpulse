@@ -1,4 +1,6 @@
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+
 import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
   BlockSignUp,
@@ -9,18 +11,20 @@ import {
   BtnSignUp,
   WidthInput,
 } from '../SignUp/SignUp.styled';
+
 import SignInSchema from './SignInSchema';
+
 import { InputPrimary } from '../InputPrimary';
 import { loginUser } from '../../redux/auth/operations';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { AppDispatch } from '../../redux';
 import { SignInArgs } from '../../services/apiRequest';
 
 
+
 const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+
 
   const formik = useFormik({
     initialValues: {
@@ -29,27 +33,20 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-      try {
-        const response = await dispatch(loginUser(values));
-        const token = (response.payload as { data?: { token: string } })?.data
-          ?.token;
-        
-        if (token) {
-          return navigate('/profile');
-        }
+        await dispatch(loginUser(values));
         resetForm();
-      } catch (error) {
-        console.error('Вхід не вдається', error);
-      }
     },
   });
 
   return (
+    
     <ContainerSignUp>
       <BlockSignUp>
+        
         <TitleSignUp>Sign In</TitleSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
+      
             <InputPrimary
               bordercolor={
                 formik.errors.email && formik.touched.email
