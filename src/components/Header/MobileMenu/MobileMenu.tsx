@@ -1,14 +1,14 @@
 import { useState, useEffect, FC } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { logOut } from '../operation';
+import { useDispatch } from 'react-redux';
+import { logOutUser } from '../../../redux/auth/operations';
 
 import {
-  MenuWrapper,
-  Overlay,
-  CloseButton,
+  MenuWrap,
+  Backdrop,
+  CloseBtn,
   Logout,
   NavMenu,
-  NavMenuLink,
+  NavLinkStyled,
 } from './MobileMenu.styled';
 import Icon from '../../Icon/Icon';
 
@@ -52,37 +52,42 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
     setMenuIsOpen(isOpen);
   }, [isOpen]);
 
-  const handleLogOut = () => {
+  const dispatch = useDispatch();
+
+  const handleLogOut = (): void => {
     closeMenu();
-    // dispatch(logOut());
-    console.log('Logged out');
+
+    dispatch(logOutUser());
+
   };
 
   return (
     <>
-      {menuIsOpen && <Overlay onClick={closeMenu}></Overlay>}
-      <MenuWrapper
+
+      {menuIsOpen && <Backdrop onClick={closeMenu} />}
+      <MenuWrap
         className={menuIsOpen ? 'shown' : 'hidden'}
         onClick={handleBackdropClick}
       >
-        <CloseButton onClick={closeMenu}>
+
+        <CloseBtn onClick={closeMenu}>
           <Icon
             name="x"
             iconWidth={{ mobile: '24px', tablet: '32px' }}
             iconHeight={{ mobile: '24px', tablet: '32px' }}
             stroke="#ffffff"
           />
-        </CloseButton>
+        </CloseBtn>
         <NavMenu>
-          <NavMenuLink to="/diary" onClick={closeMenu}>
+          <NavLinkStyled to="/diary" onClick={closeMenu}>
             Diary
-          </NavMenuLink>
-          <NavMenuLink to="/products" onClick={closeMenu}>
+          </NavLinkStyled>
+          <NavLinkStyled to="/products" onClick={closeMenu}>
             Products
-          </NavMenuLink>
-          <NavMenuLink to="/exercises" onClick={closeMenu}>
+          </NavLinkStyled>
+          <NavLinkStyled to="/exercises" onClick={closeMenu}>
             Exercises
-          </NavMenuLink>
+          </NavLinkStyled>
         </NavMenu>
         <Logout type="button" onClick={handleLogOut}>
           <span>Logout</span>
@@ -93,7 +98,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
             stroke="#fff"
           />
         </Logout>
-      </MenuWrapper>
+      </MenuWrap>
     </>
   );
 };

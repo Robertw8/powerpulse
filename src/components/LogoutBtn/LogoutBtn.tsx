@@ -1,27 +1,18 @@
-// import { useDispatch } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux';
 import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
-// import { logOutThunk } from '../../redux/auth/auth-operations';
-
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../redux';
 
 export const LogOutBtn = () => {
-  
   const dispatch = useDispatch<AppDispatch>();
-  
-   const handleLogOut = () => {
+
+  const handleLogOut = () => {
     dispatch(logOutUser({}));
   };
-  
+
   return (
-    <LogoutBtn
-      type="button"
-      to="/" //не забудь зробити кнопку (настя)
-      onClick={handleLogOut}
-    >
+    <LogoutBtn type="button" onClick={handleLogOut}>
       <Text>Logout</Text>
       <Icon
         name="logout"
@@ -31,6 +22,4 @@ export const LogOutBtn = () => {
       />
     </LogoutBtn>
   );
-}
-
-
+};

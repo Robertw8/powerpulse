@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import { palette } from '../../../styles/theme';
 
-export const Overlay = styled.div`
+export const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   z-index: 1;
 `;
 
-export const MenuWrapper = styled.div`
+export const MenuWrap = styled.div`
   position: absolute;
   top: 0;
   display: flex;
@@ -21,7 +21,7 @@ export const MenuWrapper = styled.div`
   width: 200px;
   padding: 19px 20px 21px 20px;
   background-color: ${palette.colors.orange};
-  z-index: 2;
+  z-index: 1000;
 
   @media screen and (min-width: 768px) {
     width: 350px;
@@ -47,15 +47,6 @@ export const MenuWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     display: none;
   }
-`;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 26px;
-  right: 32px;
-  background: none;
-  border: none;
-  cursor: pointer;
 `;
 
 export const Logout = styled.button`
@@ -86,7 +77,7 @@ export const NavMenu = styled.nav`
   margin-bottom: 382px;
 `;
 
-export const NavMenuLink = styled(NavLink)`
+export const NavLinkStyled = styled(NavLink)`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -104,4 +95,13 @@ export const NavMenuLink = styled(NavLink)`
   :focus {
     border: 1px solid var(--white-color);
   }
+`;
+export const CloseBtn = styled.button`
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  background-color: transparent;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
 `;

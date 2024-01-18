@@ -1,18 +1,25 @@
 import styled from '@emotion/styled';
 import { palette } from '../../styles/theme';
 
-import { Link } from 'react-router-dom';
-
-export const LogoutBtn = styled(Link)`
+export const LogoutBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   color: ${palette.colors.white};
   text-decoration: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
   @media screen and (max-width: 1439px) {
     display: none;
   }
 `;
 export const Text = styled.span`
   margin-right: 8px;
+  color: ${palette.colors.white};
 `;
