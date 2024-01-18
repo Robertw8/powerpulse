@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useAuth } from '../../../hooks';
+import routes from '../../../routes';
+
 import { UserBar } from '../UserBar/UserBar';
 import { UserNav } from '../UserNav/UserNav';
 import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
 import { MobileMenuBtn } from '../MobileMenuBtn/MobileMenuBtn';
 import MobileMenu from '../MobileMenu/MobileMenu';
-import useAuth from '../../../hooks/useAuth';
 import Icon from '../../Icon/Icon';
 import { Container } from '../..';
 import {
@@ -17,8 +19,9 @@ import {
 } from './Header.styled';
 
 const Header: React.FC = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isRefreshing } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+
   const onClickMenuBtn = () => {
     setIsOpen(!isOpen);
   };
@@ -32,7 +35,9 @@ const Header: React.FC = () => {
         }
       >
         <HeaderWrap>
-          <LinkLogo to="/">
+          <LinkLogo
+            to={!isLoggedIn && !isRefreshing ? routes.WELCOME : routes.DIARY}
+          >
             <Icon
               name="logo"
               iconWidth={{ mobile: '36px', tablet: '44px' }}

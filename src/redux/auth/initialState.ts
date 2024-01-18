@@ -21,7 +21,7 @@ const initialState: InitialAuthState = {
   token: '',
   isLoggedIn: false,
   isLoading: false,
-  isRefreshing: false,
+  isRefreshing: true,
   error: '',
   type: '',
 };

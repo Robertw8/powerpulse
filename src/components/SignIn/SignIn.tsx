@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import { useAuth } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
 
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
   BlockSignUp,
   ContainerSignUp,
@@ -11,20 +12,18 @@ import {
   BtnSignUp,
   WidthInput,
 } from '../SignUp/SignUp.styled';
+import { InputPrimary } from '../InputPrimary';
 
 import SignInSchema from './SignInSchema';
-
-import { InputPrimary } from '../InputPrimary';
+import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import { loginUser } from '../../redux/auth/operations';
-
 import { AppDispatch } from '../../redux';
 import { SignInArgs } from '../../services/apiRequest';
 
-
-
 const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const navigate = useNavigate();
+  const { isLoading } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -33,20 +32,26 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-        await dispatch(loginUser(values));
-        resetForm();
+      await dispatch(loginUser(values));
+
+      const response = await dispatch(loginUser(values));
+      const token = (response.payload as { data?: { token: string } })?.data
+        ?.token;
+
+      if (token) {
+        return navigate('/profile');
+      }
+
+      resetForm();
     },
   });
 
   return (
-    
     <ContainerSignUp>
       <BlockSignUp>
-        
         <TitleSignUp>Sign In</TitleSignUp>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
-      
             <InputPrimary
               bordercolor={
                 formik.errors.email && formik.touched.email
@@ -83,7 +88,7 @@ const SignInForm = () => {
             <div>{formik.errors.password}</div>
           )}
 
-          <BtnSignUp htmlType="submit" type="primary">
+          <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
         </FormContainer>
