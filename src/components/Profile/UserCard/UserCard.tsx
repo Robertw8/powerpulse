@@ -8,25 +8,28 @@ import {
   TitleBlock,
   TextBlockWrap,
   UserAvatarImg,
-  BtnAvatar,
+  // BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
   UserStatus,
   ImgUserAvatar,
+  InputFile,
 } from './UserCard.styled';
 import React from 'react';
 import { Icon } from '../../Icon';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/rootReducer';
+import { useAuth } from '../../../hooks';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
   // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
-  const userData = useSelector((state: RootState) => state.auth.user);
-  // const { name, } = userData;
-  // console.log(userData);
+  const { user } = useAuth();
+
+  const handleChangeImg = e => {
+    console.log(e.target.files[0]);
+    // console.log(e.currentTarget.files[0]);
+  };
 
   return (
     <>
@@ -41,22 +44,40 @@ const UserCard: React.FC = () => {
               />
             </ImgUserAvatar>
             <UserAvatarImg>
-              <BtnAvatar
-                onMouseEnter={() => setButtonHover(true)}
-                onMouseLeave={() => setButtonHover(false)}
-              >
-                <Icon
-                  name="add-foto"
-                  iconWidth={{ mobile: '24px', tablet: '32px' }}
-                  iconHeight={{ mobile: '24px', tablet: '32px' }}
-                  stroke={buttonHover ? '#efede8' : '#e6533c'}
-                />
-              </BtnAvatar>
+              <form>
+                {/* <BtnAvatar
+                  onMouseEnter={() => setButtonHover(true)}
+                  onMouseLeave={() => setButtonHover(false)}
+                >
+                  <Icon
+                    name="add-foto"
+                    iconWidth={{ mobile: '24px', tablet: '32px' }}
+                    iconHeight={{ mobile: '24px', tablet: '32px' }}
+                    stroke={buttonHover ? '#efede8' : '#e6533c'}
+                  />
+                </BtnAvatar> */}
+                <label
+                  onMouseEnter={() => setButtonHover(true)}
+                  onMouseLeave={() => setButtonHover(false)}
+                >
+                  <Icon
+                    name="add-foto"
+                    iconWidth={{ mobile: '24px', tablet: '32px' }}
+                    iconHeight={{ mobile: '24px', tablet: '32px' }}
+                    stroke={buttonHover ? '#efede8' : '#e6533c'}
+                  />
+                  <InputFile
+                    name="file"
+                    type="file"
+                    onChange={handleChangeImg}
+                  />
+                </label>
+              </form>
             </UserAvatarImg>
           </ImgWrap>
 
           <UserWrap>
-            <UserName>{userData.name}</UserName>
+            <UserName>{user.name}</UserName>
             <UserStatus>User</UserStatus>
           </UserWrap>
 
@@ -70,7 +91,7 @@ const UserCard: React.FC = () => {
                 />
                 <TitleBlock>Daily calorie intake</TitleBlock>
               </TextBlockWrap>
-              <TextValue>{userData.dailyCalories || 0}</TextValue>
+              <TextValue>{user.dailyCalories || 0}</TextValue>
             </BlockData>
             <BlockData>
               <TextBlockWrap>
@@ -82,7 +103,7 @@ const UserCard: React.FC = () => {
                 <TitleBlock>Daily physical activity</TitleBlock>
               </TextBlockWrap>
               <TextValue>
-                {userData.dailyActivity || 0}
+                {user.dailyActivity || 0}
                 <span> min</span>
               </TextValue>
             </BlockData>
