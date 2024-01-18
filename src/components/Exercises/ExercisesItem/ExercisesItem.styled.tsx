@@ -43,6 +43,9 @@ const ListItemTitle = styled.h2`
     font-size: 20px;
     line-height: 1.2;
     color: #EFEDE8;
+    ::first-letter {
+      text-transform: uppercase;
+    }
 `
 
 const ListItemCategory = styled.p`
