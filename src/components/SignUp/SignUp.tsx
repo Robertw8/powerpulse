@@ -16,7 +16,7 @@ import {
 import { InputPrimary } from '../InputPrimary';
 
 import SignUpSchema from './SignUpSchema';
-import { registerUser } from '../../redux/auth/operations';
+import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
 import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 

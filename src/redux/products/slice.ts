@@ -17,8 +17,8 @@ const slice = createSlice({
       .addCase(getProducts.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getProducts.fulfilled, (state, action) => {
-        state.products = [...state.products, ...action.payload] as Product[];
+      .addCase(getProducts.fulfilled, (state, { payload }) => {
+        state.products = [...state.products, ...payload] as Product[];
         state.isLoading = false;
       })
       .addCase(getProducts.rejected, (state, action) => {

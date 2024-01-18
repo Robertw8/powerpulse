@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { persistedAuthReducer } from './auth/slice';
+import { persistedAuthReducer } from './auth';
 import { productsReducer } from './products';
 import { exercisesReducer } from './Waist';
 
