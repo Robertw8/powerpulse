@@ -11,4 +11,4 @@ line-height: 18px;
 
   }
 `
-export {NotFound}
+export { NotFound };
