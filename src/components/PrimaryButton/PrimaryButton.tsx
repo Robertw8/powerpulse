@@ -2,7 +2,7 @@ import { CustomButton } from './PrimaryButton.styled';
 import { ButtonProps } from 'antd';
 
 interface PrimaryButtonProps extends ButtonProps {
-  type: 'link' | 'text' | 'default' | 'primary' | 'dashed';
+  type: 'default' | 'primary' | 'dashed';
   text: string;
   sizes: 'large' | 'middle' | 'small' | 'extraSmall';
   padding?: string;
