@@ -20,6 +20,7 @@ const Exercises: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(10);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [total, setTotal] = useState<number>(1);
   
 
   useEffect(() => {
@@ -31,10 +32,13 @@ const Exercises: React.FC = () => {
     });
     setIsLoading(true);
     responce
-      .then(({ data }) => setExercisesList(data))
+      .then(({ data, totalItems }) => {
+        setExercisesList(data)
+        setTotal(totalItems)
+      })
       .catch((error) => console.log(error))
       .finally(() => setIsLoading(false));
-  },[currentCategory, limit, page])
+  },[currentCategory, limit, page, total])
 
   return (
     <ExercisesWrap>
@@ -53,7 +57,10 @@ const Exercises: React.FC = () => {
       <ExercisesSlider
         exercisesList={exercisesList}
         currentCategory={currentCategory}
-        setPage={setPage} />
+        setPage={setPage}
+        total={total}
+        limit={limit}
+        isLoading={isLoading} />
     </ExercisesWrap>
   );
 };
