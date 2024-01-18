@@ -71,8 +71,8 @@ export const App: React.FC = () => {
             <Route path="muscles" element={<ExercisesPage />} />
             <Route path="equipment" element={<ExercisesPage />} />
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );
