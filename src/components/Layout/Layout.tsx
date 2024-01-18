@@ -5,7 +5,7 @@ import { Header } from '..';
 const Layout: React.FC = () => {
   return (
     <>
-      <Header testAuth={false} />
+      <Header />
       <Suspense fallback={'Loading...'}>
         <Outlet />
       </Suspense>

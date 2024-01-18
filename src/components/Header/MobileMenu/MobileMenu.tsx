@@ -1,6 +1,7 @@
 import { useState, useEffect, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../redux/auth/operations';
+import { AppDispatch } from '../../../redux';
 
 import {
   MenuWrap,
@@ -18,7 +19,7 @@ interface MobileMenuProps {
 
 const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const closeMenu = () => {
     setMenuIsOpen(false);
@@ -52,24 +53,19 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
     setMenuIsOpen(isOpen);
   }, [isOpen]);
 
-  const dispatch = useDispatch();
-
   const handleLogOut = (): void => {
     closeMenu();
 
-    dispatch(logOutUser());
-
+    dispatch(logOutUser({}));
   };
 
   return (
     <>
-
       {menuIsOpen && <Backdrop onClick={closeMenu} />}
       <MenuWrap
         className={menuIsOpen ? 'shown' : 'hidden'}
         onClick={handleBackdropClick}
       >
-
         <CloseBtn onClick={closeMenu}>
           <Icon
             name="x"
