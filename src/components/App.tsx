@@ -1,10 +1,11 @@
 import { lazy, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout, PublicRoute, PrivateRoute } from '.';
 import routes from '../routes';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux';
 import { getCurrentUser } from '../redux/auth/operations';
+import { useAuth } from '../hooks';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
@@ -17,6 +18,7 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const { isLoggedIn, isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
@@ -26,7 +28,16 @@ export const App: React.FC = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<Navigate to={routes.DIARY} />} /> */}
+          <Route
+            index
+            element={
+              <Navigate
+                to={
+                  !isLoggedIn && !isRefreshing ? routes.WELCOME : routes.DIARY
+                }
+              />
+            }
+          />
 
           <Route
             path={routes.WELCOME}
