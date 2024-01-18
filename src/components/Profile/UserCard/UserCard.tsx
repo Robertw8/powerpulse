@@ -70,7 +70,7 @@ const UserCard: React.FC = () => {
                 />
                 <TitleBlock>Daily calorie intake</TitleBlock>
               </TextBlockWrap>
-              <TextValue>0</TextValue>
+              <TextValue>{userData.dailyCalories || 0}</TextValue>
             </BlockData>
             <BlockData>
               <TextBlockWrap>
@@ -81,7 +81,10 @@ const UserCard: React.FC = () => {
                 />
                 <TitleBlock>Daily physical activity</TitleBlock>
               </TextBlockWrap>
-              <TextValue>0 min</TextValue>
+              <TextValue>
+                {userData.dailyActivity || 0}
+                <span> min</span>
+              </TextValue>
             </BlockData>
           </BlockWrap>
 

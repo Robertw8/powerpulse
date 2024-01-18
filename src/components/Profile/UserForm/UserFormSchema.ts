@@ -11,16 +11,16 @@ interface FormValues {
   levelActivity: null | 1 | 2 | 3 | 4 | 5;
 }
 //formik initialValues
-const initialValues: FormValues = {
-  name: '',
-  height: 0,
-  currentWeight: 0,
-  desiredWeight: 0,
-  birthday: '',
-  blood: null,
-  sex: '',
-  levelActivity: null,
-};
+// const initialValues: FormValues = {
+//   name: '',
+//   height: 0,
+//   currentWeight: 0,
+//   desiredWeight: 0,
+//   birthday: '',
+//   blood: null,
+//   sex: '',
+//   levelActivity: null,
+// };
 
 //yup validation
 const schema = object({
@@ -36,4 +36,4 @@ const schema = object({
   levelActivity: number().required('Required field'),
 });
 
-export { initialValues, schema };
+export { FormValues, schema };
