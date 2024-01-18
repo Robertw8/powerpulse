@@ -12,14 +12,14 @@ interface ExercisesSubcategoriesListProps {
 }
 
 const ExercisesSubcategoriesList: React.FC<ExercisesSubcategoriesListProps> = ({
-  exercisesList,
+  exercisesList
 }) => {
   return (
     <ExercisesList>
       {exercisesList.map(({ _id, filter, name, imgURL }) => (
         <ExercisesItem key={_id} filter={filter} name={name} img={imgURL} />
       ))}
-    </ExercisesList>
+    </ExercisesList >
   );
 };
 
