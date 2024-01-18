@@ -73,7 +73,7 @@ const getCurrentUser = operationWrapper(
       error => {
         error.response &&
           error.response.status === 401 &&
-          callToast('error', 'Session expired, please log in again');
+          callToast('error', 'Session expired, please log in again', 1000 * 60);
 
         return '';
       }
