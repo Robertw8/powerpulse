@@ -6,7 +6,7 @@ const callToast = (
   duration: number = 5000
 ) => {
   toast[type](text, {
-    position: 'top-right',
+    position: 'top-left',
     duration: duration,
     style: {
       backgroundColor: '#EFEDE833',
