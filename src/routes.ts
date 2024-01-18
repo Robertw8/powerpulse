@@ -1,5 +1,6 @@
 interface Routes {
   HOME: string;
+  WELCOME: string;
   SIGNUP: string;
   SIGNIN: string;
   PROFILE: string;
@@ -10,12 +11,13 @@ interface Routes {
 
 const routes: Routes = {
   HOME: '/',
-  SIGNUP: '/signup',
-  SIGNIN: '/signin',
-  PROFILE: '/profile',
-  DIARY: '/diary',
-  PRODUCTS: '/products',
-  EXERCISES: '/exercises',
+  WELCOME: 'welcome',
+  SIGNUP: 'signup',
+  SIGNIN: 'signin',
+  PROFILE: 'profile',
+  DIARY: 'diary',
+  PRODUCTS: 'products',
+  EXERCISES: 'exercises',
 };
 
 export default routes;

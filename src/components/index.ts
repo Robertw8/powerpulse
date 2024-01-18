@@ -15,3 +15,5 @@ export { Exercises } from './Exercises';
 export { UserCard, UserForm } from './Profile';
 export { Wrap } from './Profile/UserForm/UserForm.styled';
 export { Welcome } from './Welcome/';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as PublicRoute } from './PublicRoute';
