@@ -14,8 +14,8 @@ import {
 } from './WaistItem.styled';
 import sprite from '../../../assets/images/sprite.svg';
 
-// import  WaistProps  from '../WaistList'; 
 import React from 'react';
+import { WaistExercises } from '../../../redux/Waist/types';
 
 interface List {
   burnedCalories: string;
@@ -24,14 +24,7 @@ interface List {
 }
 
 export interface WaistProps {
-  waistItem: {
-    date: {
-      name: string;
-      burnedCalories: number;
-      target: string;
-      bodyPart: string;
-    };
-  };
+  waistItem: WaistExercises;
 }
 interface Texts {
   cardLabel: string;
@@ -49,7 +42,7 @@ const texts: Texts = {
   },
 };
 const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
-  const { name, burnedCalories, target, bodyPart } = waistItem.date;
+  const { name, burnedCalories, target, bodyPart } = waistItem;
   return (
     <>
       <WaistItemLi>
@@ -92,4 +85,4 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
   );
 };
 
-export default  WaistItem ;
+export default WaistItem;

@@ -1,5 +1,6 @@
 import { operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
+import { WaistExercises } from './types';
 
 const getWaistExercises = operationWrapper(
   'exercises/getWaistExercises',
@@ -8,7 +9,7 @@ const getWaistExercises = operationWrapper(
       method: 'get',
       url: 'exercises',
     });
-    return response.data;
+    return response.data as WaistExercises[];
   }
 );
 

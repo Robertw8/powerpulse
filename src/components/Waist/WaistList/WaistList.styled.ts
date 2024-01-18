@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-
+import { palette } from '../../../styles/index';
 export const WaistListContainer = styled.div`
   display: flex;
 `;
@@ -23,8 +23,8 @@ export const WaistItemUl = styled.ul`
   width: 100%;
 
   &::-webkit-scrollbar-thumb {
-    background-color: #ef8964;
-    border-radius: 12px;
+    background-color: ${palette.colors.lightOrange};
+    border-radius: ${palette.radiuses.primary};
   }
 
   &::-webkit-scrollbar {
@@ -33,7 +33,7 @@ export const WaistItemUl = styled.ul`
 
   &::-webkit-scrollbar-track {
     background: rgba(239, 237, 232, 0.1);
-    border-radius: 12px;
+    border-radius: ${palette.radiuses.primary};
   }
 
   @media screen and (min-width: 768px) {
@@ -53,7 +53,7 @@ export const WaistItemUl = styled.ul`
 `;
 
 export const NoExercisesTitle = styled.h2`
-  color: #efede8;
+  color: ${palette.colors.white};
   font-size: 24px;
   font-weight: 700;
   line-height: 1.16;
