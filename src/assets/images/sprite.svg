@@ -93,5 +93,10 @@
 			<path fill="none" stroke="#efede8" style="stroke: var(--color2, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4615" d="M8 8l16 16">
 			</path>
 		</symbol>
+    <symbol>
+      <g stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m19.5 6.5-13 13M6.5 6.5l13 13"/>
+      </g>
+    </symbol>
   </defs>
 </svg>

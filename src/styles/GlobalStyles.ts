@@ -41,6 +41,12 @@ const GlobalStyles = css`
     padding: 0;
   }
 
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   .scrollbar-inner {
     &::-webkit-scrollbar {
       width: 6px;
