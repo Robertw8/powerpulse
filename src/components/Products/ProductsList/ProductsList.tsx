@@ -1,8 +1,9 @@
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { List, ListWrapper } from './ProductsList.styled';
 import { ProductsItem } from '..';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
+import { ItemAddedModal } from '../ItemAddedModal';
 
 import {
   getProducts,
@@ -18,6 +19,7 @@ const ProductsList: React.FC = () => {
   const isLoading = useSelector(selectIsLoading);
   const productsListRef = useRef<HTMLUListElement>(null);
   const pageRef = useRef<number>(1);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(getProducts(pageRef.current));
@@ -48,11 +50,16 @@ const ProductsList: React.FC = () => {
 
   return (
     <ListWrapper>
+      <button onClick={() => setIsModalOpen(true)}>Open modal</button>
       <List className="scrollbar-outer" ref={productsListRef}>
         {products.map((product, index) => (
           <ProductsItem product={product} key={index} />
         ))}
       </List>
+      <ItemAddedModal
+        open={isModalOpen}
+        handleClose={() => setIsModalOpen(false)}
+      />
     </ListWrapper>
   );
 };
