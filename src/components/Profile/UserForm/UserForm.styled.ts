@@ -52,7 +52,12 @@ const RadioWrapBlock = styled.div`
 
 const LableRadio = styled.label`
   display: flex;
-  height: 28px;
+  padding: 3px 0;
+  /* height: 38px; */
+
+  @media screen and (min-width: 769px) {
+    /* height: 28px; */
+  }
 `;
 
 const Input = styled.input`
@@ -125,7 +130,7 @@ const Btn = styled(Button)`
   border: none;
   background-color: #e6533c;
   color: #efede8;
-  margin-top: 64px;
+  margin: 48px 0;
   // padding: 12px 40px;
 
   &:hover,

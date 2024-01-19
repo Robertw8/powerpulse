@@ -1,4 +1,5 @@
-// import { PrimaryButton } from '../..';
+import React from 'react';
+import { useFormik } from 'formik';
 import {
   RadioWrap,
   Btn,
@@ -12,9 +13,8 @@ import {
   RadioWrapBlock,
   WrapForm,
 } from './UserForm.styled';
-import React from 'react';
+// import { PrimaryButton } from '../..';
 import { FormValues, schema } from './UserFormSchema';
-import { useFormik } from 'formik';
 import { apiService } from '../../../services';
 import useAuth from '../../../hooks/useAuth';
 import { errorWrapper } from '../../../helpers';
