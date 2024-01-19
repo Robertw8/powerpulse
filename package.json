@@ -26,13 +26,11 @@
     "react-hot-toast": "^2.4.1",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.1",
-    "react-toastify": "^9.1.3",
     "redux-persist": "^6.0.0",
     "yup": "^1.3.3"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
-    "@types/axios": "^0.14.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
