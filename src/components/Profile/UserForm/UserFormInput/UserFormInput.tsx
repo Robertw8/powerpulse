@@ -7,8 +7,13 @@ import {
   LabelWrapBlock,
 } from './UserFormInput.styled';
 import { StyledInput } from '../../../InputPrimary/InputPrimary.styled';
+import { User } from '../../../../redux/auth/types';
+import { FormikValues } from 'formik';
 
-const UserFormInput = ({ formik, user }) => {
+const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
+  formik,
+  user,
+}) => {
   return (
     <>
       <BlockWrapInput>
