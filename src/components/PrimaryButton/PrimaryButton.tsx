@@ -7,6 +7,7 @@ interface PrimaryButtonProps extends ButtonProps {
   sizes: 'large' | 'middle' | 'small' | 'extraSmall';
   padding?: string;
   fontSize?: number;
+  onclick: () => void;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -15,6 +16,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   sizes,
   padding,
   fontSize,
+  onclick = () => null,
 }) => {
   return (
     <CustomButton
@@ -22,6 +24,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       sizes={sizes}
       fontSize={fontSize}
       padding={padding}
+      onClick={onclick}
     >
       {text}
     </CustomButton>
