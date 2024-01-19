@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { List, ListWrapper } from './ProductsList.styled';
-import { ProductsItem } from '..';
-import { ItemAddedModal } from '../ItemAddedModal';
+import { ProductsItem, ProductAddedModal } from '..';
 
 import {
   getProducts,
@@ -56,7 +55,7 @@ const ProductsList: React.FC = () => {
           <ProductsItem product={product} key={index} />
         ))}
       </List>
-      <ItemAddedModal
+      <ProductAddedModal
         open={isModalOpen}
         handleClose={() => setIsModalOpen(false)}
       />

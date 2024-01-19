@@ -8,14 +8,14 @@ import {
   ModalTitle,
   StyledLink,
   Value,
-} from './ItemAddedModal.styled';
+} from './ProductAddedModal.styled';
 import { PrimaryButton } from '../..';
 
-interface ItemAddedModalProps extends ModalProps {
+interface ProductAddedModalProps extends ModalProps {
   handleClose: () => void;
 }
 
-const ItemAddedModal: React.FC<ItemAddedModalProps> = ({
+const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
   open,
   handleClose,
 }) => {
@@ -59,4 +59,4 @@ const ItemAddedModal: React.FC<ItemAddedModalProps> = ({
   );
 };
 
-export default ItemAddedModal;
+export default ProductAddedModal;
