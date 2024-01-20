@@ -14,6 +14,7 @@ const user: User = {
     sex: '',
     levelActivity: '',
   },
+  avatarURL: '',
 };
 
 const initialState: InitialAuthState = {

@@ -4,7 +4,7 @@ import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
 
-export const LogOutBtn = () => {
+export const LogOutBtn: React.FC<{ className?: string }> = ({ className }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = () => {
@@ -12,12 +12,13 @@ export const LogOutBtn = () => {
   };
 
   return (
-    <LogoutBtn type="button" onClick={handleLogOut}>
+    <LogoutBtn onClick={handleLogOut} className={className}>
       <Text>Logout</Text>
       <Icon
         name="logout"
         iconWidth={{ mobile: '20px', tablet: '20px' }}
-        iconHeight={{ mobile: '', tablet: '20px' }}
+        iconHeight={{ mobile: '20px', tablet: '20px' }}
+        fill={'#e6533c'}
         stroke={'#e6533c'}
       />
     </LogoutBtn>

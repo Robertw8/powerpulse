@@ -42,14 +42,43 @@ const UserAvatarImg = styled.div`
 
   @media screen and (min-width: 769px) {
     top: 22px;
+    /* top: -16px; */
   }
 `;
 
-const BtnAvatar = styled.button`
-  padding: 0;
-  border: none;
-  background-color: transparent;
+const Img = styled.img`
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  position: relative;
+  top: -1px;
+
+  @media screen and (min-width: 769px) {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    position: relative;
+    top: -16px;
+  }
 `;
+
+const WrapIcon = styled.div`
+  justify-content: center;
+  display: contents;
+  width: 88px;
+  height: 88px;
+
+  @media screen and (min-width: 769px) {
+    width: 148px;
+    height: 148px;
+  }
+`;
+
+// const BtnAvatar = styled.button`
+//   padding: 0;
+//   border: none;
+//   background-color: transparent;
+// `;
 
 const UserWrap = styled.div`
   text-align: center;
@@ -64,6 +93,7 @@ const UserName = styled.h3`
   @media screen and (min-width: 769px) {
     font-size: 24px;
     line-height: 28px;
+    margin: 0 0 8px;
   }
 `;
 const UserStatus = styled.p`
@@ -140,6 +170,16 @@ const Text = styled.p`
   }
 `;
 
+const WrapLogOut = styled.div`
+  margin: 16px 0;
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (min-width: 769px) {
+    margin: 32px 0;
+  }
+`;
+
 export {
   ImgWrap,
   Text,
@@ -150,11 +190,14 @@ export {
   TitleBlock,
   TextBlockWrap,
   UserAvatarImg,
-  BtnAvatar,
+  // BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
   UserStatus,
   ImgUserAvatar,
   InputFile,
+  WrapLogOut,
+  Img,
+  WrapIcon,
 };

@@ -7,7 +7,7 @@ interface RequestConfig extends AxiosRequestConfig {
 interface ApiServiceOptions {
   method: 'get' | 'post' | 'patch' | 'put' | 'delete';
   url: string;
-  data?: { [key: string]: unknown };
+  data?: { [key: string]: unknown } | unknown;
   config?: RequestConfig;
 }
 

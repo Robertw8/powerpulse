@@ -6,6 +6,10 @@ export const NavList = styled.ul`
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
+  @media screen and (max-width: 769px) {
+    display: none;
+  }
 `;
 
 export const LinkStyled = styled(NavLink)`
@@ -16,14 +20,11 @@ export const LinkStyled = styled(NavLink)`
   transition: background-color 250ms linear;
   text-decoration: none;
   &.active {
-    background: ${palette.colors.orange};
+    background-color: ${palette.colors.orange};
   }
 
   &:hover,
   &:focus {
-    background-color: #e6533c;
-  }
-  @media screen and (max-width: 769px) {
-    display: none;
+    background-color: ${palette.colors.orange};
   }
 `;
