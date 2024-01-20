@@ -26,7 +26,7 @@
 			</path>
 		</symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 42 32">
-			<path fill="none"  style="stroke: var(--color3, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.3" d="M23.467 29.333l13.333-13.333M36.8 16l-13.333-13.333M36.8 16h-32">
+			<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.3" d="M23.467 29.333l13.333-13.333M36.8 16l-13.333-13.333M36.8 16h-32">
 			</path>
 		</symbol>
     <symbol id="icon-bubble" viewBox="0 0 32 32">
@@ -97,6 +97,9 @@
       <g stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="m19.5 6.5-13 13M6.5 6.5l13 13"/>
       </g>
+    </symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 18 18">
+      <path d="m4.5 6.75 4.5 4.5 4.5-4.5" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
   </defs>
 </svg>
