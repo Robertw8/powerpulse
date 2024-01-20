@@ -78,20 +78,15 @@ export const NavLinkStyled = styled(NavLink)`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 18px;
   padding: 10px 27px;
-  color: rgba(239, 237, 232, 1);
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   text-decoration: none;
+  color: ${palette.colors.white};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-  }
-
-  &:hover,
-  :focus {
-    border: 1px solid ${palette.colors.white};
   }
 `;
 

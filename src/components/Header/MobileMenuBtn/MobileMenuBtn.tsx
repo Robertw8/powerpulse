@@ -5,7 +5,7 @@ interface MobileMenuBtnProps {
   onClick: () => void;
 }
 
-export const MobileMenuBtn: React.FC<MobileMenuBtnProps> = ({ onClick }) => {
+const MobileMenuBtn: React.FC<MobileMenuBtnProps> = ({ onClick }) => {
   return (
     <Button onClick={onClick}>
       <Icon
@@ -16,3 +16,5 @@ export const MobileMenuBtn: React.FC<MobileMenuBtnProps> = ({ onClick }) => {
     </Button>
   );
 };
+
+export default MobileMenuBtn;
