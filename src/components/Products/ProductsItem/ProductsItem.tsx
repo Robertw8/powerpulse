@@ -15,7 +15,6 @@ import {
   SpecificationsItem,
   SpecificationName,
   SpecificationValue,
-  StyledPopover,
 } from './ProductsItem.styled';
 import { Icon } from '../../Icon';
 import { Product } from '../../../redux/products/types';

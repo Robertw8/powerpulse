@@ -1,17 +1,19 @@
 import { SelectProps } from 'antd';
 import { StyledSelect, StyledPopupContent } from '../FilterDropdown';
 import { Icon } from '../../Icon';
+// import { DefaultOptionType } from 'antd/es/select';
+// import { BaseOptionType } from 'antd/es/cascader';
 
 interface SearchFilterProps extends SelectProps {
-  // items: unknown;
+  // items: unknown // !temp
 }
 
-const SearchFilter: React.FC<SearchFilterProps> = ({ items }) => {
+const SearchFilter: React.FC<SearchFilterProps> = () => {
   return (
     <StyledSelect
       showSearch
       placeholder="Search"
-      options={items}
+      // options={items} // !temp
       dropdownRender={menu => <StyledPopupContent>{menu}</StyledPopupContent>}
       dropdownStyle={{
         backgroundColor: '#1C1C1C',

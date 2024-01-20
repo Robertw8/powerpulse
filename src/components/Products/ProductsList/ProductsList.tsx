@@ -13,16 +13,16 @@ import { AppDispatch } from '../../../redux';
 import throttle from 'lodash.throttle';
 
 const ProductsList: React.FC = () => {
-  const [query, setQuery] = useState<string>('');
+  const [query] = useState<string>('');
   const dispatch = useDispatch<AppDispatch>();
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
   const productsListRef = useRef<HTMLUListElement>(null);
   const pageRef = useRef<number>(1);
 
-  const handleChange = ({ target }) => {
-    setQuery(target.value);
-  };
+  // const handleChange = ({ target }) => {
+  //   setQuery(target.value);
+  // };
 
   useEffect(() => {
     dispatch(getProducts({ page: 1 }));
