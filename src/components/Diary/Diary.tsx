@@ -15,6 +15,7 @@ import {
   import { Icon } from '../Icon';
 import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
+import { MyCalendar } from './Calendar';
 
   
 //   import { useState } from 'react';
@@ -24,6 +25,7 @@ import { DailyStatusBlock } from './DailyStatusBlock';
     // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
     return (
       <>
+      <MyCalendar></MyCalendar>
       <BlockWrap>
           <DailyStatusBlock text={'Daily calorie intake'} backgroundColor='#E6533C' textColor='rgba(239, 237, 232, 0.80)' children={   <Icon
                     name="food"
