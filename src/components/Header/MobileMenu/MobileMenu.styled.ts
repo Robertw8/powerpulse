@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Drawer } from 'antd';
-
 import { NavLink } from 'react-router-dom';
 import { palette } from '../../../styles/theme';
 
@@ -17,6 +16,7 @@ export const DrawerStyled = styled(Drawer)`
   .ant-drawer-header-close-only {
     display: none;
   }
+
   &.ant-drawer-content {
     background-color: ${palette.colors.orange};
   }
@@ -33,6 +33,7 @@ export const DrawerStyled = styled(Drawer)`
     &.shown {
       right: 0;
     }
+
     transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -94,35 +95,6 @@ export const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-// export const NavMenu = styled.nav`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 16px;
-//   margin-top: 245px;
-//   margin-bottom: 382px;
-// `;
-
-// export const NavLinkStyled = styled(NavLink)`
-//   text-align: center;
-//   font-size: 14px;
-//   font-weight: 400;
-//   line-height: 1.5;
-//   padding: 10px 27px;
-//   color: rgba(239, 237, 232, 1);
-//   border: 1px solid rgba(239, 237, 232, 0.2);
-//   border-radius: 12px;
-
-//   @media screen and (min-width: 768px) {
-//     font-size: 16px;
-//   }
-
-//   &:hover,
-//   :focus {
-//     border: 1px solid var(--white-color);
-//   }
-// `;
 export const CloseBtn = styled.button`
   position: absolute;
   top: 26px;

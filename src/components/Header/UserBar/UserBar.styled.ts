@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 
 export const Icon = styled.svg`
@@ -15,7 +16,7 @@ export const LinkStyled = styled(Link)`
   align-items: center;
   width: 37px;
   height: 37px;
-  border: 1px solid #e6533c;
+  border: 1px solid ${palette.colors.orange};
   border-radius: 50%;
   background-color: rgba(48, 48, 48, 0.3);
 

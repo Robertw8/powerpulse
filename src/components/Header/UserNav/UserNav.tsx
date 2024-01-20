@@ -1,10 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
-
 import { NavList, LinkStyled } from './UserNav.styled';
-// import { useDispatch } from 'react-redux';
-
-// import { useState } from 'react';
 
 export const UserNav: React.FC = () => {
   const user = useSelector(selectUser);
@@ -15,8 +11,7 @@ export const UserNav: React.FC = () => {
   const areSomeSettingsPresent = Object.values(user.settings || {}).some(
     setting => setting
   );
-  //   const dispatch = useDispatch();
-  //   const [isActivePage, setIsActivePage] = useState<string>('diary');
+
   return (
     <NavList>
       {areSomeSettingsPresent && (

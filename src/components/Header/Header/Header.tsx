@@ -21,7 +21,6 @@ import {
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -53,7 +52,7 @@ const Header: React.FC = () => {
               </NavWrap>
               <UserBarWrapper>
                 <UserBar />
-                <LogOutBtn className='desktop' />
+                <LogOutBtn className="desktop" />
                 <MobileMenuBtn onClick={toggleMenu} />
                 <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
               </UserBarWrapper>
