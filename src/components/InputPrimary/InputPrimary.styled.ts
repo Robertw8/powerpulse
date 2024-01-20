@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Input, InputProps } from 'antd';
 
-interface StyledInputProps extends InputProps {
+ interface StyledInputProps extends InputProps {
   bordercolor: 'default' | 'success' | 'error';
 }
 
@@ -58,4 +58,5 @@ const StyledInput = styled(Input)<StyledInputProps>`
   }
 `;
 
-export { StyledInput };
+export type { StyledInputProps };
+export { StyledInput, validationStatuses };
