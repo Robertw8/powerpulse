@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getProducts } from '.';
+import { getProducts, getProductsCategories, setCalculatedCalories } from '.';
 import { Product, InitialState } from './types';
 
 const initialState: InitialState = {
   products: [],
   isLoading: false,
   error: '',
+  calculatedCalories: 0,
+  categories: [],
 };
 
 const slice = createSlice({
@@ -24,6 +26,17 @@ const slice = createSlice({
       .addCase(getProducts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      // ! temp
+      .addCase(setCalculatedCalories, (state, action) => {
+        state.calculatedCalories = action.payload;
+      })
+      .addCase(getProductsCategories.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getProductsCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
+        state.isLoading = false;
       });
   },
 });

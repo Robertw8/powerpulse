@@ -24,6 +24,10 @@ const StyledInput = styled(Input)<StyledInputProps>`
   border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
   box-shadow: 0;
 
+  &:disabled {
+    border-color: ${validationStatuses.default};
+  }
+
   &:hover,
   &:focus,
   &:focus-within {

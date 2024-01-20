@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const StyledModal = styled(Modal)`
   .ant-modal-content {
-    padding: 48px;
+    padding: 48px 24px;
     background-color: #10100f !important;
     border: 1px solid #efede833;
 
@@ -45,7 +45,11 @@ const ButtonWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-top: 15px;
+
   font-weight: 'Roboto', sans-serif;
   color: #efede84d;
   font-size: 14px;

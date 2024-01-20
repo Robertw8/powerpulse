@@ -6,6 +6,7 @@ const ListWrapper = styled.div`
 
   @media screen and (min-width: 1441px) {
     max-width: 840px;
+    margin-top: 10px;
   }
 `;
 
@@ -21,7 +22,7 @@ const List = styled.ul`
     flex-direction: row;
     gap: 32px 16px;
 
-    max-height: 660px;
+    max-height: 560px;
   }
 
   @media screen and (min-width: 1441px) {
