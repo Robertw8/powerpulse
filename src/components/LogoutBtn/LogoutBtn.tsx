@@ -4,7 +4,7 @@ import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
 
-export const LogOutBtn = ({ className }) => {
+export const LogOutBtn: React.FC<{ className?: string }> = ({ className }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = () => {

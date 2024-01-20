@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { DrawerStyled } from '../MobileMenu/MobileMenu.styled';
 
 import { useDispatch } from 'react-redux';
@@ -7,18 +6,19 @@ import { logOutUser } from '../../../redux/auth/operations';
 import { NavMenu, NavLinkStyled, CloseBtn, Logout } from './MobileMenu.styled';
 
 import Icon from '../../Icon/Icon';
+import { AppDispatch } from '../../../redux';
 
 interface MobileMenuProps {
   isOpen: boolean;
   toggleMenu: () => void;
 }
 
-const MobileMenu: FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
-  const dispatch = useDispatch();
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = (): void => {
     toggleMenu();
-    dispatch(logOutUser());
+    dispatch(logOutUser({}));
   };
 
   return (
