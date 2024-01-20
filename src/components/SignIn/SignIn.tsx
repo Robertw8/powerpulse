@@ -1,6 +1,6 @@
-import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -11,6 +11,9 @@ import {
   TitleSignUp,
   BtnSignUp,
   WidthInput,
+  ParagraphAuth,
+  ParagraphAfterBtn,
+  LinkAuth
 } from '../SignUp/SignUp.styled';
 import { InputPrimary } from '../InputPrimary';
 
@@ -50,6 +53,7 @@ const SignInForm = () => {
     <ContainerSignUp>
       <BlockSignUp>
         <TitleSignUp>Sign In</TitleSignUp>
+        <ParagraphAuth>Welcome! Please enter your credentials to login to the platform:</ParagraphAuth>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
             <InputPrimary
@@ -91,6 +95,7 @@ const SignInForm = () => {
           <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
+          <ParagraphAfterBtn>Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth></ParagraphAfterBtn>
         </FormContainer>
       </BlockSignUp>
       <ImgSignUp

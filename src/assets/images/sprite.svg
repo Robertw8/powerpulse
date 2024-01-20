@@ -93,10 +93,8 @@
 			<path fill="none" stroke="#efede8" style="stroke: var(--color2, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.4615" d="M8 8l16 16">
 			</path>
 		</symbol>
-    <symbol>
-      <g stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="m19.5 6.5-13 13M6.5 6.5l13 13"/>
-      </g>
+    <symbol id="icon-line" viewBox="0 0 87 32">
+      <path fill="none" stroke="#ef8964" style="stroke: var(--color1, #ef8964)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="0.9275" d="M61.051 0.464c-20.416 0.3-65 3.913-60.233 22.304 4.284 12.985 65.327 10.195 80.388 0.425s-5.623-19.937-34.455-16.338"></path>
     </symbol>
     <symbol id="icon-chevron-down" viewBox="0 0 18 18">
       <path d="m4.5 6.75 4.5 4.5 4.5-4.5" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
