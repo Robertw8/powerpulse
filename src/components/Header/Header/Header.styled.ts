@@ -26,9 +26,6 @@ export const HeaderWrap = styled.div`
 `;
 export const LinkLogo = styled(Link)`
   margin-right: auto;
-
-  /* bottom: 24px;
-  left: 30px; */
   display: inline-flex;
   align-items: center;
   background-color: transparent;

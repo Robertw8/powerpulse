@@ -5,6 +5,7 @@ export const Button = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0px;
 
   @media screen and (max-width: 1439px) {
     display: block;
