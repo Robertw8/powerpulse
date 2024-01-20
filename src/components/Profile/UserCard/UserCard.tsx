@@ -1,3 +1,10 @@
+import React from 'react';
+import { useState } from 'react';
+import { apiService } from '../../../services/';
+import { useAuth } from '../../../hooks';
+import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
+import { Icon } from '../../Icon';
+
 import {
   ImgWrap,
   Text,
@@ -8,7 +15,6 @@ import {
   TitleBlock,
   TextBlockWrap,
   UserAvatarImg,
-  // BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
@@ -19,12 +25,6 @@ import {
   Img,
   WrapIcon,
 } from './UserCard.styled';
-import React from 'react';
-import { Icon } from '../../Icon';
-import { useState } from 'react';
-import { useAuth } from '../../../hooks';
-import { apiService } from '../../../services/';
-import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
@@ -53,11 +53,12 @@ const UserCard: React.FC = () => {
   return (
     <>
       <Wrap>
-        {/* <div> */}
         <ImgWrap>
           <ImgUserAvatar>
             {user?.avatarURL ? (
-              <Img src={user?.avatarURL} alt="Avatar" />
+              <WrapIcon>
+                <Img src={user?.avatarURL} alt="Avatar" />
+              </WrapIcon>
             ) : (
               <WrapIcon>
                 <Icon
@@ -68,36 +69,32 @@ const UserCard: React.FC = () => {
               </WrapIcon>
             )}
           </ImgUserAvatar>
-          <div>
-            <UserAvatarImg>
-              <form id="file">
-                <label
-                  onMouseEnter={() => setButtonHover(true)}
-                  onMouseLeave={() => setButtonHover(false)}
-                >
-                  <Icon
-                    name="add-foto"
-                    iconWidth={{ mobile: '24px', tablet: '32px' }}
-                    iconHeight={{ mobile: '24px', tablet: '32px' }}
-                    stroke={buttonHover ? '#efede8' : '#e6533c'}
-                  />
-                  <InputFile
-                    id="file"
-                    name="file"
-                    type="file"
-                    onChange={handleChangeImg}
-                  />
-                </label>
-              </form>
-            </UserAvatarImg>
-          </div>
+          <UserAvatarImg>
+            <form id="file">
+              <label
+                onMouseEnter={() => setButtonHover(true)}
+                onMouseLeave={() => setButtonHover(false)}
+              >
+                <Icon
+                  name="add-foto"
+                  iconWidth={{ mobile: '24px', tablet: '32px' }}
+                  iconHeight={{ mobile: '24px', tablet: '32px' }}
+                  stroke={buttonHover ? '#efede8' : '#e6533c'}
+                />
+                <InputFile
+                  id="file"
+                  name="file"
+                  type="file"
+                  onChange={handleChangeImg}
+                />
+              </label>
+            </form>
+          </UserAvatarImg>
         </ImgWrap>
-
         <UserWrap>
           <UserName>{user.name}</UserName>
           <UserStatus>User</UserStatus>
         </UserWrap>
-
         <BlockWrap>
           <BlockData>
             <TextBlockWrap>
@@ -125,7 +122,6 @@ const UserCard: React.FC = () => {
             </TextValue>
           </BlockData>
         </BlockWrap>
-
         <TextWrap>
           <Icon
             name="warning"
@@ -137,7 +133,6 @@ const UserCard: React.FC = () => {
             to diet is relative and tailored to your unique body and goals.
           </Text>
         </TextWrap>
-        {/* </div> */}
         <WrapLogOut>
           <LogOutBtn />
         </WrapLogOut>
