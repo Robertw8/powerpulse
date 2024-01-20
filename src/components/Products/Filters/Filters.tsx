@@ -1,51 +1,43 @@
-import { useState } from 'react';
-import { InputPrimary } from '../../InputPrimary';
-import { Icon } from '../../Icon';
-import { FilterDropdown } from '..';
-import { Container } from '../..';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { SearchInputWrapper, SearchIconContainer } from './Filters.styled';
+import { FilterDropdown } from '..';
+import {
+  selectCategories,
+  selectProducts,
+} from '../../../redux/products/selectors';
+import { AppDispatch } from '../../../redux';
+import { getProductsCategories } from '../../../redux/products';
+import { SearchFilter } from '../SearchFilter';
+import {
+  DropdownWrapper,
+  FiltersWrapper,
+  SearchWrapper,
+} from './Filters.styled';
 
 const Filters: React.FC = () => {
-  const [inputHover, setInputHover] = useState(false);
-  const [inputFocus, setInputFocus] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  const categories = useSelector(selectCategories);
+  const products = useSelector(selectProducts);
+  console.log(products);
+
+  useEffect(() => {
+    dispatch(getProductsCategories({}));
+  }, [dispatch]);
 
   return (
-    // <div style={{ width: 800, margin: '0 auto' }}>
-    <Container>
-      <div className="filters wrapper" style={{ gap: '20px' }}>
-        <SearchInputWrapper
-          onFocus={() => setInputFocus(true)}
-          onBlur={() => setInputFocus(false)}
-          onMouseEnter={() => setInputHover(true)}
-          onMouseLeave={() => setInputHover(false)}
-          style={{ marginBottom: 40 }}
-        >
-          <InputPrimary placeholder="Search" bordercolor="default" />
-          <SearchIconContainer>
-            <Icon
-              name="search"
-              iconWidth={{ mobile: '18px', tablet: '18px' }}
-              iconHeight={{ mobile: '18px', tablet: '18px' }}
-              stroke={inputHover || inputFocus ? '#E6533C' : '#EFEDE8'}
-            />
-          </SearchIconContainer>
-        </SearchInputWrapper>
-
-        <div
-          className="dropdowns wrapper"
-          style={{ display: 'flex', gap: '16px' }}
-        >
-          <FilterDropdown items={['Option 1', 'Option 2', 'Option 3']}>
-            <p>Categories</p>
-          </FilterDropdown>
-          <FilterDropdown items={['Option 1', 'Option 2', 'Option 3']}>
-            <p>All</p>
-          </FilterDropdown>
-        </div>
-      </div>
-    </Container>
-    // </div>
+    <FiltersWrapper>
+      <SearchWrapper>
+        <SearchFilter />
+      </SearchWrapper>
+      <DropdownWrapper>
+        <FilterDropdown items={categories} placeholder="Categories" />
+        <FilterDropdown
+          items={['All', 'Recommended', 'Not recommended']}
+          placeholder="All"
+        />
+      </DropdownWrapper>
+    </FiltersWrapper>
   );
 };
 
