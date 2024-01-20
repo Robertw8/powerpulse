@@ -1,3 +1,10 @@
+import React from 'react';
+import { useState } from 'react';
+import { apiService } from '../../../services/';
+import { useAuth } from '../../../hooks';
+import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
+import { Icon } from '../../Icon';
+
 import {
   ImgWrap,
   Text,
@@ -8,40 +15,63 @@ import {
   TitleBlock,
   TextBlockWrap,
   UserAvatarImg,
-  BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
   UserStatus,
   ImgUserAvatar,
+  InputFile,
+  WrapLogOut,
+  Img,
+  WrapIcon,
 } from './UserCard.styled';
-import React from 'react';
-import { Icon } from '../../Icon';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/rootReducer';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
   // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
-  const userData = useSelector((state: RootState) => state.auth.user);
-  // const { name, } = userData;
-  // console.log(userData);
+  const { user } = useAuth();
+
+  const handleChangeImg = async e => {
+    // e.preventDefault();
+    const dataFile = new FormData();
+    dataFile.append('avatar', e.target.files[0]);
+
+    const img = await apiService({
+      method: 'post',
+      url: '/users/avatars',
+      data: dataFile,
+      config: {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      },
+    });
+
+    console.log(img);
+  };
 
   return (
     <>
       <Wrap>
-        <div>
-          <ImgWrap>
-            <ImgUserAvatar>
-              <Icon
-                name="user"
-                iconWidth={{ mobile: '64px', tablet: '102px' }}
-                iconHeight={{ mobile: '64px', tablet: '102px' }}
-              />
-            </ImgUserAvatar>
-            <UserAvatarImg>
-              <BtnAvatar
+        <ImgWrap>
+          <ImgUserAvatar>
+            {user?.avatarURL ? (
+              <WrapIcon>
+                <Img src={user?.avatarURL} alt="Avatar" />
+              </WrapIcon>
+            ) : (
+              <WrapIcon>
+                <Icon
+                  name="user"
+                  iconWidth={{ mobile: '64px', tablet: '102px' }}
+                  iconHeight={{ mobile: '64px', tablet: '102px' }}
+                />
+              </WrapIcon>
+            )}
+          </ImgUserAvatar>
+          <UserAvatarImg>
+            <form id="file">
+              <label
                 onMouseEnter={() => setButtonHover(true)}
                 onMouseLeave={() => setButtonHover(false)}
               >
@@ -51,56 +81,61 @@ const UserCard: React.FC = () => {
                   iconHeight={{ mobile: '24px', tablet: '32px' }}
                   stroke={buttonHover ? '#efede8' : '#e6533c'}
                 />
-              </BtnAvatar>
-            </UserAvatarImg>
-          </ImgWrap>
-
-          <UserWrap>
-            <UserName>{userData.name}</UserName>
-            <UserStatus>User</UserStatus>
-          </UserWrap>
-
-          <BlockWrap>
-            <BlockData>
-              <TextBlockWrap>
-                <Icon
-                  name="food"
-                  iconWidth={{ mobile: '20px', tablet: '20px' }}
-                  iconHeight={{ mobile: '20px', tablet: '20px' }}
+                <InputFile
+                  id="file"
+                  name="file"
+                  type="file"
+                  onChange={handleChangeImg}
                 />
-                <TitleBlock>Daily calorie intake</TitleBlock>
-              </TextBlockWrap>
-              <TextValue>{userData.dailyCalories || 0}</TextValue>
-            </BlockData>
-            <BlockData>
-              <TextBlockWrap>
-                <Icon
-                  name="dumbbell"
-                  iconWidth={{ mobile: '20px', tablet: '20px' }}
-                  iconHeight={{ mobile: '20px', tablet: '20px' }}
-                />
-                <TitleBlock>Daily physical activity</TitleBlock>
-              </TextBlockWrap>
-              <TextValue>
-                {userData.dailyActivity || 0}
-                <span> min</span>
-              </TextValue>
-            </BlockData>
-          </BlockWrap>
-
-          <TextWrap>
-            <Icon
-              name="warning"
-              iconWidth={{ mobile: '24px', tablet: '24px' }}
-              iconHeight={{ mobile: '24px', tablet: '24px' }}
-            />
-            <Text>
-              We understand that each individual is unique, so the entire
-              approach to diet is relative and tailored to your unique body and
-              goals.
-            </Text>
-          </TextWrap>
-        </div>
+              </label>
+            </form>
+          </UserAvatarImg>
+        </ImgWrap>
+        <UserWrap>
+          <UserName>{user.name}</UserName>
+          <UserStatus>User</UserStatus>
+        </UserWrap>
+        <BlockWrap>
+          <BlockData>
+            <TextBlockWrap>
+              <Icon
+                name="food"
+                iconWidth={{ mobile: '20px', tablet: '20px' }}
+                iconHeight={{ mobile: '20px', tablet: '20px' }}
+              />
+              <TitleBlock>Daily calorie intake</TitleBlock>
+            </TextBlockWrap>
+            <TextValue>{user.dailyCalories || 0}</TextValue>
+          </BlockData>
+          <BlockData>
+            <TextBlockWrap>
+              <Icon
+                name="dumbbell"
+                iconWidth={{ mobile: '20px', tablet: '20px' }}
+                iconHeight={{ mobile: '20px', tablet: '20px' }}
+              />
+              <TitleBlock>Daily physical activity</TitleBlock>
+            </TextBlockWrap>
+            <TextValue>
+              {user.dailyActivity || 0}
+              <span> min</span>
+            </TextValue>
+          </BlockData>
+        </BlockWrap>
+        <TextWrap>
+          <Icon
+            name="warning"
+            iconWidth={{ mobile: '24px', tablet: '24px' }}
+            iconHeight={{ mobile: '24px', tablet: '24px' }}
+          />
+          <Text>
+            We understand that each individual is unique, so the entire approach
+            to diet is relative and tailored to your unique body and goals.
+          </Text>
+        </TextWrap>
+        <WrapLogOut>
+          <LogOutBtn />
+        </WrapLogOut>
       </Wrap>
     </>
   );

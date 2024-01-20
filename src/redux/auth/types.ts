@@ -14,6 +14,7 @@ interface User {
     sex: OptionalString;
     levelActivity: OptionalString;
   };
+  avatarURL: string;
 }
 
 interface InitialAuthState {

@@ -1,6 +1,6 @@
-import { lazy, useEffect } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Layout, PublicRoute, PrivateRoute } from '.';
+import { Layout, PublicRoute, PrivateRoute, Loader } from '.';
 import routes from '../routes';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux';
@@ -25,7 +25,7 @@ export const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
@@ -71,10 +71,10 @@ export const App: React.FC = () => {
             <Route path="muscles" element={<ExercisesPage />} />
             <Route path="equipment" element={<ExercisesPage />} />
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 

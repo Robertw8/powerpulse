@@ -24,7 +24,9 @@ const GlobalStyles = css`
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  p,
+  fieldset {
     margin: 0;
     padding: 0;
   }
@@ -36,9 +38,10 @@ const GlobalStyles = css`
     margin: 0;
   }
 
-  p {
-    margin: 0;
-    padding: 0;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .scrollbar-inner {

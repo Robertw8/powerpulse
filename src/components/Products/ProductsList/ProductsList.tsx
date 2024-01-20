@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { List, ListWrapper } from './ProductsList.styled';
 import { ProductsItem } from '..';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useRef } from 'react';
 
 import {
   getProducts,
@@ -13,16 +13,21 @@ import { AppDispatch } from '../../../redux';
 import throttle from 'lodash.throttle';
 
 const ProductsList: React.FC = () => {
+  const [query] = useState<string>('');
   const dispatch = useDispatch<AppDispatch>();
   const products = useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
   const productsListRef = useRef<HTMLUListElement>(null);
   const pageRef = useRef<number>(1);
 
+  // const handleChange = ({ target }) => {
+  //   setQuery(target.value);
+  // };
+
   useEffect(() => {
-    dispatch(getProducts(pageRef.current));
+    dispatch(getProducts({ page: 1 }));
     pageRef.current = pageRef.current + 1;
-  }, [dispatch]);
+  }, [query, dispatch]);
 
   useEffect(() => {
     const listElement = productsListRef.current;
@@ -34,7 +39,14 @@ const ProductsList: React.FC = () => {
         listElement.scrollTop + listElement.clientHeight >=
         listElement.scrollHeight - 20
       ) {
-        dispatch(getProducts(pageRef.current));
+        dispatch(
+          getProducts({
+            page: pageRef.current,
+            // query: 'lamb',
+            // categories: 'cereals',
+            // type: 'notrecommended',
+          })
+        );
         pageRef.current = pageRef.current + 1;
       }
     }, 600);
@@ -48,6 +60,7 @@ const ProductsList: React.FC = () => {
 
   return (
     <ListWrapper>
+      {/* <input type="text" onChange={handleChange} /> */}
       <List className="scrollbar-outer" ref={productsListRef}>
         {products.map((product, index) => (
           <ProductsItem product={product} key={index} />

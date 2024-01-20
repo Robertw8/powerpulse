@@ -1,59 +1,74 @@
 import styled from '@emotion/styled';
+import { Select } from 'antd';
 
-interface DropdownListProps {
-  visible: boolean;
-}
-
-const Dropdown = styled.div`
-  position: relative;
-
-  width: 146px;
+const StyledSelect = styled(Select)`
   height: 46px;
-  padding: 14px;
-  border: 1px solid #efede84d;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  font-size: 14px;
-  border-radius: 12px;
-  transition-duration: 150ms;
-
-  &:is(:hover, :focus) {
-    cursor: pointer;
-    border-color: #e6533c;
-  }
-`;
-
-const DropdownList = styled.ul<DropdownListProps>`
-  position: absolute;
-  top: 80%;
-  left: 0;
-
   width: 100%;
-  max-height: 228px;
-  padding: 14px 28px 14px 14px;
-
-  background-color: #1c1c1c;
-  border-radius: 12px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in;
-  transform-origin: top;
-
-  transform: scaleY(${({ visible }) => (visible ? 1 : 0)});
 
   @media screen and (min-width: 769px) {
-    max-height: 276px;
+    height: 52px;
+  }
+
+  .ant-select-selector {
+    color: #efedee;
+    font-size: 14px;
+    line-height: calc(18 / 14);
+    text-transform: capitalize;
+
+    background-color: transparent !important;
+    border-color: #efede84d !important;
+
+    @media screen and (min-width: 769px) {
+      font-size: 16px;
+      line-height: calc(24 / 16);
+    }
+
+    &:hover,
+    :focus {
+      border-color: #e6533c !important;
+    }
+
+    .ant-select-selection-placeholder {
+      color: #efedee;
+    }
+
+    .ant-select-selection-item {
+      color: #efedee;
+      font-size: 14px;
+      line-height: calc(18 / 14);
+
+      @media screen and (min-width: 769px) {
+        font-size: 16px;
+        line-height: calc(24 / 16);
+      }
+    }
   }
 `;
 
-const DropdownItem = styled.li`
-  &:not(:first-of-type) {
-    margin-top: 8px;
+const StyledPopupContent = styled.div`
+  .ant-select-item {
+    color: #efede8;
+    font-size: 14px;
+    line-height: calc(18 / 14);
+    text-transform: capitalize;
+
+    @media screen and (min-width: 769px) {
+      font-size: 16px !important;
+      line-height: calc(24 / 16);
+    }
+  }
+
+  [aria-selected='true'] {
+    background-color: #1c1c1c !important;
+
+    .ant-select-item-option-content {
+      color: #e6533c !important;
+    }
+  }
+
+  .ant-empty-description {
+    color: #efede8 !important;
   }
 `;
 
-export { Dropdown, DropdownList, DropdownItem };
+export { StyledSelect, StyledPopupContent };

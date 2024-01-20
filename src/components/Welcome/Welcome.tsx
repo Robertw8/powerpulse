@@ -1,25 +1,35 @@
-
-
-import imgForWelcomePage from "..//../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg";
-import { Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import {TitleWelcomePage, ContainerWelcomePage, ImgWelcomePage, BlockTitleBtn, BlockBtns} from "./WelcomeStyle.styled";
+
+import {TitleWelcomePage, ContainerWelcomePage, BlockTitleBtn, BlockBtns, IconContainer, BtnSignInWelcome} from "./WelcomeStyle.styled";
+import { BtnSignUp } from "../SignUp/SignUp.styled";
+
+import { Icon } from "../Icon";
+import {WelcomeImg} from './WelcomeImg';
+
 
 const Welcome: React.FC = () => {
   return (
     <ContainerWelcomePage>
       <BlockTitleBtn>
-        <TitleWelcomePage>Transforming your body shape with Power Pulse</TitleWelcomePage>
+        <TitleWelcomePage>Transforming your body shape with Power Pulse
+           <IconContainer>
+         <Icon
+              name="line"
+              iconWidth={{ mobile: '98px', tablet: '200px' }}
+              iconHeight={{ mobile: '35px', tablet: '70px' }}
+              />
+          </IconContainer>
+          </TitleWelcomePage>
         <BlockBtns>
              <NavLink to="/signup" >
-           <Button type="primary" >Sing Up</Button>
+           <BtnSignUp type="primary" >Sign Up</BtnSignUp>
             </NavLink>
              <NavLink to="/signin" >
-                <Button ghost className="btn-sing-ui">Sing in</Button>
+                <BtnSignInWelcome ghost className="btn-sing-ui">Sign In</BtnSignInWelcome>
           </NavLink>
           </BlockBtns>
-</BlockTitleBtn>
-    <ImgWelcomePage src={imgForWelcomePage} alt="The girl shows an example of a forward leg kick" />
+      </BlockTitleBtn>
+      <WelcomeImg/>
       </ContainerWelcomePage>
   );
 };
