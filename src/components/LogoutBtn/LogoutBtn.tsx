@@ -4,7 +4,7 @@ import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
 
-export const LogOutBtn = ({ className }) => {
+const LogOutBtn = ({ className }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = () => {
@@ -24,3 +24,6 @@ export const LogOutBtn = ({ className }) => {
     </LogoutBtn>
   );
 };
+
+
+export default LogOutBtn;

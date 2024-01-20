@@ -4,7 +4,6 @@ import { palette } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
-  border-bottom: 1px solid rgba(239, 237, 232, 0.2);
   padding-top: 24px;
   padding-bottom: 24px;
   /* margin: 0 auto; */
@@ -14,9 +13,6 @@ export const HeaderContainer = styled.header`
   @media screen and (min-width: 768px) {
     padding-top: 32px;
     padding-bottom: 32px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
   }
 `;
 export const HeaderWrap = styled.div`

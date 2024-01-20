@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
 import { NavList, LinkStyled } from './UserNav.styled';
 
-export const UserNav: React.FC = () => {
+const UserNav: React.FC = () => {
   const user = useSelector(selectUser);
 
   if (!user) {
@@ -30,3 +30,5 @@ export const UserNav: React.FC = () => {
     </NavList>
   );
 };
+
+export default UserNav;

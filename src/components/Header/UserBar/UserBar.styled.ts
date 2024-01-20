@@ -2,12 +2,15 @@ import styled from '@emotion/styled';
 import { palette } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 
-export const Icon = styled.svg`
-  display: inline-block;
-  padding: 10px;
+export const SettingsLink = styled(Link)`
+  &.active {
+    background-color: ${palette.colors.red};
+  }
   &:hover,
   &:focus {
-    fill: red;
+    svg {
+      stroke: ${palette.colors.red};
+    }
   }
 `;
 export const LinkStyled = styled(Link)`
