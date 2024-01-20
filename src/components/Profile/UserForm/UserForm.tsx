@@ -1,8 +1,15 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { FormValues, schema } from './UserFormSchema';
+import { apiService } from '../../../services';
+import useAuth from '../../../hooks/useAuth';
+import { errorWrapper } from '../../../helpers';
+import { UserFormInput } from './UserFormInput';
+import { PrimaryButton } from '../..';
+
 import {
   RadioWrap,
-  Btn,
+  BtnWrap,
   Label,
   TextRadio,
   Input,
@@ -13,12 +20,6 @@ import {
   RadioWrapBlock,
   WrapForm,
 } from './UserForm.styled';
-// import { PrimaryButton } from '../..';
-import { FormValues, schema } from './UserFormSchema';
-import { apiService } from '../../../services';
-import useAuth from '../../../hooks/useAuth';
-import { errorWrapper } from '../../../helpers';
-import { UserFormInput } from './UserFormInput';
 
 const UserForm: React.FC = () => {
   const { user } = useAuth();
@@ -29,7 +30,7 @@ const UserForm: React.FC = () => {
     height: user?.settings?.height || 0,
     currentWeight: user?.settings?.currentWeight || 0,
     desiredWeight: user?.settings?.desiredWeight || 0,
-    birthday: user?.settings?.birthday.split('T')[0] || '2000-10-10',
+    birthday: user?.settings?.birthday.split('T')[0] || '',
     blood: user?.settings?.blood || null,
     sex: user?.settings?.sex || '',
     levelActivity: user?.settings?.levelActivity || null,
@@ -241,16 +242,15 @@ const UserForm: React.FC = () => {
               <ErrorText>{formik.errors.levelActivity}</ErrorText>
             )}
           </div>
-
-          {/* <PrimaryButton type="primary" text="Save" sizes="extraSmall" /> */}
-          <Btn
-            htmlType="submit"
-            type="primary"
-            style={{ background: 'tomato' }}
-            disabled={!(formik.isValid && formik.dirty)}
-          >
-            Save
-          </Btn>
+          <BtnWrap>
+            <PrimaryButton
+              htmlType="submit"
+              type="primary"
+              text="Save"
+              sizes="extraSmall"
+              disabled={!formik.dirty} // disabled={!(formik.isValid && formik.dirty)}
+            />
+          </BtnWrap>
         </form>
       </WrapForm>
     </>

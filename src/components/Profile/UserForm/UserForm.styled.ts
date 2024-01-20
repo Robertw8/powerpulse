@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Button } from 'antd';
 
 //ProfilePage style
 const Wrap = styled.div`
@@ -124,23 +123,16 @@ const TextRadio = styled.span`
   }
 `;
 
-const Btn = styled(Button)`
-  width: 115px;
-  height: 42px;
-  border: none;
-  background-color: #e6533c;
-  color: #efede8;
-  margin: 48px 0;
-  // padding: 12px 40px;
+const BtnWrap = styled.div`
+  margin: 38px 0;
 
-  &:hover,
-  &:focus {
-    background-color: #ef8964;
+  @media screen and (min-width: 769px) {
+    margin: 48px 0;
   }
 `;
 
 export {
-  Btn,
+  BtnWrap,
   Label,
   TextRadio,
   RadioWrap,

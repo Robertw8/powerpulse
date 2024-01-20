@@ -8,6 +8,8 @@ interface PrimaryButtonProps extends ButtonProps {
   padding?: string;
   fontSize?: number;
   onclick?: () => void;
+  disabled?: boolean;
+  htmlType?: 'submit' | 'reset' | 'button';
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -17,6 +19,8 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   padding,
   fontSize,
   onclick,
+  disabled,
+  htmlType,
 }) => {
   return (
     <CustomButton
@@ -25,6 +29,8 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       fontSize={fontSize}
       padding={padding}
       onClick={onclick}
+      disabled={disabled}
+      htmlType={htmlType}
     >
       {text}
     </CustomButton>

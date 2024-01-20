@@ -3,7 +3,52 @@ import styled from '@emotion/styled';
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+`;
+
+const ImgWrap = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 769px) {
+    justify-content: flex-start;
+  }
+`;
+
+const ImgUserAvatar = styled.div`
+  position: relative;
+`;
+
+const WrapIcon = styled.div`
+  width: 90px;
+  height: 90px;
+  border: 2px solid #e6533c;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (min-width: 769px) {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+// del later
+const Img = styled.img`
+  @media screen and (min-width: 769px) {
+  }
+`;
+
+const UserAvatarImg = styled.div`
+  position: relative;
+  top: -15px;
+
+  @media screen and (min-width: 769px) {
+    top: -19px;
+  }
 `;
 
 const InputFile = styled.input`
@@ -11,74 +56,6 @@ const InputFile = styled.input`
   position: absolute;
   z-index: -1;
 `;
-
-const ImgWrap = styled.div`
-  width: 90px;
-  height: 90px;
-  border: 2px solid #e6533c;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 30px;
-
-  @media screen and (min-width: 769px) {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 30px;
-    justify-content: flex-start;
-  }
-`;
-
-const ImgUserAvatar = styled.div`
-  position: relative;
-  top: 15px;
-`;
-
-const UserAvatarImg = styled.div`
-  position: relative;
-  top: 10px;
-
-  @media screen and (min-width: 769px) {
-    top: 22px;
-    /* top: -16px; */
-  }
-`;
-
-const Img = styled.img`
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  position: relative;
-  top: -1px;
-
-  @media screen and (min-width: 769px) {
-    width: 148px;
-    height: 148px;
-    border-radius: 50%;
-    position: relative;
-    top: -16px;
-  }
-`;
-
-const WrapIcon = styled.div`
-  justify-content: center;
-  display: contents;
-  width: 88px;
-  height: 88px;
-
-  @media screen and (min-width: 769px) {
-    width: 148px;
-    height: 148px;
-  }
-`;
-
-// const BtnAvatar = styled.button`
-//   padding: 0;
-//   border: none;
-//   background-color: transparent;
-// `;
 
 const UserWrap = styled.div`
   text-align: center;
@@ -96,6 +73,7 @@ const UserName = styled.h3`
     margin: 0 0 8px;
   }
 `;
+
 const UserStatus = styled.p`
   color: rgba(239, 237, 232, 0.3);
   font-size: 14px;
@@ -103,11 +81,12 @@ const UserStatus = styled.p`
 `;
 
 const BlockWrap = styled.div`
-  margin: 40px 0;
+  margin: 32px 0;
   display: flex;
   justify-content: center;
   gap: 14px;
 `;
+
 const BlockData = styled.div`
   width: 157px;
   height: 96px;
@@ -190,7 +169,6 @@ export {
   TitleBlock,
   TextBlockWrap,
   UserAvatarImg,
-  // BtnAvatar,
   TextValue,
   UserName,
   UserWrap,
