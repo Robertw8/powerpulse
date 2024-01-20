@@ -29,6 +29,11 @@
 			<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.3" d="M23.467 29.333l13.333-13.333M36.8 16l-13.333-13.333M36.8 16h-32">
 			</path>
 		</symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 18 18">
+      <g id="chevron-down">
+        <path id="Vector" d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </symbol>
     <symbol id="icon-bubble" viewBox="0 0 32 32">
       <path fill="#ef8964" style="fill:var(--color3, #ef8964)" d="M20.793 16.346c3.778 0 6.84-3.062 6.84-6.84s-3.062-6.84-6.84-6.84-6.84 3.062-6.84 6.84 3.062 6.84 6.84 6.84zM8.476 25.919a4.107 4.107 0 1 0 0-8.215 4.107 4.107 0 0 0 0 8.215zM22.151 29.332a3.413 3.413 0 1 0 0-6.826 3.413 3.413 0 0 0 0 6.826z"/>
     </symbol>
