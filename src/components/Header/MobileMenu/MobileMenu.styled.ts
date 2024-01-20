@@ -1,28 +1,29 @@
 import styled from '@emotion/styled';
+import { Drawer } from 'antd';
+
 import { NavLink } from 'react-router-dom';
 import { palette } from '../../../styles/theme';
 
-export const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  z-index: 1;
-`;
+export const DrawerStyled = styled(Drawer)`
+  &.ant-drawer-content-wrapper {
+    width: 200px;
+    padding: 18px 20px 20px 20px;
 
-export const MenuWrap = styled.div`
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 200px;
-  padding: 19px 20px 21px 20px;
-  background-color: ${palette.colors.orange};
-  z-index: 1000;
+    @media screen and (min-width: 768px) {
+      width: 350px;
+      padding: 26px 32px 32px 32px;
+    }
+  }
+  .ant-drawer-header-close-only {
+    display: none;
+  }
+  &.ant-drawer-content {
+    background-color: ${palette.colors.orange};
+  }
 
+  .ant-drawer-close {
+    display: none;
+  }
   @media screen and (min-width: 768px) {
     width: 350px;
     padding: 26px 32px 32px 32px;
@@ -32,15 +33,6 @@ export const MenuWrap = styled.div`
     &.shown {
       right: 0;
     }
-
-    &.hidden {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-    }
-
     transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -61,6 +53,8 @@ export const Logout = styled.button`
   font-weight: 400;
   line-height: 1.33;
   color: rgba(239, 237, 232, 1);
+  outline: none;
+  border: none;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -73,8 +67,10 @@ export const NavMenu = styled.nav`
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-top: 245px;
-  margin-bottom: 382px;
+  margin-top: 202px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -86,6 +82,7 @@ export const NavLinkStyled = styled(NavLink)`
   color: rgba(239, 237, 232, 1);
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
+  text-decoration: none;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -93,9 +90,39 @@ export const NavLinkStyled = styled(NavLink)`
 
   &:hover,
   :focus {
-    border: 1px solid var(--white-color);
+    border: 1px solid ${palette.colors.white};
   }
 `;
+
+// export const NavMenu = styled.nav`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   gap: 16px;
+//   margin-top: 245px;
+//   margin-bottom: 382px;
+// `;
+
+// export const NavLinkStyled = styled(NavLink)`
+//   text-align: center;
+//   font-size: 14px;
+//   font-weight: 400;
+//   line-height: 1.5;
+//   padding: 10px 27px;
+//   color: rgba(239, 237, 232, 1);
+//   border: 1px solid rgba(239, 237, 232, 0.2);
+//   border-radius: 12px;
+
+//   @media screen and (min-width: 768px) {
+//     font-size: 16px;
+//   }
+
+//   &:hover,
+//   :focus {
+//     border: 1px solid var(--white-color);
+//   }
+// `;
 export const CloseBtn = styled.button`
   position: absolute;
   top: 26px;
@@ -104,4 +131,6 @@ export const CloseBtn = styled.button`
   padding: 0px;
   border: none;
   cursor: pointer;
+  margin-right: 0;
+  margin-left: auto;
 `;

@@ -4,6 +4,12 @@ import { palette } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.header`
+  .logout-btn {
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
   border-bottom: 1px solid rgba(239, 237, 232, 0.2);
   padding-top: 24px;
   padding-bottom: 24px;

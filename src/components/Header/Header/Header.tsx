@@ -22,7 +22,7 @@ const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
-  const onClickMenuBtn = () => {
+  const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
   return (
@@ -53,9 +53,9 @@ const Header: React.FC = () => {
               </NavWrap>
               <UserBarWrapper>
                 <UserBar />
-                <LogOutBtn />
-                <MobileMenuBtn onClick={onClickMenuBtn} />
-                <MobileMenu isOpen={isOpen} />
+                <LogOutBtn className='desktop' />
+                <MobileMenuBtn onClick={toggleMenu} />
+                <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
               </UserBarWrapper>
             </UserContainer>
           )}

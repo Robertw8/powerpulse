@@ -1,72 +1,30 @@
-import { useState, useEffect, FC } from 'react';
+import { FC } from 'react';
+import { DrawerStyled } from '../MobileMenu/MobileMenu.styled';
+
 import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../redux/auth/operations';
-import { AppDispatch } from '../../../redux';
 
-import {
-  MenuWrap,
-  Backdrop,
-  CloseBtn,
-  Logout,
-  NavMenu,
-  NavLinkStyled,
-} from './MobileMenu.styled';
+import { NavMenu, NavLinkStyled, CloseBtn, Logout } from './MobileMenu.styled';
+
 import Icon from '../../Icon/Icon';
 
 interface MobileMenuProps {
   isOpen: boolean;
+  toggleMenu: () => void;
 }
 
-const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
-  const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
-  const dispatch = useDispatch<AppDispatch>();
-
-  const closeMenu = () => {
-    setMenuIsOpen(false);
-  };
-
-  const handleEscKey = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      closeMenu();
-    }
-  };
-
-  const handleBackdropClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    if (event.target === event.currentTarget) {
-      closeMenu();
-    }
-  };
-
-  useEffect(() => {
-    if (menuIsOpen) {
-      window.addEventListener('keydown', handleEscKey);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handleEscKey);
-    };
-  }, [menuIsOpen]);
-
-  useEffect(() => {
-    setMenuIsOpen(isOpen);
-  }, [isOpen]);
+const MobileMenu: FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
+  const dispatch = useDispatch();
 
   const handleLogOut = (): void => {
-    closeMenu();
-
-    dispatch(logOutUser({}));
+    toggleMenu();
+    dispatch(logOutUser());
   };
 
   return (
     <>
-      {menuIsOpen && <Backdrop onClick={closeMenu} />}
-      <MenuWrap
-        className={menuIsOpen ? 'shown' : 'hidden'}
-        onClick={handleBackdropClick}
-      >
-        <CloseBtn onClick={closeMenu}>
+      <DrawerStyled placement="right" onClose={toggleMenu} visible={isOpen}>
+        <CloseBtn onClick={toggleMenu}>
           <Icon
             name="x"
             iconWidth={{ mobile: '24px', tablet: '32px' }}
@@ -74,14 +32,15 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
             stroke="#ffffff"
           />
         </CloseBtn>
+
         <NavMenu>
-          <NavLinkStyled to="/diary" onClick={closeMenu}>
+          <NavLinkStyled to="/diary" onClick={toggleMenu}>
             Diary
           </NavLinkStyled>
-          <NavLinkStyled to="/products" onClick={closeMenu}>
+          <NavLinkStyled to="/products" onClick={toggleMenu}>
             Products
           </NavLinkStyled>
-          <NavLinkStyled to="/exercises" onClick={closeMenu}>
+          <NavLinkStyled to="/exercises" onClick={toggleMenu}>
             Exercises
           </NavLinkStyled>
         </NavMenu>
@@ -94,7 +53,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isOpen }) => {
             stroke="#fff"
           />
         </Logout>
-      </MenuWrap>
+      </DrawerStyled>
     </>
   );
 };

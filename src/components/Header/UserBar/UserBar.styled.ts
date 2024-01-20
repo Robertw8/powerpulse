@@ -13,9 +13,14 @@ export const LinkStyled = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 46px;
-  height: 46px;
+  width: 37px;
+  height: 37px;
   border: 1px solid #e6533c;
   border-radius: 50%;
   background-color: rgba(48, 48, 48, 0.3);
+
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+  }
 `;
