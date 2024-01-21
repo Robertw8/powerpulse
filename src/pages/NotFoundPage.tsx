@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import routes from '../routes.ts';
@@ -106,11 +106,10 @@ const Img = styled.div`
   }
 `;
 
-//! Чисто для прикладу як має бути зробив, реалізуйте таку логіку як зараз є але можливо якимось кращим підходом
 const NotFoundPage: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const homeLink = !isLoggedIn && !isRefreshing ? routes.WELCOME : routes.DIARY;
-  const [countdown, setCountdown] = useState(5);
+  // const [countdown, setCountdown] = useState(5);
   const navigate = useNavigate();
 
   // useEffect(() => {

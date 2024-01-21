@@ -18,3 +18,4 @@ export { Welcome } from './Welcome/';
 export { default as PrivateRoute } from './PrivateRoute';
 export { default as PublicRoute } from './PublicRoute';
 export { Loader } from './Loader';
+export { Icon } from './Icon';
