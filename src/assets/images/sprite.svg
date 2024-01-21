@@ -31,7 +31,7 @@
 		</symbol>
     <symbol id="icon-arrow-left" viewBox="0 0 18 18">
       <g id="chevron-down">
-        <path id="Vector" d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="Vector" d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
     </symbol>
     <symbol id="icon-bubble" viewBox="0 0 32 32">
