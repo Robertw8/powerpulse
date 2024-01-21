@@ -1,3 +1,11 @@
+import { useSelector,
+  useDispatch 
+} from 'react-redux';
+import { RootState } from '../../redux/rootReducer'
+import { useEffect } from 'react';
+import { AppDispatch } from '../../redux'
+import { deleteDiaryProduct } from '../../redux/diary';
+// import dayjs from 'dayjs';
 import {
     Text,
     TextWrap,
@@ -7,32 +15,32 @@ import {
     RedBlockTitle,
     AddingTextBlockWrap,
     AddingBlocksWrap,
-    MainDiaryWrap
+    MainDiaryWrap,
+    DesktopWrap
   } from './Diary.styled';
   import { Icon } from '../Icon';
 import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/rootReducer'
-// import { useEffect } from 'react';
-// import { AppDispatch } from '../../redux'
-// import { getDiary } from '../../redux/dairy';
+
 
 
 // import { MyCalendar } from './Calendar';
 
+
   const Diary = () => {
   
-    // const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useDispatch<AppDispatch>();
     const userData = useSelector((state: RootState) => state.auth.user);
-    // useEffect(() => {
-    //   dispatch(getDiary('21/01/2024'));
+    useEffect(() => {
+  
+      dispatch(deleteDiaryProduct('65ad3f2d1fd5d4b96e50c838'));
      
-    // }, [dispatch]);
+    }, [dispatch]);
     return (
       <>
       {/* <MyCalendar></MyCalendar> */}
       <MainDiaryWrap>
+        <DesktopWrap>
       <BlockWrap>
           <DailyStatusBlock text={'Daily calorie intake'} backgroundColor='#E6533C' textColor='rgba(239, 237, 232, 0.80)' children={   <Icon
                     name="food"
@@ -76,6 +84,7 @@ import { RootState } from '../../redux/rootReducer'
               Record all your meals in the calorie diary every day. This will help you be aware of your nutrition and make informed choices.
               </Text>
             </TextWrap>
+            </DesktopWrap>
             <AddingBlocksWrap>
             <NextGrayBlock>
                 <AddingTextBlockWrap>
