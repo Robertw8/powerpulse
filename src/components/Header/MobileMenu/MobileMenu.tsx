@@ -1,12 +1,11 @@
 import { DrawerStyled } from '../MobileMenu/MobileMenu.styled';
-
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../redux/auth/operations';
+import { AppDispatch } from '../../../redux';
 
 import { NavMenu, NavLinkStyled, CloseBtn, Logout } from './MobileMenu.styled';
-
 import Icon from '../../Icon/Icon';
-import { AppDispatch } from '../../../redux';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -16,6 +15,20 @@ interface MobileMenuProps {
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const [drawerWidth, setDrawerWidth] = useState('200px');
+
+  useEffect(() => {
+    const updateDrawerWidth = () => {
+      const isTablet = window.matchMedia('(min-width: 768px)').matches;
+      setDrawerWidth(isTablet ? '350px' : '200px');
+    };
+    updateDrawerWidth();
+    window.addEventListener('resize', updateDrawerWidth);
+    return () => {
+      window.removeEventListener('resize', updateDrawerWidth);
+    };
+  }, []);
+
   const handleLogOut = (): void => {
     toggleMenu();
     dispatch(logOutUser({}));
@@ -23,7 +36,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
 
   return (
     <>
-      <DrawerStyled placement="right" onClose={toggleMenu} open={isOpen}>
+
+      <DrawerStyled
+        placement="right"
+        onClose={toggleMenu}
+        open={isOpen}
+        width={drawerWidth}
+      >
+
         <CloseBtn onClick={toggleMenu}>
           <Icon
             name="x"
