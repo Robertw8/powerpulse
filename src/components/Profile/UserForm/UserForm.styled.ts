@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Button } from 'antd';
 
+//ProfilePage style
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,27 +15,6 @@ const WrapForm = styled.div`
   @media screen and (min-width: 1441px) {
     border-right: 1px solid rgba(239, 237, 232, 0.2);
     padding: 0 54px 0;
-  }
-`;
-
-const LabelWrapBlock = styled.div`
-  display: flex;
-  gap: 14px;
-
-  @media screen and (min-width: 769px) {
-    gap: 0;
-  }
-`;
-
-const LabelWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 0 14px;
-  width: 100%;
-
-  @media screen and (min-width: 769px) {
-    margin: 0 14px 14px 0;
-    width: 100%;
   }
 `;
 
@@ -58,15 +37,6 @@ const BlockWrapRadio = styled.div`
   margin: 0 0 32px;
 `;
 
-const BlockWrapInput = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: 769px) {
-    flex-direction: row;
-  }
-`;
-
 const RadioWrap = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +51,12 @@ const RadioWrapBlock = styled.div`
 
 const LableRadio = styled.label`
   display: flex;
-  height: 28px;
+  padding: 3px 0;
+  /* height: 38px; */
+
+  @media screen and (min-width: 769px) {
+    /* height: 28px; */
+  }
 `;
 
 const Input = styled.input`
@@ -148,23 +123,16 @@ const TextRadio = styled.span`
   }
 `;
 
-const Btn = styled(Button)`
-  width: 115px;
-  height: 42px;
-  border: none;
-  background-color: #e6533c;
-  color: #efede8;
-  margin-top: 64px;
-  // padding: 12px 40px;
+const BtnWrap = styled.div`
+  margin: 38px 0;
 
-  &:hover,
-  &:focus {
-    background-color: #ef8964;
+  @media screen and (min-width: 769px) {
+    margin: 48px 0;
   }
 `;
 
 export {
-  Btn,
+  BtnWrap,
   Label,
   TextRadio,
   RadioWrap,
@@ -172,9 +140,6 @@ export {
   CheckRadio,
   LableRadio,
   BlockWrapRadio,
-  BlockWrapInput,
-  LabelWrap,
-  LabelWrapBlock,
   ErrorText,
   Wrap,
   RadioWrapBlock,

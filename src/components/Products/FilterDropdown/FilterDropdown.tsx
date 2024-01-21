@@ -1,32 +1,44 @@
-import { useState } from 'react';
-import { Dropdown, DropdownList, DropdownItem } from './FilterDropdown.styled';
+import { SelectProps } from 'antd';
+import { StyledSelect, StyledPopupContent } from './FilterDropdown.styled';
 import { Icon } from '../../Icon';
 
-interface FilterDropdownProps {
-  children: React.ReactNode;
+interface FilterDropdownProps extends SelectProps {
   items: string[];
 }
 
-const FilterDropdown: React.FC<FilterDropdownProps> = ({ children, items }) => {
-  const [dropdownHover, setDropdownHover] = useState(false);
-
+const FilterDropdown: React.FC<FilterDropdownProps> = ({
+  items,
+  placeholder,
+}) => {
   return (
-    <Dropdown
-      onMouseEnter={() => setDropdownHover(true)}
-      onMouseLeave={() => setDropdownHover(false)}
-    >
-      {children}
-      <Icon
-        name="chevron"
-        iconWidth={{ mobile: '18px', tablet: '18px' }}
-        stroke={dropdownHover ? '#E6533C' : '#EFEDE8'}
-      />
-      <DropdownList visible={dropdownHover}>
-        {items.map((item, idx) => (
-          <DropdownItem key={idx}>{item}</DropdownItem>
-        ))}
-      </DropdownList>
-    </Dropdown>
+    <StyledSelect
+      options={items.map(item => ({
+        value: item,
+        label: item,
+      }))}
+      placeholder={placeholder}
+      dropdownRender={menu => <StyledPopupContent>{menu}</StyledPopupContent>}
+      dropdownStyle={{
+        backgroundColor: '#1C1C1C',
+        borderRadius: 12,
+      }}
+      suffixIcon={
+        <Icon
+          iconWidth={{ mobile: '16px', tablet: '16px' }}
+          name="chevron-down"
+        />
+      }
+      allowClear={{
+        clearIcon: (
+          <Icon
+            iconWidth={{ mobile: '20px', tablet: '20px' }}
+            iconHeight={{ mobile: '16px', tablet: '16px' }}
+            name="x"
+            stroke="#fff"
+          />
+        ),
+      }}
+    />
   );
 };
 

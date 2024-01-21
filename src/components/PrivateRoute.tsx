@@ -9,7 +9,7 @@ interface PrivateRouteProps {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({
   component: Component,
-  redirectTo = '/',
+  redirectTo = '/welcome',
 }) => {
   const { isLoggedIn, isRefreshing } = useAuth();
 

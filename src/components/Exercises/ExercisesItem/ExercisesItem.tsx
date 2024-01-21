@@ -1,3 +1,5 @@
+// import { useNavigate } from "react-router-dom";
+
 import {
   ExercisesListItem,
   ItemTextWrapper,
@@ -13,6 +15,13 @@ interface ExercisesItemProps {
 }
 
 const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img }) => {
+  
+  // const navigate = useNavigate();
+
+  // const onClick = () => {
+  //   navigate(`/exercises/${name}`, { replace: true })
+  // }
+
   return (
     <ExercisesListItem>
       <ItemTextWrapper>

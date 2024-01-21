@@ -1,28 +1,33 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import { useFormik } from 'formik';
+import { useAuth } from '../../hooks';
 
-import SignUpSchema from './SignUpSchema';
-import { InputPrimary } from '../InputPrimary';
-
-import { registerUser } from '../../redux/auth/operations';
-import { AppDispatch } from '../../redux';
-
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import {
   BlockSignUp,
   ContainerSignUp,
   FormContainer,
-  ImgSignUp,
-  ParagraphSignUp,
+
+  ParagraphAuth,
   TitleSignUp,
-  BtnSignUp,
+ BtnSignPage,
   WidthInput,
+  ParagraphAfterBtn,
+  LinkAuth,
+  InputAuth,
+  InputPassword,
 } from './SignUp.styled';
+
+
+import SignUpSchema from './SignUpSchema';
+import { registerUser } from '../../redux/auth';
+import { AppDispatch } from '../../redux';
+import {AuthImg} from '../Welcome/WelcomeImg';
+
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
+  const { isLoading } = useAuth();
 
   const formik = useFormik({
     initialValues: {
@@ -35,32 +40,23 @@ const SignUpForm = () => {
       values: { name: string; email: string; password: string },
       { resetForm }
     ) => {
-      try {
-        const response = await dispatch(registerUser(values));
+         await dispatch(registerUser(values));
         resetForm();
-        const token = (response.payload as { data?: { token: string } })?.data
-          ?.token;
-        if (token) {
-          return navigate('/profile');
-        }
-      } catch (error) {
-        console.error('Registration failed', error);
-      }
     },
   });
 
   return (
     <ContainerSignUp>
       <BlockSignUp>
-        <TitleSignUp>Sign up</TitleSignUp>
-        <ParagraphSignUp>
+        <TitleSignUp>Sign Up</TitleSignUp>
+        <ParagraphAuth>
           Thank you for your interest in our platform. To complete the
           registration process, please provide us with the following
           information.
-        </ParagraphSignUp>
+        </ParagraphAuth>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
-            <InputPrimary
+            <InputAuth
               bordercolor={
                 formik.errors.name && formik.touched.name ? 'error' : 'default'
               }
@@ -70,12 +66,10 @@ const SignUpForm = () => {
               onChange={formik.handleChange}
               value={formik.values.name}
             />
-          </WidthInput>
           {formik.errors.name && formik.touched.name && (
             <div>{formik.errors.name}</div>
           )}
-          <WidthInput>
-            <InputPrimary
+            <InputAuth
               bordercolor={
                 formik.errors.email && formik.touched.email
                   ? 'error'
@@ -88,38 +82,35 @@ const SignUpForm = () => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-          </WidthInput>
+  
           {formik.errors.email && formik.touched.email && (
             <div>{formik.errors.email}</div>
           )}
-          <WidthInput>
-            <InputPrimary
-              bordercolor={
-                formik.errors.password && formik.touched.password
+
+            <InputPassword
+            bordercolor={
+                formik.errors.email && formik.touched.email
                   ? 'error'
                   : 'default'
               }
+              placeholder='Password' 
               id="password"
               name="password"
               type="password"
-              placeholder="Password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-          </WidthInput>
           {formik.errors.password && formik.touched.password && (
             <div>{formik.errors.password}</div>
           )}
-
-          <BtnSignUp htmlType="submit" type="primary">
+          </WidthInput>
+          <BtnSignPage htmlType="submit" type="primary" loading={isLoading}>
             Sign Up
-          </BtnSignUp>
+          </BtnSignPage>
         </FormContainer>
+          <ParagraphAfterBtn>Already have an account?   <LinkAuth to="/signin">Sign In</LinkAuth></ParagraphAfterBtn>
       </BlockSignUp>
-      <ImgSignUp
-        src={imgForWelcomePage}
-        alt="The girl shows an example of a forward leg kick"
-      />
+      <AuthImg/>
     </ContainerSignUp>
   );
 };

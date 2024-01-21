@@ -15,8 +15,19 @@ export const LogoutBtn = styled.button`
   outline: none;
   border: none;
   padding: 0;
-  @media screen and (max-width: 1439px) {
-    display: none;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  &.desktop {
+    @media screen and (max-width: 1439px) {
+      display: none;
+    }
+  }
+  &.desktopProfile {
+    @media screen and (max-width: 1439px) {
+      display: ;
+    }
   }
 `;
 export const Text = styled.span`

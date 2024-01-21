@@ -11,14 +11,12 @@ interface ExercisesCategoriesProps {
   setPage: Dispatch<SetStateAction<number>>;
 }
 
-const ExercisesCategories: React.FC<ExercisesCategoriesProps> = () =>
-  // changeCategory,
-  // setPage,
+const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({changeCategory, setPage}) =>
   {
-    // const onChange = (key: Category) => {
-    //   changeCategory(key);
-    //   setPage(1);
-    // };
+  const onChange = (key) => {
+      changeCategory(key);
+      setPage(1);
+    };
 
     const items: TabsProps['items'] = [
       {
@@ -37,11 +35,9 @@ const ExercisesCategories: React.FC<ExercisesCategoriesProps> = () =>
         children: 'Content of Equipment',
       },
     ];
-
-    // Пока что убрал onChange={onChange} из-за ошибки тайпскрипта чтобы задеплоилось на гитхаб, исправь ошибку плиз
     return (
       <CategoryList>
-        <Tabs defaultActiveKey="Body parts" items={items} />
+        <Tabs defaultActiveKey="Body parts" items={items} onChange={onChange} />
       </CategoryList>
     );
   };
