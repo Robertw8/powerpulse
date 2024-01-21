@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 
 import { apiService } from '../../services';
 
+import { BackButton } from './BackButton';
 import { PageTitle } from '..';
 import { ExercisesSlider } from './ExercisesSlider';
 import { ExercisesCategories } from './ExercisesCategories';
+import { NotFoundMessage } from '../Products';
+// import { WaistList } from '../Waist';
 
 import { ExercisesWrap, TopWrap, LoaderWrap } from './Exercises.styled';
 
@@ -21,9 +25,11 @@ const Exercises: React.FC = () => {
   const [limit, setLimit] = useState<number>(10);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(1);
-  
+  const [errorPage, setErrorPage] = useState<boolean>(false);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    setSearchParams({ filter: currentCategory });
 
     window.screen.width >= 768 && window.screen.width < 1440 ? setLimit(9) : setLimit(10);
 
@@ -33,20 +39,24 @@ const Exercises: React.FC = () => {
     setIsLoading(true);
     responce
       .then(({ data, totalItems }) => {
-        setExercisesList(data)
-        setTotal(totalItems)
+        if (!data.length)
+          return setErrorPage(true);
+        setExercisesList(data);
+        setTotal(totalItems);
       })
-      .catch((error) => console.log(error))
+      .catch(() => {
+        setErrorPage(true);
+      })
       .finally(() => setIsLoading(false));
   },[currentCategory, limit, page, total])
 
   return (
     <ExercisesWrap>
-      
+      {searchParams.has("category") && <BackButton/>}
       <TopWrap>
           {isLoading &&
         <LoaderWrap>
-            <Spin indicator={<LoadingOutlined style={{ fontSize: 34 }} spin />} />
+          <Spin indicator={<LoadingOutlined style={{ fontSize: 34 }} spin />} />
         </LoaderWrap>}
         <PageTitle text={'Exercises'} />
         <ExercisesCategories
@@ -54,13 +64,18 @@ const Exercises: React.FC = () => {
           setPage={setPage}
         />
       </TopWrap>
-      <ExercisesSlider
+      {errorPage && <NotFoundMessage />}
+      {!searchParams.has("category") ?
+            <ExercisesSlider
         exercisesList={exercisesList}
         currentCategory={currentCategory}
         setPage={setPage}
         total={total}
         limit={limit}
-        isLoading={isLoading} />
+          isLoading={isLoading} /> : 
+        <div>waist</div>
+    }
+      {/* <WaistList waistItem={} /> */}
     </ExercisesWrap>
   );
 };

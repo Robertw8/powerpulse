@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { FormValues, schema } from './UserFormSchema';
 import { apiService } from '../../../services';
 import useAuth from '../../../hooks/useAuth';
-import { errorWrapper } from '../../../helpers';
+import { callToast } from '../../../helpers';
 import { UserFormInput } from './UserFormInput';
 import { PrimaryButton } from '../..';
 
@@ -51,22 +51,18 @@ const UserForm: React.FC = () => {
         levelActivity: values.levelActivity,
       };
 
-      const data = await apiService({
-        method: 'patch',
-        url: '/users',
-        data: userData,
-      });
-      errorWrapper(data);
-
-      // try {
-      //   await apiService({
-      //     method: 'patch',
-      //     url: '/users',
-      //     data: userData,
-      //   });
-      // } catch (error) {
-      //   console.log(error.message);
-      // }
+      await apiService(
+        {
+          method: 'patch',
+          url: '/users',
+          data: userData,
+        },
+        error => {
+          callToast('error', 'Request error, try again');
+          console.log(error);
+          return '';
+        }
+      );
     },
   });
 

@@ -10,6 +10,10 @@ background:${({backgroundColor})=>backgroundColor ||'rgba(239, 237, 232, 0.05);'
 display: flex;
 justify-content: space-between;
 flex-direction: column;
+@media screen and (min-width: 768px) { 
+   flex: 0 0 187px;
+ 
+   }
 
 `
 const TitleBlock = styled.p<{textColor?:string}>`

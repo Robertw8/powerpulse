@@ -6,8 +6,7 @@ axios.defaults.baseURL = 'https://goit-be.onrender.com/';
 const apiService = async (
   { method, url, data, config }: ApiServiceOptions,
   errorHandler = error => {
-    console.error('An error occurred:', error); // ! temp
-    return 'An error occurred';
+    return `An error occurred: ${error}`;
   }
 ) => {
   try {
