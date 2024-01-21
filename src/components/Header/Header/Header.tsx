@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../../hooks';
+import { useDispatch } from 'react-redux';
 import routes from '../../../routes';
+import { AppDispatch } from '../../../redux';
+import { getCurrentUser } from '../../../redux/auth';
 
 import UserBar from '../UserBar/UserBar';
 import UserNav from '../UserNav/UserNav';
@@ -21,9 +24,16 @@ import {
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    dispatch(getCurrentUser({}));
+  }, [dispatch, isLoggedIn]);
+
   return (
     <div
       style={
