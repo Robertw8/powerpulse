@@ -1,4 +1,4 @@
 export { getStatistics } from './operations';
 
-export { selectStatistics } from './selectors';
+export { selectStatistics, selectIsLoading, selectError } from './selectors';
 export { statisticsReducer } from './slice';

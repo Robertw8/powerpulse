@@ -24,7 +24,7 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(getStatistics.fulfilled, (state, { payload }) => {
-        state = { ...state.statistics, ...payload };
+        state.statistics = { ...payload };
         state.isLoading = false;
       })
       .addCase(getStatistics.rejected, (state, action) => {
