@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { List, ListWrapper } from './ProductsList.styled';
@@ -22,6 +22,7 @@ const ProductsList: React.FC = () => {
   const productsListRef = useRef<HTMLUListElement>(null);
   const pageRef = useRef<number>(1);
   const filters = useSelector(selectFilters);
+  const [showNotFound, setShowNotFound] = useState(false);
 
   useEffect(() => {
     dispatch(
@@ -64,9 +65,23 @@ const ProductsList: React.FC = () => {
     };
   }, [dispatch, pageRef, filters]);
 
+  useEffect(() => {
+    if (!products.length && !isLoading) {
+      const timeoutId = setTimeout(() => {
+        setShowNotFound(true);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    } else {
+      setShowNotFound(false);
+    }
+  }, [products, isLoading]);
+
   return (
     <ListWrapper>
-      {!products.length && !isLoading && <NotFoundMessage />}
+      {showNotFound && <NotFoundMessage />}
       <List className="scrollbar-outer" ref={productsListRef}>
         {products.map((product, index) => (
           <ProductsItem product={product} key={index} />
