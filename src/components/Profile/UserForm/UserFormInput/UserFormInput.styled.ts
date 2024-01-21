@@ -15,6 +15,7 @@ const LabelWrapBlock = styled.div`
 
   @media screen and (min-width: 769px) {
     gap: 0;
+    width: calc(100% / 2);
   }
 `;
 
@@ -26,7 +27,6 @@ const LabelWrap = styled.div`
 
   @media screen and (min-width: 769px) {
     margin: 0 14px 14px 0;
-    width: 100%;
   }
 `;
 
