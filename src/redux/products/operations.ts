@@ -55,7 +55,6 @@ const getProductsByPage = operationWrapper(
         },
       },
     });
-
     return response.data;
   }
 );
