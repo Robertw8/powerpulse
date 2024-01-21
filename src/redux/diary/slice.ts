@@ -44,7 +44,7 @@ const slice = createSlice({
           })
           .addCase(addDiaryProduct.fulfilled, (state, { payload }) => {
             
-            state.products = [...state.products, ...payload] 
+            state.products = [...state.products, ...payload.product] 
             state.isLoading = false;
             state.error = '';
           })
@@ -54,11 +54,11 @@ const slice = createSlice({
           }).addCase(deleteDiaryProduct.pending, state => {
             state.isLoading = true;
           })
-        //   .addCase(deleteDiaryProduct.fulfilled, (state, { payload }) => {
-        //     state.products = state.products.filter( product=> product._id !== payload.id) as string[]
-        //     state.isLoading = false;
-        //     state.error = '';
-        //   })
+          .addCase(deleteDiaryProduct.fulfilled, (state, { payload }) => {
+            state.products = state.products.filter( product=> product._id !== payload.id) 
+            state.isLoading = false;
+            state.error = '';
+          })
           .addCase(deleteDiaryProduct.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.error.message as string

@@ -1,5 +1,7 @@
+
+
 interface InitialState {
-    products:string[]
+    products:Products[],
     exercises:string[],
     caloriesBurned:number,
     caloriesConsumed:number,
@@ -10,4 +12,16 @@ interface InitialState {
     error: string,
   }
   
-  export type {  InitialState };
+  interface Products{amount:number,
+    calories:number,
+    category:string,
+    date:string,
+    groupBloodNotAllowed:{[key:string]:boolean},
+    product_ID:string,
+    recommend:boolean,
+    title:string,
+    _id:string} 
+
+
+
+  export type {  InitialState,Products };

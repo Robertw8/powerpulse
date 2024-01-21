@@ -1,5 +1,6 @@
 export  { getDiary,
-    addDiaryProduct,deleteDiaryProduct
+    addDiaryProduct,deleteDiaryProduct,
+    addDiaryExercise,deleteDiaryExercise
 } from "./operations";
 export { diaryReducer } from './slice';
 

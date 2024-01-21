@@ -52,4 +52,38 @@ config:{params:{date}}
       return response;
     }
   );
-  export { getDiary,addDiaryProduct,deleteDiaryProduct }
+
+  const addDiaryExercise = operationWrapper(
+    'diary/addDiaryExercise',
+    async (data) => {
+ 
+      const response = await apiService({
+        method: 'post',
+        url: 'diary/exercises',
+        data
+    
+    
+      });
+     
+  console.log(response);
+      return response.data;
+    }
+  );
+
+  const deleteDiaryExercise  = operationWrapper(
+    'diary/deleteDiaryExercise',
+    async (exerciseId) => {
+ 
+      const response = await apiService({
+        method: 'delete',
+        url: `diary/exercises/${exerciseId}`,
+       
+    
+    
+      });
+     
+  console.log(response);
+      return response;
+    }
+  );
+  export { getDiary,addDiaryProduct,deleteDiaryProduct,addDiaryExercise,deleteDiaryExercise }
