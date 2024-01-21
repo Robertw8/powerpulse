@@ -1,7 +1,8 @@
 // import { Icon } from "../../Icon"
+
 import { StyledStatusBlock,TitleBlock,IconTextWrap,StatusValue } from "./DailyStatusBlock.styled"
 
-interface DailyProps{text:string; backgroundColor?:string,value:string, textColor?:string,whiteSpace?:string, children?:React.ReactElement }
+interface DailyProps{text:string; backgroundColor?:string,value:number|string, textColor?:string,whiteSpace?:string, children?:React.ReactElement }
 
 const DailyStatusBlock:React.FC<DailyProps>=({text,backgroundColor, textColor,whiteSpace,children,value})=>{
     return <StyledStatusBlock backgroundColor={backgroundColor}>
