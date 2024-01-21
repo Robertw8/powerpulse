@@ -6,9 +6,12 @@ const GlobalStyles = css`
     font-family: 'Roboto';
     src: url(${Roboto}) format('truetype');
   }
-
+  
+  html, body, #root {
+    height: 100%;
+  }
+  
   body {
-    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     background-color: #040404;
     color: #efede8;

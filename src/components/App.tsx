@@ -66,13 +66,9 @@ export const App: React.FC = () => {
           <Route
             path={routes.EXERCISES}
             element={<PrivateRoute component={<ExercisesPage />} />}
-          >
-            <Route path="bodyparts" element={<ExercisesPage />} />
-            <Route path="muscles" element={<ExercisesPage />} />
-            <Route path="equipment" element={<ExercisesPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
+          />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );

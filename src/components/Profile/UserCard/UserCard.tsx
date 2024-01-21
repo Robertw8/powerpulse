@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { apiService } from '../../../services/';
 import { useAuth } from '../../../hooks';
-import { LogOutBtn } from '../../LogoutBtn/LogoutBtn';
+import { LogOutBtn } from '../../LogoutBtn';
 import { Icon } from '../../Icon';
 
 import {

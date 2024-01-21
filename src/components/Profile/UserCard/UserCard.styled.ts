@@ -36,8 +36,8 @@ const WrapIcon = styled.div`
   }
 `;
 
-// del later
 const Img = styled.img`
+  border-radius: 50%;
   @media screen and (min-width: 769px) {
   }
 `;

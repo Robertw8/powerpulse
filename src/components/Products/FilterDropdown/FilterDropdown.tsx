@@ -1,6 +1,7 @@
 import { SelectProps } from 'antd';
 import { StyledSelect, StyledPopupContent } from './FilterDropdown.styled';
 import { Icon } from '../../Icon';
+import { DefaultOptionType } from 'antd/es/select';
 
 interface FilterDropdownProps extends SelectProps {
   items: string[];
@@ -9,9 +10,15 @@ interface FilterDropdownProps extends SelectProps {
 const FilterDropdown: React.FC<FilterDropdownProps> = ({
   items,
   placeholder,
+  onChange,
+  value,
 }) => {
   return (
     <StyledSelect
+      value={value}
+      onChange={(value, option) => {
+        onChange?.(value, option as DefaultOptionType);
+      }}
       options={items.map(item => ({
         value: item,
         label: item,

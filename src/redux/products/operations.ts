@@ -2,31 +2,59 @@ import { createAction } from '@reduxjs/toolkit';
 import { operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
 
-interface GetProductsParams {
-  page: number;
-  query?: string;
+interface GetProducts {
+  page?: number;
+  limit?: number;
+  search?: string;
   categories?: string;
   type?: string;
 }
 
 const getProducts = operationWrapper(
   'products/getProducts',
-  async ({ page, query, categories, type }: GetProductsParams) => {
-    const queryString = `${query && `search=${query}`}&${
-      categories && `categories=${categories}`
-    }&${type && `type=${type}`}`;
-
+  async ({ page, search, categories, type }: GetProducts) => {
     const response = await apiService({
       method: 'get',
-      url: `products?${queryString}`,
+      url: `products`,
       config: {
         params: {
+          search,
+          categories,
+          type,
+          limit: 20,
           page,
-          limit: 5,
         },
       },
     });
 
+    return response.data;
+  }
+);
+
+interface GetProductsByPage {
+  page: number;
+  limit?: number;
+  search?: string;
+  categories?: string;
+  type?: string;
+}
+
+const getProductsByPage = operationWrapper(
+  'products/getProductsByPage',
+  async ({ page, limit = 10, search, categories, type }: GetProductsByPage) => {
+    const response = await apiService({
+      method: 'get',
+      url: `products`,
+      config: {
+        params: {
+          search,
+          categories,
+          type,
+          limit,
+          page,
+        },
+      },
+    });
     return response.data;
   }
 );
@@ -48,4 +76,14 @@ const setCalculatedCalories = createAction<number>(
   'products/setCalculatedCalories'
 );
 
-export { getProducts, setCalculatedCalories, getProductsCategories };
+const setFilters = createAction<{ [key: string]: string }>(
+  'products/setFilters'
+);
+
+export {
+  getProducts,
+  setCalculatedCalories,
+  getProductsCategories,
+  getProductsByPage,
+  setFilters,
+};
