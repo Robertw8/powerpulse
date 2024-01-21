@@ -20,11 +20,11 @@ const WaistList: React.FC<WaistProps> = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getWaistExercises({}));
+    dispatch(getWaistExercises(exercises));
   }, [dispatch]);
 
   const exercises = useSelector(
-    (state: RootState) => state.exercises.exercises
+    (state: RootState) => state.exercises.bodyPart
   );
   console.log(exercises);
   const visibleExercises =

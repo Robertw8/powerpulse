@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { getWaistExercises } from "./operationsWaist";
 import { WaistExercises, InitialState } from "./types";
 
 
 const initialState: InitialState = {
-    exercises: [],
+    bodyPart: [],
     isLoading: false,
     error: null ,
 }
 
 const exercisesSlice = createSlice({
-    name: 'exercises',
+    name: 'bodyPart',
     initialState,
     reducers: {},
     extraReducers: builder => {
@@ -18,8 +18,8 @@ const exercisesSlice = createSlice({
             .addCase(getWaistExercises.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getWaistExercises.fulfilled, (state, action) => {
-                state.exercises = action.payload as WaistExercises[];
+            .addCase(getWaistExercises.fulfilled, (state, action: PayloadAction<WaistExercises[]>) => {
+                state.bodyPart = action.payload as WaistExercises[];
                 state.isLoading = false;
                 state.error = null;
             })

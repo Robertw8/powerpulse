@@ -17,16 +17,15 @@ import sprite from '../../../assets/images/sprite.svg';
 import React from 'react';
 import { WaistExercises } from '../../../redux/Waist/types';
 
-interface List {
+ interface List {
   burnedCalories: string;
   bodyPart: string;
   target: string;
 }
 
-export interface WaistProps {
+ interface WaistProps {
   waistItem: WaistExercises;
-}
-interface Texts {
+} interface Texts {
   cardLabel: string;
   btnLabel: string;
   list: List;
@@ -86,3 +85,4 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
 };
 
 export default WaistItem;
+export type {Texts, List, WaistProps}
