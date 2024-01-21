@@ -44,7 +44,7 @@ const slice = createSlice({
           })
           .addCase(addDiaryProduct.fulfilled, (state, { payload }) => {
             
-            state.products = [...state.products, ...payload] 
+            state.products = [...state.products, ...payload.product] 
             state.isLoading = false;
             state.error = '';
           })

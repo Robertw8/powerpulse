@@ -4,7 +4,12 @@ import { useSelector,
 import { RootState } from '../../redux/rootReducer'
 import { useEffect } from 'react';
 import { AppDispatch } from '../../redux'
-import { deleteDiaryProduct } from '../../redux/diary';
+import { 
+  // addDiaryProduct,
+  // addDiaryExercise,
+  // deleteDiaryExercise,
+// getDiary
+} from '../../redux/diary';
 // import dayjs from 'dayjs';
 import {
     Text,
@@ -26,15 +31,28 @@ import { DailyStatusBlock } from './DailyStatusBlock';
 
 // import { MyCalendar } from './Calendar';
 
-
+// const exercise={
+//   time: 5,
+//   date: "15/01/2024",
+//   calories: 300,
+//   exercise_ID: "64f2458d6f67bc34bae4f857"
+// };
+// 
+// const product={
+//   product_ID: "5d51694902b2373622ff5773",
+//   date: "15/01/2024",
+//   amount: 90,
+//   calories: 500
+// }
   const Diary = () => {
   
     const dispatch = useDispatch<AppDispatch>();
     const userData = useSelector((state: RootState) => state.auth.user);
     useEffect(() => {
-  
-      dispatch(deleteDiaryProduct('65ad3f2d1fd5d4b96e50c838'));
-     
+      // dispatch(deleteDiaryExercise('65ad9219f4d934837d6bc32c'));
+      // dispatch(addDiaryProduct(product));
+      // dispatch(addDiaryExercise(exercise));
+      // dispatch(getDiary('15/01/2024'));
     }, [dispatch]);
     return (
       <>
