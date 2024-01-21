@@ -6,9 +6,9 @@ interface FormValues {
   currentWeight: string | number;
   desiredWeight: string | number;
   birthday: string;
-  blood: 1 | 2 | 3 | 4 | string | null; // От це треба переробити якось бо в UserForm TS сварився що невідома строка не може бути присвоєна типу 1 | 2 | 3 | 4 | null, тепер помилок нема але і 1 | 2 | 3 | 4 тепер марний
-  sex: '' | 'male' | 'female' | string; // Тут те ж саме
-  levelActivity: 1 | 2 | 3 | 4 | 5 | string | null; // І тут те ж саме
+  blood: 1 | 2 | 3 | 4 | string; // От це треба переробити якось бо в UserForm TS сварився що невідома строка не може бути присвоєна типу 1 | 2 | 3 | 4 | null, тепер помилок нема але і 1 | 2 | 3 | 4 тепер марний
+  sex: 'male' | 'female' | string; // Тут те ж саме
+  levelActivity: 1 | 2 | 3 | 4 | 5 | string; // І тут те ж саме
 }
 
 //yup validation
