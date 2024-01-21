@@ -1,8 +1,6 @@
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 
-import {NotFoundMessage} from '../../Products'
-
 type Props = {
     exercisesList: Array<{
         _id: string;
@@ -33,10 +31,10 @@ const Slider: React.FC<Props> = ({ exercisesList, currentCategory, setPage, tota
 
     return (
         <>
-            {exercisesList.length ?
+            {exercisesList.length &&
                 <Carousel afterChange={onChange}>
                     {sliderBlocks}
-                </Carousel> : <NotFoundMessage />}
+                </Carousel>}
         </>
     );
 };
