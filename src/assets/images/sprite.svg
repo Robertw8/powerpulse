@@ -10,7 +10,7 @@
       <path fill="none" stroke="#efede8" style="stroke:var(--color1, #efede8)" stroke-linejoin="round" stroke-linecap="round" stroke-width="4.8" d="M3.2 3.2 16 16 3.2 28.8"/>
     </symbol>
     <symbol id="icon-next" viewBox="0 0 42 32">
-      <path fill="none" stroke="#e6533c" style="stroke:var(--color2, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-width="4.8" d="M23.467 29.333 36.8 16m0 0L23.467 2.667M36.8 16h-32"/>
+      <path fill="none" stroke="none" style="stroke:var(--color2, #none)" stroke-linejoin="round" stroke-linecap="round" stroke-width="4.8" d="M23.467 29.333 36.8 16m0 0L23.467 2.667M36.8 16h-32"/>
     </symbol>
     <symbol id="icon-fire" viewBox="0 0 32 32">
       <path fill="#ef8964" style="fill:var(--color3, #ef8964)" d="M16.001 22.291c-.946.72-2.898 2.5-2.898 4.925 0 1.601 1.3 2.904 2.897 2.904s2.897-1.303 2.897-2.904c0-2.297-1.954-4.161-2.895-4.925z"/>
@@ -31,7 +31,7 @@
 		</symbol>
     <symbol id="icon-arrow-left" viewBox="0 0 18 18">
       <g id="chevron-down">
-        <path id="Vector" d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="Vector" d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
     </symbol>
     <symbol id="icon-bubble" viewBox="0 0 32 32">

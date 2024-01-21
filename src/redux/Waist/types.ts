@@ -1,19 +1,29 @@
- interface WaistExercises {
-    _id?: string;
-    burnedCalories: number;
-    bodyPart: string;
-    target: string;
-    title?: string;
-    category?: string;
-    equipment: string;
-    name: string;
+interface WaistExercises {
+  bodyPart: string;
+  equipment?: string;
+  gifUrl?: string;
+  name: string;
+  target: string;
+  burnedCalories: number;
+  time?: number;
+  _id?: string;
 }
+
+interface WaistExercisesResponse {
+  data: WaistExercises[];
+  totalItems: number;
+}
+
 
 interface InitialState {
-    exercises: WaistExercises[];
-    isLoading: boolean;
-    error: null | string;
+  bodyPart: WaistExercises[];
+  isLoading: boolean;
+  error: null | string;
 }
 
 
-export type { WaistExercises, InitialState };
+export type {
+  WaistExercises,
+  InitialState,
+  WaistExercisesResponse
+};

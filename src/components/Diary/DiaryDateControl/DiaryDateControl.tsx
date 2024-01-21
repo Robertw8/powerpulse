@@ -9,7 +9,7 @@ const DiaryDateControl: React.FC=()=>{
                     iconWidth={{ mobile: '20px', tablet: '20px' }}
                     iconHeight={{ mobile: '20px', tablet: '20px' }}/>
                  <ArrowControl>   
-                    <Icon   name="arrow"
+                    <Icon   name="arrow-left" 
                     iconWidth={{ mobile: '16px', tablet: '16px' }}
                     iconHeight={{ mobile: '16px', tablet: '16px' }}/>
                      <Icon   name="arrow"

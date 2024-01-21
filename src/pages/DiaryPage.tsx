@@ -1,4 +1,5 @@
 import { Container, PageTitle, Diary } from '../components';
+import { DiaryDateControl } from '../components/Diary/DiaryDateControl';
 
 
 const DiaryPage: React.FC = () => {
@@ -6,7 +7,7 @@ const DiaryPage: React.FC = () => {
     <Container>
       <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
       <PageTitle text="Diary" />
-     
+     <DiaryDateControl/>
       </div>
       <Diary />
     </Container>
