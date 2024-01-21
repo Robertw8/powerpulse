@@ -1,1 +1,1 @@
-export {default as AddExerciseSuccess} from "./AddExerciseSuccess";
+export { default as AddExerciseSuccess } from './AddExerciseSuccess';
