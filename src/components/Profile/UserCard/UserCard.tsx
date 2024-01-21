@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { apiService } from '../../../services/';
 import { useAuth } from '../../../hooks';
 import { LogOutBtn } from '../../LogoutBtn';
 import { Icon } from '../../Icon';
@@ -25,29 +24,20 @@ import {
   Img,
   WrapIcon,
 } from './UserCard.styled';
+import { AppDispatch } from '../../../redux';
+import { useDispatch } from 'react-redux';
+import { getUserAvatar } from '../../../redux/profile';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
   // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
   const { user } = useAuth();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleChangeImg = async e => {
-    // e.preventDefault();
     const dataFile = new FormData();
     dataFile.append('avatar', e.target.files[0]);
-
-    const img = await apiService({
-      method: 'post',
-      url: '/users/avatars',
-      data: dataFile,
-      config: {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      },
-    });
-
-    console.log(img);
+    await dispatch(getUserAvatar(dataFile));
   };
 
   return (
@@ -116,10 +106,7 @@ const UserCard: React.FC = () => {
               />
               <TitleBlock>Daily physical activity</TitleBlock>
             </TextBlockWrap>
-            <TextValue>
-              {user.dailyActivity || 0}
-              <span> min</span>
-            </TextValue>
+            <TextValue>{(user.dailyActivity || 0) + ' min'}</TextValue>
           </BlockData>
         </BlockWrap>
         <TextWrap>

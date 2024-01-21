@@ -3,12 +3,13 @@ import { palette } from '../../../styles/theme';
 
 import { Link } from 'react-router-dom';
 
+export const Wrapper = styled.div`
+  background-color: ${palette.colors.black};
+`;
 export const HeaderContainer = styled.header`
   padding-top: 24px;
   padding-bottom: 24px;
   /* margin: 0 auto; */
-
-  background-color: ${palette.colors.black};
 
   @media screen and (min-width: 768px) {
     padding-top: 32px;

@@ -19,3 +19,4 @@ export { default as PrivateRoute } from './PrivateRoute';
 export { default as PublicRoute } from './PublicRoute';
 export { Loader } from './Loader';
 export { NotFound } from './NotFound'
+export { Icon } from './Icon';

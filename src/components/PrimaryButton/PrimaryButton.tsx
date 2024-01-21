@@ -10,6 +10,7 @@ interface PrimaryButtonProps extends ButtonProps {
   onclick?: () => void;
   disabled?: boolean;
   htmlType?: 'submit' | 'reset' | 'button';
+  loading?: boolean;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -21,6 +22,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   onclick,
   disabled,
   htmlType,
+  loading,
 }) => {
   return (
     <CustomButton
@@ -31,6 +33,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       onClick={onclick}
       disabled={disabled}
       htmlType={htmlType}
+      loading={loading}
     >
       {text}
     </CustomButton>
