@@ -8,6 +8,7 @@ const getWaistExercises = operationWrapper(
     const response = await apiService({
       method: 'get',
       url: 'exercises',
+      // url: `/exercises?${filter}&${bodyPart}=${query}`,
     });
     return response.data as WaistExercises[];
   }
