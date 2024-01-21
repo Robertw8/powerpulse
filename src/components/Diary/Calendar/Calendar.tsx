@@ -127,8 +127,8 @@
 
 
 // export default MyCalendar;
-import * as React from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import  React,{useState} from 'react';
+import dayjs from 'dayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -141,13 +141,17 @@ dayjs.updateLocale('en', {
 })
 
 const MyCalendar:React.FC=() =>{
-  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2024-01-20'));
+  
+  const [value, setValue] = useState(dayjs().format('DD/MM/YYYY'));
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
       <DemoContainer components={['DateCalendar']}>
         <DemoItem >
-          <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} showDaysOutsideCurrentMonth={true} sx={{backgroundColor:'#EF8964', borderRadius:'8px'}}/>
+          <DateCalendar value={value} onChange={(newValue) => {
+            setValue(dayjs(newValue.$d).format('DD/MM/YYYY'))}}
+             showDaysOutsideCurrentMonth={true} 
+             sx={{backgroundColor:'#EF8964', borderRadius:'8px'}}/>
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>)}

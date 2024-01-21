@@ -8,11 +8,14 @@ justify-content: center;
 gap: 13px;
 @media screen and (min-width: 768px) {
     order:2;
-    flex-wrap: wrap;
     justify-content: start;
     margin-bottom: 32px;
    }
-   @media screen and (min-width: 1168px) {
+   @media screen and (min-width: 1441px) {
+  width:390px
+ 
+
+     }
   }
 `
 const NextGrayBlock = styled.div`
@@ -60,9 +63,9 @@ order:3;
 justify-content:start;
 margin-bottom:64px;
 width:561px;}
-@media screen and (min-width: 1168px) {
-
-width:350px;}`
+@media screen and (min-width: 1441px) {
+width:fit-content;
+}`
 
 
 
@@ -78,12 +81,30 @@ line-height: 18px;
 const AddingBlocksWrap=styled.div`display:flex;
 flex-direction:column;
 margin-bottom:64px;
-gap:40px;@media screen and (min-width: 1168px) {
+gap:40px;
+@media screen and (min-width: 1441px) {
+ 
 }`
 
 const MainDiaryWrap=styled.div`
 display:flex; 
 flex-direction:column;
-@media screen and (min-width: 1168px) {
+@media screen and (min-width: 1441px) {
+
+ 
 }`
-export {  Text, TextWrap, BlockWrap,  NextGrayBlock,  GrayBlockTitle,RedBlockTitle, TextBlockWrap,AddingTextBlockWrap ,NextTextBlockWrap,AddingBlocksWrap,MainDiaryWrap }
+const DiaryWrapper= styled.div`
+display:flex;
+alignitems:center;
+justify-content:space-between;
+`
+const DesktopWrap=styled.div`
+
+@media screen and (min-width: 1441px) {
+  display:flex;
+  flex-direction:column;
+  order:2
+
+}
+`
+export {  Text, TextWrap, BlockWrap,  NextGrayBlock,  GrayBlockTitle,RedBlockTitle, TextBlockWrap,AddingTextBlockWrap ,NextTextBlockWrap,AddingBlocksWrap,MainDiaryWrap,DiaryWrapper,DesktopWrap }
