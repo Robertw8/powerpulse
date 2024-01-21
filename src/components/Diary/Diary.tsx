@@ -49,7 +49,7 @@ import { DailyStatusBlock } from './DailyStatusBlock';
     const dispatch = useDispatch<AppDispatch>();
     const userData = useSelector((state: RootState) => state.auth.user);
     useEffect(() => {
-      // dispatch(deleteDiaryExercise('65ad9219f4d934837d6bc32c'));
+      // dispatch(deleteDiaryExercise('65ad9219f4d934837d6bc328'));
       // dispatch(addDiaryProduct(product));
       // dispatch(addDiaryExercise(exercise));
       // dispatch(getDiary('15/01/2024'));
