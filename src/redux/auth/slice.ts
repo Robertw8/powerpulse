@@ -7,9 +7,10 @@ import {
   loginUser,
   getCurrentUser,
   logOutUser,
+  getUserValue,
+  getUserAvatar,
 } from './operations';
 import initialState from './initialState';
-import { getUserValue, getUserAvatar } from '../profile';
 
 const authSlice = createSlice({
   name: 'auth',
