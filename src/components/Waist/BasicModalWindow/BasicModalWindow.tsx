@@ -3,7 +3,6 @@ import { Transition } from 'react-transition-group';
 
 import {
   Modal,
-  MadalWrapper,
   MadalContent,
   Image,
   Timer,
@@ -87,7 +86,6 @@ const BasicModalWindow: React.FC<{
             className='modal-wrapper'
             onClick={onWrapperClick}
           >
-            <MadalWrapper className="modal-wrapper" onClick={onWrapperClick}>
               <MadalContent className="modal-content">
                 <Svg onClick={() => onClose()}>
                   <use href={`${sprite}#icon-x`}></use>
@@ -143,7 +141,6 @@ const BasicModalWindow: React.FC<{
                   <Button type="button">Add to diary</Button>
                 </Ul>
               </MadalContent>
-            </MadalWrapper>
           </Modal>
       </Transition>
     </>

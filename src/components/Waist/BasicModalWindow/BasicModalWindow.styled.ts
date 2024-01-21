@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles/index';
 
 export const Modal = styled.div` 
     position: fixed; 
@@ -10,22 +11,11 @@ export const Modal = styled.div`
     flex-shrink: 0; 
     border-radius: 12px; 
     border: 1px solid rgba(239, 237, 232, 0.20); 
-    background: rgba(239, 237, 232, 0.20); 
+    background: rgba(4, 4, 4, 0.40);
     overflow: hidden; 
     overflow-y: auto; 
     transition: opacity 0.3s; 
     z-index: 999; 
-`;
-
-export const MadalWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; 
-  min-height: 100%;
 `;
 
 export const MadalContent = styled.div` 
@@ -87,7 +77,7 @@ export const BurnedCal = styled.p`
 `;
 
 export const BurnedInformName = styled.span`
-  color: #e6533c;
+  color: ${palette.colors.orange};
 `;
 
 export const Ul = styled.ul`
@@ -142,7 +132,7 @@ export const Button = styled.button`
   gap: 10px;
   border-radius: 12px;
   border: 0;
-  background: var(--orange, #e6533c);
+  background: var(--orange, ${palette.colors.orange});
   color: #efede8;
   font-family: Roboto;
   font-size: 16px;
@@ -163,18 +153,18 @@ export const Div = styled.div`
 export const SvgPlay = styled.svg`
   width: 14px;
   height: 14px;
-  background-color: #e6533c;
+  background-color: ${palette.colors.orange};
 `;
 export const SvgPause = styled.svg`
   width: 14px;
   height: 14px;
-  background-color: #e6533c;
+  background-color: ${palette.colors.orange};
 `;
 export const Btn = styled.button`
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background-color: #e6533c;
+  background-color: ${palette.colors.orange};
 `;
 
 export const Svg = styled.svg` 
