@@ -4,29 +4,21 @@ import { NavLink } from 'react-router-dom';
 import { palette } from '../../../styles/theme';
 
 export const DrawerStyled = styled(Drawer)`
-  &.ant-drawer-content-wrapper {
-    width: 200px;
-    padding: 18px 20px 20px 20px;
-
-    @media screen and (min-width: 768px) {
-      width: 350px;
-      padding: 26px 32px 32px 32px;
-    }
-  }
   .ant-drawer-header-close-only {
     display: none;
   }
-
+  .ant-drawer-body {
+    padding: 20px;
+    @media screen and (min-width: 768px) {
+      padding: 32px;
+    }
+  }
   &.ant-drawer-content {
     background-color: ${palette.colors.orange};
   }
 
   .ant-drawer-close {
     display: none;
-  }
-  @media screen and (min-width: 768px) {
-    width: 350px;
-    padding: 26px 32px 32px 32px;
   }
 
   @media screen and (max-width: 1439px) {
@@ -72,6 +64,10 @@ export const NavMenu = styled.nav`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 222px;
+  }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
@@ -88,16 +84,25 @@ export const NavLinkStyled = styled(NavLink)`
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
+  &.active,
+  &:hover,
+  &:focus {
+    border: 1px solid ${palette.colors.white};
+  }
 `;
 
 export const CloseBtn = styled.button`
   position: absolute;
-  top: 26px;
-  right: 32px;
+  top: 20px;
+  right: 20px;
   background-color: transparent;
   padding: 0px;
   border: none;
   cursor: pointer;
   margin-right: 0;
   margin-left: auto;
+  @media screen and (min-width: 768px) {
+    top: 26px;
+    right: 32px;
+  }
 `;
