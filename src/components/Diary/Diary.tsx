@@ -25,7 +25,7 @@ import {
 import { Icon } from '../Icon';
 import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 
 // import { MyCalendar } from './Calendar';
 
