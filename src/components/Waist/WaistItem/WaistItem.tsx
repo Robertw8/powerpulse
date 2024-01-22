@@ -15,7 +15,7 @@ import {
 import sprite from '../../../assets/images/sprite.svg';
 
 import React from 'react';
-import { WaistExercises } from '../../../redux/Waist/types';
+import { Exercises } from '../../../redux/exercises/types';
 
 interface List {
   burnedCalories: string;
@@ -24,7 +24,7 @@ interface List {
 }
 
 interface WaistProps {
-  waistItem: WaistExercises;
+  waistItem: Exercises;
 }
 interface Texts {
   cardLabel: string;

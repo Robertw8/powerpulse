@@ -1,4 +1,4 @@
-interface WaistExercises {
+interface Exercises {
   bodyPart: string;
   equipment?: string;
   gifUrl?: string;
@@ -16,24 +16,17 @@ interface Filter {
   limit: number;
 }
 
-interface WaistExercisesResponse {
-  data: WaistExercises[];
+interface ExercisesResponse {
+  data: Exercises[];
   totalItems: number;
 }
 
-
 interface InitialState {
-  exercises: WaistExercises[];
-  filters: Filter ;
-  bodyPart: WaistExercises[];
+  exercises: Exercises[];
+  filters: Filter;
+  bodyPart: Exercises[];
   isLoading: boolean;
   error: string | undefined;
 }
 
-
-export type {
-  WaistExercises,
-  InitialState,
-  WaistExercisesResponse,
-  Filter
-};
+export type { Exercises, InitialState, ExercisesResponse, Filter };

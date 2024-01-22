@@ -3,43 +3,29 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import {
-  getWaistExercises,
-  selectFilter,
-  
-} from '../../../redux/Waist';
+import { getExercises, selectFilters } from '../../../redux/exercises';
 import {
   NoExercisesTitle,
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import { selectWaistExercises } from '../../../redux/Waist/selectorWaist';
+import { selectExercises } from '../../../redux/exercises';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const exercises = useSelector(selectWaistExercises);
-  const filters = useSelector(selectFilter);
+  const exercises = useSelector(selectExercises);
+  const filters = useSelector(selectFilters);
   useEffect(() => {
     dispatch(
-      getWaistExercises({
-        query: filters.query,
-        page: filters.page,
-        limit: filters.limit,
+      getExercises({
+        filter: '',
+        category: '',
       })
     );
   }, [dispatch, filters.limit, filters.page, filters.query]);
 
   console.log(filters);
 
-  // if (!Array.isArray(exercises)) {
-  //   return (
-  //     <WaistListContainer>
-  //       <NoExercisesTitle>
-  //         Loading exercises...
-  //       </NoExercisesTitle>
-  //     </WaistListContainer>
-  //   );
-  // }
   const visibleExercises =
     exercises &&
     exercises.filter(
@@ -48,8 +34,6 @@ const WaistList: React.FC = () => {
         exercise.target ||
         exercise.equipment === exercise.bodyPart
     );
-    console.log(exercises)
-  console.log(visibleExercises);
 
   return (
     <WaistListContainer>
