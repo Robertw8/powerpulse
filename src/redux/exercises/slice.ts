@@ -1,15 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getExercises } from './operations';
-import { Exercises, InitialState } from './types';
+import { Exercise, InitialState } from './types';
 
 const initialState: InitialState = {
   exercises: [],
   isLoading: false,
   error: '',
   filters: {
-    query: '',
-    page: 1,
-    limit: 10,
+    filter: '',
+    category: '',
   },
   bodyPart: [],
 };
@@ -27,7 +26,7 @@ const exercisesSlice = createSlice({
         state.exercises = [
           ...state.bodyPart,
           ...(Array.isArray(payload) ? payload : [payload]),
-        ] as Exercises[];
+        ] as Exercise[];
         state.isLoading = false;
       })
       .addCase(getExercises.rejected, (state, action) => {

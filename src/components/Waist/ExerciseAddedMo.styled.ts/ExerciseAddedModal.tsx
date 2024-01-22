@@ -14,12 +14,20 @@ import thumb from '../../../assets/images/Exercises/thumb.png';
 interface ExerciseAddedModalProps extends ModalProps {
   // handleClose: () => void;
   // calories: number;
+  handleClose: () => void;
+  time: number;
+  burnedCalories: number;
 }
 
-const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = () => {
+const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
+  open,
+  handleClose,
+  time,
+  burnedCalories,
+}) => {
   return (
     <StyledModal
-      open={true}
+      open={open}
       closeIcon={
         <Icon
           name="x"
@@ -27,8 +35,8 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = () => {
           iconHeight={{ mobile: '22px', tablet: '26px' }}
         />
       }
-      // onCancel={handleClose}
-      // onOk={handleClose}
+      onCancel={handleClose}
+      onOk={handleClose}
       destroyOnClose
       keyboard
       footer={null}
@@ -40,10 +48,10 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = () => {
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
-          Your time: <Value>3 minutes</Value>
+          Your time: <Value>{time} minutes</Value>
         </Calories>
         <Calories>
-          Burned calories: <Value>150</Value>
+          Burned calories: <Value>{burnedCalories}</Value>
         </Calories>
         <ButtonWrapper>
           <PrimaryButton
@@ -51,13 +59,10 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = () => {
             type="primary"
             sizes="small"
             htmlType="button"
-            onclick={() => ''}
+            onclick={handleClose}
           />
         </ButtonWrapper>
-        <StyledLink
-          to="/diary"
-          // onClick={() => dispatch(setCalculatedCalories(0))}
-        >
+        <StyledLink to="/diary">
           To the diary
           <span>
             <Icon

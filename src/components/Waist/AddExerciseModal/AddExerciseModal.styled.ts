@@ -108,6 +108,7 @@ const ItemValue = styled.p`
   font-size: 14px;
   line-height: calc(18 / 14);
   font-weight: 700;
+  text-transform: capitalize;
   margin-top: 4px;
 `;
 

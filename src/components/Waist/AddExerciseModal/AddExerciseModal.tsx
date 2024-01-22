@@ -20,20 +20,34 @@ import {
 } from './AddExerciseModal.styled';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import { formatTime } from '../../../helpers';
+import { Exercise } from '../../../redux/exercises/types';
+import { useState } from 'react';
 
 interface AddExerciseModalProps extends ModalProps {
   handleCancel: () => void;
-  exercise: unknown;
+  handleOk: () => void;
+  exercise: Exercise;
 }
 
 const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
-  // open,
+  open,
   handleCancel,
-  // exercise,
+  handleOk,
+  exercise,
 }) => {
+  const [isTimerStarted, setIsTimerStarted] = useState<boolean>(false);
+
+  const timerValue = () => {
+    if (exercise.time) {
+      return exercise.time * 60;
+    }
+
+    return 3;
+  };
+
   return (
     <StyledModal
-      open={false}
+      open={open}
       closeIcon={
         <Icon
           name="x"
@@ -44,19 +58,20 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
       keyboard
       footer={null}
       maskClosable
+      onOk={handleOk}
       onCancel={handleCancel}
       focusTriggerAfterClose={false}
     >
       <TimerColumn>
         <GifWrapper>
-          <img src="#" alt="exercise" />
+          <img src={exercise.gifUrl} alt="exercise" />
         </GifWrapper>
         <TimerWrapper>
           <TimerTitle>Time</TimerTitle>
           <CountdownCircleTimer
             colors={'#E6533C'}
-            isPlaying={false}
-            duration={120}
+            isPlaying={isTimerStarted}
+            duration={timerValue()}
             strokeWidth={4}
             trailColor="#EFEDE81A"
             trailStrokeWidth={2}
@@ -66,7 +81,7 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
               <TimeRemaining>{formatTime(remainingTime)}</TimeRemaining>
             )}
           </CountdownCircleTimer>
-          <TimerButton type="primary">
+          <TimerButton type="primary" onClick={() => setIsTimerStarted(true)}>
             <Icon
               iconWidth={{ mobile: '16px', tablet: '16px' }}
               iconHeight={{ mobile: '16px', tablet: '16px' }}
@@ -74,7 +89,7 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
             />
           </TimerButton>
           <BurnedCalories>
-            Burned calories:<Value>150</Value>
+            Burned calories:<Value>{exercise.burnedCalories}</Value>
           </BurnedCalories>
         </TimerWrapper>
       </TimerColumn>
@@ -83,24 +98,29 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
           <InfoList>
             <InfoItem>
               <ItemName>Name</ItemName>
-              <ItemValue>Air bike</ItemValue>
+              <ItemValue>{exercise.name}</ItemValue>
             </InfoItem>
             <InfoItem>
-              <ItemName>Name</ItemName>
-              <ItemValue>Air bike</ItemValue>
+              <ItemName>Target</ItemName>
+              <ItemValue>{exercise.target}</ItemValue>
             </InfoItem>
             <InfoItem>
-              <ItemName>Name</ItemName>
-              <ItemValue>Air bike</ItemValue>
+              <ItemName>Body part</ItemName>
+              <ItemValue>{exercise.bodyPart}</ItemValue>
             </InfoItem>
             <InfoItem>
-              <ItemName>Name</ItemName>
-              <ItemValue>Air bike</ItemValue>
+              <ItemName>Equipment</ItemName>
+              <ItemValue>{exercise.equipment}</ItemValue>
             </InfoItem>
           </InfoList>
         </InfoWrapper>
         <ButtonWrapper>
-          <PrimaryButton text="Add to diary" sizes="small" type="primary" />
+          <PrimaryButton
+            text="Add to diary"
+            sizes="small"
+            type="primary"
+            onclick={handleOk}
+          />
         </ButtonWrapper>
       </InfoColumn>
     </StyledModal>
