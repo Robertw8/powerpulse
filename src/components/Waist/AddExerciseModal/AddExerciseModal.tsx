@@ -27,9 +27,9 @@ interface AddExerciseModalProps extends ModalProps {
 }
 
 const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
-  open,
+  // open,
   handleCancel,
-  exercise,
+  // exercise,
 }) => {
   return (
     <StyledModal
