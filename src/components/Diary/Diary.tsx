@@ -25,7 +25,11 @@ import {
 import { Icon } from '../Icon';
 import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
+
+import { useDiary } from '../../hooks';
+
 // import dayjs from 'dayjs';
+
 
 // import { MyCalendar } from './Calendar';
 
@@ -43,8 +47,10 @@ import { DailyStatusBlock } from './DailyStatusBlock';
 //   calories: 500
 // }
 const Diary = () => {
+  const { diaryProducts } = useDiary();
   const dispatch = useDispatch<AppDispatch>();
   const userData = useSelector((state: RootState) => state.auth.user);
+  
   useEffect(() => {
     // dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
     // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
