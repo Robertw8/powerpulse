@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { setFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -20,11 +21,14 @@ interface ExercisesItemProps {
 }
 
 const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img, category, toggle, setCurrentExercise }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   const onClick = () => {
     navigate(`/exercises/${category}/${name}`);
     toggle(true);
     setCurrentExercise(name);
+    dispatch(setFilters(category, name));
   };
 
   return (

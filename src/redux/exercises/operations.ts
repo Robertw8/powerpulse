@@ -1,5 +1,6 @@
 import { operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
+import { createAction } from '@reduxjs/toolkit';
 
 interface GetExercises {
   filter: string | (string | null)[] | null;
@@ -22,4 +23,13 @@ const getExercises = operationWrapper(
   }
 );
 
-export { getExercises };
+const setFilters = createAction('exercises/setFilters', (filter, category) => {
+  return {
+    payload: {
+      filter,
+      category,
+    },
+  };
+});
+
+export { getExercises, setFilters };
