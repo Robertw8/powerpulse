@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDiary, addDiaryProduct, deleteDiaryProduct } from './index';
+import {
+  getDiary,
+  addDiaryProduct,
+  deleteDiaryProduct,
+  addDiaryExercise,
+  deleteDiaryExercise,
+} from '.';
+
 import { InitialState } from './types';
 
 const initialState: InitialState = {
@@ -24,12 +31,11 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(getDiary.fulfilled, (state, { payload }) => {
-        state.products = payload.data.productsResult.products;
-        state.caloriesConsumed =
-          payload.data.productsResult.caloriesConsumedTotal;
-        state.exercises = payload.data.exercisesResult.exercises;
-        state.caloriesBurned = payload.data.exercisesResult.caloriesBurnedTotal;
-        state.sportsTime = payload.data.exercisesResult.timeTotal;
+        state.products = payload.productsResult.products;
+        state.caloriesConsumed = payload.productsResult.caloriesConsumedTotal;
+        state.exercises = payload.exercisesResult.exercises;
+        state.caloriesBurned = payload.exercisesResult.caloriesBurnedTotal;
+        state.sportsTime = payload.exercisesResult.timeTotal;
         state.isLoading = false;
         state.error = '';
       })
@@ -57,10 +63,41 @@ const slice = createSlice({
         state.products = state.products.filter(
           product => product._id !== payload.id
         );
+        state.caloriesConsumed = payload.caloriesConsumedTotal;
         state.isLoading = false;
         state.error = '';
       })
       .addCase(deleteDiaryProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message as string;
+      })
+      .addCase(addDiaryExercise.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addDiaryExercise.fulfilled, (state, { payload }) => {
+        console.log(payload.doneExercise);
+        state.exercises.unshift(payload.doneExercise);
+        state.caloriesBurned = payload.caloriesBurnedTotal;
+
+        state.isLoading = false;
+        state.error = '';
+      })
+      .addCase(addDiaryExercise.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message as string;
+      })
+      .addCase(deleteDiaryExercise.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteDiaryExercise.fulfilled, (state, { payload }) => {
+        state.products = state.products.filter(
+          product => product._id !== payload.id
+        );
+        state.caloriesBurned = payload.caloriesBurnedTotal;
+        state.isLoading = false;
+        state.error = '';
+      })
+      .addCase(deleteDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message as string;
       });

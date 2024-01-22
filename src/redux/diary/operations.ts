@@ -8,8 +8,8 @@ const getDiary = operationWrapper('diary/getDiary', async date => {
     config: { params: { date } },
   });
 
-  console.log(response);
-  return response;
+  console.log(response.data);
+  return response.data;
 });
 
 interface AddDiaryProduct {
