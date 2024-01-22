@@ -56,7 +56,7 @@ const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({
   return (
     <CategoryList>
       <Tabs
-        defaultActiveKey="Body parts"
+        defaultActiveKey="bodyPart"
         items={items}
         onChange={value => {
           onChange?.(value as Category);

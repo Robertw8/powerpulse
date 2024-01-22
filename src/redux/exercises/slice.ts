@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getExercises } from './operations';
+import { getExercises, setFilters } from './operations';
 import { Exercise, InitialState } from './types';
 
 const initialState: InitialState = {
@@ -32,10 +32,13 @@ const exercisesSlice = createSlice({
       .addCase(getExercises.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message;
+      })
+      .addCase(setFilters, (state, action) => {
+        state.filters = {
+          filter: action.payload.filter,
+          category: action.payload.category,
+        };
       });
-    // .addCase(setFilters, (state, action) => {
-    //     state.filters = action.payload as unknown as Filter
-    // });
   },
 });
 
