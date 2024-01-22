@@ -13,7 +13,7 @@ import {
   WidthInput,
   ParagraphAuth,
   ParagraphAfterBtn,
-  LinkAuth
+  LinkAuth,
 } from '../SignUp/SignUp.styled';
 import { InputPrimary } from '../InputPrimary';
 
@@ -37,11 +37,8 @@ const SignInForm = () => {
     onSubmit: async (values: SignInArgs, { resetForm }) => {
       await dispatch(loginUser(values));
 
-      const response = await dispatch(loginUser(values));
-      const token = (response.payload as { data?: { token: string } })?.data
-        ?.token;
-
-      if (token) {
+      const response = await dispatch<{ error: string }>(loginUser(values));
+      if (!response?.error) {
         return navigate('/profile');
       }
 
@@ -53,7 +50,9 @@ const SignInForm = () => {
     <ContainerSignUp>
       <BlockSignUp>
         <TitleSignUp>Sign In</TitleSignUp>
-        <ParagraphAuth>Welcome! Please enter your credentials to login to the platform:</ParagraphAuth>
+        <ParagraphAuth>
+          Welcome! Please enter your credentials to login to the platform:
+        </ParagraphAuth>
         <FormContainer onSubmit={formik.handleSubmit}>
           <WidthInput>
             <InputPrimary
@@ -95,7 +94,9 @@ const SignInForm = () => {
           <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
-          <ParagraphAfterBtn>Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth></ParagraphAfterBtn>
+          <ParagraphAfterBtn>
+            Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth>
+          </ParagraphAfterBtn>
         </FormContainer>
       </BlockSignUp>
       <ImgSignUp

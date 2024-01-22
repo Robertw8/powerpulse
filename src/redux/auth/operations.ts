@@ -26,7 +26,7 @@ const registerUser = operationWrapper(
       }
     );
 
-    setToken(response.data.token);
+    setToken(response.data.accessToken, response.data.refreshToken);
     return response.data;
   }
 );
@@ -39,7 +39,7 @@ const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
       data,
     },
     error => {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 404) {
         callToast('error', 'Login or password is incorrect');
       } else {
         callToast(
@@ -52,18 +52,18 @@ const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
     }
   );
 
-  setToken(response.data.token);
+  setToken(response.data.accessToken, response.data.refreshToken);
   return response.data;
 });
 
 const getCurrentUser = operationWrapper(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.token;
+    // @todo add token ckeck with persist at getCurrentUser call
+    const token = localStorage.getItem('session')
+    // const token = state.auth.token;
 
     if (!token) return thunkAPI.rejectWithValue('Unable to refresh user');
-    setToken(token);
 
     const response = await apiService(
       {
@@ -71,12 +71,12 @@ const getCurrentUser = operationWrapper(
         url: 'users/current',
       },
       error => {
-        error.response &&
-          error.response.status === 401 &&
-          callToast('error', 'Session expired, please log in again', 1000 * 60);
-        clearToken();
-
-        return '';
+        //@todo add error handling exept 401
+        // error.response &&
+        //   error.response.status === 401 &&
+        //   callToast('error', 'Session expired, please log in again', 1000 * 60);
+        // clearToken();
+        // return '';
       }
     );
 

@@ -21,8 +21,8 @@ export const App: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(getCurrentUser({}));
-  }, [dispatch]);
+      dispatch(getCurrentUser({}));
+  }, [dispatch, isLoggedIn]);
 
   return (
     <Suspense fallback={<Loader />}>
