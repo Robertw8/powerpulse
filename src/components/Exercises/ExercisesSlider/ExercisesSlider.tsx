@@ -7,17 +7,18 @@ type Props = {
         filter: string;
         name: string;
         imgURL: string;}>;
-    currentCategory: string;
     total: number;
     limit: number;
     isLoading: boolean;
     setPage: React.Dispatch<React.SetStateAction<number>>;
+    category: string;
+    toggleExercisesPage: React.Dispatch<React.SetStateAction<boolean>>;
+    setCurrentExercise: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Slider: React.FC<Props> = ({ exercisesList, currentCategory, setPage, total, limit }) => {
+const Slider: React.FC<Props> = ({ exercisesList, setPage, total, limit, category, toggleExercisesPage, setCurrentExercise }) => {
 
     const onChange = (currentSlide: number) => {
-        if (currentCategory) console.log(currentCategory);
         setPage(currentSlide + 1);
     };
 
@@ -25,13 +26,17 @@ const Slider: React.FC<Props> = ({ exercisesList, currentCategory, setPage, tota
 
     const sliderBlocks = Array.from({ length: slidesCounter }, (_, index) => (
         <div key={index + 1}>
-            <ExercisesSubcategoriesList exercisesList={exercisesList} />
+            <ExercisesSubcategoriesList
+                exercisesList={exercisesList}
+                category={category}
+                togglePage={toggleExercisesPage}
+                setCurrentExercise={setCurrentExercise} />
         </div>
     ));
 
     return (
         <>
-            {exercisesList.length &&
+            {exercisesList.length > 0 &&
                 <Carousel afterChange={onChange}>
                     {sliderBlocks}
                 </Carousel>}

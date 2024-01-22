@@ -1,5 +1,7 @@
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { Category } from '../Exercises';
 
@@ -9,30 +11,43 @@ import { Dispatch, SetStateAction } from 'react';
 interface ExercisesCategoriesProps {
   changeCategory: Dispatch<SetStateAction<Category>>;
   setPage: Dispatch<SetStateAction<number>>;
+  exercisesPage:boolean
 }
 
-const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({changeCategory, setPage}) =>
-  {
-  const onChange = (key) => {
-      changeCategory(key);
-      setPage(1);
+const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({ changeCategory, setPage, exercisesPage }) => {
+  
+  const [tabs, toggleTabs] = useState<boolean>(false);
+
+  useEffect(() => {
+    exercisesPage ? toggleTabs(true) : toggleTabs(false)
+  }, [exercisesPage])
+  
+  const navigate = useNavigate();
+
+  const onChange = (key:Category) => {
+    navigate(`/exercises/${key}`);
+    changeCategory(key);
+    setPage(1);
     };
 
     const items: TabsProps['items'] = [
       {
-        key: 'Body parts',
+        key: 'bodyPart',
         label: 'Body parts',
         children: 'Content of Body parts',
+        disabled: tabs,
       },
       {
-        key: 'Muscles',
+        key: 'muscles',
         label: 'Muscles',
         children: 'Content of Muscles',
+        disabled: tabs,
       },
       {
-        key: 'Equipment',
+        key: 'equipment',
         label: 'Equipment',
         children: 'Content of Equipment',
+        disabled: tabs,
       },
     ];
     return (
