@@ -5,7 +5,7 @@ import { AddProductForm } from '..';
 
 interface AddProductModalProps extends ModalProps {
   handleCancel: () => void;
-  product: { title: string; calories: number };
+  product: { title: string; calories: number; _id: string };
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({
