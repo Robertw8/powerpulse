@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
-import {  Button, Input  } from 'antd';
+import { Button, Input } from 'antd';
 import { Link } from 'react-router-dom';
+
 import InputPrimary from '../InputPrimary/InputPrimary.tsx';
+import { StyledInputProps, validationStatuses  } from '../InputPrimary/InputPrimary.styled.ts';
+
 import { Title } from '../PageTitle/PageTitle.styled.ts';
-import { StyledInputProps } from '../InputPrimary/InputPrimary.styled.ts';
-import {validationStatuses} from '../InputPrimary/InputPrimary.styled.ts';
 
 
 const FormContainer = styled.form`
@@ -100,12 +101,12 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 
   &::placeholder {
     color: #efede84d !important;
-    /* transition-duration: 300ms; */
   }
 }
 
 .ant-input-password-icon{
   color: #fff !important;
+  padding: 20px;
 }
  
 `
@@ -114,12 +115,12 @@ const ContainerSignUp = styled.div`
 display: flex;
 flex-direction:column;
 position: relative;
-width: 100%;
+width: 355px;
 height: auto;
 
  @media screen and (min-width: 769px) {
  display: flex;
- 
+ width: 769px;
  }
 `
 
@@ -131,13 +132,14 @@ const ImgSignUp = styled.img`
   position: absolute;
   top: 180px;
   z-index: -1;
+  @media screen and (min-width: 769px) {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: -80px;
+    left: 60px;
+    overflow-x: hidden !important;
 
- @media screen and (min-width: 769px) {
-  width: 670px;
-  height: auto;
-  position: absolute;
-  top: -50px;
-  left: 50px;
  
   }
   @media screen and (min-width: 1441px) {
@@ -195,6 +197,12 @@ const BtnSignPage = styled(BtnSignUp)`
     background-color: #EF8964 !important;
   }
 `
+const ColorErrorInput =styled.div`
+color: #D80027;
+font-size: 16px;
+ @media screen and (min-width: 769px) {
+font-size: 14px;
+ }
+  `
 
-
-export  {InputPassword,BtnSignPage, InputAuth, LinkAuth, ParagraphAfterBtn, BtnSignUp, ContainerSignUp,BlockSignUp, ImgSignUp, ParagraphAuth, FormContainer, TitleSignUp, WidthInput };
+export  {ColorErrorInput,InputPassword,BtnSignPage, InputAuth, LinkAuth, ParagraphAfterBtn, BtnSignUp, ContainerSignUp,BlockSignUp, ImgSignUp, ParagraphAuth, FormContainer, TitleSignUp, WidthInput };
