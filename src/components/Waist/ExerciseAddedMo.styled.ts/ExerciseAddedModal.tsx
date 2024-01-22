@@ -1,5 +1,5 @@
-import { Icon } from '../../Icon';
-import { PrimaryButton } from '../..';
+import { ModalProps } from 'antd';
+import { Icon, PrimaryButton } from '../..';
 import {
   StyledModal,
   ButtonWrapper,
@@ -8,28 +8,18 @@ import {
   ModalTitle,
   StyledLink,
   Value,
-} from './ProductAddedModal.styled';
+} from '../../Products/ProductAddedModal/ProductAddedModal.styled';
+import thumb from '../../../assets/images/Exercises/thumb.png';
 
-import { useDispatch } from 'react-redux';
-import { ModalProps } from 'antd';
-import { AppDispatch } from '../../../redux';
-import { setCalculatedCalories } from '../../../redux/products';
-
-interface ProductAddedModalProps extends ModalProps {
-  handleClose: () => void;
-  calories: number;
+interface ExerciseAddedModalProps extends ModalProps {
+  // handleClose: () => void;
+  // calories: number;
 }
 
-const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
-  open,
-  handleClose,
-  calories,
-}) => {
-  const dispatch = useDispatch<AppDispatch>();
-
+const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = () => {
   return (
     <StyledModal
-      open={open}
+      open={true}
       closeIcon={
         <Icon
           name="x"
@@ -37,33 +27,36 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
           iconHeight={{ mobile: '22px', tablet: '26px' }}
         />
       }
-      onCancel={handleClose}
-      onOk={handleClose}
+      // onCancel={handleClose}
+      // onOk={handleClose}
       destroyOnClose
       keyboard
       footer={null}
       maskClosable
     >
       <ContentWrapper>
-        <div>
-          <img src="src/assets/images/Products/avocado.png" alt="avocado" />
+        <div style={{ marginBottom: 30 }}>
+          <img src={thumb} alt="well done" />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
-          Calories: <Value>{calories}</Value>
+          Your time: <Value>3 minutes</Value>
+        </Calories>
+        <Calories>
+          Burned calories: <Value>150</Value>
         </Calories>
         <ButtonWrapper>
           <PrimaryButton
-            text="Next product"
+            text="Next exercise"
             type="primary"
             sizes="small"
             htmlType="button"
-            onclick={handleClose}
+            onclick={() => ''}
           />
         </ButtonWrapper>
         <StyledLink
           to="/diary"
-          onClick={() => dispatch(setCalculatedCalories(0))}
+          // onClick={() => dispatch(setCalculatedCalories(0))}
         >
           To the diary
           <span>
@@ -80,4 +73,4 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
   );
 };
 
-export default ProductAddedModal;
+export default ExerciseAddedModal;
