@@ -14,6 +14,7 @@ import { NotFoundMessage } from '../Products';
 // import { WaistList } from '../Waist';
 
 import { ExercisesWrap, TopWrap, LoaderWrap } from './Exercises.styled';
+import { WaistList } from '../Waist';
 
 export type Category = 'Body parts' | 'Muscles' | 'Equipment';
 
@@ -75,7 +76,7 @@ const Exercises: React.FC = () => {
           isLoading={isLoading} /> : 
         <div>waist</div>
     }
-      {/* <WaistList waistItem={} /> */}
+       <WaistList /> 
     </ExercisesWrap>
   );
 };

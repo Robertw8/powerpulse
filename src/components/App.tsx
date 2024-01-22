@@ -64,9 +64,13 @@ export const App: React.FC = () => {
             element={<PrivateRoute component={<ProductsPage />} />}
           />
           <Route
-            path={routes.EXERCISES}
+            path={`${routes.EXERCISES}`}
             element={<PrivateRoute component={<ExercisesPage />} />}
-          />
+          >
+            <Route path="exercises/:filter">
+              <Route path="exercises/:filter/:category" />
+            </Route>
+          </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

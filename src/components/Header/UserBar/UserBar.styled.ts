@@ -17,6 +17,7 @@ export const SettingsLink = styled(Link)`
   &:focus {
     svg {
       stroke: ${palette.colors.orange};
+
     }
   }
   &:hover {

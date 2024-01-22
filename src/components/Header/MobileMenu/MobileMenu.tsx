@@ -36,12 +36,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
 
   return (
     <>
+
       <DrawerStyled
         placement="right"
         onClose={toggleMenu}
         open={isOpen}
         width={drawerWidth}
       >
+
         <CloseBtn onClick={toggleMenu}>
           <Icon
             name="x"
