@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
-// import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.png';
+
 
 const TitleWelcomePage = styled.h1`
   position: relative;
@@ -25,6 +25,7 @@ const IconContainer = styled.div`
   position: absolute;
   top: 48px;
   left: -10px;
+  z-index: -1;
 
   @media screen and (min-width: 769px) {
     position: absolute;
@@ -37,10 +38,10 @@ const ContainerWelcomePage = styled.div`
    display: flex;
    position: relative;
    flex-direction: column;
-   
+   width: 355px;
    @media screen and (min-width: 1441px) {
        display: flex;
-       
+ 
     }
     
     `;
@@ -51,14 +52,14 @@ const ImgWelcomePage = styled.img`
   position: absolute;
   top: 215px;
   z-index: -1;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 
   @media screen and (min-width: 769px) {
   width: 100%;
   height: auto;
   position: absolute;
-  top: 30px;
-  left: 200px;
+  top: 120px;
+  left: 380px;
   overflow-x: hidden;
   }
 
