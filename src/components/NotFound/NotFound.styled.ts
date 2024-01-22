@@ -62,7 +62,7 @@ export const Description = styled.div`
 `;
 
 export const Img = styled.div`
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: 100% 100%;
 
@@ -89,6 +89,7 @@ export const Img = styled.div`
   }
 
   @media screen and (min-width: 769px) {
+    background-size: contain;
     background-image: url(${imgForWelcomePage});
     background-image: -webkit-image-set(
       url(${imgForWelcomePage}) 1x,
