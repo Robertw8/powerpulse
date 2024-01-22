@@ -11,13 +11,19 @@ import {
 } from './AddProductForm.styled';
 import { PrimaryButton } from '../..';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setCalculatedCalories } from '../../../redux/products';
 import { AppDispatch } from '../../../redux';
-import { selectCalculatedCalories } from '../../../redux/products/selectors';
+// import { selectCalculatedCalories } from '../../../redux/products/selectors';
+import { addDiaryProduct } from '../../../redux/diary';
+import { getCurrentDate, calculateCalories } from '../../../helpers';
 
 interface AddProductFormProps extends FormProps {
-  product: { title: string; calories: number };
+  product: {
+    _id: string;
+    title: string;
+    calories: number;
+  };
   handleCancel: () => void;
 }
 
@@ -25,23 +31,28 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
   product,
   handleCancel,
 }) => {
-  const [numberValue, setNumberValue] = useState<number>(100);
+  const [amountValue, setAmountValue] = useState<number>(100);
   const dispatch = useDispatch<AppDispatch>();
-  const calculatedCalories = useSelector(selectCalculatedCalories);
-  console.log(calculatedCalories);
-
-  const calculateCalories = () => {
-    return Math.round((numberValue * product.calories) / 100);
-  };
+  // const calculatedCalories = useSelector(selectCalculatedCalories);
 
   const handleNumberChange = (value: string | number | null) => {
     if (typeof value === 'number') {
-      setNumberValue(value);
+      setAmountValue(value);
     }
   };
 
   const handleSubmit = () => {
-    dispatch(setCalculatedCalories(calculateCalories()));
+    dispatch(
+      setCalculatedCalories(calculateCalories(amountValue, product.calories))
+    );
+    dispatch(
+      addDiaryProduct({
+        id: product._id,
+        date: getCurrentDate(),
+        amount: amountValue,
+        calories: calculateCalories(amountValue, product.calories),
+      })
+    );
   };
   return (
     <Form>
@@ -60,13 +71,14 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           onChange={handleNumberChange}
           onStep={handleNumberChange}
           type="number"
-          defaultValue={numberValue}
+          defaultValue={amountValue}
           min={10}
           max={10000}
         />
       </InputsWrapper>
       <Calories>
-        Calories: <Value>{calculateCalories()}</Value>
+        Calories:{' '}
+        <Value>{calculateCalories(amountValue, product.calories)}</Value>
       </Calories>
       <ButtonsWrapper>
         <PrimaryButton
@@ -75,9 +87,8 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           sizes="small"
           type="primary"
           onclick={handleSubmit}
-        >
-          Add product
-        </PrimaryButton>
+          // loading={isLoading}
+        />
         <PrimaryButton
           text="Cancel"
           sizes="small"
