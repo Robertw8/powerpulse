@@ -15,6 +15,7 @@ export const DrawerStyled = styled(Drawer)`
   }
   &.ant-drawer-content {
     background-color: ${palette.colors.orange};
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   }
 
   .ant-drawer-close {
@@ -88,6 +89,8 @@ export const NavLinkStyled = styled(NavLink)`
   &:hover,
   &:focus {
     border: 1px solid ${palette.colors.white};
+    color: ${palette.colors.white};
+    box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   }
 `;
 

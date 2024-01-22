@@ -4,3 +4,4 @@ export { default as callToast } from './callToast';
 export { default as getRandomNumber } from './getRandomNumber';
 export { default as getCurrentDate } from './getCurrentDate';
 export { default as calculateCalories } from './calculateCalories';
+export { default as formatTime } from './formatTime';

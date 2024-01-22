@@ -3,43 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import {
-  getWaistExercises,
-  selectFilter,
-  
-} from '../../../redux/Waist';
+import { getExercises } from '../../../redux/exercises';
 import {
   NoExercisesTitle,
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import { selectWaistExercises } from '../../../redux/Waist/selectorWaist';
+import { selectExercises } from '../../../redux/exercises';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const exercises = useSelector(selectWaistExercises);
-  const filters = useSelector(selectFilter);
+  const exercises = useSelector(selectExercises);
+  const location = useLocation();
+  const filters = queryString.parse(location.search);
+
   useEffect(() => {
     dispatch(
-      getWaistExercises({
-        query: filters.query,
-        page: filters.page,
-        limit: filters.limit,
+      getExercises({
+        filter: filters.filter,
+        category: filters.category,
       })
     );
-  }, [dispatch, filters.limit, filters.page, filters.query]);
+  }, [dispatch, filters.category, filters.filter]);
 
-  console.log(filters);
-
-  // if (!Array.isArray(exercises)) {
-  //   return (
-  //     <WaistListContainer>
-  //       <NoExercisesTitle>
-  //         Loading exercises...
-  //       </NoExercisesTitle>
-  //     </WaistListContainer>
-  //   );
-  // }
   const visibleExercises =
     exercises &&
     exercises.filter(
@@ -48,8 +36,6 @@ const WaistList: React.FC = () => {
         exercise.target ||
         exercise.equipment === exercise.bodyPart
     );
-    console.log(exercises)
-  console.log(visibleExercises);
 
   return (
     <WaistListContainer>
@@ -58,12 +44,12 @@ const WaistList: React.FC = () => {
           visibleExercises
             .slice(0, 50)
             .map((waistItem, key) => (
-              <WaistItem key={key} waistItem={waistItem} />
+              <WaistItem key={key} exercise={waistItem} />
             ))
         ) : (
           <NoExercisesTitle>
-            There is not exercises downloaded else, plaese try choose this
-            categorie later!!!
+            {/* There is not exercises downloaded else, plaese try choose this
+            categorie later!!! */}
           </NoExercisesTitle>
         )}
       </WaistItemUl>

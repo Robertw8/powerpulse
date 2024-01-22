@@ -9,7 +9,7 @@ import {
   // deleteDiaryProduct,
   getDiary,
 } from '../../redux/diary';
-// import dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import {
   Text,
   TextWrap,
@@ -26,10 +26,9 @@ import { Icon } from '../Icon';
 import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
 
-import { useDiary } from '../../hooks';
+// import { useDiary } from '../../hooks';
 
 // import dayjs from 'dayjs';
-
 
 // import { MyCalendar } from './Calendar';
 
@@ -46,17 +45,15 @@ import { useDiary } from '../../hooks';
 //   amount: 90,
 //   calories: 500
 // }
+
 const Diary = () => {
-  const { diaryProducts } = useDiary();
   const dispatch = useDispatch<AppDispatch>();
   const userData = useSelector((state: RootState) => state.auth.user);
-  
   useEffect(() => {
     // dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
     // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
     // dispatch(addDiaryExercise(exercise));
-    // dispatch(getDiary(dayjs().format('DD/MM/YYY'))); // ! прибрав бо через нього 404, 400 і падала сторінка, пофікси формат дати
-    dispatch(getDiary('22/01/2024'));
+    dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
   }, [dispatch]);
   return (
     <>

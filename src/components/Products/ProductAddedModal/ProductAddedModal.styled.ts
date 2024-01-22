@@ -58,6 +58,10 @@ const StyledLink = styled(Link)`
   &:hover,
   :focus {
     color: #e6533c;
+
+    svg {
+      stroke: #e6533c;
+    }
   }
 `;
 

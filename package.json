@@ -25,6 +25,7 @@
     "formik": "^2.4.5",
     "lodash.throttle": "^4.1.1",
     "modern-normalize": "^2.0.0",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",

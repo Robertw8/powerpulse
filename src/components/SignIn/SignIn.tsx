@@ -1,32 +1,26 @@
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import useSignInUser from './RouteAuth'; 
 
 import {
   BlockSignUp,
   ContainerSignUp,
   FormContainer,
-  ImgSignUp,
-  TitleSignUp,
   BtnSignUp,
-  WidthInput,
-  ParagraphAuth,
-  ParagraphAfterBtn,
-  LinkAuth
+  LinkAuth,
+  InputPassword,
+  ColorErrorInput
 } from '../SignUp/SignUp.styled';
+import { BlockInput, ParagraphAfterBtnUp, ParagraphSignIn, TitleSignIn } from './SignIn.styled';
 import { InputPrimary } from '../InputPrimary';
+import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignInSchema from './SignInSchema';
-import imgForWelcomePage from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import { loginUser } from '../../redux/auth/operations';
-import { AppDispatch } from '../../redux';
 import { SignInArgs } from '../../services/apiRequest';
 
 const SignInForm = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const { isLoading } = useAuth();
+  const signInUser = useSignInUser();
 
   const formik = useFormik({
     initialValues: {
@@ -35,27 +29,17 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-      await dispatch(loginUser(values));
-
-      const response = await dispatch(loginUser(values));
-      const token = (response.payload as { data?: { token: string } })?.data
-        ?.token;
-
-      if (token) {
-        return navigate('/profile');
-      }
-
-      resetForm();
-    },
-  });
+    await signInUser(values, resetForm); 
+    }
+    });
 
   return (
     <ContainerSignUp>
       <BlockSignUp>
-        <TitleSignUp>Sign In</TitleSignUp>
-        <ParagraphAuth>Welcome! Please enter your credentials to login to the platform:</ParagraphAuth>
+        <TitleSignIn>Sign In</TitleSignIn>
+        <ParagraphSignIn>Welcome! Please enter your credentials to login to the platform:</ParagraphSignIn>
         <FormContainer onSubmit={formik.handleSubmit}>
-          <WidthInput>
+          <BlockInput>
             <InputPrimary
               bordercolor={
                 formik.errors.email && formik.touched.email
@@ -69,12 +53,10 @@ const SignInForm = () => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-          </WidthInput>
           {formik.errors.email && formik.touched.email && (
-            <div>{formik.errors.email}</div>
+            <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
           )}
-          <WidthInput>
-            <InputPrimary
+            <InputPassword
               bordercolor={
                 formik.errors.password && formik.touched.password
                   ? 'error'
@@ -86,22 +68,19 @@ const SignInForm = () => {
               placeholder="Password"
               onChange={formik.handleChange}
               value={formik.values.password}
-            />
-          </WidthInput>
-          {formik.errors.password && formik.touched.password && (
-            <div>{formik.errors.password}</div>
-          )}
+              />
+              {formik.errors.password && formik.touched.password && (
+                <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
+              )}
+          </BlockInput>
 
           <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
-          <ParagraphAfterBtn>Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth></ParagraphAfterBtn>
+          <ParagraphAfterBtnUp>Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth></ParagraphAfterBtnUp>
         </FormContainer>
       </BlockSignUp>
-      <ImgSignUp
-        src={imgForWelcomePage}
-        alt="The girl shows an example of a forward leg kick"
-      />
+      <AuthImg/>
     </ContainerSignUp>
   );
 };
