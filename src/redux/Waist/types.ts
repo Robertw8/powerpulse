@@ -7,6 +7,13 @@ interface WaistExercises {
   burnedCalories: number;
   time?: number;
   _id?: string;
+  filters: Filter;
+}
+
+interface Filter {
+  query: string;
+  page: number;
+  limit: number;
 }
 
 interface WaistExercisesResponse {
@@ -16,14 +23,17 @@ interface WaistExercisesResponse {
 
 
 interface InitialState {
+  exercises: WaistExercises[];
+  filters: Filter ;
   bodyPart: WaistExercises[];
   isLoading: boolean;
-  error: null | string;
+  error: string | undefined;
 }
 
 
 export type {
   WaistExercises,
   InitialState,
-  WaistExercisesResponse
+  WaistExercisesResponse,
+  Filter
 };
