@@ -74,18 +74,16 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
           <CardLabel>{texts.cardLabel}</CardLabel>
           <BtnLabel type="button" onClick={() => setIsFirstModalOpen(true)}>
             {texts.btnLabel}
-            <span>
               <SvgExercise>
-                <use href={`${sprite}#icon-arrow-right`}></use>
+                <use href={`${sprite}#arrow-right`}></use>
               </SvgExercise>
-            </span>
           </BtnLabel>
         </BtnWrapper>
         <ExercisesTitleBox>
           <SpanExerciseRun>
             <SvgExerciseRun width={24} height={24}>
-              <use href={`${sprite}#icon-running`}></use>
-              <use href={`${sprite}#icon-running-figure`}></use>
+              <use href={`${sprite}#fire`}></use>
+              <use href={`${sprite}#running-figure`}></use>
             </SvgExerciseRun>
           </SpanExerciseRun>
           <Title>{exercise.name}</Title>
