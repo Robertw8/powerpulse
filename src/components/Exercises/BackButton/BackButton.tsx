@@ -1,20 +1,23 @@
 import { Icon } from "../../Icon";
-import { useSearchParams } from "react-router-dom";
-import { useMemo } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { BackBtn } from "./BackButton.styled";
 
-const BackButton = () => {
+const BackButton = ({toggle, filter, setCurrentExercise}) => {
 
-    const [searchParams, setSearchParams] = useSearchParams();
-    
-    const params = useMemo(
-        () => Object.fromEntries([...searchParams]),
-        [searchParams]);
+    const navigate = useNavigate();
     
     const onClick = () => {
-        setSearchParams({ filter: params.filter })
-        };
+        if (filter === 'bodyPart') {
+            setCurrentExercise('')
+            navigate(`/exercises/${filter}`);
+            toggle(false);
+        } else {
+            setCurrentExercise('')
+            navigate(-1);
+            toggle(false);
+        }
+    };
 
     return (
         <BackBtn onClick={onClick}>
