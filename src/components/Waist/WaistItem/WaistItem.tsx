@@ -15,17 +15,18 @@ import {
 import sprite from '../../../assets/images/sprite.svg';
 
 import React from 'react';
-import { WaistExercises } from '../../../redux/Waist/types';
+import { Exercises } from '../../../redux/exercises/types';
 
- interface List {
+interface List {
   burnedCalories: string;
   bodyPart: string;
   target: string;
 }
 
- interface WaistProps {
-  waistItem: WaistExercises;
-} interface Texts {
+interface WaistProps {
+  waistItem: Exercises;
+}
+interface Texts {
   cardLabel: string;
   btnLabel: string;
   list: List;
@@ -41,7 +42,6 @@ const texts: Texts = {
   },
 };
 const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
-  const { name, burnedCalories, target, bodyPart } = waistItem;
   return (
     <>
       <WaistItemLi>
@@ -63,20 +63,20 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
               <use href={`${sprite}#icon-running-figure`}></use>
             </SvgExerciseRun>
           </SpanExerciseRun>
-          <Title>{name}</Title>
+          <Title>{waistItem.name}</Title>
         </ExercisesTitleBox>
         <List>
           <ListItem>
             {texts.list.burnedCalories}
-            <ListItemValue>{burnedCalories}</ListItemValue>
+            <ListItemValue>{waistItem.burnedCalories}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.bodyPart}
-            <ListItemValue>{bodyPart}</ListItemValue>
+            <ListItemValue>{waistItem.bodyPart}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.target}
-            <ListItemValue>{target}</ListItemValue>
+            <ListItemValue>{waistItem.target}</ListItemValue>
           </ListItem>
         </List>
       </WaistItemLi>
@@ -85,4 +85,4 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
 };
 
 export default WaistItem;
-export type {Texts, List, WaistProps}
+export type { WaistProps };

@@ -1,39 +1,38 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import { getWaistExercises } from '../../../redux/Waist';
+import { getExercises, selectFilters } from '../../../redux/exercises';
 import {
-  ImgWaist,
   NoExercisesTitle,
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import images from '../../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import { WaistExercises } from '../../../redux/Waist/types';
-import { RootState } from '../../../redux/rootReducer';
-export interface WaistProps {
-  waistItem: WaistExercises;
-}
+import { selectExercises } from '../../../redux/exercises';
 
-const WaistList: React.FC<WaistProps> = () => {
+const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const exercises = useSelector(selectExercises);
+  const filters = useSelector(selectFilters);
   useEffect(() => {
-    dispatch(getWaistExercises(exercises));
-  }, [dispatch]);
+    dispatch(
+      getExercises({
+        filter: '',
+        category: '',
+      })
+    );
+  }, [dispatch, filters.limit, filters.page, filters.query]);
 
-  const exercises = useSelector(
-    (state: RootState) => state.exercises.bodyPart
-  );
-  console.log(exercises);
+  console.log(filters);
+
   const visibleExercises =
     exercises &&
     exercises.filter(
       exercise =>
-        exercise.bodyPart ||
+        exercise.name ||
         exercise.target ||
-        exercise.equipment === exercise.name
+        exercise.equipment === exercise.bodyPart
     );
 
   return (
@@ -42,7 +41,9 @@ const WaistList: React.FC<WaistProps> = () => {
         {visibleExercises && visibleExercises.length ? (
           visibleExercises
             .slice(0, 50)
-            .map(el => <WaistItem key={el._id} waistItem={el} />)
+            .map((waistItem, key) => (
+              <WaistItem key={key} waistItem={waistItem} />
+            ))
         ) : (
           <NoExercisesTitle>
             There is not exercises downloaded else, plaese try choose this
@@ -50,7 +51,6 @@ const WaistList: React.FC<WaistProps> = () => {
           </NoExercisesTitle>
         )}
       </WaistItemUl>
-      <ImgWaist src={images} alt="image" />
     </WaistListContainer>
   );
 };
