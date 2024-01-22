@@ -25,6 +25,6 @@ export const LinkStyled = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: ${palette.colors.orange};
+    border: 1px solid ${palette.colors.orange};
   }
 `;
