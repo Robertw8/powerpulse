@@ -3,6 +3,8 @@ export {
   loginUser,
   getCurrentUser,
   logOutUser,
+  getUserValue,
+  getUserAvatar,
 } from './operations';
 export {
   selectUser,

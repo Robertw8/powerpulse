@@ -4,6 +4,7 @@ interface Product {
   category: string;
   title: string;
   groupBloodNotAllowed: { [key: string]: boolean };
+  _id: string;
 }
 
 interface Filters {
