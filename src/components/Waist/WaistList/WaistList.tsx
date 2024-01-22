@@ -9,15 +9,12 @@ import {
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import { selectExercises } from '../../../redux/exercises';
-import queryString from 'query-string';
-import { useLocation } from 'react-router-dom';
+import { selectExercises, selectFilters } from '../../../redux/exercises';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const exercises = useSelector(selectExercises);
-  const location = useLocation();
-  const filters = queryString.parse(location.search);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
     dispatch(

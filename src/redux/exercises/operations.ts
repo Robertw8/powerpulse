@@ -12,7 +12,7 @@ const getExercises = operationWrapper(
   async ({ filter, category }: GetExercises) => {
     const response = await apiService({
       method: 'get',
-      url: `exercises/bodyPart/${category}`,
+      url: `exercises/${filter}/${category}`,
       config: {
         params: {
           filter,

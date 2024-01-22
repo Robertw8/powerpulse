@@ -28,7 +28,7 @@ const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img, catego
     navigate(`/exercises/${category}/${name}`);
     toggle(true);
     setCurrentExercise(name);
-    dispatch(setFilters(category, name));
+    dispatch(setFilters('choice', name));
   };
 
   return (
