@@ -52,8 +52,8 @@ const Diary = () => {
     // dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
     // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
     // dispatch(addDiaryExercise(exercise));
-    dispatch(getDiary(dayjs().format('DD/MM/YYY')));
-    console.log(diaryProducts);
+    // dispatch(getDiary(dayjs().format('DD/MM/YYY'))); // ! прибрав бо через нього 404, 400 і падала сторінка, пофікси формат дати
+    dispatch(getDiary('22/01/2024'));
   }, [dispatch]);
   return (
     <>
