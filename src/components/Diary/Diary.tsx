@@ -51,10 +51,11 @@ import dayjs from 'dayjs';
     const dispatch = useDispatch<AppDispatch>();
     const userData = useSelector((state: RootState) => state.auth.user);
     useEffect(() => {
+    
       // dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
       // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
       // dispatch(addDiaryExercise(exercise));
-      dispatch(getDiary(dayjs().format('DD/MM/YYY')));
+      dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
     }, [dispatch]);
     return (
       <>
