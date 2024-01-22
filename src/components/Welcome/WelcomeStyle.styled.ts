@@ -34,18 +34,16 @@ const IconContainer = styled.div`
 `;
 
 const ContainerWelcomePage = styled.div`
-   display: flex;
-   position: relative;
-   flex-direction: column;
-   
-   @media screen and (min-width: 1441px) {
-       display: flex;
-       
-    }
-    
-    `;
+  display: flex;
+  position: relative;
+  flex-direction: column;
 
-const ImgWelcomePage = styled.img`
+  @media screen and (min-width: 1441px) {
+    display: flex;
+  }
+`;
+
+const ImgWelcomePageWrapper = styled.div`
   width: 100%;
   height: auto;
   position: absolute;
@@ -54,21 +52,31 @@ const ImgWelcomePage = styled.img`
   overflow-x: hidden;
 
   @media screen and (min-width: 769px) {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 30px;
-  left: 200px;
-  overflow-x: hidden;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    overflow-x: hidden;
   }
 
   @media screen and (min-width: 1441px) {
-  width: 700px;
-  height: auto;
-  position: absolute;
-  top: -0px;
-  left: 640px;
+    width: 700px;
+    height: auto;
+    position: absolute;
+    top: -0px;
+    left: 640px;
   }
+`;
+
+const StatisticsWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: max-content;
+  height: auto;
+
+  padding: 25px;
 `;
 
 const BlockTitleBtn = styled.div`
@@ -81,11 +89,10 @@ const BlockBtns = styled.div`
   gap: 14px;
   margin-top: 40px;
 
-  @media screen and (min-width: 769px)  {
-   
-  display: flex;
-  gap: 20px;
- }
+  @media screen and (min-width: 769px) {
+    display: flex;
+    gap: 20px;
+  }
 `;
 
 const BtnSignInWelcome = styled(Button)`
@@ -100,18 +107,19 @@ const BtnSignInWelcome = styled(Button)`
     border-color: #e6533c !important;
   }
 
- @media screen and (min-width: 769px)  {
-  width: 190px;
-  height: 56px;
-  font-size: 20px;
-  margin-top: 64px;
+  @media screen and (min-width: 769px) {
+    width: 190px;
+    height: 56px;
+    font-size: 20px;
+    margin-top: 64px;
   }
 `;
 
 export {
   TitleWelcomePage,
   ContainerWelcomePage,
-  ImgWelcomePage,
+  ImgWelcomePageWrapper,
+  StatisticsWrapper,
   BlockTitleBtn,
   BlockBtns,
   IconContainer,

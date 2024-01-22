@@ -1,6 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import {
   TitleWelcomePage,
@@ -15,26 +13,7 @@ import { BtnSignUp } from '../SignUp/SignUp.styled';
 import { Icon } from '../Icon';
 import { WelcomeImg } from './WelcomeImg';
 
-import Loader from '../Loader/Loader';
-
-// Statistics
-import {
-  getStatistics,
-  selectStatistics,
-  selectIsLoading,
-  selectError,
-} from '../../redux/statistics';
-
 const Welcome: React.FC = () => {
-  const dispatch = useDispatch();
-  const statistics = useSelector(selectStatistics);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(getStatistics());
-  }, [dispatch]);
-
   return (
     <ContainerWelcomePage>
       <BlockTitleBtn>
@@ -60,7 +39,6 @@ const Welcome: React.FC = () => {
         </BlockBtns>
       </BlockTitleBtn>
       <WelcomeImg />
-      {isLoading && !error && <Loader />}
     </ContainerWelcomePage>
   );
 };
