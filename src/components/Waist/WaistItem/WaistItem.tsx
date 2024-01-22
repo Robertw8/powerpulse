@@ -14,18 +14,25 @@ import {
 } from './WaistItem.styled';
 import sprite from '../../../assets/images/sprite.svg';
 
-import React from 'react';
-import { WaistExercises } from '../../../redux/Waist/types';
+import React, { useState } from 'react';
+import { Exercise } from '../../../redux/exercises/types';
+import { AddExerciseModal } from '../AddExerciseModal';
+import { ExerciseAddedModal } from '../ExerciseAddedMo.styled.ts';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store.ts';
+import getCurrentDate from '../../../helpers/getCurrentDate.ts';
+import { addDiaryExercise } from '../../../redux/diary/operations.ts';
 
- interface List {
+interface List {
   burnedCalories: string;
   bodyPart: string;
   target: string;
 }
 
- interface WaistProps {
-  waistItem: WaistExercises;
-} interface Texts {
+interface WaistProps {
+  exercise: Exercise;
+}
+interface Texts {
   cardLabel: string;
   btnLabel: string;
   list: List;
@@ -40,14 +47,32 @@ const texts: Texts = {
     target: 'Target:',
   },
 };
-const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
-  const { name, burnedCalories, target, bodyPart } = waistItem;
+const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState<boolean>(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleExerciseAdd = () => {
+    dispatch(
+      addDiaryExercise({
+        id: exercise._id,
+        calories: exercise.burnedCalories,
+        date: getCurrentDate(),
+        time: exercise.time,
+      })
+    );
+    if (isFirstModalOpen) {
+      setIsFirstModalOpen(false);
+      setIsSecondModalOpen(true);
+    }
+  };
+
   return (
     <>
       <WaistItemLi>
         <BtnWrapper>
           <CardLabel>{texts.cardLabel}</CardLabel>
-          <BtnLabel type="button">
+          <BtnLabel type="button" onClick={() => setIsFirstModalOpen(true)}>
             {texts.btnLabel}
             <span>
               <SvgExercise>
@@ -63,26 +88,38 @@ const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
               <use href={`${sprite}#icon-running-figure`}></use>
             </SvgExerciseRun>
           </SpanExerciseRun>
-          <Title>{name}</Title>
+          <Title>{exercise.name}</Title>
         </ExercisesTitleBox>
         <List>
           <ListItem>
             {texts.list.burnedCalories}
-            <ListItemValue>{burnedCalories}</ListItemValue>
+            <ListItemValue>{exercise.burnedCalories}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.bodyPart}
-            <ListItemValue>{bodyPart}</ListItemValue>
+            <ListItemValue>{exercise.bodyPart}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.target}
-            <ListItemValue>{target}</ListItemValue>
+            <ListItemValue>{exercise.target}</ListItemValue>
           </ListItem>
         </List>
       </WaistItemLi>
+      <AddExerciseModal
+        open={isFirstModalOpen}
+        exercise={exercise}
+        handleOk={handleExerciseAdd}
+        handleCancel={() => setIsFirstModalOpen(false)}
+      />
+      <ExerciseAddedModal
+        open={isSecondModalOpen}
+        handleClose={() => setIsSecondModalOpen(false)}
+        burnedCalories={exercise.burnedCalories}
+        time={exercise.time}
+      />
     </>
   );
 };
 
 export default WaistItem;
-export type {Texts, List, WaistProps}
+export type { WaistProps };

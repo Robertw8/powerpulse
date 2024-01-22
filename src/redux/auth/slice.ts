@@ -7,21 +7,16 @@ import {
   loginUser,
   getCurrentUser,
   logOutUser,
+  getUserValue,
+  getUserAvatar,
 } from './operations';
 import initialState from './initialState';
-import { getUserValue, getUserAvatar } from '../profile';
+import { User } from './types';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logoutUser: state => {
-      state.token = '';
-      state.isLoggedIn = false;
-      state.isLoading = false;
-      state.error = '';
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(registerUser.pending, state => {
@@ -55,10 +50,14 @@ const authSlice = createSlice({
       .addCase(getCurrentUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        if (!action.payload) {
+          state.isLoggedIn = false;
+          state.token = '';
+        }
       })
       .addCase(getCurrentUser.rejected, state => {
         state.token = '';
@@ -69,6 +68,7 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logOutUser.fulfilled, state => {
+        state.user = {} as User;
         state.token = '';
         state.isLoggedIn = false;
         state.isLoading = false;

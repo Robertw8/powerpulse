@@ -26,7 +26,7 @@ import {
 } from './UserCard.styled';
 import { AppDispatch } from '../../../redux';
 import { useDispatch } from 'react-redux';
-import { getUserAvatar } from '../../../redux/profile';
+import { getUserAvatar } from '../../../redux/auth';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);

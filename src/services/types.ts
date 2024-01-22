@@ -9,6 +9,9 @@ interface ApiServiceOptions {
   url: string;
   data?: { [key: string]: unknown } | unknown;
   config?: RequestConfig;
+  params?: {
+        [k: string]: string;
+      };
 }
 
 interface ApiServiceResponse<T> {

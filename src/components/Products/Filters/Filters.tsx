@@ -41,8 +41,6 @@ const Filters: React.FC = () => {
 
   const setTypeValue = () => {
     switch (filters.type) {
-      case 'all':
-        return 'All';
       case 'recommended':
         return 'Recommended';
       case 'notrecommended':
@@ -62,7 +60,7 @@ const Filters: React.FC = () => {
           value={filters.categories || 'Categories'}
         />
         <FilterDropdown
-          items={['All', 'Recommended', 'Not recommended']}
+          items={['Recommended', 'Not recommended']}
           onChange={handleTypeChange}
           value={setTypeValue() || 'All'}
         />

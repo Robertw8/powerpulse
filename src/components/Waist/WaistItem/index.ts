@@ -1,1 +1,1 @@
-export {default as WaistItem} from "./WaistItem";
+export { default as WaistItem } from './WaistItem';
