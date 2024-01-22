@@ -14,8 +14,8 @@ config:{params:{date}}
     
       });
      
-  console.log(response);
-      return response
+console.log(response.data);
+      return response.data
     }
   );
  
@@ -31,7 +31,7 @@ config:{params:{date}}
     
       });
      
-  console.log(response);
+
       return response.data;
     }
   );
@@ -48,7 +48,7 @@ config:{params:{date}}
     
       });
      
-  console.log(response);
+ 
       return response;
     }
   );
@@ -65,7 +65,7 @@ config:{params:{date}}
     
       });
      
-  console.log(response);
+  
       return response.data;
     }
   );
@@ -82,8 +82,8 @@ config:{params:{date}}
     
       });
      
-  console.log(response);
-      return response;
+  console.log(response.data);
+      return response.data;
     }
   );
   export { getDiary,addDiaryProduct,deleteDiaryProduct,addDiaryExercise,deleteDiaryExercise }

@@ -7,7 +7,8 @@ import { AppDispatch } from '../../redux'
 import { 
   // addDiaryProduct,
   // addDiaryExercise,
-  // deleteDiaryExercise,
+  deleteDiaryExercise,
+  // deleteDiaryProduct,
 // getDiary
 } from '../../redux/diary';
 // import dayjs from 'dayjs';
@@ -32,9 +33,9 @@ import { DailyStatusBlock } from './DailyStatusBlock';
 // import { MyCalendar } from './Calendar';
 
 // const exercise={
-//   time: 5,
+//   time: 120,
 //   date: "15/01/2024",
-//   calories: 300,
+//   calories: 400,
 //   exercise_ID: "64f2458d6f67bc34bae4f857"
 // };
 // 
@@ -49,8 +50,8 @@ import { DailyStatusBlock } from './DailyStatusBlock';
     const dispatch = useDispatch<AppDispatch>();
     const userData = useSelector((state: RootState) => state.auth.user);
     useEffect(() => {
-      // dispatch(deleteDiaryExercise('65ad9219f4d934837d6bc328'));
-      // dispatch(addDiaryProduct(product));
+      dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
+      // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
       // dispatch(addDiaryExercise(exercise));
       // dispatch(getDiary('15/01/2024'));
     }, [dispatch]);
