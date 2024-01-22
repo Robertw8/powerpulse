@@ -1,7 +1,14 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/index';
 export const WaistListContainer = styled.div`
-  display: flex;
+   width: 100%;
+  margin-top: 40px;
+  position: relative;
+
+  @media screen and (min-width: 1441px) {
+    max-width: 840px;
+    margin-top: 10px;
+  }
 `;
 
 export const ImgWaist = styled.img`
@@ -16,40 +23,23 @@ export const ImgWaist = styled.img`
 `;
 
 export const WaistItemUl = styled.ul`
-  overflow-y: auto;
-  display: flex;
+display: flex;
+flex-direction: column;
+row-gap: 20px;
+border-radius: 12px;
+overflow-y: auto;
+
+@media screen and (min-width: 769px) {
   flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
+  flex-direction: row;
+  gap: 32px 16px;
 
-  &::-webkit-scrollbar-thumb {
-    background-color: ${palette.colors.lightOrange};
-    border-radius: ${palette.radiuses.primary};
-  }
+  max-height: 560px;
+}
 
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(239, 237, 232, 0.1);
-    border-radius: ${palette.radiuses.primary};
-  }
-
-  @media screen and (min-width: 768px) {
-    overflow-y: auto;
-    gap: 32px 16px;
-    max-width: 100%;
-    max-height: 726px;
-    padding-right: 10px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    overflow-y: auto;
-    max-height: 900px;
-    padding-right: 16px;
-    width: 850px;
-  }
+@media screen and (min-width: 1441px) {
+  max-width: 840px;
+}
 `;
 
 export const NoExercisesTitle = styled.h2`

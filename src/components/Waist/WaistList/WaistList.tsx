@@ -39,7 +39,7 @@ const WaistList: React.FC = () => {
 
   return (
     <WaistListContainer>
-      <WaistItemUl>
+      <WaistItemUl className="scrollbar-outer">
         {visibleExercises && visibleExercises.length ? (
           visibleExercises
             .slice(0, 50)
