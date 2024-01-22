@@ -1,16 +1,22 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { getWaistExercises } from "./operationsWaist";
 import { WaistExercises, InitialState } from "./types";
-
+// import { setFilters } from "./operationsWaist";
 
 const initialState: InitialState = {
-    bodyPart: [],
+    exercises: [],
     isLoading: false,
-    error: null ,
+    error: "",
+    filters: {
+        query: "",
+        page: 1,
+        limit: 10,
+    },
+    bodyPart: []
 }
 
 const exercisesSlice = createSlice({
-    name: 'bodyPart',
+    name: 'exercises',
     initialState,
     reducers: {},
     extraReducers: builder => {
@@ -18,15 +24,18 @@ const exercisesSlice = createSlice({
             .addCase(getWaistExercises.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getWaistExercises.fulfilled, (state, action: PayloadAction<WaistExercises[]>) => {
-                state.bodyPart = action.payload as WaistExercises[];
+            .addCase(getWaistExercises.fulfilled, (state, { payload }) => {
+                state.exercises = [...state.bodyPart, ...(Array.isArray(payload) ? payload : [payload])] as WaistExercises[];
                 state.isLoading = false;
-                state.error = null;
+
             })
-            .addCase(getWaistExercises.rejected, (state) => {
+            .addCase(getWaistExercises.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = "oups";
-            });
+                state.error = action.error.message;
+            })
+            // .addCase(setFilters, (state, action) => {
+            //     state.filters = action.payload as unknown as Filter
+            // });
     },
 });
 
