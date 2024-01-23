@@ -1,4 +1,4 @@
-const calculateCalories = (amount, calories) => {
+const calculateCalories = (amount: number, calories: number) => {
   return Math.round((amount * calories) / 100);
 };
 
