@@ -18,7 +18,7 @@ const UserForm: React.FC = () => {
     height: user?.settings?.height || 0,
     currentWeight: user?.settings?.currentWeight || 0,
     desiredWeight: user?.settings?.desiredWeight || 0,
-    birthday: user?.settings?.birthday.split('T')[0] || '',
+    birthday: user?.settings?.birthday.split('T')[0] || '1990-01-01',
     blood: user?.settings?.blood || '',
     sex: user?.settings?.sex || '',
     levelActivity: user?.settings?.levelActivity || '',
@@ -39,7 +39,6 @@ const UserForm: React.FC = () => {
         sex: values.sex,
         levelActivity: values.levelActivity,
       };
-
       await dispatch(getUserValue(userData));
       await dispatch(getCurrentUser({}));
     },
