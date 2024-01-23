@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
-import useSignInUser from './RouteAuth'; 
 
 import {
   BlockSignUp,
@@ -17,10 +16,13 @@ import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignInSchema from './SignInSchema';
 import { SignInArgs } from '../../services/apiRequest';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux';
+import { loginUser } from '../../redux/auth';
 
 const SignInForm = () => {
   const { isLoading } = useAuth();
-  const signInUser = useSignInUser();
+   const dispatch = useDispatch<AppDispatch>();
 
   const formik = useFormik({
     initialValues: {
@@ -29,7 +31,8 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-    await signInUser(values, resetForm); 
+      await dispatch(loginUser(values)); 
+      resetForm();
     }
     });
 

@@ -7,3 +7,4 @@ export const selectIsLoading = (state: RootState) => state.auth.isLoading;
 export const selectIsRefreshing = (state: RootState) => state.auth.isRefreshing;
 export const selectError = (state: RootState) => state.auth.error;
 export const selectType = (state: RootState) => state.auth.type;
+export const selectSettings = (state: RootState) => state.auth.user.settings;
