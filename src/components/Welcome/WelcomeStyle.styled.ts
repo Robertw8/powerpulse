@@ -96,7 +96,7 @@ const StatisticsWrapper = styled.div`
     right: 0;
     width: max-content;
     height: auto;
-    scale: 1.2;
+    scale: 1.1;
   }
 `;
 

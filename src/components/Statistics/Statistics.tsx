@@ -45,7 +45,7 @@ const Statistics: React.FC = () => {
   }, [dispatch]);
 
   const cardsStyle = {
-    width: 200,
+    width: 195,
     height: 70,
     backgroundColor: colors.lightOrange,
     opacity: 0.78,
@@ -54,51 +54,41 @@ const Statistics: React.FC = () => {
   return (
     <>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Flex justify="start">
-          <Card bordered={false} size="small" style={cardsStyle}>
-            <Meta
-              avatar={<PlayCircleOutlined />}
-              title={totalVideo + '+'}
-              description="Video tutorial"
-            />
-          </Card>
-        </Flex>
-        <Flex justify="start">
-          <Card bordered={false} size="small" style={cardsStyle}>
-            <Meta
-              avatar={<FireFilled />}
-              title={totalUsersCalories + ' cal'}
-              description="Calories burned"
-            />
-          </Card>
-        </Flex>
-        <Flex justify="start">
-          <Card bordered={false} size="small" style={cardsStyle}>
-            <Meta
-              avatar={<UsergroupAddOutlined />}
-              title={totalUsers + ' users'}
-              description="Registered users"
-            />
-          </Card>
-        </Flex>
-        <Flex justify="start">
-          <Card bordered={false} size="small" style={cardsStyle}>
-            <Meta
-              avatar={<DashboardOutlined />}
-              title={totalTrainingHoursUsers + ' hours'}
-              description="Total training time"
-            />
-          </Card>
-        </Flex>
-        <Flex justify="start">
-          <Card bordered={false} size="small" style={cardsStyle}>
-            <Meta
-              avatar={<UserOutlined />}
-              title={totalTrainingUsers + ' users'}
-              description="Training user count"
-            />
-          </Card>
-        </Flex>
+        <Card bordered={false} size="small" style={cardsStyle}>
+          <Meta
+            avatar={<PlayCircleOutlined />}
+            title={totalVideo + '+'}
+            description="Video tutorial"
+          />
+        </Card>
+        <Card bordered={false} size="small" style={cardsStyle}>
+          <Meta
+            avatar={<FireFilled />}
+            title={totalUsersCalories + ' cal'}
+            description="Calories burned"
+          />
+        </Card>
+        <Card bordered={false} size="small" style={cardsStyle}>
+          <Meta
+            avatar={<UsergroupAddOutlined />}
+            title={totalUsers + ' users'}
+            description="Registered users"
+          />
+        </Card>
+        <Card bordered={false} size="small" style={cardsStyle}>
+          <Meta
+            avatar={<DashboardOutlined />}
+            title={totalTrainingHoursUsers + ' hours'}
+            description="Total training time"
+          />
+        </Card>
+        <Card bordered={false} size="small" style={cardsStyle}>
+          <Meta
+            avatar={<UserOutlined />}
+            title={totalTrainingUsers + ' users'}
+            description="Training user count"
+          />
+        </Card>
       </Space>
       {isLoading && !error && <Loader />}
     </>
