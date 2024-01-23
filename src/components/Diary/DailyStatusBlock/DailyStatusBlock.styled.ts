@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const StyledStatusBlock=styled.div<{backgroundColor?: string; }>`
+const StyledStatusBlock=styled.li<{backgroundColor?: string; }>`
 width: 157px;
 height: 96px;
 padding: 14px;
