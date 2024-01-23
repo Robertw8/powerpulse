@@ -32,7 +32,7 @@ const ExercisesList: React.FC = () => {
   return (
     <ListWrapper>
      
-      <List className="scrollbar-outer" >
+      <List  >
         {exercises.map((exercise,index) => (
           <ExercisesGrid
           exercise={exercise} key={index} id={exercise._id} />
