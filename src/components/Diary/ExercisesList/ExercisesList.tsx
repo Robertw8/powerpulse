@@ -33,9 +33,9 @@ const ExercisesList: React.FC = () => {
     <ListWrapper>
      
       <List className="scrollbar-outer" >
-        {exercises.map((exercise) => (
+        {exercises.map((exercise,index) => (
           <ExercisesGrid
-          exercise={exercise} key={exercise._id} />
+          exercise={exercise} key={index} id={exercise._id} />
         ))}
         {isLoading && <Loader />}
       </List>

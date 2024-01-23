@@ -9,15 +9,16 @@ import { TitleCol,ValueCol } from './ExercisesGrid.styled';
 
 interface ProductsItemProps {
   exercise: Exercise;
+  id:string
 }
 
 
-const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise }) => {
+const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise,id }) => {
     const dispatch = useDispatch<AppDispatch>();
     const handleExerciseDelete=() => {
         // dispatch(addDiaryProduct(product));
      dispatch(
-       deleteDiaryExercise('65adae565fda1b9b34886ba2')
+       deleteDiaryExercise(id)
      );
    };
   return (

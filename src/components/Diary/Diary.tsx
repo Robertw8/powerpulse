@@ -8,7 +8,8 @@ import {
   selectCaloriesBurned,
   selectCaloriesConsumed,
   selectExercises,
-  selectSportsTime
+  selectSportsTime,selectProducts
+
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
@@ -21,7 +22,7 @@ import {
 import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
-import { selectProducts } from '../../redux/products';
+
 
 // import { MyCalendar } from './Calendar';
 
@@ -39,7 +40,7 @@ const caloriesRemaining:number=userData.dailyCalories-caloriesConsumed
 
   useEffect(() => {
 
-    dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
+    dispatch(getDiary(dayjs('2024/01/15').format('DD/MM/YYYY')));
   }, [dispatch]);
 
 

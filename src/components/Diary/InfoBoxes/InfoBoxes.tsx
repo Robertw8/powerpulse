@@ -35,7 +35,10 @@ const InfoBoxes: React.FC<InfoBoxesProps> = ({exercises,products}) => {
             </RedBlockTitle>
           </Link>
         </TopRow>
-       {products?<ProductsList/>:<DiaryNotFoundItems items='products'/>}
+       {products?
+       <ProductsList/>
+      :
+      <DiaryNotFoundItems items='products'/>}
        
       </InfoBox>
       <InfoBox>

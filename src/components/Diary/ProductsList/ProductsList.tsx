@@ -32,9 +32,9 @@ const ProductsList: React.FC = () => {
     <ListWrapper>
      
       <List className="scrollbar-outer" >
-        {products.map((product, index) => (
+        {products.map((product,index) => (
           <ProductsGrid
-          product={product} key={index} />
+          product={product} key={index} id={product._id} />
         ))}
         {isLoading && <Loader />}
       </List>

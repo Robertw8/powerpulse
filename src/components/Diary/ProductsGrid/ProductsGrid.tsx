@@ -15,9 +15,10 @@ import { useDispatch } from 'react-redux';
 
 interface ProductsItemProps {
   product: Products;
+  id:string
 }
 
-const ProductsGrid: React.FC<ProductsItemProps> = ({ product }) => {
+const ProductsGrid: React.FC<ProductsItemProps> = ({ product,id }) => {
 
   const { groupBloodNotAllowed } = product;
   const { user } = useAuth();
@@ -30,7 +31,7 @@ const ProductsGrid: React.FC<ProductsItemProps> = ({ product }) => {
     const handleProductDelete=() => {
   
       dispatch(
-       deleteDiaryProduct('65ad6eee1fd5d4b96e50dc22')
+       deleteDiaryProduct(id)
       );
     };
   return (
