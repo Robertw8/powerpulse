@@ -40,7 +40,7 @@ const caloriesRemaining:number=userData.dailyCalories-caloriesConsumed
 
   useEffect(() => {
 
-    dispatch(getDiary(dayjs('2024/01/15').format('DD/MM/YYYY')));
+    dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
   }, [dispatch]);
 
 
