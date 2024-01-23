@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
 
 import {
   BlockSignUp,
@@ -16,6 +17,7 @@ import {
   LinkAuth,
   InputAuth,
   InputPassword,
+  ColorErrorInput,
 } from './SignUp.styled';
 
 
@@ -27,6 +29,7 @@ import {AuthImg} from '../Welcome/WelcomeImg';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { isLoading } = useAuth();
 
   const formik = useFormik({
@@ -40,7 +43,10 @@ const SignUpForm = () => {
       values: { name: string; email: string; password: string },
       { resetForm }
     ) => {
-         await dispatch(registerUser(values));
+      const response = await dispatch(registerUser(values));
+      if (response) {
+        navigate('/profile')
+      }
         resetForm();
     },
   });
@@ -67,7 +73,7 @@ const SignUpForm = () => {
               value={formik.values.name}
             />
           {formik.errors.name && formik.touched.name && (
-            <div>{formik.errors.name}</div>
+            <ColorErrorInput>{formik.errors.name}</ColorErrorInput>
           )}
             <InputAuth
               bordercolor={
@@ -84,7 +90,7 @@ const SignUpForm = () => {
             />
   
           {formik.errors.email && formik.touched.email && (
-            <div>{formik.errors.email}</div>
+            <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
           )}
 
             <InputPassword
@@ -101,7 +107,7 @@ const SignUpForm = () => {
               value={formik.values.password}
             />
           {formik.errors.password && formik.touched.password && (
-            <div>{formik.errors.password}</div>
+            <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
           )}
           </WidthInput>
           <BtnSignPage htmlType="submit" type="primary" loading={isLoading}>

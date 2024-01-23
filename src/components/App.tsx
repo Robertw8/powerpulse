@@ -64,11 +64,16 @@ export const App: React.FC = () => {
             element={<PrivateRoute component={<ProductsPage />} />}
           />
           <Route
-            path={`${routes.EXERCISES}`}
-            element={<PrivateRoute component={<ExercisesPage />} />}
-          >
-            <Route path="exercises/:filter">
-              <Route path="exercises/:filter/:category" />
+            path={routes.EXERCISES}
+            element={<PrivateRoute component={<ExercisesPage />} />}>
+            <Route path='bodyPart' element={<PrivateRoute component={<ExercisesPage />} />}>
+              <Route path=':category' element={<PrivateRoute component={<ExercisesPage />} />}/>
+            </Route>
+            <Route path='equipment' element={<PrivateRoute component={<ExercisesPage />} />}>
+              <Route path=':category' element={<PrivateRoute component={<ExercisesPage />} />}/>
+            </Route>
+            <Route path='muscles' element={<PrivateRoute component={<ExercisesPage />} />}>
+              <Route path=':category' element={<PrivateRoute component={<ExercisesPage />} />}/>
             </Route>
           </Route>
         </Route>

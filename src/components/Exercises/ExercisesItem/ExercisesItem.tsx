@@ -1,5 +1,6 @@
-import { useSearchParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -14,18 +15,20 @@ interface ExercisesItemProps {
   name: string;
   filter: string;
   img: string;
+  category: string
+  toggle: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentExercise: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img }) => {
-
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]);
-
+const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img, category, toggle, setCurrentExercise }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const onClick = () => {
-    setSearchParams({ ...params, category: name });
+    navigate(`/exercises/${category}/${name}`);
+    toggle(true);
+    setCurrentExercise(name);
+    dispatch(setFilters('choice', name));
   };
 
   return (

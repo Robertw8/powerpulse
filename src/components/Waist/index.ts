@@ -1,1 +1,2 @@
-export {default as WaistList} from './WaistList/WaistList';
+export { WaistList } from './WaistList';
+export { WaistItem } from './WaistItem';

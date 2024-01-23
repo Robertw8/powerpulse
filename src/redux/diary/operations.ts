@@ -49,13 +49,25 @@ const deleteDiaryProduct = operationWrapper(
   }
 );
 
+interface AddDiaryExercise {
+  id: string;
+  time: number;
+  date: string;
+  calories: number;
+}
+
 const addDiaryExercise = operationWrapper(
   'diary/addDiaryExercise',
-  async data => {
+  async ({ id, time, date, calories }: AddDiaryExercise) => {
     const response = await apiService({
       method: 'post',
       url: 'diary/exercises',
-      data,
+      data: {
+        exercise_ID: id,
+        time,
+        date,
+        calories,
+      },
     });
 
    

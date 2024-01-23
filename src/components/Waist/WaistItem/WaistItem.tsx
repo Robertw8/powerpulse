@@ -14,8 +14,14 @@ import {
 } from './WaistItem.styled';
 import sprite from '../../../assets/images/sprite.svg';
 
-import React from 'react';
-import { Exercises } from '../../../redux/exercises/types';
+import React, { useState } from 'react';
+import { Exercise } from '../../../redux/exercises/types';
+import { AddExerciseModal } from '../AddExerciseModal';
+import { ExerciseAddedModal } from '../ExerciseAddedMo.styled.ts';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux/store.ts';
+import getCurrentDate from '../../../helpers/getCurrentDate.ts';
+import { addDiaryExercise } from '../../../redux/diary/operations.ts';
 
 interface List {
   burnedCalories: string;
@@ -24,7 +30,7 @@ interface List {
 }
 
 interface WaistProps {
-  waistItem: Exercises;
+  exercise: Exercise;
 }
 interface Texts {
   cardLabel: string;
@@ -41,45 +47,74 @@ const texts: Texts = {
     target: 'Target:',
   },
 };
-const WaistItem: React.FC<WaistProps> = ({ waistItem }) => {
+const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState<boolean>(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleExerciseAdd = () => {
+    dispatch(
+      addDiaryExercise({
+        id: exercise._id,
+        calories: exercise.burnedCalories,
+        date: getCurrentDate(),
+        time: exercise.time,
+      })
+    );
+    if (isFirstModalOpen) {
+      setIsFirstModalOpen(false);
+      setIsSecondModalOpen(true);
+    }
+  };
+
   return (
     <>
       <WaistItemLi>
         <BtnWrapper>
           <CardLabel>{texts.cardLabel}</CardLabel>
-          <BtnLabel type="button">
+          <BtnLabel type="button" onClick={() => setIsFirstModalOpen(true)}>
             {texts.btnLabel}
-            <span>
               <SvgExercise>
-                <use href={`${sprite}#icon-arrow-right`}></use>
+                <use href={`${sprite}#arrow-right`}></use>
               </SvgExercise>
-            </span>
           </BtnLabel>
         </BtnWrapper>
         <ExercisesTitleBox>
           <SpanExerciseRun>
             <SvgExerciseRun width={24} height={24}>
-              <use href={`${sprite}#icon-running`}></use>
-              <use href={`${sprite}#icon-running-figure`}></use>
+              <use href={`${sprite}#fire`}></use>
+              <use href={`${sprite}#running-figure`}></use>
             </SvgExerciseRun>
           </SpanExerciseRun>
-          <Title>{waistItem.name}</Title>
+          <Title>{exercise.name}</Title>
         </ExercisesTitleBox>
         <List>
           <ListItem>
             {texts.list.burnedCalories}
-            <ListItemValue>{waistItem.burnedCalories}</ListItemValue>
+            <ListItemValue>{exercise.burnedCalories}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.bodyPart}
-            <ListItemValue>{waistItem.bodyPart}</ListItemValue>
+            <ListItemValue>{exercise.bodyPart}</ListItemValue>
           </ListItem>
           <ListItem>
             {texts.list.target}
-            <ListItemValue>{waistItem.target}</ListItemValue>
+            <ListItemValue>{exercise.target}</ListItemValue>
           </ListItem>
         </List>
       </WaistItemLi>
+      <AddExerciseModal
+        open={isFirstModalOpen}
+        exercise={exercise}
+        handleOk={handleExerciseAdd}
+        handleCancel={() => setIsFirstModalOpen(false)}
+      />
+      <ExerciseAddedModal
+        open={isSecondModalOpen}
+        handleClose={() => setIsSecondModalOpen(false)}
+        burnedCalories={exercise.burnedCalories}
+        time={exercise.time}
+      />
     </>
   );
 };

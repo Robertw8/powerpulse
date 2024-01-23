@@ -1,19 +1,18 @@
 import { operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
+import { createAction } from '@reduxjs/toolkit';
 
 interface GetExercises {
-  filter: string;
-  category: string;
+  filter: string | (string | null)[] | null;
+  category: string | (string | null)[] | null;
 }
 
 const getExercises = operationWrapper(
   'exercises/getWaistExercises',
   async ({ filter, category }: GetExercises) => {
-    console.log(filter, category);
-
     const response = await apiService({
       method: 'get',
-      url: `exercises/bodyPart/${category}`,
+      url: `exercises/${filter}/${category}`,
       config: {
         params: {
           filter,
@@ -24,4 +23,13 @@ const getExercises = operationWrapper(
   }
 );
 
-export { getExercises };
+const setFilters = createAction('exercises/setFilters', (filter, category) => {
+  return {
+    payload: {
+      filter,
+      category,
+    },
+  };
+});
+
+export { getExercises, setFilters };

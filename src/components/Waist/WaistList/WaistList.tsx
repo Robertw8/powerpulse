@@ -3,28 +3,27 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import { getExercises, selectFilters } from '../../../redux/exercises';
+import { getExercises } from '../../../redux/exercises';
 import {
   NoExercisesTitle,
   WaistItemUl,
   WaistListContainer,
 } from './WaistList.styled';
-import { selectExercises } from '../../../redux/exercises';
+import { selectExercises, selectFilters } from '../../../redux/exercises';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const exercises = useSelector(selectExercises);
   const filters = useSelector(selectFilters);
+
   useEffect(() => {
     dispatch(
       getExercises({
-        filter: '',
-        category: '',
+        filter: filters.filter,
+        category: filters.category,
       })
     );
-  }, [dispatch, filters.limit, filters.page, filters.query]);
-
-  console.log(filters);
+  }, [dispatch, filters.category, filters.filter]);
 
   const visibleExercises =
     exercises &&
@@ -37,17 +36,17 @@ const WaistList: React.FC = () => {
 
   return (
     <WaistListContainer>
-      <WaistItemUl>
+      <WaistItemUl className="scrollbar-outer">
         {visibleExercises && visibleExercises.length ? (
           visibleExercises
             .slice(0, 50)
             .map((waistItem, key) => (
-              <WaistItem key={key} waistItem={waistItem} />
+              <WaistItem key={key} exercise={waistItem} />
             ))
         ) : (
           <NoExercisesTitle>
-            There is not exercises downloaded else, plaese try choose this
-            categorie later!!!
+            {/* There is not exercises downloaded else, plaese try choose this
+            categorie later!!! */}
           </NoExercisesTitle>
         )}
       </WaistItemUl>
