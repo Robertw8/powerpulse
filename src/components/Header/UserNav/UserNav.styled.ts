@@ -17,7 +17,7 @@ export const LinkStyled = styled(NavLink)`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   padding: 10px 27px;
-  transition: background-color 250ms linear;
+  transition: all 250ms linear;
   text-decoration: none;
   &.active {
     background-color: ${palette.colors.orange};
