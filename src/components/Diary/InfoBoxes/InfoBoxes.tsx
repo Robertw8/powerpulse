@@ -9,8 +9,8 @@ import {
   InfoBox,
   StyledIcon,
 } from './InfoBoxes.styled';
+import { ProductsList } from '../ProductsList';
 
-import { ProductsList } from '../..';
 
 const InfoBoxes: React.FC = () => {
   const location = useLocation();
