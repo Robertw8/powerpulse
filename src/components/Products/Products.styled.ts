@@ -17,7 +17,7 @@ const BackgroundImage = styled.div`
 `;
 
 const ProductsTitleRow = styled.div`
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
     align-items: baseline;

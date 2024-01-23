@@ -110,11 +110,11 @@ const InfoItem = styled.li`
   background-color: ${palette.colors.white5};
   border-radius: 12px;
 
-  @media screen and (min-width: 376px) {
+  @media screen and (min-width: 375px) {
     width: 140px;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 170px;
   }
 `;
@@ -137,7 +137,7 @@ const ItemValue = styled.p`
 const ButtonWrapper = styled.div`
   margin-top: 24px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 162px;
     margin-left: auto;
     margin-top: 320px;
