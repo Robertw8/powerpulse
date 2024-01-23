@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { ModalProps } from 'antd';
 import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';
+import avocado from '../../../assets/images/Products/avocado.png';
 
 interface ProductAddedModalProps extends ModalProps {
   handleClose: () => void;
@@ -46,7 +47,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
     >
       <ContentWrapper>
         <div>
-          <img src="src/assets/images/Products/avocado.png" alt="avocado" />
+          <img src={avocado} alt="avocado" />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
