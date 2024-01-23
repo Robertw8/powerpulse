@@ -9,6 +9,7 @@ import {
 InfoBox,StyledIcon
 } from './InfoBoxes.styled';
 
+
 import { ProductsList } from '../ProductsList';
 
 
