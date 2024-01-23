@@ -60,7 +60,7 @@ const getCurrentUser = operationWrapper(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
     // @todo add token ckeck with persist at getCurrentUser call
-    const token = localStorage.getItem('session')
+    const token = localStorage.getItem('session');
     // const token = state.auth.token;
 
     if (!token) return thunkAPI.rejectWithValue('Unable to refresh user');
@@ -69,15 +69,15 @@ const getCurrentUser = operationWrapper(
       {
         method: 'get',
         url: 'users/current',
-      },
-      error => {
-        //@todo add error handling exept 401
-        // error.response &&
-        //   error.response.status === 401 &&
-        //   callToast('error', 'Session expired, please log in again', 1000 * 60);
-        // clearToken();
-        // return '';
       }
+      // error => {
+      //@todo add error handling exept 401
+      // error.response &&
+      //   error.response.status === 401 &&
+      //   callToast('error', 'Session expired, please log in again', 1000 * 60);
+      // clearToken();
+      // return '';
+      // }
     );
 
     return response.data;

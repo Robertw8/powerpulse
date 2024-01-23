@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../../hooks';
-import { useDispatch } from 'react-redux';
 import routes from '../../../routes';
-import { AppDispatch } from '../../../redux';
-import { getCurrentUser } from '../../../redux/auth';
 
 import UserBar from '../UserBar/UserBar';
 import UserNav from '../UserNav/UserNav';
