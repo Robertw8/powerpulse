@@ -44,14 +44,29 @@ const ContainerWelcomePage = styled.div`
 `;
 
 const ImgWelcomePageWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 355px;
+  width: 430px;
+  height: auto;
+  position: absolute;
+  top: 215px;
+  right: -0px;
+  z-index: -1;
+  overflow-x: hidden !important;
+
+  @media screen and (min-width: 769px) {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    overflow-x: hidden;
+  }
+
   @media screen and (min-width: 1441px) {
-    display: flex;
-    position: relative;
+    width: 700px;
+    height: auto;
+    position: absolute;
+    top: -0px;
+    left: 640px;
   }
 `;
 
@@ -83,45 +98,25 @@ const ImgWelcomePage = styled.img`
 `;
 
 const StatisticsWrapper = styled.div`
-  padding: 25px;
-
   @media screen and (max-width: 768px) {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: max-content;
-    height: auto;
-    scale: 0.8;
+    bottom: 7%;
+    left: 25%;
+    scale: 1.15;
   }
 
   @media screen and (min-width: 769px) and (max-width: 1440px) {
     position: absolute;
-    top: 48%;
-    left: 0;
-    width: max-content;
-    height: auto;
+    top: 52%;
+    left: 10%;
+    scale: 1.5;
+  }
+
+  @media screen and (min-width: 1441px) {
+    position: absolute;
+    top: 15%;
+    right: 7%;
     scale: 1.2;
-  }
-
-  @media screen and (min-width: 1441px) {
-    position: absolute;
-    top: 25%;
-    right: 0;
-    width: max-content;
-    height: auto;
-    scale: 1.1;
-    top: 120px;
-    left: 420px;
-    overflow-x: hidden !important;
-  }
-
-  @media screen and (min-width: 1441px) {
-    width: 670px;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 700px;
-    z-index: -1;
   }
 `;
 
