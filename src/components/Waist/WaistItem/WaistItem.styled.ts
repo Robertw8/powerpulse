@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/index';
+import { Button } from 'antd';
 
 const WaistItemLi = styled.li`
   width: 100%;
@@ -49,48 +50,34 @@ const CardLabel = styled.p`
   text-transform: uppercase;
 `;
 
-const BtnLabel = styled.button`
-  background: transparent;
-  border: none;
-  color: ${palette.colors.orange};
-  font-size: 16px;
-  line-height: 1.5;
+const AddButton = styled(Button)`
   display: flex;
-  align-items: center;
   gap: 8px;
-  padding: 0;
-  transition-duration: 250ms;
+  align-items: center;
+
+  padding: 3px 6px;
+  margin-left: 16px;
+
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  color: ${palette.colors.orange};
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${palette.colors.white};
+    color: #efede8 !important;
     transform: translateX(5px);
+
+    svg {
+      stroke: #efede8;
+    }
   }
-  &:focus {
-    color: ${palette.colors.white};
-    transform: translateX(5px);
-  }
+
   @media screen and (min-width: 769px) {
     font-size: 16px;
     line-height: calc(24 / 16);
   }
 `;
 
-const SvgExercise = styled.svg`
-  width: 13px;
-  height: 13px;
-  &:hover {
-    fill: '#fff';
-  }
-  &:focus {
-    color: '#fff';
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 16px;
-    height: 16px;
-  }
-`;
 const ExercisesTitleBox = styled.div`
   display: flex;
   align-items: center;
@@ -112,10 +99,6 @@ const Title = styled.h3`
   }
 `;
 
-const SvgExerciseRun = styled.svg`
-  width: 16px;
-  height: 16px;
-`;
 const SpanExerciseRun = styled.span`
   display: flex;
   justify-content: center;
@@ -142,20 +125,20 @@ const ListItem = styled.li`
 `;
 
 const ListItemValue = styled.span`
-color: #efa082;
-text-transform: capitalize;
-text-overflow: ellipsis;
-overflow: hidden;
-max-width: 30px;
-white-space: nowrap;
+  color: #efa082;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 30px;
+  white-space: nowrap;
 
-@media screen and (min-width: 376px) {
-  max-width: 70px;
-}
+  @media screen and (min-width: 376px) {
+    max-width: 70px;
+  }
 
-@media screen and (min-width: 1441px) {
-  max-width: 120px;
-}
+  @media screen and (min-width: 1441px) {
+    max-width: 120px;
+  }
 `;
 
 export {
@@ -163,12 +146,10 @@ export {
   ListItemValue,
   List,
   WaistItemLi,
-  BtnLabel,
+  AddButton,
   BtnWrapper,
   CardLabel,
   SpanExerciseRun,
-  SvgExercise,
   ExercisesTitleBox,
   Title,
-  SvgExerciseRun,
 };
