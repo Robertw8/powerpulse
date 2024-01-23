@@ -74,10 +74,11 @@ const StatisticsWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     position: absolute;
-    top: 25%;
-    left: 0%;
+    bottom: 0;
+    left: 0;
     width: max-content;
     height: auto;
+    scale: 0.8;
   }
 
   @media screen and (min-width: 769px) and (max-width: 1440px) {
@@ -95,6 +96,7 @@ const StatisticsWrapper = styled.div`
     right: 0;
     width: max-content;
     height: auto;
+    scale: 1.2;
   }
 `;
 
