@@ -1,18 +1,25 @@
 import React from 'react';
 import { Col, Row } from 'antd';
+
 import { Icon } from '../../Icon';
 import { Products } from '../../../redux/diary/types';
 import { useAuth } from '../../../hooks';
+import { AppDispatch } from '../../../redux';
 import {
   Status,
   StatusRound,
 } from '../../Products/ProductsItem/ProductsItem.styled';
+import { TitleCol,ValueCol } from './ProductsGrid.styles';
+import { deleteDiaryProduct } from '../../../redux/diary';
+import { useDispatch } from 'react-redux';
 
 interface ProductsItemProps {
   product: Products;
+  id:string
 }
 
-const ProductsGrid: React.FC<ProductsItemProps> = ({ product }) => {
+const ProductsGrid: React.FC<ProductsItemProps> = ({ product,id }) => {
+
   const { groupBloodNotAllowed } = product;
   const { user } = useAuth();
 
@@ -20,51 +27,46 @@ const ProductsGrid: React.FC<ProductsItemProps> = ({ product }) => {
   const isRecommended = userBloodGroup
     ? groupBloodNotAllowed[userBloodGroup]
     : undefined;
-
+    const dispatch = useDispatch<AppDispatch>();
+    const handleProductDelete=() => {
+  
+      dispatch(
+       deleteDiaryProduct(id)
+      );
+    };
   return (
     <>
       <Row>
-        <Col>Title</Col>
+        <TitleCol>Title</TitleCol>
+        <ValueCol >{product.title}</ValueCol>
       </Row>
       <Row>
-        <Col>{product.title}</Col>
-      </Row>
-      <Row>
-        <Col>Category</Col>
-      </Row>
-      <Row>
-        <Col>{product.category}</Col>
+        <TitleCol>Category</TitleCol>
+        <ValueCol>{product.category}</ValueCol>
       </Row>
 
       <Row justify="start" gutter={40}>
-        <Col>Calories</Col>
-        <Col>Weight</Col>
-        <Col>Recommend</Col>
+        <TitleCol>Calories</TitleCol>
+        <TitleCol>Weight</TitleCol>
+        <TitleCol>Recommend</TitleCol>
       </Row>
-      <Row justify="start" gutter={[80, 40]}>
-        <Col>{product.calories}</Col>
-        <Col>{product.amount}</Col>
-        <Col>
-          {' '}
+      <Row justify="start" gutter={[50, 0]}>
+        <ValueCol>{product.calories}</ValueCol>
+        <ValueCol>{product.amount}</ValueCol>
+        <ValueCol>
           <Status>
             <StatusRound recommended={isRecommended || false}></StatusRound>
             {isRecommended ? 'Yes' : 'No'}
           </Status>
-        </Col>
-        <Col flex={'auto'}>
-          {' '}
+        </ValueCol>
+        <Col onClick={handleProductDelete}>
           <Icon
-            name="running"
+            name="delete"
             iconWidth={{ mobile: '40px', tablet: '40px' }}
             fill="#EFEDE8"
             stroke="#EFEDE8"
           />
         </Col>
-      </Row>
-
-      <Row>
-        <Col flex="1 1 200px">1 1 200px</Col>
-        <Col flex="0 1 300px">0 1 300px</Col>
       </Row>
     </>
   );

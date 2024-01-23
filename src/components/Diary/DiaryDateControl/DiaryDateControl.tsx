@@ -1,5 +1,5 @@
 import { Icon } from '../../Icon';
-import { StyledDateControl, ArrowControl } from './DiaryDateControl.styled';
+import { StyledDateControl, ArrowControl, ReverseIcon } from './DiaryDateControl.styled';
 import { MyCalendar } from '../Calendar';
 import { DateText } from './dataText';
 import { useEffect, useRef, useState } from 'react';
@@ -60,16 +60,20 @@ const DiaryDateControl: React.FC = () => {
           onClick={handleCalendarToggle}
         />
         <ArrowControl>
-          <Icon
-            name="arrow-left"
-            iconWidth={{ mobile: '16px', tablet: '16px' }}
-            iconHeight={{ mobile: '16px', tablet: '16px' }}
-          />
+        <ReverseIcon>
           <Icon
             name="arrow"
             iconWidth={{ mobile: '16px', tablet: '16px' }}
             iconHeight={{ mobile: '16px', tablet: '16px' }}
           />
+          </ReverseIcon>
+          <Icon
+            name="arrow"
+            iconWidth={{ mobile: '16px', tablet: '16px' }}
+            iconHeight={{ mobile: '16px', tablet: '16px' }}
+          />
+      
+         
         </ArrowControl>
       </StyledDateControl>
     </>

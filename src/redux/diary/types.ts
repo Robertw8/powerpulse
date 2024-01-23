@@ -29,4 +29,13 @@ interface   Exercises{
   exercise_ID: string,
   _id: string
 }
-export type { InitialState, Products,Exercises };
+interface   Exercise{
+  bodyPart:string,
+  burnedCalories: number,
+  equipment: string,
+  name:string,
+  target:string,
+  time: number,
+  _id: string
+}
+export type { InitialState, Products,Exercises,Exercise };

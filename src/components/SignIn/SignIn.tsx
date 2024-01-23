@@ -31,7 +31,7 @@ const SignInForm = () => {
     },
     validationSchema: SignInSchema,
     onSubmit: async (values: SignInArgs, { resetForm }) => {
-      await dispatch(loginUser(values)); 
+      await dispatch(loginUser(values));
       resetForm();
     }
     });

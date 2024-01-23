@@ -1,11 +1,8 @@
 
 
 interface AuthResponse {
-  data: {
-    token: string;
-    email: string;
-  };
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 interface SignUpArgs {

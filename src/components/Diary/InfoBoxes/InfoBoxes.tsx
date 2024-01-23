@@ -1,6 +1,6 @@
 import { useLocation, Link } from 'react-router-dom';
 
-import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
+// import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
 import {
   GrayBlockTitle,
   RedBlockTitle,
@@ -10,9 +10,11 @@ import {
   StyledIcon,
 } from './InfoBoxes.styled';
 import { ProductsList } from '../ProductsList';
+import { ExercisesList } from '../ExercisesList';
+import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
+interface InfoBoxesProps{products:number,exercises:number}
 
-
-const InfoBoxes: React.FC = () => {
+const InfoBoxes: React.FC<InfoBoxesProps> = ({exercises,products}) => {
   const location = useLocation();
 
   return (
@@ -33,7 +35,11 @@ const InfoBoxes: React.FC = () => {
             </RedBlockTitle>
           </Link>
         </TopRow>
-        <ProductsList></ProductsList>
+       {products?
+       <ProductsList/>
+      :
+      <DiaryNotFoundItems items='products'/>}
+       
       </InfoBox>
       <InfoBox>
         <TopRow>
@@ -51,7 +57,7 @@ const InfoBoxes: React.FC = () => {
             </RedBlockTitle>
           </Link>
         </TopRow>
-        <DiaryNotFoundItems items="exercises" />
+{exercises?<ExercisesList/>:<DiaryNotFoundItems items='exercises'/>}
       </InfoBox>
     </InfoBoxWrap>
   );
