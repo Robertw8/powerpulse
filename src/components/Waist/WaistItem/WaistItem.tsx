@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
-  BtnLabel,
+  AddButton,
   BtnWrapper,
   CardLabel,
   ExercisesTitleBox,
@@ -7,21 +10,17 @@ import {
   ListItem,
   ListItemValue,
   SpanExerciseRun,
-  SvgExercise,
-  SvgExerciseRun,
   Title,
   WaistItemLi,
 } from './WaistItem.styled';
-import sprite from '../../../assets/images/sprite.svg';
-
-import React, { useState } from 'react';
-import { Exercise } from '../../../redux/exercises/types';
 import { AddExerciseModal } from '../AddExerciseModal';
 import { ExerciseAddedModal } from '../ExerciseAddedMo.styled.ts';
-import { useDispatch } from 'react-redux';
+import { Icon } from '../../';
+
 import { AppDispatch } from '../../../redux/store.ts';
-import getCurrentDate from '../../../helpers/getCurrentDate.ts';
-import { addDiaryExercise } from '../../../redux/diary/operations.ts';
+import { Exercise } from '../../../redux/exercises/types';
+import useExercises from '../../../hooks/useExercises.ts';
+import { setBurnedCalories } from '../../../redux/exercises/operations.ts';
 
 interface List {
   burnedCalories: string;
@@ -51,20 +50,18 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState<boolean>(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
+  const { burnedCalories } = useExercises();
 
-  const handleExerciseAdd = () => {
-    dispatch(
-      addDiaryExercise({
-        id: exercise._id,
-        calories: exercise.burnedCalories,
-        date: getCurrentDate(),
-        time: exercise.time,
-      })
-    );
-    if (isFirstModalOpen) {
+  useEffect(() => {
+    if (burnedCalories && isFirstModalOpen) {
       setIsFirstModalOpen(false);
       setIsSecondModalOpen(true);
     }
+  }, [burnedCalories, isFirstModalOpen]);
+
+  const handleSecondModalClose = () => {
+    setIsSecondModalOpen(false);
+    dispatch(setBurnedCalories(0));
   };
 
   return (
@@ -72,19 +69,23 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
       <WaistItemLi>
         <BtnWrapper>
           <CardLabel>{texts.cardLabel}</CardLabel>
-          <BtnLabel type="button" onClick={() => setIsFirstModalOpen(true)}>
-            {texts.btnLabel}
-              <SvgExercise>
-                <use href={`${sprite}#arrow-right`}></use>
-              </SvgExercise>
-          </BtnLabel>
+          <AddButton type="text" onClick={() => setIsFirstModalOpen(true)}>
+            Add
+            <Icon
+              name="arrow-secondary"
+              iconWidth={{ mobile: '16px', tablet: '16px' }}
+              stroke={'#e6533c'}
+            />
+          </AddButton>
         </BtnWrapper>
         <ExercisesTitleBox>
           <SpanExerciseRun>
-            <SvgExerciseRun width={24} height={24}>
-              <use href={`${sprite}#fire`}></use>
-              <use href={`${sprite}#running-figure`}></use>
-            </SvgExerciseRun>
+            <Icon
+              iconWidth={{ mobile: '16px', tablet: '16px' }}
+              iconHeight={{ mobile: '16px', tablet: '16px' }}
+              name="running"
+              fill="#EFEDE8"
+            />
           </SpanExerciseRun>
           <Title>{exercise.name}</Title>
         </ExercisesTitleBox>
@@ -106,14 +107,11 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
       <AddExerciseModal
         open={isFirstModalOpen}
         exercise={exercise}
-        handleOk={handleExerciseAdd}
         handleCancel={() => setIsFirstModalOpen(false)}
       />
       <ExerciseAddedModal
         open={isSecondModalOpen}
-        handleClose={() => setIsSecondModalOpen(false)}
-        burnedCalories={exercise.burnedCalories}
-        time={exercise.time}
+        handleClose={handleSecondModalClose}
       />
     </>
   );

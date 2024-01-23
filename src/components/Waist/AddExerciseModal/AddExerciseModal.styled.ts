@@ -17,8 +17,13 @@ const StyledModal = styled(Modal)`
     }
 
     .ant-modal-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
       @media screen and (min-width: 769px) {
-        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
         gap: 16px;
       }
     }
@@ -32,6 +37,11 @@ const InfoColumn = styled.div``;
 const GifWrapper = styled.div`
   width: 270px;
   height: 230px;
+  border-radius: 12px;
+
+  img {
+    border-radius: 12px;
+  }
 `;
 
 const TimerWrapper = styled.div`
@@ -44,7 +54,7 @@ const TimerTitle = styled.p`
   color: ${palette.colors.white40};
   font-size: 10px;
   line-height: calc(14 / 10);
-  margin-bottom: 4px;
+  margin: 10px 0;
 `;
 
 const TimeRemaining = styled.span`
@@ -76,12 +86,20 @@ const Value = styled.span`
 
 const InfoWrapper = styled.div`
   margin-top: 40px;
+
+  @media screen and (min-width: 769px) {
+    margin-top: 0;
+  }
 `;
 
 const InfoList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const InfoItem = styled.li`
@@ -91,6 +109,10 @@ const InfoItem = styled.li`
 
   background-color: ${palette.colors.white5};
   border-radius: 12px;
+
+  @media screen and (min-width: 376px) {
+    width: 140px;
+  }
 
   @media screen and (min-width: 769px) {
     width: 170px;
@@ -118,7 +140,7 @@ const ButtonWrapper = styled.div`
   @media screen and (min-width: 769px) {
     width: 162px;
     margin-left: auto;
-    margin-top: 300px;
+    margin-top: 320px;
   }
 `;
 

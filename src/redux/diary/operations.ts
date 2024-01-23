@@ -1,4 +1,4 @@
-import { operationWrapper } from '../../helpers';
+import { callToast, operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
 
 const getDiary = operationWrapper('diary/getDiary', async date => {
@@ -21,16 +21,25 @@ interface AddDiaryProduct {
 const addDiaryProduct = operationWrapper(
   'diary/addDiaryProduct',
   async ({ id, date, amount, calories }: AddDiaryProduct) => {
-    const response = await apiService({
-      method: 'post',
-      url: 'diary/products',
-      data: {
-        product_ID: id,
-        date,
-        amount,
-        calories,
+    const response = await apiService(
+      {
+        method: 'post',
+        url: 'diary/products',
+        data: {
+          product_ID: id,
+          date,
+          amount,
+          calories,
+        },
       },
-    });
+      error => {
+        callToast(
+          'error',
+          'Something went wrong when adding product to your diary. Please try again'
+        );
+        return error;
+      }
+    );
 
     return response;
   }
@@ -59,16 +68,25 @@ interface AddDiaryExercise {
 const addDiaryExercise = operationWrapper(
   'diary/addDiaryExercise',
   async ({ id, time, date, calories }: AddDiaryExercise) => {
-    const response = await apiService({
-      method: 'post',
-      url: 'diary/exercises',
-      data: {
-        exercise_ID: id,
-        time,
-        date,
-        calories,
+    const response = await apiService(
+      {
+        method: 'post',
+        url: 'diary/exercises',
+        data: {
+          exercise_ID: id,
+          time,
+          date,
+          calories,
+        },
       },
-    });
+      error => {
+        callToast(
+          'error',
+          'Something went wrong when adding exercise to your diary. Please try again'
+        );
+        return error;
+      }
+    );
 
    
     return response.data;

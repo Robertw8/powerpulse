@@ -14,9 +14,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setCalculatedCalories } from '../../../redux/products';
 import { AppDispatch } from '../../../redux';
-// import { selectCalculatedCalories } from '../../../redux/products/selectors';
 import { addDiaryProduct } from '../../../redux/diary';
 import { getCurrentDate, calculateCalories } from '../../../helpers';
+import { useDiary } from '../../../hooks';
 
 interface AddProductFormProps extends FormProps {
   product: {
@@ -33,7 +33,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
 }) => {
   const [amountValue, setAmountValue] = useState<number>(100);
   const dispatch = useDispatch<AppDispatch>();
-  // const calculatedCalories = useSelector(selectCalculatedCalories);
+  const { isLoading } = useDiary();
 
   const handleNumberChange = (value: string | number | null) => {
     if (typeof value === 'number') {
@@ -87,7 +87,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           sizes="small"
           type="primary"
           onclick={handleSubmit}
-          // loading={isLoading}
+          loading={isLoading}
         />
         <PrimaryButton
           text="Cancel"

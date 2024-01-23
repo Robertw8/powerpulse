@@ -21,10 +21,12 @@ interface ExercisesResponse {
 
 interface InitialState {
   exercises: Exercise[];
-  filters: Filters;
-  bodyPart: Exercise[];
   isLoading: boolean;
   error: string | undefined;
+  burnedCalories: number;
+  time: number;
+  filters: Filters;
+  bodyPart: Exercise[];
 }
 
 export type { Exercise, InitialState, ExercisesResponse, Filters };

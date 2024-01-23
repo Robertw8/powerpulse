@@ -80,6 +80,10 @@ const AddButton = styled(Button)`
   &:hover {
     color: #efede8 !important;
     transform: translateX(5px);
+
+    svg {
+      stroke: #efede8;
+    }
   }
 
   @media screen and (min-width: 769px) {

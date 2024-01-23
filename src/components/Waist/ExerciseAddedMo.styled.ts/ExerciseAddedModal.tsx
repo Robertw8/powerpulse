@@ -10,21 +10,23 @@ import {
   Value,
 } from '../../Products/ProductAddedModal/ProductAddedModal.styled';
 import thumb from '../../../assets/images/Exercises/thumb.png';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../redux';
+import { setBurnedCalories } from '../../../redux/exercises';
+import { useExercises } from '../../../hooks';
+import { formatTime } from '../../../helpers';
 
 interface ExerciseAddedModalProps extends ModalProps {
-  // handleClose: () => void;
-  // calories: number;
   handleClose: () => void;
-  time: number;
-  burnedCalories: number;
 }
 
 const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
   open,
   handleClose,
-  time,
-  burnedCalories,
 }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { burnedCalories, time } = useExercises();
+
   return (
     <StyledModal
       open={open}
@@ -48,7 +50,7 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
-          Your time: <Value>{time} minutes</Value>
+          Your time: <Value>{formatTime(time)}</Value>
         </Calories>
         <Calories>
           Burned calories: <Value>{burnedCalories}</Value>
@@ -62,7 +64,7 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
             onclick={handleClose}
           />
         </ButtonWrapper>
-        <StyledLink to="/diary">
+        <StyledLink to="/diary" onClick={() => dispatch(setBurnedCalories(0))}>
           To the diary
           <span>
             <Icon
