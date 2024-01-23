@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ApiServiceOptions } from './types';
 import { setToken } from './token.ts';
-// const baseURL = 'http://localhost:3000/';
 const baseURL = 'https://goit-be.onrender.com/';
 
 interface RetryQueueItem {
@@ -99,8 +98,7 @@ axiosInstance.interceptors.response.use(
           }
           return axios(config);
         } catch (e) {
-          console.log('e', e);
-          //@todo logout user, clear state
+          localStorage.removeItem('session')
         } finally {
           isRefreshing = false;
         }
