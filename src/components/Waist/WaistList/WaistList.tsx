@@ -1,21 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../redux';
 import WaistItem from '../WaistItem/WaistItem';
-import { getExercises } from '../../../redux/exercises';
+import { getExercises, selectIsLoading } from '../../../redux/exercises';
 import { WaistItemUl, WaistListContainer } from './WaistList.styled';
 import { selectExercises, selectFilters } from '../../../redux/exercises';
-import {
-  Message,
-  OrangeText,
-} from '../../Products/NotFoundMessage/NotFoundMessage.styled';
+
+import NotFoundExercises from './NotFoundExercises';
+import { Loader } from '../..';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const exercises = useSelector(selectExercises);
   const filters = useSelector(selectFilters);
-
+  const isLoading = useSelector(selectIsLoading);
+  const [showNotFound, setShowNotFound] = useState(false);
   useEffect(() => {
     dispatch(
       getExercises({
@@ -25,19 +25,28 @@ const WaistList: React.FC = () => {
     );
   }, [dispatch, filters.category, filters.filter]);
 
+  useEffect(() => {
+    if (!exercises.length && !isLoading) {
+      const timeoutId = setTimeout(() => {
+        setShowNotFound(true);
+      }, 1000);
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    } else {
+      setShowNotFound(false);
+    }
+  }, [exercises, isLoading]);
+
   return (
     <WaistListContainer>
+      {showNotFound && <NotFoundExercises />}
       <WaistItemUl className="scrollbar-outer">
-        {exercises.length ? (
-          exercises.map((waistItem, key) => (
-            <WaistItem key={key} exercise={waistItem} />
-          ))
-        ) : (
-          <Message>
-            There is <OrangeText>not exercises</OrangeText>
-            downloaded else, plaese try choose this categorie later
-          </Message>
-        )}
+        {exercises.map((waistItem, key) => (
+          <WaistItem key={key} exercise={waistItem} />
+        ))}
+        {isLoading && <Loader />}
       </WaistItemUl>
     </WaistListContainer>
   );
