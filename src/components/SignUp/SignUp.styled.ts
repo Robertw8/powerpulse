@@ -18,7 +18,6 @@ width: 364px;
 display: flex;
 flex-direction: column;
 gap: 15px;
-
 margin-bottom: 10px;
  }
 
@@ -46,7 +45,7 @@ margin-bottom: 28px;
 font-size: 14px;
  color: rgba(239, 237, 232, 0.3);
 
-  @media screen and (min-width: 769px) {
+@media screen and (min-width: 769px) {
 width: 496px;
 
 margin-bottom: 32px;
@@ -63,30 +62,29 @@ font-size: 12px;
 
 const LinkAuth = styled(Link)`
 color: rgba(239, 237, 232, 0.6);
+  &:hover,
+  &:focus,
+  &:focus-within {
+    color:#E6533C;
+  };
 `
 
 const InputAuth = styled(InputPrimary)`
   width: 100%;
   height:46px; 
-
 `
 
 const InputPassword = styled(Input.Password)<StyledInputProps>`
-    width: 100%;
-  height: 46px;
-  padding: 14px;
-
+  width: 100%;
   color: #fff;
-  font-size: 14px;
   line-height: calc(18 / 14);
 
- 
- border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
+  .ant-input-affix-wrapper{
+  height: 46px !important;
+  }
+  border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
   background-color: transparent !important;
   box-shadow: 0;
-
-  
-  
   &:hover,
   &:focus,
   &:focus-within {
@@ -95,10 +93,7 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 
   };    
 
-
-
 .ant-input{
-
   &::placeholder {
     color: #efede84d !important;
   }
@@ -106,7 +101,12 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 
 .ant-input-password-icon{
   color: #fff !important;
-  padding: 20px;
+  padding: 14px;
+  &:hover,
+  &:focus,
+  &:focus-within{
+     color: #E6533C !important;
+  }
 }
  
 `
@@ -123,7 +123,6 @@ height: auto;
  width: 769px;
  }
 `
-
 
 
 const ImgSignUp = styled.img`
@@ -143,14 +142,13 @@ const ImgSignUp = styled.img`
  
   }
   @media screen and (min-width: 1441px) {
-  width: 700px;
+  width: 670px;
   height: auto;
   position: absolute;
   top: -0px;
-  left: 550px;
+  left: 700px;
   }
 `
-
 
 const BlockSignUp = styled.div`
 display: flex;
@@ -177,7 +175,6 @@ font-size:16px;
   font-size: 20px;
   color: #fff !important;
   margin-top: 64px;
-
 
   &:hover,
   &:focus {

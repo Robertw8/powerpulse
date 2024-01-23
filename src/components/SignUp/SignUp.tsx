@@ -8,7 +8,6 @@ import {
   BlockSignUp,
   ContainerSignUp,
   FormContainer,
-
   ParagraphAuth,
   TitleSignUp,
  BtnSignPage,
@@ -20,12 +19,10 @@ import {
   ColorErrorInput,
 } from './SignUp.styled';
 
-
 import SignUpSchema from './SignUpSchema';
 import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
 import {AuthImg} from '../Welcome/WelcomeImg';
-
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,16 +37,14 @@ const SignUpForm = () => {
     },
     validationSchema: SignUpSchema,
     onSubmit: async (
-      values: { name: string; email: string; password: string },
-      { resetForm }
-    ) => {
-      const response = await dispatch(registerUser(values));
-      if (response) {
-        navigate('/profile')
-      }
-        resetForm();
-    },
-  });
+     values: { name: string; email: string; password: string },
+  ) => {
+    const response = await dispatch(registerUser(values));
+    if (response) {
+      navigate('/profile');
+    }
+  },
+});
 
   return (
     <ContainerSignUp>
