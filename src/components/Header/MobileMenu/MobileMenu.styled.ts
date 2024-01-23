@@ -109,3 +109,17 @@ export const CloseBtn = styled.button`
     right: 32px;
   }
 `;
+export const Appeal = styled.div`
+  margin-top: 202px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  color: #efede8;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  width: 250px;
+  text-transform: uppercase;
+  text-align: center;
+`;

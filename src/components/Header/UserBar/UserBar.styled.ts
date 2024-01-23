@@ -26,6 +26,12 @@ export const SettingsLink = styled(Link)`
       animation: ${rotate} 2s linear infinite;
     }
   }
+  &:hover {
+    svg {
+      stroke: ${palette.colors.orange};
+      animation: ${rotate} 2s linear infinite;
+    }
+  }
 `;
 export const LinkStyled = styled(Link)`
   display: flex;

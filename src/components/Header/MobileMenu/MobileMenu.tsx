@@ -1,5 +1,7 @@
-import { DrawerStyled } from '../MobileMenu/MobileMenu.styled';
-import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/auth/selectors';
+import { DrawerStyled, Appeal } from '../MobileMenu/MobileMenu.styled';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logOutUser } from '../../../redux/auth/operations';
 import { AppDispatch } from '../../../redux';
@@ -14,7 +16,7 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
   const dispatch = useDispatch<AppDispatch>();
-
+  const user = useSelector(selectUser);
   const [drawerWidth, setDrawerWidth] = useState('200px');
 
   useEffect(() => {
@@ -29,6 +31,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
     };
   }, []);
 
+  if (!user) {
+    return null;
+  }
+  const areSomeSettingsPresent = Object.values(user.settings || {}).some(
+    setting => setting
+  );
+
   const handleLogOut = (): void => {
     toggleMenu();
     dispatch(logOutUser({}));
@@ -36,14 +45,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
 
   return (
     <>
-
       <DrawerStyled
         placement="right"
         onClose={toggleMenu}
         open={isOpen}
         width={drawerWidth}
       >
-
         <CloseBtn onClick={toggleMenu}>
           <Icon
             name="x"
@@ -52,18 +59,25 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
             stroke="#ffffff"
           />
         </CloseBtn>
-
-        <NavMenu>
-          <NavLinkStyled to="/diary" onClick={toggleMenu}>
-            Diary
-          </NavLinkStyled>
-          <NavLinkStyled to="/products" onClick={toggleMenu}>
-            Products
-          </NavLinkStyled>
-          <NavLinkStyled to="/exercises" onClick={toggleMenu}>
-            Exercises
-          </NavLinkStyled>
-        </NavMenu>
+        {areSomeSettingsPresent ? (
+          <NavMenu>
+            <NavLinkStyled to="/diary" onClick={toggleMenu}>
+              Diary
+            </NavLinkStyled>
+            <NavLinkStyled to="/products" onClick={toggleMenu}>
+              Products
+            </NavLinkStyled>
+            <NavLinkStyled to="/exercises" onClick={toggleMenu}>
+              Exercises
+            </NavLinkStyled>
+          </NavMenu>
+        ) : (
+          <Appeal>
+            Dear {user.name}, please complete your profile settings to continue
+            enjoying our app.
+            <p>We appreciate your choice to use our application!</p>
+          </Appeal>
+        )}
         <Logout type="button" onClick={handleLogOut}>
           <span>Logout</span>
           <Icon

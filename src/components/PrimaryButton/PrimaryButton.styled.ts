@@ -82,6 +82,10 @@ const CustomButton = styled(Button)<ButtonStyleProps>`
     color: #efede899;
     background-color: #e6533c;
   }
+  &:hover,
+  &:focus {
+    color: #efede8 !important;
+  }
 `;
 
 export { CustomButton };

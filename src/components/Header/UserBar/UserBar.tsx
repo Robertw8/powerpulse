@@ -1,7 +1,6 @@
 import { LinkStyled, SettingsLink, Avatar } from './UserBar.styled';
 import Icon from '../../Icon/Icon';
 import useAuth from '../../../hooks/useAuth';
-// import { Link } from 'react-router-dom';
 
 export const UserBar = () => {
   const { user } = useAuth();
