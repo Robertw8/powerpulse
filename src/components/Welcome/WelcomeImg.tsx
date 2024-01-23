@@ -1,7 +1,4 @@
-import {
-  ImgWelcomePageWrapper,
-  StatisticsWrapper,
-} from './WelcomeStyle.styled';
+import { ImgWelcomePageWrapper, StatisticsWrapper } from './Welcome.styled';
 import imgForWelcomePage from '..//../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.png';
 import imgForWelcomePageTablet from '..//../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';

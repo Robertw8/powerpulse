@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
 
-
 const TitleWelcomePage = styled.h1`
   position: relative;
   width: 335px;
@@ -46,16 +45,15 @@ const ContainerWelcomePage = styled.div`
 
 const ImgWelcomePageWrapper = styled.div`
   width: 100%;
-   display: flex;
-   position: relative;
-   flex-direction: column;
-   width: 355px;
-   @media screen and (min-width: 1441px) {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 355px;
+  @media screen and (min-width: 1441px) {
     display: flex;
     position: relative;
-    }
-    
-    `;
+  }
+`;
 
 const ImgWelcomePage = styled.img`
   width: 430px;
@@ -118,7 +116,7 @@ const StatisticsWrapper = styled.div`
   }
 
   @media screen and (min-width: 1441px) {
-   width: 670px;
+    width: 670px;
     height: auto;
     position: absolute;
     top: 0;
@@ -172,4 +170,5 @@ export {
   BlockBtns,
   IconContainer,
   BtnSignInWelcome,
+  ImgWelcomePage,
 };

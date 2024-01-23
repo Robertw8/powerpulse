@@ -7,7 +7,7 @@ import {
   BlockBtns,
   IconContainer,
   BtnSignInWelcome,
-} from './WelcomeStyle.styled';
+} from './Welcome.styled';
 import { BtnSignUp } from '../SignUp/SignUp.styled';
 
 import { Icon } from '../Icon';

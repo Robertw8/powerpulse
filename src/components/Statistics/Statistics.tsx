@@ -18,16 +18,16 @@ import { palette } from '../../styles/theme';
 
 const { colors } = palette;
 
-// Statistics
 import {
   getStatistics,
   selectStatistics,
   selectIsLoading,
   selectError,
 } from '../../redux/statistics';
+import { AppDispatch } from '../../redux';
 
 const Statistics: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const statistics = useSelector(selectStatistics);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -41,7 +41,7 @@ const Statistics: React.FC = () => {
   } = statistics;
 
   useEffect(() => {
-    dispatch(getStatistics());
+    dispatch(getStatistics({}));
   }, [dispatch]);
 
   const cardsStyle = {
