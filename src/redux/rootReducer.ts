@@ -1,14 +1,14 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { persistedAuthReducer } from './auth';
 import { productsReducer } from './products';
-import { exercisesReducer } from './Waist';
+import { exercisesReducer } from './exercises';
 import { diaryReducer } from './diary';
 
 const rootReducer = combineReducers({
   auth: persistedAuthReducer,
   products: productsReducer,
   exercises: exercisesReducer,
-  diary:diaryReducer
+  diary: diaryReducer,
 });
 
 export { rootReducer };

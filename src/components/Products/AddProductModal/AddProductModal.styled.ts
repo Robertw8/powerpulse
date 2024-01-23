@@ -9,11 +9,11 @@ const StyledModal = styled(Modal)`
     background-color: #10100f !important;
     border: 1px solid #efede833;
 
-    @media screen and (min-width: 376px) {
+    @media screen and (min-width: 375px) {
       padding: 64px 24px 48px 24px;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
       padding: 64px 32px 48px 32px;
     }
   }

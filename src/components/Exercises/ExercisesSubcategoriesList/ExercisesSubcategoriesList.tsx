@@ -16,8 +16,9 @@ const ExercisesSubcategoriesList: React.FC<ExercisesSubcategoriesListProps> = ({
 }) => {
   return (
     <ExercisesList>
-      {exercisesList.map(({ _id, filter, name, imgURL }) => (
-        <ExercisesItem key={_id} filter={filter} name={name} img={imgURL} />
+      {exercisesList.length && exercisesList.map(({ _id, filter, name, imgURL}) => (
+        <ExercisesItem
+          key={_id} name={name} img={imgURL} filter={filter} />
       ))}
     </ExercisesList >
   );

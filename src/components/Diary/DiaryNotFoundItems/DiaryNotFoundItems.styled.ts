@@ -7,12 +7,12 @@ font-weight: 400;
 line-height: 18px; 
 display:block;
 display:flex;
-
 justify-content:center;
 margin-top:125px;
 @media screen and (min-width: 769px) {
     font-size: 16px;
     line-height: 24px;
+    margin-top:65px;
 
   }
 `

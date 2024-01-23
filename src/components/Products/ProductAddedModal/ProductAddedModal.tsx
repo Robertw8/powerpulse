@@ -10,11 +10,11 @@ import {
   Value,
 } from './ProductAddedModal.styled';
 
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ModalProps } from 'antd';
 import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';
+import avocado from '../../../assets/images/Products/avocado.png';
 
 interface ProductAddedModalProps extends ModalProps {
   handleClose: () => void;
@@ -27,7 +27,6 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
   calories,
 }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const [buttonHover, setButtonHover] = useState<boolean>(false);
 
   return (
     <StyledModal
@@ -48,7 +47,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
     >
       <ContentWrapper>
         <div>
-          <img src="src/assets/images/Products/avocado.png" alt="avocado" />
+          <img src={avocado} alt="avocado" />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
@@ -66,8 +65,6 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
         <StyledLink
           to="/diary"
           onClick={() => dispatch(setCalculatedCalories(0))}
-          onMouseEnter={() => setButtonHover(true)}
-          onMouseLeave={() => setButtonHover(false)}
         >
           To the diary
           <span>
@@ -75,7 +72,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
               iconWidth={{ mobile: '16px', tablet: '16px' }}
               iconHeight={{ mobile: '12px', tablet: '12px' }}
               name="arrow-right"
-              stroke={buttonHover ? '#e6533c' : '#EFEDE84D'}
+              stroke={'#EFEDE84D'}
             />
           </span>
         </StyledLink>

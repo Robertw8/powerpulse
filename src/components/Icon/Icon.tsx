@@ -13,6 +13,7 @@ interface IconProps {
   };
   fill?: string;
   stroke?: string;
+  onClick?: () => void;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -21,6 +22,7 @@ const Icon: React.FC<IconProps> = ({
   iconHeight,
   fill,
   stroke,
+  onClick,
 }) => {
   return (
     <StyledIcon
@@ -28,6 +30,7 @@ const Icon: React.FC<IconProps> = ({
       iconHeight={iconHeight}
       fill={fill}
       stroke={stroke}
+      onClick={onClick}
     >
       <use xlinkHref={`${sprite}#icon-${name}`}></use>
     </StyledIcon>

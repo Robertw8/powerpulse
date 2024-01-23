@@ -8,7 +8,7 @@ const StyledModal = styled(Modal)`
     background-color: #10100f !important;
     border: 1px solid #efede833;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
       padding: 64px;
     }
   }
@@ -58,6 +58,10 @@ const StyledLink = styled(Link)`
   &:hover,
   :focus {
     color: #e6533c;
+
+    svg {
+      stroke: #e6533c;
+    }
   }
 `;
 

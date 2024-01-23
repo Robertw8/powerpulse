@@ -5,7 +5,7 @@ const ListWrapper = styled.div`
   margin-top: 40px;
   position: relative;
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     max-width: 840px;
     margin-top: 10px;
   }
@@ -18,7 +18,7 @@ const List = styled.ul`
   border-radius: 12px;
   overflow-y: auto;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     flex-wrap: wrap;
     flex-direction: row;
     gap: 32px 16px;
@@ -26,7 +26,7 @@ const List = styled.ul`
     max-height: 560px;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     max-width: 840px;
   }
 `;

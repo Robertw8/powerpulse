@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/index';
+import { Button } from 'antd';
 
 const WaistItemLi = styled.li`
   width: 100%;
@@ -11,18 +12,23 @@ const WaistItemLi = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  @media screen and (max-width: 767px) {
-    margin: 0 auto;
-  }
+  transition-duration: 150ms;
+  text-transform: capitalize;
+
   @media screen and (min-width: 375px) {
     width: 335px;
   }
+
   @media screen and (min-width: 768px) {
-    width: calc((100% - 16px) / 2);
+    height: 160px;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 370px;
+    width: 405px;
+  }
+
+  &:hover {
+    background-color: #efede80a;
   }
 `;
 
@@ -45,36 +51,34 @@ const CardLabel = styled.p`
   text-transform: uppercase;
 `;
 
-const BtnLabel = styled.button`
-  background: transparent;
-  border: none;
-  color: ${palette.colors.orange};
-  font-size: 16px;
-  line-height: 1.5;
+const AddButton = styled(Button)`
   display: flex;
-  align-items: center;
   gap: 8px;
-  padding: 0;
-  transition-duration: 250ms;
+  align-items: center;
+
+  padding: 3px 6px;
+  margin-left: 16px;
+
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  color: ${palette.colors.orange};
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: ${palette.colors.white};
-  }
-  &:focus {
-    color: ${palette.colors.white};
-  }
-`;
+    color: #efede8 !important;
+    transform: translateX(5px);
 
-const SvgExercise = styled.svg`
-  width: 13px;
-  height: 13px;
+    svg {
+      stroke: #efede8;
+    }
+  }
 
   @media screen and (min-width: 768px) {
-    width: 16px;
-    height: 16px;
+    font-size: 16px;
+    line-height: calc(24 / 16);
   }
 `;
+
 const ExercisesTitleBox = styled.div`
   display: flex;
   align-items: center;
@@ -96,10 +100,6 @@ const Title = styled.h3`
   }
 `;
 
-const SvgExerciseRun = styled.svg`
-  width: 16px;
-  height: 16px;
-`;
 const SpanExerciseRun = styled.span`
   display: flex;
   justify-content: center;
@@ -112,7 +112,7 @@ const SpanExerciseRun = styled.span`
 
 const List = styled.ul`
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 4px 16px;
 `;
 
@@ -122,11 +122,24 @@ const ListItem = styled.li`
   gap: 4px;
   color: ${palette.colors.white};
   font-size: 12px;
-  line-height: 1.5;
+  line-height: calc(18 / 12);
 `;
 
 const ListItemValue = styled.span`
-  color: ${palette.colors.white30};
+  color: #efa082;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 30px;
+  white-space: nowrap;
+
+  @media screen and (min-width: 375px) {
+    max-width: 70px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 120px;
+  }
 `;
 
 export {
@@ -134,12 +147,10 @@ export {
   ListItemValue,
   List,
   WaistItemLi,
-  BtnLabel,
+  AddButton,
   BtnWrapper,
   CardLabel,
   SpanExerciseRun,
-  SvgExercise,
   ExercisesTitleBox,
   Title,
-  SvgExerciseRun,
 };

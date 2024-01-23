@@ -23,7 +23,7 @@ const StyledLoader = styled(Spin)<StyledLoaderProps>`
     height: 20px !important;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     font-size: 50px !important;
 
     span {

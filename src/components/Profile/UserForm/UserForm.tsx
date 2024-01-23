@@ -26,6 +26,7 @@ const UserForm: React.FC = () => {
 
   const formik = useFormik({
     initialValues: initialValues,
+    enableReinitialize: true,
     validationSchema: schema,
     onSubmit: async values => {
       const userData = {

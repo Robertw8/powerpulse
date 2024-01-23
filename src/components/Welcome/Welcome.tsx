@@ -6,7 +6,6 @@ import { BtnSignUp } from "../SignUp/SignUp.styled";
 import { Icon } from "../Icon";
 import {WelcomeImg} from './WelcomeImg';
 
-
 const Welcome: React.FC = () => {
   return (
     <ContainerWelcomePage>

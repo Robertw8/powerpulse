@@ -1,89 +1,113 @@
+import { callToast, operationWrapper } from '../../helpers';
+import { apiService } from '../../services';
 
-import { operationWrapper } from '../../helpers';
-  import { apiService} from '../../services';
+const getDiary = operationWrapper('diary/getDiary', async date => {
+  const response = await apiService({
+    method: 'get',
+    url: 'diary',
+    config: { params: { date } },
+  });
+ console.log(response.data);
+  return response.data;
+});
 
-const getDiary = operationWrapper(
-    'diary/getDiary',
-    async (date) => {
- 
-      const response = await apiService({
-        method: 'get',
-        url: 'diary',
-config:{params:{date}}
-    
-    
-      });
-     
-  console.log(response);
-      return response
-    }
-  );
- 
-  const addDiaryProduct = operationWrapper(
-    'diary/addDiaryProduct',
-    async (data) => {
- 
-      const response = await apiService({
+interface AddDiaryProduct {
+  id: string;
+  date: string;
+  amount: number;
+  calories: number;
+}
+
+const addDiaryProduct = operationWrapper(
+  'diary/addDiaryProduct',
+  async ({ id, date, amount, calories }: AddDiaryProduct) => {
+    const response = await apiService(
+      {
         method: 'post',
         url: 'diary/products',
-        data
-    
-    
-      });
-     
-  console.log(response);
-      return response.data;
-    }
-  );
+        data: {
+          product_ID: id,
+          date,
+          amount,
+          calories,
+        },
+      },
+      error => {
+        callToast(
+          'error',
+          'Something went wrong when adding product to your diary. Please try again'
+        );
+        return error;
+      }
+    );
 
-  const deleteDiaryProduct = operationWrapper(
-    'diary/deleteDiaryProduct',
-    async (productId) => {
- 
-      const response = await apiService({
-        method: 'delete',
-        url: `diary/products/${productId}`,
-       
-    
-    
-      });
-     
-  console.log(response);
-      return response;
-    }
-  );
+    return response;
+  }
+);
 
-  const addDiaryExercise = operationWrapper(
-    'diary/addDiaryExercise',
-    async (data) => {
- 
-      const response = await apiService({
+const deleteDiaryProduct = operationWrapper(
+  'diary/deleteDiaryProduct',
+  async productId => {
+    const response = await apiService({
+      method: 'delete',
+      url: `diary/products/${productId}`,
+    });
+
+    const productResponse={...response, id:productId}
+    return productResponse;
+  }
+);
+
+interface AddDiaryExercise {
+  id: string;
+  time: number;
+  date: string;
+  calories: number;
+}
+
+const addDiaryExercise = operationWrapper(
+  'diary/addDiaryExercise',
+  async ({ id, time, date, calories }: AddDiaryExercise) => {
+    const response = await apiService(
+      {
         method: 'post',
         url: 'diary/exercises',
-        data
-    
-    
-      });
-     
-  console.log(response);
-      return response.data;
-    }
-  );
+        data: {
+          exercise_ID: id,
+          time,
+          date,
+          calories,
+        },
+      },
+      error => {
+        callToast(
+          'error',
+          'Something went wrong when adding exercise to your diary. Please try again'
+        );
+        return error;
+      }
+    );
 
-  const deleteDiaryExercise  = operationWrapper(
-    'diary/deleteDiaryExercise',
-    async (exerciseId) => {
- 
-      const response = await apiService({
-        method: 'delete',
-        url: `diary/exercises/${exerciseId}`,
-       
-    
-    
-      });
-     
-  console.log(response);
-      return response;
-    }
-  );
-  export { getDiary,addDiaryProduct,deleteDiaryProduct,addDiaryExercise,deleteDiaryExercise }
+   
+    return response.data;
+  }
+);
+
+const deleteDiaryExercise = operationWrapper(
+  'diary/deleteDiaryExercise',
+  async exerciseId => {
+    const response = await apiService({
+      method: 'delete',
+      url: `diary/exercises/${exerciseId}`,
+    });
+    const exerciseResponse={...response, id:exerciseId}
+    return exerciseResponse;
+  }
+);
+export {
+  getDiary,
+  addDiaryProduct,
+  deleteDiaryProduct,
+  addDiaryExercise,
+  deleteDiaryExercise,
+};

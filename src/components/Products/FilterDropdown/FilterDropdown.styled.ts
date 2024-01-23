@@ -5,7 +5,7 @@ const StyledSelect = styled(Select)`
   height: 46px;
   width: 100%;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     height: 52px;
   }
 
@@ -18,7 +18,7 @@ const StyledSelect = styled(Select)`
     background-color: transparent !important;
     border-color: #efede84d !important;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
       font-size: 16px;
       line-height: calc(24 / 16);
     }
@@ -37,7 +37,7 @@ const StyledSelect = styled(Select)`
       font-size: 14px;
       line-height: calc(18 / 14);
 
-      @media screen and (min-width: 769px) {
+      @media screen and (min-width: 768px) {
         font-size: 16px;
         line-height: calc(24 / 16);
       }
@@ -52,7 +52,7 @@ const StyledPopupContent = styled.div`
     line-height: calc(18 / 14);
     text-transform: capitalize;
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
       font-size: 16px !important;
       line-height: calc(24 / 16);
     }

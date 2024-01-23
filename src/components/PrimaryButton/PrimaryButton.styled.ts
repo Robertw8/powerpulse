@@ -71,7 +71,7 @@ const CustomButton = styled(Button)<ButtonStyleProps>`
   font-size: ${({ fontSize }) => `${fontSize}px`} !important;
   line-height: ${({ fontSize }) => `calc(18 / ${fontSize})`};
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     min-width: ${({ sizes }) => buttonWidth.tablet[sizes]} !important;
     min-height: ${({ sizes }) => buttonHeight.tablet[sizes]} !important;
     line-height: ${({ fontSize }) => `calc(24 / ${fontSize})`};
@@ -81,6 +81,10 @@ const CustomButton = styled(Button)<ButtonStyleProps>`
     border-color: #e6533c;
     color: #efede899;
     background-color: #e6533c;
+  }
+  &:hover,
+  &:focus {
+    color: #efede8 !important;
   }
 `;
 

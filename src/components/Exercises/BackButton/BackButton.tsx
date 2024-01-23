@@ -1,20 +1,22 @@
+import { selectFilters, setFilters } from '../../../redux/exercises';
+import { AppDispatch } from '../../../redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Icon } from "../../Icon";
-import { useSearchParams } from "react-router-dom";
-import { useMemo } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { BackBtn } from "./BackButton.styled";
 
-const BackButton = () => {
+const BackButton:React.FC = () => {
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
+    const filters = useSelector(selectFilters);
     
-    const params = useMemo(
-        () => Object.fromEntries([...searchParams]),
-        [searchParams]);
-    
-    const onClick = () => {
-        setSearchParams({ filter: params.filter })
-        };
+  const onClick = () => {
+      dispatch(setFilters(filters.filter, ""))
+      navigate(-1);
+    };
 
     return (
         <BackBtn onClick={onClick}>

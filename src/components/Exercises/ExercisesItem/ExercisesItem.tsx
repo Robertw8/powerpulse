@@ -1,5 +1,6 @@
-import { useSearchParams } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilters, selectFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -12,20 +13,19 @@ import {
 
 interface ExercisesItemProps {
   name: string;
-  filter: string;
   img: string;
+  filter: string;
 }
 
-const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img }) => {
+const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const params = useMemo(
-    () => Object.fromEntries([...searchParams]),
-    [searchParams]);
-
+  const filters = useSelector(selectFilters);
+  
   const onClick = () => {
-    setSearchParams({ ...params, category: name });
+    navigate(`/exercises/${filters.filter}/${name}`);
+    dispatch(setFilters(filters.filter, name));
   };
 
   return (

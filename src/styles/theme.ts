@@ -17,12 +17,15 @@ interface Palette {
 const palette: Palette = {
   colors: {
     black: '#040404',
+    bg: '#10100F',
     orange: '#E6533C',
     lightOrange: '#EF8964',
     beige: '#EFA082',
     white: '#EFEDE8',
+    white40: ' #EFEDE866',
     white30: '#EFEDE84D',
     white20: '#EFEDE833',
+    white5: '#EFEDE80D',
     red: '#D80027',
     gray: '#1C1C1C',
   },
