@@ -32,4 +32,8 @@ const setFilters = createAction('exercises/setFilters', (filter, category) => {
   };
 });
 
-export { getExercises, setFilters };
+const setBurnedCalories = createAction<number>('exercises/setBurnedCalories');
+
+const setTime = createAction<number>('exercises/setTime');
+
+export { getExercises, setFilters, setBurnedCalories, setTime };

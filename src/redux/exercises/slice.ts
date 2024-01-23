@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getExercises, setFilters } from './operations';
+import { getExercises, setBurnedCalories, setFilters, setTime } from '.';
 import { Exercise, InitialState } from './types';
 
 const initialState: InitialState = {
   exercises: [],
   isLoading: false,
   error: '',
+  burnedCalories: 0,
+  time: 0,
   filters: {
     filter: '',
     category: '',
@@ -38,6 +40,12 @@ const exercisesSlice = createSlice({
           filter: action.payload.filter,
           category: action.payload.category,
         };
+      })
+      .addCase(setBurnedCalories, (state, action) => {
+        state.burnedCalories = action.payload;
+      })
+      .addCase(setTime, (state, action) => {
+        state.time = action.payload;
       });
   },
 });
