@@ -21,6 +21,9 @@ const ExercisesList: React.FC = () => {
 
   return (
     <ListWrapper>
+      {diaryExercises.map((exercise, index) => (
+        <ExercisesGrid exercise={exercise} key={index} id={exercise._id} />
+      ))}
       <List className="scrollbar-outer">
         {diaryExercises.map((exercise, index) => (
           <ExercisesGrid exercise={exercise} key={index} id={exercise._id} />
@@ -30,4 +33,5 @@ const ExercisesList: React.FC = () => {
     </ListWrapper>
   );
 };
+
 export default ExercisesList;

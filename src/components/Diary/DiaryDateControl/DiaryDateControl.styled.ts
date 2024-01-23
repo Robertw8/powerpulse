@@ -14,7 +14,26 @@ transform: rotate(180deg);
 width:16px;
 height:16px`
 
+const SelectedDate=styled.div`
+color: #EFEDE8;
+font-family: Roboto;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 20px; 
+margin-right:8px;
+
+@media screen and (min-width: 768px) { 
+color: #EFEDE8;
+
+font-family: Roboto;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 32px; }
+`
 
 
 
-export {StyledDateControl,ArrowControl,ReverseIcon}
+export {StyledDateControl,ArrowControl,ReverseIcon,SelectedDate
+}

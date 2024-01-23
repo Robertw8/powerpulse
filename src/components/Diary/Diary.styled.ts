@@ -10,10 +10,11 @@ const BlockWrap = styled.ul`
   @media screen and (min-width: 768px) {
     justify-content: start;
     margin-bottom: 32px;
+   
   
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: 390px;
   }
 `;
@@ -45,7 +46,7 @@ const TextWrap = styled.div`
     margin-bottom: 64px;
     width: 561px;
   }
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: fit-content;
   }
 `;
@@ -67,7 +68,7 @@ const MainDiaryWrap = styled.div`
     flex-direction: column-reverse;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;
   }
@@ -80,7 +81,7 @@ const DiaryWrapper = styled.div`
 `;
 
 const DesktopWrap = styled.div`
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: column;
     order: 2;

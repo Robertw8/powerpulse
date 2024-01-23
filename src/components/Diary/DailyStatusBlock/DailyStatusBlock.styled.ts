@@ -12,6 +12,9 @@ justify-content: space-between;
 flex-direction: column;
 @media screen and (min-width: 768px) { 
    flex: 0 0 187px;
+  
+
+
  
    }  
    @media screen and (min-width: 1441px) {
@@ -27,9 +30,7 @@ font-family: Roboto;
 font-size: 12px;
 font-style: normal;
 font-weight: 400;
-line-height: 16px; /* 133.333% */
-
-
+line-height: 16px; 
 `
 const IconTextWrap = styled.div<{whiteSpace?:string}>`
 display: flex;

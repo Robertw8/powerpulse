@@ -7,8 +7,7 @@ import {
   selectCaloriesBurned,
   selectCaloriesConsumed,
   selectExercises,
-  // selectSportsTime,
-  selectProducts,
+  selectProducts
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
@@ -26,13 +25,18 @@ import { InfoBoxes } from './InfoBoxes';
 
 const Diary = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
-  const caloriesBured = useSelector(selectCaloriesBurned);
-  const caloriesConsumed = useSelector(selectCaloriesConsumed);
+
+  const caloriesBured=useSelector(selectCaloriesBurned)
+const caloriesConsumed=useSelector(selectCaloriesConsumed)
+
+const diaryExercises=useSelector(selectExercises)
+const diaryProducts=useSelector(selectProducts)
+
+
   // const sportsTime = useSelector(selectSportsTime);
-  const diaryExercises = useSelector(selectExercises);
-  const diaryProducts = useSelector(selectProducts);
   // const sportsRemaining: number = sportsTime - userData.dailyActivity;
   // const caloriesRemaining: number = userData.dailyCalories - caloriesConsumed;
+
 
   const dispatch = useDispatch<AppDispatch>();
 
