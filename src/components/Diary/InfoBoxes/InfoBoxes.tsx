@@ -8,9 +8,10 @@ import {
   InfoBoxWrap,
 InfoBox,StyledIcon
 } from './InfoBoxes.styled';
-
-
 import { ProductsList } from '../ProductsList';
+
+
+
 
 
 
