@@ -3,9 +3,6 @@ import { ExercisesList } from './ExercisesSubcategoriesList.styled';
 import { ExercisesItem } from '../ExercisesItem';
 
 interface ExercisesSubcategoriesListProps {
-  setCurrentExercise: React.Dispatch<React.SetStateAction<string>>;
-  togglePage: React.Dispatch<React.SetStateAction<boolean>>;
-  category: string;
   exercisesList: {
     _id: string;
     filter: string;
@@ -15,14 +12,13 @@ interface ExercisesSubcategoriesListProps {
 }
 
 const ExercisesSubcategoriesList: React.FC<ExercisesSubcategoriesListProps> = ({
-  exercisesList, category, togglePage, setCurrentExercise
+  exercisesList
 }) => {
   return (
     <ExercisesList>
       {exercisesList.length && exercisesList.map(({ _id, filter, name, imgURL}) => (
         <ExercisesItem
-          key={_id} filter={filter} name={name} img={imgURL} category={category}
-          toggle={togglePage} setCurrentExercise={setCurrentExercise} />
+          key={_id} name={name} img={imgURL} filter={filter} />
       ))}
     </ExercisesList >
   );

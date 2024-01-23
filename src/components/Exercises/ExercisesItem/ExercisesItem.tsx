@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setFilters } from '../../../redux/exercises';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilters, selectFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -13,22 +13,19 @@ import {
 
 interface ExercisesItemProps {
   name: string;
-  filter: string;
   img: string;
-  category: string
-  toggle: React.Dispatch<React.SetStateAction<boolean>>;
-  setCurrentExercise: React.Dispatch<React.SetStateAction<string>>;
+  filter: string;
 }
 
-const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img, category, toggle, setCurrentExercise }) => {
+const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const filters = useSelector(selectFilters);
   
   const onClick = () => {
-    navigate(`/exercises/${category}/${name}`);
-    toggle(true);
-    setCurrentExercise(name);
-    dispatch(setFilters('choice', name));
+    navigate(`/exercises/${filters.filter}/${name}`);
+    dispatch(setFilters(filters.filter, name));
   };
 
   return (

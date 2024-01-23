@@ -19,7 +19,7 @@ const WaistList: React.FC = () => {
   useEffect(() => {
     dispatch(
       getExercises({
-        filter: filters.filter,
+        filter: 'choice',
         category: filters.category,
       })
     );

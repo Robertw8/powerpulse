@@ -1,36 +1,30 @@
-import { Tabs } from 'antd';
-import type { TabsProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { selectFilters, setFilters } from '../../../redux/exercises';
+import { AppDispatch } from '../../../redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Tabs } from 'antd';
+import type { TabsProps } from 'antd';
 
 import { Category } from '../Exercises';
-
 import { CategoryList } from './ExercisesCategories.styled';
-import { Dispatch, SetStateAction } from 'react';
 
-interface ExercisesCategoriesProps {
-  changeCategory: Dispatch<SetStateAction<Category>>;
-  setPage: Dispatch<SetStateAction<number>>;
-  exercisesPage: boolean;
-}
+const ExercisesCategories: React.FC = () => {
 
-const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({
-  changeCategory,
-  setPage,
-  exercisesPage,
-}) => {
   const [tabs, toggleTabs] = useState<boolean>(false);
 
-  useEffect(() => {
-    exercisesPage ? toggleTabs(true) : toggleTabs(false);
-  }, [exercisesPage]);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const filters = useSelector(selectFilters);
+
+  useEffect(() => {
+    filters.category ? toggleTabs(true) : toggleTabs(false);
+  },[dispatch, filters.category])
 
   const onChange = (key: Category) => {
+    dispatch(setFilters(key, ""));
     navigate(`/exercises/${key}`);
-    changeCategory(key);
-    setPage(1);
   };
 
   const items: TabsProps['items'] = [
@@ -53,6 +47,7 @@ const ExercisesCategories: React.FC<ExercisesCategoriesProps> = ({
       disabled: tabs,
     },
   ];
+
   return (
     <CategoryList>
       <Tabs
