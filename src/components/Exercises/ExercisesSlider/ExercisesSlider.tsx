@@ -7,65 +7,72 @@ import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 
 const Slider: React.FC = () => {
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(10);
+  const [total, setTotal] = useState<number>(1);
+  const [exercisesList, setExercisesList] = useState([]);
+  //   const [isLoading, setIsLoading] = useState<boolean>(false); // ! У тебя isLoading и errorPage нигде пока не используется, закомментил из-за ошибки no-unused-vars для деплоя
+  //   const [errorPage, setErrorPage] = useState<boolean>(false);
 
-    const [page, setPage] = useState<number>(1);
-    const [limit, setLimit] = useState<number>(10);
-    const [total, setTotal] = useState<number>(1);
-    const [exercisesList, setExercisesList] = useState([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [errorPage, setErrorPage] = useState<boolean>(false);
-
-    const currentfilter = (category: string) => {
+  const currentfilter = (category: string) => {
     if (category === 'bodyPart') {
       return 'Body parts';
     } else if (category === 'muscles') {
       return 'Muscles';
     } else {
       return 'Equipment';
-    }};
-    
-    const filters = useSelector(selectFilters);
+    }
+  };
 
-    useEffect(() => {
-        window.screen.width >= 768 && window.screen.width < 1440 ?
-            setLimit(9) : setLimit(10);
-        
-        const filter = filters.filter ? currentfilter(filters.filter) : currentfilter('bodyPart');
-        const responce = apiService({method: 'get',
-            url: `/exercises/${filter}?page=${page}&limit=${limit}`});
-        setIsLoading(true);
+  const filters = useSelector(selectFilters);
 
-        responce.then(({ data, totalItems }) => {
-            if (!data.length) return setErrorPage(true);
-            setExercisesList(data);
-            setTotal(totalItems);
-        })
-        .catch(() => {
-            setErrorPage(true);
-        })
-        .finally(() => setIsLoading(false));
-    },[filters.filter, limit, page])
+  useEffect(() => {
+    window.screen.width >= 768 && window.screen.width < 1440
+      ? setLimit(9)
+      : setLimit(10);
 
-    const onChange = (currentSlide: number) => {
-        setPage(currentSlide + 1);
-    };
+    const filter = filters.filter
+      ? currentfilter(filters.filter)
+      : currentfilter('bodyPart');
+    const responce = apiService({
+      method: 'get',
+      url: `/exercises/${filter}?page=${page}&limit=${limit}`,
+    });
+    // setIsLoading(true);
 
-    const slidesCounter: number = Math.ceil(total / limit);
+    responce
+      .then(({ data, totalItems }) => {
+        // if (!data.length) return setErrorPage(true);
+        if (!data.length) return;
+        setExercisesList(data);
+        setTotal(totalItems);
+      })
+      .catch(() => {
+        // setErrorPage(true);
+      })
+      //   .finally(() => setIsLoading(false));
+      .finally(() => console.log);
+  }, [filters.filter, limit, page]);
 
-    const sliderBlocks = Array.from({ length: slidesCounter }, (_, index) => (
-        <div key={index + 1}>
-            <ExercisesSubcategoriesList exercisesList={exercisesList}/>
-        </div>
-    ));
+  const onChange = (currentSlide: number) => {
+    setPage(currentSlide + 1);
+  };
 
-    return (
-        <>
-            {exercisesList.length > 0 &&
-                <Carousel afterChange={onChange}>
-                    {sliderBlocks}
-                </Carousel>}
-        </>
-    );
+  const slidesCounter: number = Math.ceil(total / limit);
+
+  const sliderBlocks = Array.from({ length: slidesCounter }, (_, index) => (
+    <div key={index + 1}>
+      <ExercisesSubcategoriesList exercisesList={exercisesList} />
+    </div>
+  ));
+
+  return (
+    <>
+      {exercisesList.length > 0 && (
+        <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>
+      )}
+    </>
+  );
 };
 
 export default Slider;
