@@ -9,4 +9,7 @@ display:flex;
 gap:8px;
 margin-left:20px;`
 
-export {StyledDateControl,ArrowControl}
+const ReverseIcon=styled.div`
+transform: rotate(180deg);`
+
+export {StyledDateControl,ArrowControl,ReverseIcon}

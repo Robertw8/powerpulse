@@ -11,15 +11,15 @@ const Item = styled.li`
   background-color: #efede80d;
   transition-duration: 150ms;
 
-  @media screen and (min-width: 376px) {
+  @media screen and (min-width: 375px) {
     width: 335px;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     height: 160px;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: 405px;
   }
 
@@ -80,9 +80,13 @@ const AddButton = styled(Button)`
   &:hover {
     color: #efede8 !important;
     transform: translateX(5px);
+
+    svg {
+      stroke: #efede8;
+    }
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: calc(24 / 16);
   }
@@ -107,12 +111,12 @@ const Name = styled.p`
   text-overflow: ellipsis;
   overflow: hidden;
 
-  @media screen and (min-width: 376px) {
+  @media screen and (min-width: 375px) {
     font-size: 20px;
     line-height: calc(24 / 20);
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: calc(32 / 24);
   }
@@ -157,11 +161,11 @@ const SpecificationValue = styled.p`
   max-width: 30px;
   white-space: nowrap;
 
-  @media screen and (min-width: 376px) {
+  @media screen and (min-width: 375px) {
     max-width: 70px;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     max-width: 120px;
   }
 `;

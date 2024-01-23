@@ -1,8 +1,10 @@
-import { LinkStyled, SettingsLink } from './UserBar.styled';
+import { LinkStyled, SettingsLink, Avatar } from './UserBar.styled';
 import Icon from '../../Icon/Icon';
-// import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 export const UserBar = () => {
+  const { user } = useAuth();
+  const { avatarURL } = user;
   return (
     <>
       <SettingsLink to="/profile">
@@ -13,13 +15,18 @@ export const UserBar = () => {
           stroke={'rgba(239, 237, 232, 0.3)'}
         />
       </SettingsLink>
+
       <LinkStyled to="/profile">
-        <Icon
-          name="user"
-          iconWidth={{ mobile: '21px', tablet: '24px' }}
-          iconHeight={{ mobile: '21px', tablet: '24px' }}
-          stroke="rgba(239, 237, 232, 0.3)"
-        />
+        {avatarURL ? (
+          <Avatar src={avatarURL} width={46} height={46} alt="Avatar" />
+        ) : (
+          <Icon
+            name="user"
+            iconWidth={{ mobile: '21px', tablet: '24px' }}
+            iconHeight={{ mobile: '21px', tablet: '24px' }}
+            stroke="rgba(239, 237, 232, 0.3)"
+          />
+        )}
       </LinkStyled>
     </>
   );

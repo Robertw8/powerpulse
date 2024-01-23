@@ -4,7 +4,7 @@ import { InputNumber } from 'antd';
 const InputsWrapper = styled.fieldset`
   border: none;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     align-items: center;
   }
@@ -38,7 +38,7 @@ const StyledInputNumber = styled(InputNumber)`
       border-color: #e6533c !important;
     }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 768px) {
       font-size: 16px;
       line-height: calc(24 / 16);
     }
@@ -48,7 +48,7 @@ const StyledInputNumber = styled(InputNumber)`
     border-color: #efede84d !important;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     margin-top: 0;
     margin-left: 16px;
   }
@@ -76,7 +76,7 @@ const ButtonsWrapper = styled.div`
   justify-content: space-between;
   margin-top: 24px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     justify-content: flex-start;
     gap: 16px;
     margin-top: 64px;

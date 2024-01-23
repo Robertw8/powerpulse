@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Input, InputProps } from 'antd';
 
- interface StyledInputProps extends InputProps {
+interface StyledInputProps extends InputProps {
   bordercolor: 'default' | 'success' | 'error';
 }
 
@@ -40,7 +40,7 @@ const StyledInput = styled(Input)<StyledInputProps>`
     transition-duration: 300ms;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     height: 52px;
     font-size: 16px;
     line-height: calc(24 / 16);

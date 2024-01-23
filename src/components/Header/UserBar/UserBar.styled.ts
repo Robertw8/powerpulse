@@ -1,15 +1,35 @@
 import styled from '@emotion/styled';
+import { keyframes } from '@emotion/react';
 import { palette } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 
-export const SettingsLink = styled(Link)`
-  &.active {
-    background-color: ${palette.colors.red};
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
   }
-  &:hover,
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+export const SettingsLink = styled(Link)`
+  &:active,
   &:focus {
     svg {
-      stroke: ${palette.colors.red};
+      stroke: ${palette.colors.orange};
+
+    }
+  }
+  &:hover {
+    svg {
+      stroke: ${palette.colors.orange};
+      animation: ${rotate} 2s linear infinite;
+    }
+  }
+  &:hover {
+    svg {
+      stroke: ${palette.colors.orange};
+      animation: ${rotate} 2s linear infinite;
     }
   }
 `;
@@ -22,6 +42,19 @@ export const LinkStyled = styled(Link)`
   border: 1px solid ${palette.colors.orange};
   border-radius: 50%;
   background-color: rgba(48, 48, 48, 0.3);
+
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+  }
+`;
+
+export const Avatar = styled.img`
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid ${palette.colors.orange};
 
   @media screen and (min-width: 768px) {
     width: 46px;

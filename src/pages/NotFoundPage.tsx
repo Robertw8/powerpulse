@@ -1,21 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-//! Чисто для прикладу як має бути зробив, реалізуйте таку логіку як зараз є але можливо якимось кращим підходом
+import { NotFound } from '../components';
+
 const NotFoundPage: React.FC = () => {
-  const [countdown, setCountdown] = useState(5);
-  const navigate = useNavigate();
+//   const { isLoggedIn, isRefreshing } = useAuth();
+//   const homeLink = !isLoggedIn && !isRefreshing ? routes.WELCOME : routes.DIARY;
+  // const [countdown, setCountdown] = useState(5);
+//   const navigate = useNavigate();
 
-  useEffect(() => {
-    const intervalId = setInterval(() => setCountdown(countdown - 1), 1000);
-
-    if (countdown === 0) {
-      navigate('/');
-      return () => clearInterval(intervalId);
-    }
-  }, [countdown, navigate]);
-
-  return <div>Page not found, redirecting to the homepage in {countdown}</div>;
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => setCountdown(countdown - 1), 1000);
+  //
+  //   if (countdown === 0) {
+  //     navigate('/');
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [countdown, navigate]);
+  return (
+    <NotFound />
+  );
 };
 
 export default NotFoundPage;

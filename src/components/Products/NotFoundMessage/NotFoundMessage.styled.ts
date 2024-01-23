@@ -6,7 +6,7 @@ const Message = styled.p`
   font-size: 14px;
   line-height: calc(18 / 14);
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     max-width: 580px;
     font-size: 16px;
     line-height: calc(24 / 16);
@@ -23,7 +23,7 @@ const OrangeText = styled.span`
     margin-top: 16px;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: calc(24 / 16);
   }

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const ProductsWrapper = styled.div``;
 
 const BackgroundImage = styled.div`
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     display: none;
   }
 
@@ -17,7 +17,7 @@ const BackgroundImage = styled.div`
 `;
 
 const ProductsTitleRow = styled.div`
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
     align-items: baseline;

@@ -1,13 +1,14 @@
 import { Container, PageTitle, Diary } from '../components';
-
+import { DiaryDateControl } from '../components/Diary/DiaryDateControl';
+import { DiaryWrapper } from '../components/Diary/Diary.styled'
 
 const DiaryPage: React.FC = () => {
   return (
     <Container>
-      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+      <DiaryWrapper>
       <PageTitle text="Diary" />
-     
-      </div>
+     <DiaryDateControl/>
+     </DiaryWrapper>
       <Diary />
     </Container>
   );

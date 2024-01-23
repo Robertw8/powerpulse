@@ -1,11 +1,13 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate} from 'react-router-dom';
 import { Layout, PublicRoute, PrivateRoute, Loader } from '.';
 import routes from '../routes';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux';
 import { getCurrentUser } from '../redux/auth/operations';
 import { useAuth } from '../hooks';
+import { WaistList } from './Waist';
+import { ExercisesSlider } from './Exercises/ExercisesSlider';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
@@ -16,9 +18,10 @@ const ProductsPage = lazy(() => import('../pages/ProductsPage'));
 const ExercisesPage = lazy(() => import('../pages/ExercisesPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
+
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const { isLoggedIn, isRefreshing,userSettings } = useAuth();
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
@@ -38,7 +41,6 @@ export const App: React.FC = () => {
               />
             }
           />
-
           <Route
             path={routes.WELCOME}
             element={<PublicRoute component={<WelcomePage />} />}
@@ -48,8 +50,13 @@ export const App: React.FC = () => {
             element={<PublicRoute component={<SignUpPage />} />}
           />
           <Route
-            path={routes.SIGNIN}
-            element={<PublicRoute component={<SignInPage />} />}
+          path={routes.SIGNIN}
+          element={
+          <PublicRoute
+           redirectTo={!userSettings ? '/diary' : '/profile'}
+           component={<SignInPage />}
+          />
+          }
           />
           <Route
             path={routes.PROFILE}
@@ -63,16 +70,13 @@ export const App: React.FC = () => {
             path={routes.PRODUCTS}
             element={<PrivateRoute component={<ProductsPage />} />}
           />
-          <Route
-            path={routes.EXERCISES}
-            element={<PrivateRoute component={<ExercisesPage />} />}
-          >
-            <Route path="bodyparts" element={<ExercisesPage />} />
-            <Route path="muscles" element={<ExercisesPage />} />
-            <Route path="equipment" element={<ExercisesPage />} />
+          <Route path={routes.EXERCISES}
+            element={<PrivateRoute component={<ExercisesPage/>} />}>
+            <Route path=':filter' element={<PrivateRoute component={<ExercisesSlider/>} />}/>
+            <Route path=':filter/:category' element={<PrivateRoute component={<WaistList/>} />}/>
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );

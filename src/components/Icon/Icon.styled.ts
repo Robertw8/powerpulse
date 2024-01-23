@@ -17,7 +17,7 @@ const StyledIcon = styled.svg<StyledIconProps>`
   width: ${({ iconWidth }) => iconWidth.mobile};
   height: ${({ iconHeight }) => iconHeight?.mobile};
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: ${({ iconWidth }) => iconWidth.tablet};
     height: ${({ iconHeight }) => iconHeight?.tablet};
   }

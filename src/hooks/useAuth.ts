@@ -4,6 +4,7 @@ import {
   selectIsLoading,
   selectIsLoggedIn,
   selectIsRefreshing,
+  selectSettings,
   selectToken,
   selectType,
   selectUser,
@@ -11,6 +12,7 @@ import {
 
 const useAuth = () => {
   const user = useSelector(selectUser);
+  const userSettings = useSelector(selectSettings);
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isLoading = useSelector(selectIsLoading);
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -18,7 +20,7 @@ const useAuth = () => {
   const type = useSelector(selectType);
   const token = useSelector(selectToken);
 
-  return { user, isLoggedIn, isLoading, isRefreshing, error, type, token };
+  return { user,userSettings, isLoggedIn, isLoading, isRefreshing, error, type, token };
 };
 
 export default useAuth;

@@ -1,4 +1,6 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilters, selectFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -8,27 +10,31 @@ import {
   ListItemImg,
 } from './ExercisesItem.styled';
 
+
 interface ExercisesItemProps {
   name: string;
-  filter: string;
   img: string;
+  filter: string;
 }
 
-const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, filter, img }) => {
-  
-  // const navigate = useNavigate();
+const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const onClick = () => {
-  //   navigate(`/exercises/${name}`, { replace: true })
-  // }
+  const filters = useSelector(selectFilters);
+  
+  const onClick = () => {
+    navigate(`/exercises/${filters.filter}/${name}`);
+    dispatch(setFilters(filters.filter, name));
+  };
 
   return (
-    <ExercisesListItem>
-      <ItemTextWrapper>
-        <ListItemTitle>{name}</ListItemTitle>
-        <ListItemCategory>{filter}</ListItemCategory>
-      </ItemTextWrapper>
-      <ListItemImg src={img} alt={name} />
+    <ExercisesListItem onClick={onClick}>
+        <ItemTextWrapper>
+          <ListItemTitle>{name}</ListItemTitle>
+          <ListItemCategory>{filter}</ListItemCategory>
+        </ItemTextWrapper>
+          <ListItemImg src={img} alt={name} />
     </ExercisesListItem>
   );
 };

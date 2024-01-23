@@ -1,54 +1,43 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/index';
 export const WaistListContainer = styled.div`
-  display: flex;
+  width: 100%;
+  margin-top: 40px;
+  position: relative;
+
+  @media screen and (min-width: 1440px) {
+    max-width: 840px;
+    margin-top: 10px;
+  }
 `;
 
 export const ImgWaist = styled.img`
   display: none;
   @media screen and (min-width: 1440px) {
     display: block;
-    width: 530px;
-    height: 902px;
-    /* margin-top: -100px; */
+    width: 100%;
+    height: 100%;
     z-index: -2;
   }
 `;
 
 export const WaistItemUl = styled.ul`
-  overflow-y: auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  width: 100%;
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${palette.colors.lightOrange};
-    border-radius: ${palette.radiuses.primary};
-  }
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(239, 237, 232, 0.1);
-    border-radius: ${palette.radiuses.primary};
-  }
+  flex-direction: column;
+  row-gap: 20px;
+  border-radius: 12px;
+  overflow-y: auto;
 
   @media screen and (min-width: 768px) {
-    overflow-y: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
     gap: 32px 16px;
-    max-width: 100%;
-    max-height: 726px;
-    padding-right: 10px;
+
+    max-height: 560px;
   }
 
   @media screen and (min-width: 1440px) {
-    overflow-y: auto;
-    max-height: 900px;
-    padding-right: 16px;
-    width: 850px;
+    max-width: 840px;
   }
 `;
 

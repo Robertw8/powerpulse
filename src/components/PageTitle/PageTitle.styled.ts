@@ -5,8 +5,11 @@ const Title = styled.h1`
   font-size: 24px;
   line-height: calc(28 / 24);
   margin: 40px 0;
+  ::first-letter {
+    text-transform: uppercase;
+  }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: calc(44 / 32);
     margin: 72px 0 32px;

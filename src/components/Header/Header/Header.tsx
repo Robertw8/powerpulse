@@ -19,6 +19,7 @@ import {
   HeaderWrap,
   UserBarWrapper,
   NavWrap,
+  Wrapper,
 } from './Header.styled';
 
 const Header: React.FC = () => {
@@ -35,7 +36,7 @@ const Header: React.FC = () => {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <div
+    <Wrapper
       style={
         isLoggedIn
           ? { borderBottom: '1px solid rgba(239, 237, 232, 0.20)' }
@@ -72,7 +73,7 @@ const Header: React.FC = () => {
           </HeaderWrap>
         </HeaderContainer>
       </Container>
-    </div>
+    </Wrapper>
   );
 };
 

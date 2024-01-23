@@ -1,68 +1,42 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { Outlet, useNavigate} from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { selectFilters } from '../../redux/exercises';
 
-import { LoadingOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
-
-import { apiService } from '../../services';
-
-import { PageTitle } from '..';
-import { ExercisesSlider } from './ExercisesSlider';
 import { ExercisesCategories } from './ExercisesCategories';
+import { PageTitle } from '..';
+import { BackgroundImage } from '../Products/Products.styled';
+import { ExercisesWrap, TopWrap} from './Exercises.styled';
+import { BackButton } from './BackButton';
 
-import { ExercisesWrap, TopWrap, LoaderWrap } from './Exercises.styled';
-
-export type Category = 'Body parts' | 'Muscles' | 'Equipment';
+export type Category = 'bodyPart' | 'muscles' | 'equipment';
+import bg from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
 
 const Exercises: React.FC = () => {
-  
-  const [currentCategory, setCurrentCategory] = useState<Category>('Body parts');
-  const [exercisesList, setExercisesList] = useState([]);
-  const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(10);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [total, setTotal] = useState<number>(1);
-  
+  const navigate = useNavigate();
 
   useEffect(() => {
-
-    window.screen.width >= 768 && window.screen.width < 1440 ? setLimit(9) : setLimit(10);
-
-    const responce = apiService({
-      method: 'get', url: `/exercises/${currentCategory}?page=${page}&limit=${limit}`
-    });
-    setIsLoading(true);
-    responce
-      .then(({ data, totalItems }) => {
-        setExercisesList(data)
-        setTotal(totalItems)
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  },[currentCategory, limit, page, total])
+    navigate("/exercises/bodyPart")
+  }, [])
+  
+  const filters = useSelector(selectFilters); 
 
   return (
     <ExercisesWrap>
-      
+      {filters.category && <BackButton />}
       <TopWrap>
-          {isLoading &&
-        <LoaderWrap>
-            <Spin indicator={<LoadingOutlined style={{ fontSize: 34 }} spin />} />
-        </LoaderWrap>}
-        <PageTitle text={'Exercises'} />
-        <ExercisesCategories
-          changeCategory={setCurrentCategory}
-          setPage={setPage}
-        />
+        <PageTitle text={
+        !filters.category ? 'Exercises' : filters.category} />
+      <ExercisesCategories/>
       </TopWrap>
-      <ExercisesSlider
-        exercisesList={exercisesList}
-        currentCategory={currentCategory}
-        setPage={setPage}
-        total={total}
-        limit={limit}
-        isLoading={isLoading} />
+      <Outlet />
+      {filters.category && <BackgroundImage>
+        <img src={bg} alt="woman" />
+      </BackgroundImage>}
     </ExercisesWrap>
-  );
-};
-
+  )
+}
 export default Exercises;
+
+    
+

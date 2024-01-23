@@ -13,11 +13,11 @@ export const NavList = styled.ul`
 `;
 
 export const LinkStyled = styled(NavLink)`
-  color: #efede8;
+  color: ${palette.colors.white};
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   padding: 10px 27px;
-  transition: background-color 250ms linear;
+  transition: all 250ms linear;
   text-decoration: none;
   &.active {
     background-color: ${palette.colors.orange};
@@ -25,6 +25,6 @@ export const LinkStyled = styled(NavLink)`
 
   &:hover,
   &:focus {
-    background-color: ${palette.colors.orange};
+    border: 1px solid ${palette.colors.orange};
   }
 `;
