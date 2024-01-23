@@ -21,11 +21,11 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoggedIn, isRefreshing,userSettings } = useAuth();
+  const { isLoggedIn, isRefreshing,userSettings} = useAuth();
 
   useEffect(() => {
-      dispatch(getCurrentUser({}));
-  }, [dispatch, isLoggedIn]);
+    dispatch(getCurrentUser({}));
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<Loader />}>

@@ -2,10 +2,11 @@ import { SignInArgs, SignUpArgs } from '../../services/apiRequest';
 import { operationWrapper } from '../../helpers';
 import { apiService, clearToken, setToken } from '../../services';
 import { callToast } from '../../helpers';
+import { getToken } from '../../services/token.ts';
 
 const registerUser = operationWrapper(
   'auth/register',
-  async (data: SignUpArgs) => {
+  async (data: SignUpArgs, { dispatch }) => {
     const response = await apiService(
       {
         method: 'post',
@@ -27,57 +28,58 @@ const registerUser = operationWrapper(
     );
 
     setToken(response.data.accessToken, response.data.refreshToken);
+    // to get users data for header
+    dispatch(getCurrentUser({}));
     return response.data;
   }
 );
 
-const loginUser = operationWrapper('auth/login', async (data: SignInArgs) => {
-  const response = await apiService(
-    {
-      method: 'post',
-      url: 'users/login',
-      data,
-    },
-    error => {
-      if (error.response && error.response.status === 404) {
-        callToast('error', 'Login or password is incorrect');
-      } else {
-        callToast(
-          'error',
-          'An unknown error occurred, please reload the page and try again'
-        );
+const loginUser = operationWrapper(
+  'auth/login',
+  async (data: SignInArgs, { dispatch }) => {
+    const response = await apiService(
+      {
+        method: 'post',
+        url: 'users/login',
+        data,
+      },
+      error => {
+        if (error.response && error.response.status === 404) {
+          callToast('error', 'Login or password is incorrect');
+        } else {
+          callToast(
+            'error',
+            'An unknown error occurred, please reload the page and try again'
+          );
+        }
+
+        return '';
       }
+    );
 
-      return '';
-    }
-  );
-
-  setToken(response.data.accessToken, response.data.refreshToken);
-  return response.data;
-});
+    setToken(response.data.accessToken, response.data.refreshToken);
+    // to get users data for header
+    dispatch(getCurrentUser({}));
+    return response.data;
+  }
+);
 
 const getCurrentUser = operationWrapper(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
-    // @todo add token ckeck with persist at getCurrentUser call
-    const token = localStorage.getItem('session');
-    // const token = state.auth.token;
-
+    // @todo add token with persist
+    const token = getToken();
     if (!token) return thunkAPI.rejectWithValue('Unable to refresh user');
 
     const response = await apiService(
       {
         method: 'get',
         url: 'users/current',
+      },
+      () => {
+        clearToken();
+        return '';
       }
-      // error => {
-      //@todo add error handling exept 401
-      // error.response &&
-      //   error.response.status === 401 &&
-      //   callToast('error', 'Session expired, please log in again', 1000 * 60);
-      // clearToken();
-      // return '';
-      // }
     );
 
     return response.data;

@@ -11,4 +11,7 @@ const clearToken = () => {
   localStorage.removeItem('session');
 };
 
-export { setToken, clearToken };
+const getToken = () => {
+  return localStorage.getItem('session');
+}
+export { setToken, clearToken, getToken };
