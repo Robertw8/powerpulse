@@ -19,7 +19,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
       onChange={(value, option) => {
         onChange?.(value, option as DefaultOptionType);
       }}
-      options={items.map(item => ({
+      options={items?.map(item => ({
         value: item,
         label: item,
       }))}

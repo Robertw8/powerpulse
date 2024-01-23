@@ -30,11 +30,10 @@ const SignInForm = () => {
       password: '',
     },
     validationSchema: SignInSchema,
-    onSubmit: async (values: SignInArgs, { resetForm }) => {
-      await dispatch(loginUser(values)); 
-      resetForm();
-    }
-    });
+     onSubmit: async (values: SignInArgs) => {
+    await dispatch(loginUser(values));
+  },
+});
 
   return (
     <ContainerSignUp>

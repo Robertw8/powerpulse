@@ -1,6 +1,6 @@
 interface InitialState {
   products: Products[];
-  exercises: Exercises[];
+  exercises: Exercise[];
   caloriesBurned: number;
   caloriesConsumed: number;
   caloriesRemaining: number;
@@ -21,12 +21,21 @@ interface Products {
   _id: string;
 }
 
-interface   Exercises{
-  ownerId:string,
-  calories: number,
-  date: string,
-  time: number,
-  exercise_ID: string,
-  _id: string
+interface Exercises {
+  ownerId: string;
+  calories: number;
+  date: string;
+  time: number;
+  exercise_ID: string;
+  _id: string;
 }
-export type { InitialState, Products,Exercises };
+interface Exercise {
+  bodyPart: string;
+  burnedCalories: number;
+  equipment: string;
+  name: string;
+  target: string;
+  time: number;
+  _id: string;
+}
+export type { InitialState, Products, Exercises, Exercise };

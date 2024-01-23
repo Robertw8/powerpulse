@@ -10,6 +10,7 @@ const BlockWrap = styled.ul`
   @media screen and (min-width: 768px) {
     justify-content: start;
     margin-bottom: 32px;
+  
   }
 
   @media screen and (min-width: 1441px) {

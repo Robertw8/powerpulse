@@ -46,9 +46,23 @@ const ContainerWelcomePage = styled.div`
 
 const ImgWelcomePageWrapper = styled.div`
   width: 100%;
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   width: 355px;
+   @media screen and (min-width: 1441px) {
+    display: flex;
+    position: relative;
+    }
+    
+    `;
+
+const ImgWelcomePage = styled.img`
+  width: 430px;
   height: auto;
   position: absolute;
   top: 215px;
+  right: -0px;
   z-index: -1;
   overflow-x: hidden !important;
 
@@ -98,6 +112,18 @@ const StatisticsWrapper = styled.div`
     width: max-content;
     height: auto;
     scale: 1.1;
+    top: 120px;
+    left: 420px;
+    overflow-x: hidden !important;
+  }
+
+  @media screen and (min-width: 1441px) {
+   width: 670px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 700px;
+    z-index: -1;
   }
 `;
 

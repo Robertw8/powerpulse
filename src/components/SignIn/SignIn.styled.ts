@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 
 import { Title } from '../PageTitle/PageTitle.styled.ts';
-import { ParagraphAfterBtn, ParagraphAuth, WidthInput } from '../SignUp/SignUp.styled.ts';
+import {  ParagraphAfterBtn, ParagraphAuth, WidthInput } from '../SignUp/SignUp.styled.ts';
 
 
 const TitleSignIn = styled(Title)`
@@ -46,4 +46,4 @@ const ParagraphAfterBtnUp = styled(ParagraphAfterBtn)`
 
 
 
-export {TitleSignIn, ParagraphSignIn, BlockInput, ParagraphAfterBtnUp}
+export { TitleSignIn, ParagraphSignIn, BlockInput, ParagraphAfterBtnUp}
