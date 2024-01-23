@@ -14,7 +14,7 @@ const Slider: React.FC = () => {
   //   const [isLoading, setIsLoading] = useState<boolean>(false); // ! У тебя isLoading и errorPage нигде пока не используется, закомментил из-за ошибки no-unused-vars для деплоя
   //   const [errorPage, setErrorPage] = useState<boolean>(false);
 
-  const currentfilter = (category: string) => {
+  const currentfilter = (category: string):string => {
     if (category === 'bodyPart') {
       return 'Body parts';
     } else if (category === 'muscles') {

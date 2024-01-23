@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { Outlet, useNavigate} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Outlet, useNavigate, useLocation} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectFilters } from '../../redux/exercises';
 
@@ -13,26 +13,34 @@ export type Category = 'bodyPart' | 'muscles' | 'equipment';
 import bg from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
 
 const Exercises: React.FC = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate("/exercises/bodyPart")
-  }, [])
+  const [title, setTitle] = useState<string>('Exercises')
   
-  const filters = useSelector(selectFilters); 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const filters = useSelector(selectFilters);
+  
+  useEffect(() => {
+    if (filters.filter !== "") {
+      setTitle(filters.filter)
+    } else {
+      setTitle('Exercises')
+    }
+
+    if (location.pathname === `/exercises`)
+      navigate("/exercises/bodyPart");
+  }, [filters.filter, location.pathname, navigate])
 
   return (
     <ExercisesWrap>
-      {filters.category && <BackButton />}
+      <BackButton />
       <TopWrap>
-        <PageTitle text={
-        !filters.category ? 'Exercises' : filters.category} />
+        <PageTitle text={title} />
       <ExercisesCategories/>
       </TopWrap>
       <Outlet />
-      {filters.category && <BackgroundImage>
+      <BackgroundImage>
         <img src={bg} alt="woman" />
-      </BackgroundImage>}
+      </BackgroundImage>
     </ExercisesWrap>
   )
 }
