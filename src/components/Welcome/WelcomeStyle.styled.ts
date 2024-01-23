@@ -70,13 +70,32 @@ const ImgWelcomePageWrapper = styled.div`
 `;
 
 const StatisticsWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: max-content;
-  height: auto;
-
   padding: 25px;
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    width: max-content;
+    height: auto;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1440px) {
+    position: absolute;
+    top: 48%;
+    left: 0;
+    width: max-content;
+    height: auto;
+    scale: 1.2;
+  }
+
+  @media screen and (min-width: 1441px) {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    width: max-content;
+    height: auto;
+  }
 `;
 
 const BlockTitleBtn = styled.div`

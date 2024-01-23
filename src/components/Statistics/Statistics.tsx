@@ -8,6 +8,12 @@ import Loader from '../Loader/Loader';
 
 const { Meta } = Card;
 
+import { palette } from '../../styles/theme';
+
+const { colors } = palette;
+
+const styleCustom = { color: 'green' };
+
 // Statistics
 import {
   getStatistics,
@@ -30,17 +36,31 @@ const Statistics: React.FC = () => {
     totalTrainingUsers,
   } = statistics;
 
-  console.log(statistics);
-
   useEffect(() => {
     dispatch(getStatistics());
   }, [dispatch]);
 
+  const orangeCardsStyle = {
+    width: 215,
+    height: 70,
+    backgroundColor: colors.lightOrange,
+    opacity: 0.78,
+  };
+
   return (
     <>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Flex justify="end">
-          <Card size="small" style={{ width: 215, height: 70 }}>
+        <Flex justify="start">
+          <Card
+            bordered={false}
+            size="small"
+            style={{
+              width: 150,
+              height: 70,
+              backgroundColor: '#303030',
+              opacity: 0.78,
+            }}
+          >
             <Meta
               avatar={
                 <Avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/YouTube_Diamond_Play_Button.png/1200px-YouTube_Diamond_Play_Button.png" />
@@ -50,8 +70,8 @@ const Statistics: React.FC = () => {
             />
           </Card>
         </Flex>
-        <Flex justify="end">
-          <Card size="small" style={{ width: 215, height: 70 }}>
+        <Flex justify="start">
+          <Card bordered={false} size="small" style={orangeCardsStyle}>
             <Meta
               avatar={
                 <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
@@ -61,8 +81,8 @@ const Statistics: React.FC = () => {
             />
           </Card>
         </Flex>
-        <Flex justify="end">
-          <Card size="small" style={{ width: 215, height: 70 }}>
+        <Flex justify="start">
+          <Card bordered={false} size="small" style={orangeCardsStyle}>
             <Meta
               avatar={
                 <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
@@ -72,8 +92,8 @@ const Statistics: React.FC = () => {
             />
           </Card>
         </Flex>
-        <Flex justify="end">
-          <Card size="small" style={{ width: 215, height: 70 }}>
+        <Flex justify="start">
+          <Card bordered={false} size="small" style={orangeCardsStyle}>
             <Meta
               avatar={
                 <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
@@ -83,8 +103,8 @@ const Statistics: React.FC = () => {
             />
           </Card>
         </Flex>
-        <Flex justify="end">
-          <Card size="small" style={{ width: 215, height: 70 }}>
+        <Flex justify="start">
+          <Card bordered={false} size="small" style={orangeCardsStyle}>
             <Meta
               avatar={
                 <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=8" />
