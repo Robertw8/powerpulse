@@ -16,7 +16,6 @@ const initialState: InitialState = {
   caloriesConsumed: 0,
   caloriesRemaining: 0,
   sportsTime: 0,
-  sportsRemaining: 0,
   isLoading: false,
   error: '',
 };
@@ -51,6 +50,7 @@ const slice = createSlice({
         state.products = [...state.products, payload.product];
         state.isLoading = false;
         state.error = '';
+        console.log(payload);
       })
       .addCase(addDiaryProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -63,9 +63,10 @@ const slice = createSlice({
         state.products = state.products.filter(
           product => product._id !== payload.id
         );
-        state.caloriesConsumed = payload.caloriesConsumedTotal;
+        state.caloriesConsumed = payload.caloriesConsumedTotal 
         state.isLoading = false;
         state.error = '';
+       
       })
       .addCase(deleteDiaryProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -78,9 +79,9 @@ const slice = createSlice({
         console.log(payload.doneExercise);
         state.exercises.unshift(payload.doneExercise);
         state.caloriesBurned = payload.caloriesBurnedTotal;
-
         state.isLoading = false;
         state.error = '';
+        
       })
       .addCase(addDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;
@@ -90,12 +91,14 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(deleteDiaryExercise.fulfilled, (state, { payload }) => {
-        state.products = state.products.filter(
-          product => product._id !== payload.id
+        state.exercises = state.exercises.filter(
+          exercise => exercise._id !== payload.id
         );
-        state.caloriesBurned = payload.caloriesBurnedTotal;
+        state.caloriesBurned = payload.data.caloriesBurnedTotal;
         state.isLoading = false;
         state.error = '';
+ 
+       
       })
       .addCase(deleteDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;

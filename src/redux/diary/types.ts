@@ -1,11 +1,10 @@
 interface InitialState {
   products: Products[];
-  exercises: string[];
+  exercises: Exercises[];
   caloriesBurned: number;
   caloriesConsumed: number;
   caloriesRemaining: number;
   sportsTime: number;
-  sportsRemaining: number;
   isLoading: boolean;
   error: string;
 }
@@ -22,4 +21,12 @@ interface Products {
   _id: string;
 }
 
-export type { InitialState, Products };
+interface   Exercises{
+  ownerId:string,
+  calories: number,
+  date: string,
+  time: number,
+  exercise_ID: string,
+  _id: string
+}
+export type { InitialState, Products,Exercises };

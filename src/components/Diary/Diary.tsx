@@ -5,61 +5,58 @@ import { AppDispatch } from '../../redux';
 import {
   // addDiaryProduct,
   // addDiaryExercise,
-  // deleteDiaryExercise,
-  // deleteDiaryProduct,
+  deleteDiaryExercise,
+  deleteDiaryProduct,
   getDiary,
+  selectCaloriesBurned,
+  selectCaloriesConsumed,
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
   Text,
   TextWrap,
   BlockWrap,
-  NextGrayBlock,
-  GrayBlockTitle,
-  RedBlockTitle,
-  AddingTextBlockWrap,
-  AddingBlocksWrap,
   MainDiaryWrap,
   DesktopWrap,
 } from './Diary.styled';
 import { Icon } from '../Icon';
-import { DiaryNotFoundItems } from './DiaryNotFoundItems';
 import { DailyStatusBlock } from './DailyStatusBlock';
-
-// import { useDiary } from '../../hooks';
-
-// import dayjs from 'dayjs';
-
+import { InfoBoxes } from './InfoBoxes';
 // import { MyCalendar } from './Calendar';
 
-// const exercise={
-//   time: 120,
-//   date: "15/01/2024",
-//   calories: 400,
-//   exercise_ID: "64f2458d6f67bc34bae4f857"
-// };
-//
-// const product={
-//   product_ID: "5d51694902b2373622ff5773",
-//   date: "15/01/2024",
-//   amount: 90,
-//   calories: 500
-// }
-
 const Diary = () => {
+const caloriesBured=useSelector(selectCaloriesBurned)
+const caloriesConsumed=useSelector(selectCaloriesConsumed)
+
   const dispatch = useDispatch<AppDispatch>();
   const userData = useSelector((state: RootState) => state.auth.user);
+
   useEffect(() => {
-    // dispatch(deleteDiaryExercise('65adaf8f5fda1b9b34886cdc'));
-    // dispatch(deleteDiaryProduct('65ad948a5fda1b9b34883f01'));
-    // dispatch(addDiaryExercise(exercise));
-    dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
+
+    dispatch(getDiary(dayjs('2024/01/15').format('DD/MM/YYYY')));
   }, [dispatch]);
+
+  const handleExerciseDelete=() => {
+       // dispatch(addDiaryProduct(product));
+    dispatch(
+      deleteDiaryExercise('65adae565fda1b9b34886ba2')
+    );
+  };
+
+  const handleProductDelete=() => {
+    // dispatch(addDiaryExercise(exercise));
+    dispatch(
+     deleteDiaryProduct('65ad6eee1fd5d4b96e50dc22')
+    );
+  };
+
   return (
     <>
       {/* <MyCalendar></MyCalendar> */}
       <MainDiaryWrap>
         <DesktopWrap>
+          <button onClick={handleExerciseDelete} style={{width:'30px',height:'10px'}}></button>
+          <button onClick={handleProductDelete} style={{width:'30px',height:'10px',margin:'20px'}}></button>
           <BlockWrap>
             <DailyStatusBlock
               text={'Daily calorie intake'}
@@ -97,7 +94,7 @@ const Diary = () => {
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value="0"
+              value={caloriesConsumed}
             ></DailyStatusBlock>
             <DailyStatusBlock
               text={'Сalories burned'}
@@ -108,7 +105,7 @@ const Diary = () => {
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value="0"
+              value={caloriesBured}
             ></DailyStatusBlock>
             <DailyStatusBlock
               text={'Сalories remaining'}
@@ -146,36 +143,7 @@ const Diary = () => {
             </Text>
           </TextWrap>
         </DesktopWrap>
-        <AddingBlocksWrap>
-          <NextGrayBlock>
-            <AddingTextBlockWrap>
-              <GrayBlockTitle>Products</GrayBlockTitle>
-              <RedBlockTitle>
-                Add product
-                <Icon
-                  name="arrow-right"
-                  iconWidth={{ mobile: '16px', tablet: '16px' }}
-                  iconHeight={{ mobile: '16px', tablet: '16px' }}
-                />
-              </RedBlockTitle>
-            </AddingTextBlockWrap>
-            <DiaryNotFoundItems items="products" />
-          </NextGrayBlock>
-          <NextGrayBlock>
-            <AddingTextBlockWrap>
-              <GrayBlockTitle>Exercises</GrayBlockTitle>
-              <RedBlockTitle>
-                Add exercise
-                <Icon
-                  name="arrow-right"
-                  iconWidth={{ mobile: '16px', tablet: '16px' }}
-                  iconHeight={{ mobile: '16px', tablet: '16px' }}
-                />
-              </RedBlockTitle>
-            </AddingTextBlockWrap>
-            <DiaryNotFoundItems items="exercises" />
-          </NextGrayBlock>
-        </AddingBlocksWrap>
+      <InfoBoxes/>
       </MainDiaryWrap>
     </>
   );
