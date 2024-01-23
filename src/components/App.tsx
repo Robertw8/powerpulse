@@ -21,7 +21,7 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const { isLoggedIn, isRefreshing,userSettings } = useAuth();
 
   useEffect(() => {
     dispatch(getCurrentUser({}));
@@ -41,7 +41,6 @@ export const App: React.FC = () => {
               />
             }
           />
-
           <Route
             path={routes.WELCOME}
             element={<PublicRoute component={<WelcomePage />} />}
@@ -51,8 +50,13 @@ export const App: React.FC = () => {
             element={<PublicRoute component={<SignUpPage />} />}
           />
           <Route
-            path={routes.SIGNIN}
-            element={<PublicRoute component={<SignInPage />} />}
+          path={routes.SIGNIN}
+          element={
+          <PublicRoute
+           redirectTo={!userSettings ? '/diary' : '/profile'}
+           component={<SignInPage />}
+          />
+          }
           />
           <Route
             path={routes.PROFILE}
