@@ -112,8 +112,6 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
       <ExerciseAddedModal
         open={isSecondModalOpen}
         handleClose={handleSecondModalClose}
-        burnedCalories={exercise.burnedCalories}
-        time={exercise.time}
       />
     </>
   );
