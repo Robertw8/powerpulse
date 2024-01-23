@@ -74,6 +74,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           defaultValue={amountValue}
           min={10}
           max={10000}
+          controls={false}
         />
       </InputsWrapper>
       <Calories>

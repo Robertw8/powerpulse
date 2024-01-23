@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 const ProductsWrapper = styled.div``;
 
 const BackgroundImage = styled.div`
-  @media screen and (max-width: 1440px) {
+  @media screen and (max-width: 1439px) {
     display: none;
   }
 
