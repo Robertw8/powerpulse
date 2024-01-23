@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Space, Flex } from 'antd';
+import { Card, Space } from 'antd';
 const { Meta } = Card;
 import {
   PlayCircleOutlined,
