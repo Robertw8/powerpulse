@@ -9,7 +9,7 @@ import {
 import { StyledInput } from '../../../InputPrimary/InputPrimary.styled';
 import { User } from '../../../../redux/auth/types';
 import { FormikValues } from 'formik';
-// import { DatePicker } from 'antd';
+import { DatePicker } from '../DatePicker';
 
 const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
   formik,
@@ -115,14 +115,7 @@ const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
               value={formik.values.birthday}
             />
 
-            {/* <DatePicker
-              id="birthday"
-              name="birthday"
-              // type="date"
-              size="large"
-              onChange={formik.handleChange}
-              // value={formik.values.birthday}
-            /> */}
+            <DatePicker formik={formik} />
 
             {formik.errors.birthday && formik.touched.birthday && (
               <ErrorText>{formik.errors.birthday}</ErrorText>
