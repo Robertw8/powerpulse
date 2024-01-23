@@ -31,6 +31,7 @@ export  const AuthImg: React.FC = () => {
 </picture>
 
   )
+  
 };
 
 
