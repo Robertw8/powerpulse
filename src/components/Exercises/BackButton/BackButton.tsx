@@ -1,22 +1,21 @@
+import { selectFilters, setFilters } from '../../../redux/exercises';
+import { AppDispatch } from '../../../redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Icon } from "../../Icon";
 import { useNavigate } from "react-router-dom";
 
 import { BackBtn } from "./BackButton.styled";
 
-const BackButton = ({toggle, filter, setCurrentExercise}) => {
+const BackButton:React.FC = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
+    const filters = useSelector(selectFilters);
     
-    const onClick = () => {
-        if (filter === 'bodyPart') {
-            setCurrentExercise('')
-            navigate(`/exercises/${filter}`);
-            toggle(false);
-        } else {
-            setCurrentExercise('')
-            navigate(-1);
-            toggle(false);
-        }
+  const onClick = () => {
+      dispatch(setFilters(filters.filter, ""))
+      navigate(-1);
     };
 
     return (

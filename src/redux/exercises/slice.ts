@@ -9,7 +9,7 @@ const initialState: InitialState = {
   burnedCalories: 0,
   time: 0,
   filters: {
-    filter: '',
+    filter: 'bodyPart',
     category: '',
   },
   bodyPart: [],
