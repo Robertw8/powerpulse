@@ -17,7 +17,7 @@ export const WelcomeImg: React.FC = () => {
           srcSet={imgForWelcomePageTablet}
         />
         <source media="(min-width: 1441px)" srcSet={imgForWelcomePage} />
-        <img alt="Example of a lunge forward on the leg" />
+        <img alt="Example of a lunge forward on the leg" loading="lazy" />
       </picture>
       <StatisticsWrapper>
         <Statistics />
@@ -36,7 +36,7 @@ export const AuthImg: React.FC = () => {
       />
       <source media="(min-width: 1441px)" srcSet={imgForWelcomePage} />
 
-      <ImgSignUp alt="Example of a lunge forward on the leg" />
+      <ImgSignUp alt="Example of a lunge forward on the leg" loading="lazy" />
     </picture>
   );
 };
