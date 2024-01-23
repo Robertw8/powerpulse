@@ -13,7 +13,7 @@ export {
   selectCaloriesConsumed,
   selectCaloriesRemaining,
   selectSportsTime,
-  selectSportsRemaining,
+
   selectIsLoading,
   selectError,
 } from './selectors';
