@@ -25,15 +25,10 @@ import {
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch<AppDispatch>();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(() => {
-    dispatch(getCurrentUser({}));
-  }, [dispatch, isLoggedIn]);
 
   return (
     <Wrapper
