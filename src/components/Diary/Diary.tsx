@@ -3,13 +3,12 @@ import { RootState } from '../../redux/rootReducer';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../redux';
 import {
-  // addDiaryProduct,
-  // addDiaryExercise,
-  deleteDiaryExercise,
-  deleteDiaryProduct,
+
   getDiary,
   selectCaloriesBurned,
   selectCaloriesConsumed,
+  selectExercises,
+  selectSportsTime
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
@@ -22,41 +21,34 @@ import {
 import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
+import { selectProducts } from '../../redux/products';
+
 // import { MyCalendar } from './Calendar';
 
 const Diary = () => {
-const caloriesBured=useSelector(selectCaloriesBurned)
+  const userData = useSelector((state: RootState) => state.auth.user);
+  const caloriesBured=useSelector(selectCaloriesBurned)
 const caloriesConsumed=useSelector(selectCaloriesConsumed)
+const sportsTime=useSelector(selectSportsTime)
+const diaryExercises=useSelector(selectExercises)
+const diaryProducts=useSelector(selectProducts)
+const sportsRemaining:number=sportsTime-userData.dailyActivity
+const caloriesRemaining:number=userData.dailyCalories-caloriesConsumed
 
   const dispatch = useDispatch<AppDispatch>();
-  const userData = useSelector((state: RootState) => state.auth.user);
 
   useEffect(() => {
 
-    dispatch(getDiary(dayjs('2024/01/15').format('DD/MM/YYYY')));
+    dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
   }, [dispatch]);
 
-  const handleExerciseDelete=() => {
-       // dispatch(addDiaryProduct(product));
-    dispatch(
-      deleteDiaryExercise('65adae565fda1b9b34886ba2')
-    );
-  };
 
-  const handleProductDelete=() => {
-    // dispatch(addDiaryExercise(exercise));
-    dispatch(
-     deleteDiaryProduct('65ad6eee1fd5d4b96e50dc22')
-    );
-  };
 
   return (
     <>
       {/* <MyCalendar></MyCalendar> */}
       <MainDiaryWrap>
         <DesktopWrap>
-          <button onClick={handleExerciseDelete} style={{width:'30px',height:'10px'}}></button>
-          <button onClick={handleProductDelete} style={{width:'30px',height:'10px',margin:'20px'}}></button>
           <BlockWrap>
             <DailyStatusBlock
               text={'Daily calorie intake'}
@@ -116,7 +108,7 @@ const caloriesConsumed=useSelector(selectCaloriesConsumed)
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value="0"
+              value={caloriesRemaining}
             ></DailyStatusBlock>
             <DailyStatusBlock
               text={'Sports remaining'}
@@ -128,7 +120,7 @@ const caloriesConsumed=useSelector(selectCaloriesConsumed)
                   fill="#EF8964"
                 />
               }
-              value="0"
+              value={sportsRemaining}
             ></DailyStatusBlock>
           </BlockWrap>
           <TextWrap>
@@ -143,7 +135,7 @@ const caloriesConsumed=useSelector(selectCaloriesConsumed)
             </Text>
           </TextWrap>
         </DesktopWrap>
-      <InfoBoxes/>
+      <InfoBoxes exercises={diaryExercises.length} products={diaryProducts.length}/>
       </MainDiaryWrap>
     </>
   );
