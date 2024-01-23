@@ -29,7 +29,7 @@ const WaistList: React.FC = () => {
     if (!exercises.length && !isLoading) {
       const timeoutId = setTimeout(() => {
         setShowNotFound(true);
-      }, 1000);
+      }, 300);
 
       return () => {
         clearTimeout(timeoutId);
