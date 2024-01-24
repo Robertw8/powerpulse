@@ -24,14 +24,4 @@ export const StyledCard = styled(Card)`
     color: #efede8;
     font-size: 20px;
   }
-
-  .ant-card-meta {
-    &-title {
-    }
-    &-description {
-    }
-    &-avatar {
-      height: 20px;
-    }
-  }
 `;
