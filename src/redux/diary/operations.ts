@@ -7,7 +7,7 @@ const getDiary = operationWrapper('diary/getDiary', async date => {
     url: 'diary',
     config: { params: { date } },
   });
- console.log(response.data);
+
   return response.data;
 });
 
@@ -53,7 +53,7 @@ const deleteDiaryProduct = operationWrapper(
       url: `diary/products/${productId}`,
     });
 
-    const productResponse={...response, id:productId}
+    const productResponse = { ...response, id: productId };
     return productResponse;
   }
 );
@@ -88,7 +88,6 @@ const addDiaryExercise = operationWrapper(
       }
     );
 
-   
     return response.data;
   }
 );
@@ -100,7 +99,8 @@ const deleteDiaryExercise = operationWrapper(
       method: 'delete',
       url: `diary/exercises/${exerciseId}`,
     });
-    const exerciseResponse={...response, id:exerciseId}
+
+    const exerciseResponse = { ...response, id: exerciseId };
     return exerciseResponse;
   }
 );

@@ -49,9 +49,8 @@ const Slider: React.FC = () => {
       })
       .catch(() => {
         // setErrorPage(true);
-      })
-      //   .finally(() => setIsLoading(false));
-      .finally(() => console.log);
+      });
+    //   .finally(() => setIsLoading(false));
   }, [filters.filter, limit, page]);
 
   const onChange = (currentSlide: number) => {

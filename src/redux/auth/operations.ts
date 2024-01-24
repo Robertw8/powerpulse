@@ -1,4 +1,4 @@
-import { SignInArgs, SignUpArgs } from '../../services/apiRequest';
+import { SignInArgs, SignUpArgs } from '../../services/types';
 import { operationWrapper } from '../../helpers';
 import { apiService, clearToken, setToken } from '../../services';
 import { callToast } from '../../helpers';

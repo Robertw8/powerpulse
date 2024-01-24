@@ -114,12 +114,12 @@ export const Appeal = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  color: #efede8;
+  color: ${palette.colors.white};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
-  width: 250px;
+  width: auto;
   text-transform: uppercase;
   text-align: center;
 `;

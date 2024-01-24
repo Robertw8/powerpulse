@@ -10,7 +10,7 @@ import {
   FormContainer,
   ParagraphAuth,
   TitleSignUp,
- BtnSignPage,
+  BtnSignPage,
   WidthInput,
   ParagraphAfterBtn,
   LinkAuth,
@@ -22,7 +22,8 @@ import {
 import SignUpSchema from './SignUpSchema';
 import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
-import {AuthImg} from '../Welcome/WelcomeImg';
+import { AuthImg } from '../Welcome/WelcomeImg';
+import { SignUpArgs } from '../../services/types';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,15 +37,13 @@ const SignUpForm = () => {
       password: '',
     },
     validationSchema: SignUpSchema,
-    onSubmit: async (
-     values: { name: string; email: string; password: string },
-  ) => {
-    const response = await dispatch(registerUser(values));
-    if (response) {
-      navigate('/profile');
-    }
-  },
-});
+    onSubmit: async (values: SignUpArgs) => {
+      const response = await dispatch(registerUser(values));
+      if (response) {
+        navigate('/profile');
+      }
+    },
+  });
 
   return (
     <ContainerSignUp>
@@ -67,9 +66,9 @@ const SignUpForm = () => {
               onChange={formik.handleChange}
               value={formik.values.name}
             />
-          {formik.errors.name && formik.touched.name && (
-            <ColorErrorInput>{formik.errors.name}</ColorErrorInput>
-          )}
+            {formik.errors.name && formik.touched.name && (
+              <ColorErrorInput>{formik.errors.name}</ColorErrorInput>
+            )}
             <InputAuth
               bordercolor={
                 formik.errors.email && formik.touched.email
@@ -83,35 +82,37 @@ const SignUpForm = () => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-  
-          {formik.errors.email && formik.touched.email && (
-            <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
-          )}
+
+            {formik.errors.email && formik.touched.email && (
+              <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
+            )}
 
             <InputPassword
-            bordercolor={
+              bordercolor={
                 formik.errors.email && formik.touched.email
                   ? 'error'
                   : 'default'
               }
-              placeholder='Password' 
+              placeholder="Password"
               id="password"
               name="password"
               type="password"
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-          {formik.errors.password && formik.touched.password && (
-            <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
-          )}
+            {formik.errors.password && formik.touched.password && (
+              <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
+            )}
           </WidthInput>
           <BtnSignPage htmlType="submit" type="primary" loading={isLoading}>
             Sign Up
           </BtnSignPage>
         </FormContainer>
-          <ParagraphAfterBtn>Already have an account?   <LinkAuth to="/signin">Sign In</LinkAuth></ParagraphAfterBtn>
+        <ParagraphAfterBtn>
+          Already have an account? <LinkAuth to="/signin">Sign In</LinkAuth>
+        </ParagraphAfterBtn>
       </BlockSignUp>
-      <AuthImg/>
+      <AuthImg />
     </ContainerSignUp>
   );
 };
