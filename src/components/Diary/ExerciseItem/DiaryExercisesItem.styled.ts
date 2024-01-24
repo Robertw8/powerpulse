@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Product=styled.li`
+const ExerciseWrap=styled.li`
 `
 
 const TitleCol=styled.li`
@@ -38,7 +38,8 @@ const MiniValueCol=styled(ValueCol)`
 margin-bottom:0px;
 width:80px;
 `
-const MiniTitleCol=styled(TitleCol)`width:80px;`
+const MiniTitleCol=styled(TitleCol)`width:80px;
+overflow-x: auto;`
 
 const IconWrap=styled.div`width:20px;
 height:20px;
@@ -46,4 +47,4 @@ height:20px;
 `
 
 
-export{Product,TitleCol,ValueCol,Row,MobileRow,MiniValueCol,IconWrap,MiniTitleCol,TopRow,BottomRow}
+export{ExerciseWrap,TitleCol,ValueCol,Row,MobileRow,MiniValueCol,IconWrap,MiniTitleCol,TopRow,BottomRow}

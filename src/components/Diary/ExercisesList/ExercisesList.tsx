@@ -1,37 +1,45 @@
 import { useEffect } from 'react';
-import { List, ListWrapper } from './ExercisesList.styled';
+import {  useSelector } from 'react-redux';
+import { List } from './ExercisesList.styled'
 import { Loader } from '../..';
-import { ExercisesGrid } from '../ExercisesGrid';
-import { useDiary } from '../../../hooks';
+import {selectExercises ,selectIsLoading} from '../../../redux/diary';
+import { DiaryExercisesItem } from '../ExerciseItem';
 
 // import { ProductsItem } from '../ProductsItem';
 
+
 const ExercisesList: React.FC = () => {
-  const { diaryExercises, isLoading } = useDiary();
+
+  const exercises= useSelector(selectExercises);
+  const isLoading = useSelector(selectIsLoading);
+
+
+ 
+
 
   useEffect(() => {
-    if (!diaryExercises.length && !isLoading) {
-      const timeoutId = setTimeout(() => {}, 1000);
+    if (!exercises.length && !isLoading) {
+      const timeoutId = setTimeout(() => {
+       
+      }, 1000);
 
       return () => {
         clearTimeout(timeoutId);
       };
-    }
-  }, [diaryExercises, isLoading]);
+    } 
+  }, [exercises, isLoading]);
 
   return (
-    <ListWrapper>
-      {diaryExercises.map((exercise, index) => (
-        <ExercisesGrid exercise={exercise} key={index} id={exercise._id} />
-      ))}
-      <List className="scrollbar-outer">
-        {diaryExercises.map((exercise, index) => (
-          <ExercisesGrid exercise={exercise} key={index} id={exercise._id} />
+
+     
+      <List  className="scrollbar-outer">
+        {exercises.map((exercise,index) => (
+          <DiaryExercisesItem
+          exercise={exercise} key={index} id={exercise._id} />
         ))}
         {isLoading && <Loader />}
       </List>
-    </ListWrapper>
+ 
   );
 };
-
 export default ExercisesList;

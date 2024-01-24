@@ -7,7 +7,8 @@ align-items:center;`
 const ArrowControl=styled.div`
 display:flex;
 gap:8px;
-margin-left:20px;`
+margin-left:20px;
+@media screen and (min-width: 768px) {margin-left:40px; }`
 
 const ReverseIcon=styled.div`
 transform: rotate(180deg);
