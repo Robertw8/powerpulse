@@ -1,33 +1,30 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Col, Row } from 'antd';
-import { AppDispatch } from '../../../redux'
-import { deleteDiaryExercise} from '../../../redux/diary'
+import { AppDispatch } from '../../../redux';
+import { deleteDiaryExercise } from '../../../redux/diary';
 import { Icon } from '../../Icon';
 import { Exercise } from '../../../redux/diary/types';
-import { TitleCol,ValueCol } from './ExercisesGrid.styled';
+import { TitleCol, ValueCol } from './ExercisesGrid.styled';
 
 interface ProductsItemProps {
   exercise: Exercise;
-  id:string
+  id: string;
 }
 
+const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise, id }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const handleExerciseDelete = () => {
+    dispatch(deleteDiaryExercise(id));
+  };
 
-const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise,id }) => {
-    const dispatch = useDispatch<AppDispatch>();
-    const handleExerciseDelete=() => {
-  
-     dispatch(
-       deleteDiaryExercise(id)
-     );
-   };
   return (
     <>
       <Row>
         <TitleCol>Body Part</TitleCol>
       </Row>
       <Row>
-        <ValueCol >{exercise.bodyPart}</ValueCol>
+        <ValueCol>{exercise.bodyPart}</ValueCol>
       </Row>
       <Row>
         <TitleCol>Equipment</TitleCol>
@@ -50,9 +47,7 @@ const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise,id }) => {
       <Row justify="start" gutter={[80, 40]}>
         <ValueCol>{exercise.target}</ValueCol>
         <ValueCol>{exercise.burnedCalories}</ValueCol>
-        <ValueCol>
-       {exercise.time}
-        </ValueCol>
+        <ValueCol>{exercise.time}</ValueCol>
         <Col onClick={handleExerciseDelete}>
           {' '}
           <Icon

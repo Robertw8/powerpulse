@@ -16,7 +16,7 @@ const ProductsList: React.FC = () => {
     if (!products.length && !isLoading) {
       const timeoutId = setTimeout(() => {
        
-      }, 1000);
+      }, 100);
 
       return () => {
         clearTimeout(timeoutId);

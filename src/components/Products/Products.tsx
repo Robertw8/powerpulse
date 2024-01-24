@@ -17,7 +17,7 @@ const Products: React.FC = () => {
         <ProductsList />
       </Container>
       <BackgroundImage>
-        <img src={bg} alt="woman" />
+        <img src={bg} alt="woman" loading="lazy" />
       </BackgroundImage>
     </ProductsWrapper>
   );
