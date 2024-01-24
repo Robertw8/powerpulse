@@ -3,10 +3,14 @@ import { palette } from '../../../styles/theme';
 
 import { Link } from 'react-router-dom';
 
+interface HeaderContainerProps {
+  isLoggedIn: boolean;
+}
+
 export const Wrapper = styled.div`
   background-color: ${palette.colors.black};
 `;
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding-top: 24px;
   padding-bottom: 24px;
   /* margin: 0 auto; */
@@ -14,6 +18,9 @@ export const HeaderContainer = styled.header`
   @media screen and (min-width: 768px) {
     padding-top: 32px;
     padding-bottom: 32px;
+    position: ${props => (props.isLoggedIn ? 'relative' : 'absolute')};
+    z-index: 10;
+    width: 100%;
   }
 `;
 export const HeaderWrap = styled.div`
