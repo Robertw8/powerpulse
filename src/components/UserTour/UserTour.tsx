@@ -1,5 +1,6 @@
 import { TourProps, Tour } from 'antd';
 import { useEffect, useState } from 'react';
+import { Icon } from '..';
 
 interface UserTourProps extends TourProps {}
 
@@ -7,12 +8,25 @@ const UserTour: React.FC<UserTourProps> = ({ open, steps, onClose }) => {
   const [shouldRender, setShouldRender] = useState<boolean>(true);
 
   useEffect(() => {
-    if (window.innerWidth < 660) setShouldRender(false);
+    if (window.innerWidth < 550) setShouldRender(false);
   }, []);
 
   return (
     shouldRender && (
-      <Tour open={open} type="default" steps={steps} onClose={onClose} />
+      <Tour
+        open={open}
+        type="default"
+        steps={steps}
+        onClose={onClose}
+        placement="top"
+        closeIcon={
+          <Icon
+            name="x"
+            iconWidth={{ mobile: '22px', tablet: '26px' }}
+            iconHeight={{ mobile: '22px', tablet: '26px' }}
+          />
+        }
+      />
     )
   );
 };
