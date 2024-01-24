@@ -14,10 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Loader from '../Loader/Loader';
 
-import { palette } from '../../styles/theme';
-
-const { colors } = palette;
-
 import {
   getStatistics,
   selectStatistics,
@@ -46,51 +42,51 @@ const Statistics: React.FC = () => {
     dispatch(getStatistics({}));
   }, [dispatch]);
 
-  const cardsStyle = {
-    width: 195,
-    height: 70,
-    backgroundColor: colors.lightOrange,
-    opacity: 0.78,
-  };
-
   return (
     <>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <StyledCard bordered={false} size="small" style={cardsStyle}>
+        <StyledCard
+          bordered={false}
+          size="small"
+          style={{
+            width: 151,
+            backgroundColor: '#303030',
+          }}
+        >
           <Meta
             avatar={<PlayCircleOutlined />}
-            title={totalVideo + '+'}
+            title={totalVideo}
             description="Video tutorial"
           />
         </StyledCard>
-        <Card bordered={false} size="small" style={cardsStyle}>
+        <StyledCard bordered={false} size="small">
           <Meta
             avatar={<FireFilled />}
             title={totalUsersCalories + ' cal'}
             description="Calories burned"
           />
-        </Card>
-        <Card bordered={false} size="small" style={cardsStyle}>
+        </StyledCard>
+        <StyledCard bordered={false} size="small">
           <Meta
             avatar={<UsergroupAddOutlined />}
             title={totalUsers + ' users'}
             description="Registered users"
           />
-        </Card>
-        <Card bordered={false} size="small" style={cardsStyle}>
+        </StyledCard>
+        <StyledCard bordered={false} size="small">
           <Meta
             avatar={<DashboardOutlined />}
             title={totalTrainingHoursUsers + ' hours'}
             description="Total training time"
           />
-        </Card>
-        <Card bordered={false} size="small" style={cardsStyle}>
+        </StyledCard>
+        <StyledCard bordered={false} size="small">
           <Meta
             avatar={<UserOutlined />}
             title={totalTrainingUsers + ' users'}
             description="Training user count"
           />
-        </Card>
+        </StyledCard>
       </Space>
       {isLoading && !error && <Loader />}
     </>
