@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   TitleWelcomePage,
@@ -14,6 +14,8 @@ import { Icon } from '../Icon';
 import { WelcomeImg } from './WelcomeImg';
 
 const Welcome: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <ContainerWelcomePage>
       <BlockTitleBtn>
@@ -28,14 +30,13 @@ const Welcome: React.FC = () => {
           </IconContainer>
         </TitleWelcomePage>
         <BlockBtns>
-          <NavLink to="/signup">
-            <BtnSignUp type="primary">Sign Up</BtnSignUp>
-          </NavLink>
-          <NavLink to="/signin">
-            <BtnSignInWelcome ghost className="btn-sing-ui">
-              Sign In
-            </BtnSignInWelcome>
-          </NavLink>
+          <BtnSignUp type="primary" onClick={() => navigate('/signup')}>
+            Sign Up
+          </BtnSignUp>
+
+          <BtnSignInWelcome ghost onClick={() => navigate('/signin')}>
+            Sign In
+          </BtnSignInWelcome>
         </BlockBtns>
       </BlockTitleBtn>
       <WelcomeImg />
