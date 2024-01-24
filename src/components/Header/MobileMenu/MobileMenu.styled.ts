@@ -110,6 +110,7 @@ export const CloseBtn = styled.button`
   }
 `;
 export const Appeal = styled.div`
+  display: inline-block;
   margin-top: 202px;
   margin-left: auto;
   margin-right: auto;
@@ -119,7 +120,7 @@ export const Appeal = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
-  width: 250px;
+  width: auto;
   text-transform: uppercase;
   text-align: center;
 `;
