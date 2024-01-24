@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { FormikValues } from 'formik';
 import { DatePickerCustom, WraoDatePicker } from './DatePicker.styled';
 import { ConfigProvider } from 'antd';
+import { palette } from '../../../../styles/theme';
 
 const DatePicker: React.FC<FormikValues> = ({ formik }) => {
   return (
@@ -12,9 +13,9 @@ const DatePicker: React.FC<FormikValues> = ({ formik }) => {
           theme={{
             components: {
               DatePicker: {
-                colorPrimary: '#040404',
-                colorBgElevated: '#EF8964',
-                colorText: '#fff',
+                colorPrimary: `${palette.colors.black}`,
+                colorBgElevated: `${palette.colors.lightOrange}`,
+                colorText: `${palette.colors.white}`,
                 fontSize: 14,
                 borderRadiusSM: 50,
               },
@@ -27,18 +28,16 @@ const DatePicker: React.FC<FormikValues> = ({ formik }) => {
             size="large"
             onChange={(_, from) => {
               // const isoTime = new Date(from).toISOString();
-              // console.log(isoTime);
               // const unixTimeZero = new Date(from).toISOString();
               formik.setFieldValue('birthday', from);
             }}
             defaultValue={dayjs(formik.values.birthday)}
             // format={'DD.MM.YYYY'}
             style={{
-              border: '1px solid rgba(239, 237, 232, 0.3)',
-              background: '#040404',
+              border: `1px solid ${palette.colors.white30}`,
+              background: `${palette.colors.black}`,
               fontSize: '18px',
-              color: '#fff',
-              // padding: '14px',
+              color: `${palette.colors.white}`,
             }}
             showToday={false}
           />

@@ -50,6 +50,11 @@ const GlobalStyles = css`
     height: 100%;
   }
 
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+  }
+
   .scrollbar-inner {
     &::-webkit-scrollbar {
       width: 6px;

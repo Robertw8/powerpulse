@@ -30,7 +30,6 @@ import { getUserAvatar } from '../../../redux/auth';
 
 const UserCard: React.FC = () => {
   const [buttonHover, setButtonHover] = useState(false);
-  // const [buttonFocus, setButtonFocus] = useState(false); через те що ніде не використовується, не проходить деплой, тому поки прибрав щоб змерджити
   const { user } = useAuth();
   const dispatch = useDispatch<AppDispatch>();
 
