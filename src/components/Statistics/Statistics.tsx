@@ -9,6 +9,8 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 
+import { Icon } from '../Icon';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -42,7 +44,7 @@ const Statistics: React.FC = () => {
     dispatch(getStatistics({}));
   }, [dispatch]);
 
-  const iconStyle = { fontSize: '30px' };
+  const iconStyle = { fontSize: '30px', color: '#efede8' };
 
   return (
     <>
@@ -84,9 +86,15 @@ const Statistics: React.FC = () => {
         </StyledCard>
         <StyledCard bordered={false} size="default">
           <Meta
-            avatar={<UserOutlined style={iconStyle} />}
-            title={totalTrainingUsers + ' users'}
-            description="Training user count"
+            avatar={
+              <Icon
+                name="statistics"
+                iconWidth={{ mobile: '30px' }}
+                iconHeight={{ mobile: '30px' }}
+              />
+            }
+            title={totalTrainingUsers + ' workouts'}
+            description="Number of trainings"
           />
         </StyledCard>
       </Space>

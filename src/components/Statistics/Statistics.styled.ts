@@ -14,11 +14,11 @@ export const StyledCard = styled(Card)`
     align-items: center;
   }
 
-  width: 257px;
+  width: 262px;
   background-color: #ef8964;
   height: 80px;
   opacity: 0.95;
-  .ant-card-meta-avatar,
+
   .ant-card-meta-title,
   .ant-card-meta-description {
     color: #efede8;
