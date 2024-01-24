@@ -8,9 +8,7 @@ import { WaistItemUl, WaistListContainer } from './WaistList.styled';
 import { selectExercises, selectFilters } from '../../../redux/exercises';
 import NotFoundExercises from './NotFoundExercises';
 import { Loader } from '../..';
-import { BackgroundImage } from '../../Products/Products.styled';
 import { BackButton } from '../../Exercises/BackButton';
-import bg from '../../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
