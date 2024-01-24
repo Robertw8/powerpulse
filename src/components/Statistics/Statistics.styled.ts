@@ -7,6 +7,7 @@ export const StyledCard = styled(Card)`
     height: 100%;
     padding-left: 15px;
     padding-top: 34px;
+    padding-bottom: 30px;
 
     display: flex;
     justify-content: start;
