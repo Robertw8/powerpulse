@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 export const WaistListContainer = styled.div`
   width: 100%;
   margin-top: 40px;
-  /* position: relative; */
-
+  
   @media screen and (min-width: 1440px) {
     max-width: 840px;
     margin-top: 10px;

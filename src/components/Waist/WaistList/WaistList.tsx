@@ -6,7 +6,6 @@ import WaistItem from '../WaistItem/WaistItem';
 import { getExercises, selectIsLoading } from '../../../redux/exercises';
 import { WaistItemUl, WaistListContainer } from './WaistList.styled';
 import { selectExercises, selectFilters } from '../../../redux/exercises';
-
 import NotFoundExercises from './NotFoundExercises';
 import { Loader } from '../..';
 import { BackgroundImage } from '../../Products/Products.styled';
@@ -44,9 +43,6 @@ const WaistList: React.FC = () => {
 
   return (
     <WaistListContainer>
-      <BackgroundImage>
-        <img src={bg} alt="woman" />
-      </BackgroundImage>
       <BackButton />
       {showNotFound && <NotFoundExercises />}
       <WaistItemUl className="scrollbar-outer">
