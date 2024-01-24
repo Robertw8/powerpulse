@@ -26,6 +26,8 @@ import {
 } from '../../redux/statistics';
 import { AppDispatch } from '../../redux';
 
+import { StyledCard } from './Statistics.styled';
+
 const Statistics: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const statistics = useSelector(selectStatistics);
@@ -54,13 +56,13 @@ const Statistics: React.FC = () => {
   return (
     <>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
-        <Card bordered={false} size="small" style={cardsStyle}>
+        <StyledCard bordered={false} size="small" style={cardsStyle}>
           <Meta
             avatar={<PlayCircleOutlined />}
             title={totalVideo + '+'}
             description="Video tutorial"
           />
-        </Card>
+        </StyledCard>
         <Card bordered={false} size="small" style={cardsStyle}>
           <Meta
             avatar={<FireFilled />}
