@@ -1,4 +1,4 @@
-import { ImgWelcomePageWrapper, StatisticsWrapper } from './Welcome.styled';
+import { ImgWelcomePage, StatisticsWrapper } from './Welcome.styled';
 import imgForWelcomePage from '..//../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.png';
 import imgForWelcomePageTablet from '..//../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
@@ -9,7 +9,7 @@ import { Statistics } from '../Statistics';
 
 export const WelcomeImg: React.FC = () => {
   return (
-    <ImgWelcomePageWrapper>
+    <>
       <picture>
         <source media="(max-width: 768px)" srcSet={ImgForWelcomePageMob} />
         <source
@@ -17,12 +17,15 @@ export const WelcomeImg: React.FC = () => {
           srcSet={imgForWelcomePageTablet}
         />
         <source media="(min-width: 1441px)" srcSet={imgForWelcomePage} />
-        <img alt="Example of a lunge forward on the leg" loading="lazy" />
+        <ImgWelcomePage
+          alt="Example of a lunge forward on the leg"
+          loading="lazy"
+        />
       </picture>
       <StatisticsWrapper>
         <Statistics />
       </StatisticsWrapper>
-    </ImgWelcomePageWrapper>
+    </>
   );
 };
 

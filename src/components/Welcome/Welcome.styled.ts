@@ -43,7 +43,7 @@ const ContainerWelcomePage = styled.div`
   }
 `;
 
-const ImgWelcomePageWrapper = styled.div`
+const ImgWelcomePage = styled.img`
   width: 430px;
   height: auto;
   position: absolute;
@@ -73,22 +73,22 @@ const ImgWelcomePageWrapper = styled.div`
 const StatisticsWrapper = styled.div`
   @media screen and (max-width: 768px) {
     position: absolute;
-    bottom: 7%;
-    left: 27%;
+    bottom: -235%;
+    left: 11%;
     scale: 1.15;
   }
 
   @media screen and (min-width: 769px) and (max-width: 1440px) {
     position: absolute;
-    top: 52%;
-    left: 8%;
+    top: 152%;
+    left: 6%;
     scale: 1.5;
   }
 
   @media screen and (min-width: 1441px) {
     position: absolute;
-    top: 15%;
-    right: 7%;
+    top: 40%;
+    right: -3.5%;
     scale: 1.2;
   }
 `;
@@ -132,7 +132,7 @@ const BtnSignInWelcome = styled(Button)`
 export {
   TitleWelcomePage,
   ContainerWelcomePage,
-  ImgWelcomePageWrapper,
+  ImgWelcomePage,
   StatisticsWrapper,
   BlockTitleBtn,
   BlockBtns,
