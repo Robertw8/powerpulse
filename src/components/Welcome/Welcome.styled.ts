@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
 
-
 const TitleWelcomePage = styled.h1`
   position: relative;
   width: 335px;
@@ -35,40 +34,62 @@ const IconContainer = styled.div`
 `;
 
 const ContainerWelcomePage = styled.div`
-   display: flex;
-   position: relative;
-   flex-direction: column;
-   width: 355px;
-   @media screen and (min-width: 1441px) {
-       display: flex;
- 
-    }
-    
-    `;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  @media screen and (min-width: 1441px) {
+    display: flex;
+  }
+`;
 
 const ImgWelcomePage = styled.img`
-  width: 100%;
+  width: 430px;
   height: auto;
   position: absolute;
   top: 215px;
+  right: -0px;
   z-index: -1;
   overflow-x: hidden !important;
 
   @media screen and (min-width: 769px) {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 120px;
-  left: 380px;
-  overflow-x: hidden;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    overflow-x: hidden;
   }
 
   @media screen and (min-width: 1441px) {
-  width: 700px;
-  height: auto;
-  position: absolute;
-  top: -0px;
-  left: 640px;
+    width: 700px;
+    height: auto;
+    position: absolute;
+    top: -0px;
+    left: 640px;
+  }
+`;
+
+const StatisticsWrapper = styled.div`
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    bottom: -235%;
+    left: 11%;
+    scale: 1.15;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1440px) {
+    position: absolute;
+    top: 152%;
+    left: 6%;
+    scale: 1.5;
+  }
+
+  @media screen and (min-width: 1441px) {
+    position: absolute;
+    top: 40%;
+    right: -3.5%;
+    scale: 1.2;
   }
 `;
 
@@ -82,11 +103,10 @@ const BlockBtns = styled.div`
   gap: 14px;
   margin-top: 40px;
 
-  @media screen and (min-width: 769px)  {
-   
-  display: flex;
-  gap: 20px;
- }
+  @media screen and (min-width: 769px) {
+    display: flex;
+    gap: 20px;
+  }
 `;
 
 const BtnSignInWelcome = styled(Button)`
@@ -101,11 +121,11 @@ const BtnSignInWelcome = styled(Button)`
     border-color: #e6533c !important;
   }
 
- @media screen and (min-width: 769px)  {
-  width: 190px;
-  height: 56px;
-  font-size: 20px;
-  margin-top: 64px;
+  @media screen and (min-width: 769px) {
+    width: 190px;
+    height: 56px;
+    font-size: 20px;
+    margin-top: 64px;
   }
 `;
 
@@ -113,6 +133,7 @@ export {
   TitleWelcomePage,
   ContainerWelcomePage,
   ImgWelcomePage,
+  StatisticsWrapper,
   BlockTitleBtn,
   BlockBtns,
   IconContainer,

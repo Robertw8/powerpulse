@@ -1,26 +1,34 @@
 import styled from '@emotion/styled';
 import { DatePicker } from 'antd';
 
-const DatePickerCustom = styled(DatePicker)`
-  :where(.css-dev-only-do-not-override-1rsgabu).ant-picker-outlined {
-    border-radius: 12px;
-    background-color: #040404;
-    height: 52px;
-    border: 1px solid rgba(239, 237, 232, 0.3);
-    font-size: 18px;
-    color: white;
-    padding: 14px;
-  }
+const WraoDatePicker = styled.div`
+  margin-top: 5px;
 
-  :where(.css-dev-only-do-not-override-1rsgabu).ant-picker-large
-    .ant-picker-input
-    > input {
-    font-size: 16px;
+  @media screen and (min-width: 769px) {
+    margin-top: 8px;
+  }
+`;
+
+const DatePickerCustom = styled(DatePicker)`
+  .ant-picker-input > input {
+    font-size: 14px;
+    padding: 6px;
+
+    @media screen and (min-width: 769px) {
+      font-size: 16px;
+      padding: 8px;
+    }
   }
 
   .anticon > * {
     color: white;
   }
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    border-color: #e6533c !important;
+  }
 `;
 
-export { DatePickerCustom };
+export { DatePickerCustom, WraoDatePicker };

@@ -1,13 +1,13 @@
-import { SelectProps } from 'antd';
-import { StyledSelect, StyledPopupContent } from '../FilterDropdown';
+import { AutoCompleteProps, Empty } from 'antd';
 import { Icon } from '../../Icon';
 import { apiService } from '../../../services';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux';
 import { selectFilters, setFilters } from '../../../redux/products';
+import { StyledSearchInput, StyledSearchContent } from './SearchFilter.styled';
 
-interface SearchFilterProps extends SelectProps {}
+interface SearchFilterProps extends AutoCompleteProps {}
 
 const getProductsNames = async (query: string, callback) => {
   const response = await apiService({
@@ -24,7 +24,7 @@ const getProductsNames = async (query: string, callback) => {
 };
 
 const SearchFilter: React.FC<SearchFilterProps> = () => {
-  const [data, setData] = useState<SelectProps['options']>([]);
+  const [data, setData] = useState<AutoCompleteProps['options']>([]);
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector(selectFilters);
 
@@ -43,10 +43,11 @@ const SearchFilter: React.FC<SearchFilterProps> = () => {
   };
 
   return (
-    <StyledSelect
+    <StyledSearchInput
       showSearch
-      value={filters.search || 'Search'}
-      dropdownRender={menu => <StyledPopupContent>{menu}</StyledPopupContent>}
+      value={filters.search}
+      placeholder="Search"
+      dropdownRender={menu => <StyledSearchContent>{menu}</StyledSearchContent>}
       dropdownStyle={{
         backgroundColor: '#1C1C1C',
         borderRadius: 12,
@@ -78,7 +79,15 @@ const SearchFilter: React.FC<SearchFilterProps> = () => {
         value: item.title.toLowerCase(),
         label: item.title.toLowerCase(),
       }))}
-      onDeselect={handleChange}
+      removeIcon={
+        <Icon
+          iconWidth={{ mobile: '20px', tablet: '20px' }}
+          iconHeight={{ mobile: '16px', tablet: '16px' }}
+          name="x"
+          stroke="#fff"
+        />
+      }
+      notFoundContent={<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />}
     />
   );
 };

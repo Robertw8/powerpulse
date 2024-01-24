@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { palette } from '../../../styles/index';
 export const WaistListContainer = styled.div`
   width: 100%;
   margin-top: 40px;
@@ -41,10 +40,33 @@ export const WaistItemUl = styled.ul`
   }
 `;
 
-export const NoExercisesTitle = styled.h2`
-  color: ${palette.colors.white};
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.16;
-  margin-bottom: 20px;
+export const Message = styled.h2`
+max-width: 100%;
+color: #efede84d;
+font-size: 14px;
+line-height: calc(18 / 14);
+
+@media screen and (min-width: 768px) {
+  max-width: 580px;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+}
 `;
+export const OrangeText = styled.span`
+  display: inline-block;
+  color: #e6533c;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  
+
+  &:nth-of-type(2) {
+    margin-top: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+`;
+
+

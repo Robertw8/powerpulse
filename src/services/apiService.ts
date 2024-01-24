@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { ApiServiceOptions } from './types';
-import { setToken } from './token.ts';
+import { clearToken, setToken } from './token.ts';
+
 const baseURL = 'https://goit-be.onrender.com/';
 
 interface RetryQueueItem {
@@ -79,7 +80,7 @@ axiosInstance.interceptors.response.use(
           });
           if (data) {
             setToken(data.accessToken, data.refreshToken);
-            // console.log('interceptors.response', data)
+
             config.headers = {
               ...config.headers,
               authorization: `Bearer ${data?.accessToken}`,
@@ -98,7 +99,7 @@ axiosInstance.interceptors.response.use(
           }
           return axios(config);
         } catch (e) {
-          localStorage.removeItem('session')
+          clearToken()
         } finally {
           isRefreshing = false;
         }

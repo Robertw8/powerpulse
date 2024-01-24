@@ -69,7 +69,7 @@ const ProductsList: React.FC = () => {
     if (!products.length && !isLoading) {
       const timeoutId = setTimeout(() => {
         setShowNotFound(true);
-      }, 1000);
+      }, 100);
 
       return () => {
         clearTimeout(timeoutId);
@@ -79,11 +79,17 @@ const ProductsList: React.FC = () => {
     }
   }, [products, isLoading]);
 
+  const filteredProducts = products.filter(({ title }) =>
+    filters.search
+      ? title.toLowerCase().includes(filters.search.toLowerCase())
+      : products
+  );
+
   return (
     <ListWrapper>
       {showNotFound && <NotFoundMessage />}
       <List className="scrollbar-outer" ref={productsListRef}>
-        {products.map((product, index) => (
+        {filteredProducts.map((product, index) => (
           <ProductsItem product={product} key={index} />
         ))}
         {isLoading && <Loader />}

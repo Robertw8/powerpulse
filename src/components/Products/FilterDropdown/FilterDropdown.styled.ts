@@ -59,11 +59,15 @@ const StyledPopupContent = styled.div`
   }
 
   [aria-selected='true'] {
-    background-color: #1c1c1c !important;
+    background-color: #efede80d !important;
 
     .ant-select-item-option-content {
       color: #e6533c !important;
     }
+  }
+
+  .ant-select-item-option-active {
+    background-color: #efede80d !important;
   }
 
   .ant-empty-description {

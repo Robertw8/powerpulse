@@ -39,4 +39,3 @@ const Exercises: React.FC = () => {
   )
 }
 export default Exercises;
-

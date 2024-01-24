@@ -38,7 +38,7 @@ export const DrawerStyled = styled(Drawer)`
 export const Logout = styled.button`
   position: absolute;
   bottom: 26px;
-  left: 32px;
+  left: 20px;
   display: inline-flex;
   align-items: center;
   background-color: transparent;
@@ -49,9 +49,11 @@ export const Logout = styled.button`
   color: rgba(239, 237, 232, 1);
   outline: none;
   border: none;
+  padding: 0px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+    left: 32px;
   }
 `;
 
@@ -114,12 +116,12 @@ export const Appeal = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  color: #efede8;
+  color: ${palette.colors.white};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 30px;
-  width: 250px;
+  width: auto;
   text-transform: uppercase;
   text-align: center;
 `;

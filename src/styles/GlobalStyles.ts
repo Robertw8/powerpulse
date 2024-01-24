@@ -1,20 +1,23 @@
 import { css } from '@emotion/react';
 import Roboto from '../assets/fonts/Roboto-Regular.ttf';
+import { palette } from '.';
 
 const GlobalStyles = css`
   @font-face {
     font-family: 'Roboto';
     src: url(${Roboto}) format('truetype');
   }
-  
-  html, body, #root {
+
+  html,
+  body,
+  #root {
     height: 100%;
   }
-  
+
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: #040404;
-    color: #efede8;
+    background-color: ${palette.colors.black};
+    color: ${palette.colors.white};
     scroll-behavior: smooth;
   }
 
@@ -95,6 +98,14 @@ const GlobalStyles = css`
         display: none;
       }
     }
+  }
+
+  .ant-popover-inner,
+  .ant-tour-inner,
+  .ant-popconfirm-title,
+  .ant-popconfirm-description {
+    background-color: ${palette.colors.gray} !important;
+    color: ${palette.colors.white} !important;
   }
 `;
 

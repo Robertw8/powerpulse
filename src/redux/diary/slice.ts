@@ -7,7 +7,7 @@ import {
   deleteDiaryExercise,
 } from '.';
 
-import { InitialState } from './types';
+import { Exercise, InitialState } from './types';
 
 const initialState: InitialState = {
   products: [],
@@ -32,7 +32,7 @@ const slice = createSlice({
       .addCase(getDiary.fulfilled, (state, { payload }) => {
         state.products = payload.productsResult.products;
         state.caloriesConsumed = payload.productsResult.caloriesConsumedTotal;
-        state.exercises = payload.exercisesResult.exercises;
+        state.exercises = payload.exercisesResult.exercises as Exercise[];
         state.caloriesBurned = payload.exercisesResult.caloriesBurnedTotal;
         state.sportsTime = payload.exercisesResult.timeTotal;
         state.isLoading = false;
@@ -46,11 +46,9 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(addDiaryProduct.fulfilled, (state, { payload }) => {
-        console.log(payload.product);
         state.products = [...state.products, payload.product];
         state.isLoading = false;
         state.error = '';
-        console.log(payload);
       })
       .addCase(addDiaryProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -63,10 +61,9 @@ const slice = createSlice({
         state.products = state.products.filter(
           product => product._id !== payload.id
         );
-        state.caloriesConsumed = payload.caloriesConsumedTotal 
+        state.caloriesConsumed = payload.caloriesConsumedTotal;
         state.isLoading = false;
         state.error = '';
-       
       })
       .addCase(deleteDiaryProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -76,12 +73,10 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(addDiaryExercise.fulfilled, (state, { payload }) => {
-        console.log(payload.doneExercise);
         state.exercises.unshift(payload.doneExercise);
         state.caloriesBurned = payload.caloriesBurnedTotal;
         state.isLoading = false;
         state.error = '';
-        
       })
       .addCase(addDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;
@@ -97,8 +92,7 @@ const slice = createSlice({
         state.caloriesBurned = payload.data.caloriesBurnedTotal;
         state.isLoading = false;
         state.error = '';
-        state.sportsTime=payload.data.timeTotal
-       
+        state.sportsTime = payload.data.timeTotal;
       })
       .addCase(deleteDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;

@@ -55,12 +55,12 @@ const Filters: React.FC = () => {
       </SearchWrapper>
       <DropdownWrapper>
         <FilterDropdown
-          items={categories}
+          items={['All', ...categories]}
           onChange={handleCategoriesChange}
           value={filters.categories || 'Categories'}
         />
         <FilterDropdown
-          items={['Recommended', 'Not recommended']}
+          items={['All', 'Recommended', 'Not recommended']}
           onChange={handleTypeChange}
           value={setTypeValue() || 'All'}
         />

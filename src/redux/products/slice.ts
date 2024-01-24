@@ -49,7 +49,6 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = action.error.message;
       })
-      // ! temp
       .addCase(setCalculatedCalories, (state, action) => {
         state.calculatedCalories = action.payload;
       })
@@ -60,8 +59,12 @@ const slice = createSlice({
         state.categories = action.payload;
         state.isLoading = false;
       })
-      .addCase(setFilters, (state, action) => {
-        state.filters = action.payload;
+      .addCase(setFilters, (state, { payload }) => {
+        state.filters = {
+          search: payload.search,
+          categories: payload.categories === 'all' ? '' : payload.categories,
+          type: payload.type === 'all' ? '' : payload.type,
+        };
       });
   },
 });

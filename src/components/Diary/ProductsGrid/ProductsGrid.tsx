@@ -1,9 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'antd';
-
 import { Icon } from '../../Icon';
 import { Products } from '../../../redux/diary/types';
-import { useAuth } from '../../../hooks';
 import { AppDispatch } from '../../../redux';
 import {
   Status,
@@ -20,13 +18,11 @@ interface ProductsItemProps {
 
 const ProductsGrid: React.FC<ProductsItemProps> = ({ product,id }) => {
 
-  const { groupBloodNotAllowed } = product;
-  const { user } = useAuth();
 
-  const userBloodGroup = user.settings.blood;
-  const isRecommended = userBloodGroup
-    ? groupBloodNotAllowed[userBloodGroup]
-    : undefined;
+ 
+
+ 
+  
     const dispatch = useDispatch<AppDispatch>();
     const handleProductDelete=() => {
   
@@ -55,8 +51,8 @@ const ProductsGrid: React.FC<ProductsItemProps> = ({ product,id }) => {
         <ValueCol>{product.amount}</ValueCol>
         <ValueCol>
           <Status>
-            <StatusRound recommended={isRecommended || false}></StatusRound>
-            {isRecommended ? 'Yes' : 'No'}
+            <StatusRound recommended={product.recommend|| false}></StatusRound>
+            {product.recommend? 'Yes' : 'No'}
           </Status>
         </ValueCol>
         <Col onClick={handleProductDelete}>

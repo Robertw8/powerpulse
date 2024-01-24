@@ -8,21 +8,26 @@ import {
   BtnSignUp,
   LinkAuth,
   InputPassword,
-  ColorErrorInput
+  ColorErrorInput,
 } from '../SignUp/SignUp.styled';
-import { BlockInput, ParagraphAfterBtnUp, ParagraphSignIn, TitleSignIn } from './SignIn.styled';
+import {
+  BlockInput,
+  ParagraphAfterBtnUp,
+  ParagraphSignIn,
+  TitleSignIn,
+} from './SignIn.styled';
 import { InputPrimary } from '../InputPrimary';
 import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignInSchema from './SignInSchema';
-import { SignInArgs } from '../../services/apiRequest';
+import { SignInArgs } from '../../services/types';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux';
 import { loginUser } from '../../redux/auth';
 
 const SignInForm = () => {
   const { isLoading } = useAuth();
-   const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   const formik = useFormik({
     initialValues: {
@@ -30,17 +35,18 @@ const SignInForm = () => {
       password: '',
     },
     validationSchema: SignInSchema,
-    onSubmit: async (values: SignInArgs, { resetForm }) => {
+    onSubmit: async (values: SignInArgs) => {
       await dispatch(loginUser(values));
-      resetForm();
-    }
-    });
+    },
+  });
 
   return (
     <ContainerSignUp>
       <BlockSignUp>
         <TitleSignIn>Sign In</TitleSignIn>
-        <ParagraphSignIn>Welcome! Please enter your credentials to login to the platform:</ParagraphSignIn>
+        <ParagraphSignIn>
+          Welcome! Please enter your credentials to login to the platform:
+        </ParagraphSignIn>
         <FormContainer onSubmit={formik.handleSubmit}>
           <BlockInput>
             <InputPrimary
@@ -56,9 +62,9 @@ const SignInForm = () => {
               onChange={formik.handleChange}
               value={formik.values.email}
             />
-          {formik.errors.email && formik.touched.email && (
-            <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
-          )}
+            {formik.errors.email && formik.touched.email && (
+              <ColorErrorInput>{formik.errors.email}</ColorErrorInput>
+            )}
             <InputPassword
               bordercolor={
                 formik.errors.password && formik.touched.password
@@ -71,19 +77,21 @@ const SignInForm = () => {
               placeholder="Password"
               onChange={formik.handleChange}
               value={formik.values.password}
-              />
-              {formik.errors.password && formik.touched.password && (
-                <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
-              )}
+            />
+            {formik.errors.password && formik.touched.password && (
+              <ColorErrorInput>{formik.errors.password}</ColorErrorInput>
+            )}
           </BlockInput>
 
           <BtnSignUp htmlType="submit" type="primary" loading={isLoading}>
             Sign In
           </BtnSignUp>
-          <ParagraphAfterBtnUp>Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth></ParagraphAfterBtnUp>
+          <ParagraphAfterBtnUp>
+            Don’t have an account? <LinkAuth to="/signup">Sign Up</LinkAuth>
+          </ParagraphAfterBtnUp>
         </FormContainer>
       </BlockSignUp>
-      <AuthImg/>
+      <AuthImg />
     </ContainerSignUp>
   );
 };
