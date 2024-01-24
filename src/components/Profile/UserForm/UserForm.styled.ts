@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles/theme';
 
 //ProfilePage style
 const Wrap = styled.div`
@@ -14,7 +15,7 @@ const Wrap = styled.div`
 
 const WrapForm = styled.div`
   @media screen and (min-width: 1441px) {
-    border-right: 1px solid rgba(239, 237, 232, 0.2);
+    border-right: 1px solid ${palette.colors.white30};
     padding: 0 54px 0;
   }
 `;
