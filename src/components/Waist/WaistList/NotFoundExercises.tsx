@@ -4,8 +4,8 @@ const NotFoundExercises: React.FC = () => {
   return (
     <>
       <Message>
-        There is <OrangeText>not exercises</OrangeText>
-        downloaded else, plaese try choose this categorie later
+        There is <OrangeText> not exercises </OrangeText> downloaded else,
+        plaese try choose this categorie later
       </Message>
     </>
   );
