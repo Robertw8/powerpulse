@@ -1,5 +1,5 @@
 # PowerPulse
-## An application for personalized diet adjustment based on the user's physical characteristics and lifestyle. A huge selection of food and exercises, all the functionality you need to track your diet every day.
+### An application for personalized diet adjustment based on the user's physical characteristics and lifestyle. A huge selection of food and exercises, all the functionality you need to track your diet every day.
 
 ## Stack
 
