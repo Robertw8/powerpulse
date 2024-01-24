@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 
   @media screen and (min-width: 1441px) {
     flex-direction: row-reverse;
