@@ -36,7 +36,7 @@ const Header: React.FC = () => {
       }
     >
       <Container>
-        <HeaderContainer>
+        <HeaderContainer isLoggedIn={isLoggedIn}>
           <HeaderWrap>
             <LinkLogo
               to={!isLoggedIn && !isRefreshing ? routes.WELCOME : routes.DIARY}
