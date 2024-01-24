@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 const BackBtn = styled.button`
     position: absolute;
+    top: 0;
     z-index: 1;
     padding: 10px 0 16px;
     display: flex;

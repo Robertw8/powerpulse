@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const ExercisesWrap = styled.div`
     padding-bottom: 80px;
     width: 100%;
+    position: relative;
     
     & .ant-carousel .slick-dots button {
         width: 14px;

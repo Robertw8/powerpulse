@@ -3,7 +3,7 @@ import { palette } from '../../../styles/index';
 export const WaistListContainer = styled.div`
   width: 100%;
   margin-top: 40px;
-  position: relative;
+  /* position: relative; */
 
   @media screen and (min-width: 1440px) {
     max-width: 840px;

@@ -5,53 +5,45 @@ import { apiService } from '../../../services';
 
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
+import NotFoundPage from '../../../pages/NotFoundPage';
+import { Loader } from '../..';
+import currentFilter from './setCurrentFilter';
 
 const Slider: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(10);
   const [total, setTotal] = useState<number>(1);
   const [exercisesList, setExercisesList] = useState([]);
-  //   const [isLoading, setIsLoading] = useState<boolean>(false); // ! У тебя isLoading и errorPage нигде пока не используется, закомментил из-за ошибки no-unused-vars для деплоя
-  //   const [errorPage, setErrorPage] = useState<boolean>(false);
-
-  const currentfilter = (category: string):string => {
-    if (category === 'bodyPart') {
-      return 'Body parts';
-    } else if (category === 'muscles') {
-      return 'Muscles';
-    } else {
-      return 'Equipment';
-    }
-  };
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [errorPage, setErrorPage] = useState<boolean>(false);
 
   const filters = useSelector(selectFilters);
-
+  
   useEffect(() => {
+    setIsLoading(true);
     window.screen.width >= 768 && window.screen.width < 1440
       ? setLimit(9)
       : setLimit(10);
 
     const filter = filters.filter
-      ? currentfilter(filters.filter)
-      : currentfilter('bodyPart');
+      ? currentFilter(filters.filter)
+      : currentFilter('bodyPart');
     const responce = apiService({
       method: 'get',
       url: `/exercises/${filter}?page=${page}&limit=${limit}`,
     });
-    // setIsLoading(true);
 
     responce
       .then(({ data, totalItems }) => {
-        // if (!data.length) return setErrorPage(true);
+        if (!data.length) return setErrorPage(true);
         if (!data.length) return;
         setExercisesList(data);
         setTotal(totalItems);
       })
       .catch(() => {
-        // setErrorPage(true);
+        setErrorPage(true);
       })
-      //   .finally(() => setIsLoading(false));
-      .finally(() => console.log);
+      .finally(() => setIsLoading(false));
   }, [filters.filter, limit, page]);
 
   const onChange = (currentSlide: number) => {
@@ -68,9 +60,10 @@ const Slider: React.FC = () => {
 
   return (
     <>
-      {exercisesList.length > 0 && (
-        <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>
-      )}
+      {isLoading && <Loader />}
+      {exercisesList.length > 0 &&
+        <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>}
+      {errorPage &&  <NotFoundPage/>}
     </>
   );
 };

@@ -10,10 +10,6 @@ import type { TabsProps } from 'antd';
 import { Category } from '../Exercises';
 import { CategoryList } from './ExercisesCategories.styled';
 
-const getFilterURL = (url: string): string => {
-  return url.split("/").pop() || '';
-};
-
 const ExercisesCategories: React.FC = () => {
 
   const [tabs, toggleTabs] = useState<boolean>(false);
@@ -24,7 +20,6 @@ const ExercisesCategories: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(setFilters(getFilterURL(location.pathname), ""));
     filters.category ? toggleTabs(true) : toggleTabs(false);
   },[dispatch, filters.category, location.pathname])
 
@@ -57,7 +52,7 @@ const ExercisesCategories: React.FC = () => {
   return (
     <CategoryList>
       <Tabs
-        defaultActiveKey={getFilterURL(location.pathname)}
+        defaultActiveKey={"bodyPart"}
         items={items}
         onChange={value => {
           onChange?.(value as Category);
