@@ -17,6 +17,7 @@ const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise, id }) => {
   const handleExerciseDelete = () => {
     dispatch(deleteDiaryExercise(id));
   };
+
   return (
     <>
       <Row>
