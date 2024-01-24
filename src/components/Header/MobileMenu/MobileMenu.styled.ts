@@ -110,7 +110,6 @@ export const CloseBtn = styled.button`
   }
 `;
 export const Appeal = styled.div`
-  display: inline-block;
   margin-top: 202px;
   margin-left: auto;
   margin-right: auto;
