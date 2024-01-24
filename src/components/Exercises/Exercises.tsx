@@ -1,40 +1,41 @@
-import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Outlet, useNavigate, useLocation} from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { selectFilters } from '../../redux/exercises';
 
 import { ExercisesCategories } from './ExercisesCategories';
 import { PageTitle } from '..';
-import { BackgroundImage } from '../Products/Products.styled';
-import { ExercisesWrap, TopWrap } from './Exercises.styled';
-import { BackButton } from './BackButton';
+import { ExercisesWrap, TopWrap} from './Exercises.styled';
 
 export type Category = 'bodyPart' | 'muscles' | 'equipment';
-import bg from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
 
 const Exercises: React.FC = () => {
+  const [title, setTitle] = useState<string>('Exercises')
+  
   const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/exercises/bodyPart');
-  }, []);
-
+  const location = useLocation();
   const filters = useSelector(selectFilters);
+  
+  useEffect(() => {
+    if (filters.category !== "") {
+      setTitle(filters.category)
+    } else {
+      setTitle('Exercises')
+    }
+
+    if (location.pathname === `/exercises`)
+      navigate("/exercises/bodyPart");
+
+  }, [filters.category, location.pathname, navigate])
 
   return (
     <ExercisesWrap>
-      {filters.category && <BackButton />}
       <TopWrap>
-        <PageTitle text={!filters.category ? 'Exercises' : filters.category} />
-        <ExercisesCategories />
+        <PageTitle text={title} />
+      <ExercisesCategories/>
       </TopWrap>
       <Outlet />
-      {filters.category && (
-        <BackgroundImage>
-          <img src={bg} alt="woman" loading="lazy" />
-        </BackgroundImage>
-      )}
     </ExercisesWrap>
-  );
-};
+  )
+}
 export default Exercises;
