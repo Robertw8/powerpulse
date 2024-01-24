@@ -7,8 +7,6 @@ import { getExercises } from '../../../redux/exercises';
 import { Message, WaistItemUl, WaistListContainer } from './WaistList.styled';
 import { selectExercises, selectFilters } from '../../../redux/exercises';
 import { BackButton } from '../../Exercises/BackButton';
-import { BackgroundImage } from '../../Products/Products.styled';
-import bg from '../../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -26,9 +24,6 @@ const WaistList: React.FC = () => {
 
   return (
     <WaistListContainer>
-      <BackgroundImage>
-        <img src={bg} alt="woman" />
-      </BackgroundImage>
       <BackButton />
       <WaistItemUl className="scrollbar-outer">
         {exercises.length ? (
