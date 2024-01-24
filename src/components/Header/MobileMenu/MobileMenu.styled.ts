@@ -114,7 +114,7 @@ export const Appeal = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  color: #efede8;
+  color: ${palette.colors.white};
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
