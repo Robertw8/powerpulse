@@ -73,23 +73,22 @@ const ImgWelcomePage = styled.img`
 const StatisticsWrapper = styled.div`
   @media screen and (max-width: 768px) {
     position: absolute;
-    bottom: -235%;
-    left: 11%;
-    scale: 1.15;
+    bottom: -240%;
+    left: 0;
+    scale: 0.9;
   }
 
   @media screen and (min-width: 769px) and (max-width: 1440px) {
     position: absolute;
-    top: 152%;
-    left: 6%;
-    scale: 1.5;
+    top: 135%;
+    left: 0px;
   }
 
   @media screen and (min-width: 1441px) {
     position: absolute;
-    top: 40%;
-    right: -3.5%;
-    scale: 1.2;
+    top: 35%;
+    right: -6%;
+    scale: 0.95;
   }
 `;
 

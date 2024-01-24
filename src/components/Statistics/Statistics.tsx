@@ -42,47 +42,49 @@ const Statistics: React.FC = () => {
     dispatch(getStatistics({}));
   }, [dispatch]);
 
+  const iconStyle = { fontSize: '30px' };
+
   return (
     <>
       <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
         <StyledCard
           bordered={false}
-          size="small"
+          size="default"
           style={{
-            width: 151,
+            width: 215,
             backgroundColor: '#303030',
           }}
         >
           <Meta
-            avatar={<PlayCircleOutlined />}
+            avatar={<PlayCircleOutlined style={iconStyle} />}
             title={totalVideo}
             description="Video tutorial"
           />
         </StyledCard>
-        <StyledCard bordered={false} size="small">
+        <StyledCard bordered={false} size="default">
           <Meta
-            avatar={<FireFilled />}
+            avatar={<FireFilled style={iconStyle} />}
             title={totalUsersCalories + ' cal'}
             description="Calories burned"
           />
         </StyledCard>
-        <StyledCard bordered={false} size="small">
+        <StyledCard bordered={false} size="default">
           <Meta
-            avatar={<UsergroupAddOutlined />}
+            avatar={<UsergroupAddOutlined style={iconStyle} />}
             title={totalUsers + ' users'}
             description="Registered users"
           />
         </StyledCard>
-        <StyledCard bordered={false} size="small">
+        <StyledCard bordered={false} size="default">
           <Meta
-            avatar={<DashboardOutlined />}
+            avatar={<DashboardOutlined style={iconStyle} />}
             title={totalTrainingHoursUsers + ' hours'}
             description="Total training time"
           />
         </StyledCard>
-        <StyledCard bordered={false} size="small">
+        <StyledCard bordered={false} size="default">
           <Meta
-            avatar={<UserOutlined />}
+            avatar={<UserOutlined style={iconStyle} />}
             title={totalTrainingUsers + ' users'}
             description="Training user count"
           />
