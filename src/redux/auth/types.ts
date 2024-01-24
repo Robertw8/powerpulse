@@ -15,6 +15,7 @@ interface User {
     levelActivity: OptionalString;
   };
   avatarURL: string;
+  verify: boolean;
 }
 
 interface InitialAuthState {
