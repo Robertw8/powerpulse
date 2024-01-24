@@ -28,7 +28,6 @@ const DatePicker: React.FC<FormikValues> = ({ formik }) => {
             size="large"
             onChange={(_, from) => {
               // const unixTimeZero = new Date(from).toISOString();
-              // console.log(unixTimeZero);
               formik.setFieldValue('birthday', from);
             }}
             defaultValue={dayjs(formik.values.birthday)}

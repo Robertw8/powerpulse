@@ -46,11 +46,9 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(addDiaryProduct.fulfilled, (state, { payload }) => {
-        console.log(payload.product);
         state.products = [...state.products, payload.product];
         state.isLoading = false;
         state.error = '';
-        console.log(payload);
       })
       .addCase(addDiaryProduct.rejected, (state, action) => {
         state.isLoading = false;
@@ -75,7 +73,6 @@ const slice = createSlice({
         state.isLoading = true;
       })
       .addCase(addDiaryExercise.fulfilled, (state, { payload }) => {
-        console.log(payload.doneExercise);
         state.exercises.unshift(payload.doneExercise);
         state.caloriesBurned = payload.caloriesBurnedTotal;
         state.isLoading = false;
