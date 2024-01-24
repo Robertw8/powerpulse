@@ -1,5 +1,19 @@
 import styled from '@emotion/styled';
 
+const BackgroundImage = styled.div`
+  @media screen and (max-width: 1439px) {
+    display: none;
+  }
+
+  position: absolute;
+  top: 11%;
+  right: 0;
+  z-index: -9999;
+
+  width: 35%;
+  height: 726px;
+`;
+
 const ExercisesWrap = styled.div`
     padding-bottom: 80px;
     width: 100%;
@@ -45,4 +59,4 @@ const TopWrap = styled.div`
   }
 `
 
-export { ExercisesWrap, TopWrap, LoaderWrap };
+export { ExercisesWrap, TopWrap, LoaderWrap , BackgroundImage};

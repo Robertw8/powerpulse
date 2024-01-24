@@ -13,9 +13,8 @@ export const Wrapper = styled.div`
 export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding-top: 24px;
   padding-bottom: 24px;
-  /* margin: 0 auto; */
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1440px) {
     padding-top: 32px;
     padding-bottom: 32px;
     position: ${props => (props.isLoggedIn ? 'relative' : 'absolute')};
@@ -23,11 +22,13 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
     width: 100%;
   }
 `;
+
 export const HeaderWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+
 export const LinkLogo = styled(Link)`
   margin-right: auto;
   display: inline-flex;
@@ -43,6 +44,7 @@ export const LinkLogo = styled(Link)`
     font-size: 19px;
   }
 `;
+
 export const NavWrap = styled.nav`
   margin-right: 32px;
 
@@ -50,6 +52,7 @@ export const NavWrap = styled.nav`
     display: none;
   }
 `;
+
 export const UserContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -57,6 +60,7 @@ export const UserContainer = styled.div`
   margin: 0;
   padding: 0;
 `;
+
 export const UserBarWrapper = styled.div`
   display: flex;
   gap: 16px;

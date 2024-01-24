@@ -24,11 +24,6 @@ export const LogoutBtn = styled.button`
       display: none;
     }
   }
-  &.desktopProfile {
-    @media screen and (max-width: 1439px) {
-      display: ;
-    }
-  }
 `;
 export const Text = styled.span`
   margin-right: 8px;

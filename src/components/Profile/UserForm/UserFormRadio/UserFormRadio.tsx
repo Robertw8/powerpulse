@@ -99,7 +99,7 @@ const UserFormRadio: React.FC<FormikValues> = ({ formik }) => {
           type="primary"
           text="Save"
           sizes="extraSmall"
-          disabled={!formik.dirty} // disabled={!(formik.isValid && formik.dirty)}
+          disabled={!formik.dirty}
           loading={isLoading}
         />
       </BtnWrap>

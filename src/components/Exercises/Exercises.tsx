@@ -1,39 +1,56 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate, useLocation} from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from '../../redux/exercises';
 
 import { ExercisesCategories } from './ExercisesCategories';
 import { PageTitle } from '..';
-import { ExercisesWrap, TopWrap} from './Exercises.styled';
+import { ExercisesWrap, TopWrap, BackgroundImage} from './Exercises.styled';
+import { setFilters } from '../../redux/exercises';
+
+import bg from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
+
 
 export type Category = 'bodyPart' | 'muscles' | 'equipment';
 
 const Exercises: React.FC = () => {
-  const [title, setTitle] = useState<string>('Exercises')
+  const [backgound, setBackground] = useState<boolean>(false);
   
   const navigate = useNavigate();
   const location = useLocation();
   const filters = useSelector(selectFilters);
+  const dispatch = useDispatch();
   
   useEffect(() => {
-    if (filters.category !== "") {
-      setTitle(filters.category)
+    if (location.pathname !== '/exercises' &&
+      location.pathname !== '/exercises/bodyPart' &&
+      location.pathname !== '/exercises/muscles' &&
+      location.pathname !== '/exercises/equipment') {
+      setBackground(true)
     } else {
-      setTitle('Exercises')
+      setBackground(false)
     }
-
+        
+    dispatch(setFilters(filters.filter ? filters.filter : 'bodyPart', ""))
+    
     if (location.pathname === `/exercises`)
       navigate("/exercises/bodyPart");
 
-  }, [filters.category, location.pathname, navigate])
+      return () => {
+      dispatch(setFilters("bodyPart",""))
+    };
+
+  }, [dispatch, filters.category, filters.filter, location.pathname, navigate])
 
   return (
     <ExercisesWrap>
       <TopWrap>
-        <PageTitle text={title} />
+        <PageTitle text={"Exercises"} />
       <ExercisesCategories/>
       </TopWrap>
+      {backgound && <BackgroundImage>
+        <img src={bg} alt="woman" />
+      </BackgroundImage>}
       <Outlet />
     </ExercisesWrap>
   )

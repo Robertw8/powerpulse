@@ -103,18 +103,6 @@ const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
           <LabelWrap>
             <Label htmlFor="birthday">
               Date of birth
-              {/* <StyledInput
-                bordercolor={
-                  formik.errors.birthday && formik.touched.birthday
-                    ? 'error'
-                    : 'default'
-                }
-                id="birthday"
-                name="birthday"
-                type="date"
-                onChange={formik.handleChange}
-                value={formik.values.birthday}
-              /> */}
               <DatePicker formik={formik} />
             </Label>
 

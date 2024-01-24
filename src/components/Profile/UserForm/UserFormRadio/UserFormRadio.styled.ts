@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../../styles/theme';
 
 const Label = styled.label`
-  color: rgba(239, 237, 232, 0.5);
-  font-size: 12px;
+  color: ${palette.colors.white40};
+  font-size: ${palette.fontSizes.caption}px;
   line-height: 18px;
   display: inline-block;
   margin: 0 0 5px;
 
   @media screen and (min-width: 769px) {
-    font-size: 14px;
+    font-size: ${palette.fontSizes.tiny}px;
     margin: 0 0 8px;
   }
 `;
@@ -34,10 +35,10 @@ const RadioWrapBlock = styled.div`
 const LableRadio = styled.label`
   display: flex;
   padding: 3px 0;
-  /* height: 38px; */
+  align-items: center;
 
   @media screen and (min-width: 769px) {
-    /* height: 28px; */
+    align-items: normal;
   }
 `;
 
@@ -53,7 +54,7 @@ const Input = styled.input`
   overflow: hidden;
 
   &:checked + span {
-    border: 2px solid #ef8964;
+    border: 2px solid ${palette.colors.lightOrange};
   }
   &:checked + span:after {
     opacity: 1;
@@ -66,7 +67,7 @@ const CheckRadio = styled.span`
   cursor: pointer;
   width: 18px;
   height: 18px;
-  border: 2px solid #9a9a9a;
+  border: 2px solid ${palette.colors.white40};
   border-radius: 50%;
   display: flex;
   position: relative;
@@ -74,7 +75,7 @@ const CheckRadio = styled.span`
     content: '';
     width: 10px;
     height: 10px;
-    background: #ef8964;
+    background: ${palette.colors.lightOrange};
     position: absolute;
     border-radius: 50%;
     top: 50%;
@@ -85,8 +86,8 @@ const CheckRadio = styled.span`
 `;
 
 const ErrorText = styled.div`
-  color: #d80027;
-  font-size: 12px;
+  color: ${palette.colors.red};
+  font-size: ${palette.fontSizes.caption}px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0.12px;
@@ -94,14 +95,15 @@ const ErrorText = styled.div`
 `;
 
 const TextRadio = styled.span`
-  color: #efede8;
-  font-size: 14px;
+  color: ${palette.colors.white};
+  font-size: ${palette.fontSizes.tiny}px;
   line-height: 18px;
-  margin: 0 0 0 8px;
+  margin: 3px 0 0 8px;
 
   @media screen and (min-width: 769px) {
-    font-size: 16px;
+    font-size: ${palette.fontSizes.default}px;
     line-height: 24px;
+    margin: 0 0 0 8px;
   }
 `;
 
