@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import {  useSelector } from 'react-redux';
-import { List, ListWrapper } from './ExercisesList.styled'
+import { List } from './ExercisesList.styled'
 import { Loader } from '../..';
 import {selectExercises ,selectIsLoading} from '../../../redux/diary';
-import { ExercisesGrid } from '../ExercisesGrid';
+import { DiaryExercisesItem } from '../ExerciseItem';
 
 // import { ProductsItem } from '../ProductsItem';
 
@@ -30,16 +30,16 @@ const ExercisesList: React.FC = () => {
   }, [exercises, isLoading]);
 
   return (
-    <ListWrapper>
+
      
-      <List  >
+      <List  className="scrollbar-outer">
         {exercises.map((exercise,index) => (
-          <ExercisesGrid
+          <DiaryExercisesItem
           exercise={exercise} key={index} id={exercise._id} />
         ))}
         {isLoading && <Loader />}
       </List>
-    </ListWrapper>
+ 
   );
 };
 export default ExercisesList;

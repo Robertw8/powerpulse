@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { Icon } from '../..';
 const InfoBox = styled.div`
   width: 100%;
-  height: 335px;
+
+  min-height:335px;
+  max-height:824px;
   padding: 13px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
@@ -13,6 +15,8 @@ const InfoBox = styled.div`
   @media screen and (min-width: 768px) {
     width: 100%;
     height: 240px;
+    max-height:none;
+    min-height:none;
   }
 `;
 const TopRow = styled.div`
@@ -22,6 +26,7 @@ display: flex;
   justify-content: center;
   gap: 8px;
   justify-content: space-between;
+  margin-bottom:22px;
 `;
 
 const GrayBlockTitle = styled.p`

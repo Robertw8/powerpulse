@@ -1,20 +1,16 @@
 import { useEffect } from 'react';
 import {  useSelector } from 'react-redux';
-import { List, ListWrapper } from './ProductsList.styled';
+import { List } from './ProductsList.styled';
 import { Loader } from '../..';
 import {selectProducts ,selectIsLoading} from '../../../redux/diary';
-import { ProductsGrid } from '../ProductsGrid';
-// import { ProductsItem } from '../ProductsItem';
+import { ProductsItem } from '../ProductsItem';
+
 
 
 const ProductsList: React.FC = () => {
 
   const products= useSelector(selectProducts);
   const isLoading = useSelector(selectIsLoading);
-
-
- 
-
 
   useEffect(() => {
     if (!products.length && !isLoading) {
@@ -29,16 +25,16 @@ const ProductsList: React.FC = () => {
   }, [products, isLoading]);
 
   return (
-    <ListWrapper>
+
      
       <List className="scrollbar-outer" >
         {products.map((product,index) => (
-          <ProductsGrid
+          <ProductsItem
           product={product} key={index} id={product._id} />
         ))}
         {isLoading && <Loader />}
       </List>
-    </ListWrapper>
+   
   );
 };
 export default ProductsList;

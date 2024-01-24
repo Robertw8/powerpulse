@@ -16,7 +16,7 @@ interface ProductsItemProps {
 const ExercisesGrid: React.FC<ProductsItemProps> = ({ exercise,id }) => {
     const dispatch = useDispatch<AppDispatch>();
     const handleExerciseDelete=() => {
-        // dispatch(addDiaryProduct(product));
+  
      dispatch(
        deleteDiaryExercise(id)
      );
