@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
     padding-bottom: 32px;
     position: ${props => (props.isLoggedIn ? 'relative' : 'absolute')};
     z-index: 10;
-    /* width: 100%;  */       //тут прибрала
+    /* width: 100%;  */ //тут прибрала
   }
 `;
 
@@ -42,14 +42,14 @@ export const LinkLogo = styled(Link)`
   text-decoration: none;
   @media screen and (min-width: 768px) {
     font-size: 19px;
-    width: 700px;         // тут змінила 
+    width: 700px; // тут змінила
   }
 `;
 
 export const NavWrap = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     display: none;
   }
 `;

@@ -15,7 +15,7 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 364px;
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ const TitleSignUp = styled(Title)`
   margin-top: 90px;
   margin-bottom: 14px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     margin-top: 140px;
     margin-bottom: 16px;
   }
@@ -44,7 +44,7 @@ const ParagraphAuth = styled.p`
   font-size: 14px;
   color: rgba(239, 237, 232, 0.3);
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 496px;
 
     margin-bottom: 32px;
@@ -95,10 +95,9 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input {
     &::placeholder {
       color: #efede84d !important;
-     background-color: transparent !important;
-  }
+      background-color: transparent !important;
     }
-  
+  }
 
   .ant-input-password-icon {
     color: #fff !important;
@@ -118,7 +117,7 @@ const ContainerSignUp = styled.div`
   width: 355px;
   height: auto;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     width: 769px;
   }
@@ -130,8 +129,8 @@ const ImgSignUp = styled.img`
   position: absolute;
   top: 180px;
   z-index: -1;
-  @media screen and (min-width: 769px) {
-   width: 100%;
+  @media screen and (min-width: 768px) {
+    width: 100%;
     height: auto;
     position: absolute;
     top: -30px;
@@ -156,7 +155,7 @@ const WidthInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     gap: 20px;
   }
 `;
@@ -165,7 +164,7 @@ const BtnSignUp = styled(Button)`
   height: 42px;
   font-size: 16px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 190px;
     height: 56px;
     font-size: 20px;
@@ -193,7 +192,7 @@ const BtnSignPage = styled(BtnSignUp)`
 const ColorErrorInput = styled.div`
   color: #d80027;
   font-size: 16px;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
   }
 `;

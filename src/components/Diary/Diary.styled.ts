@@ -10,8 +10,6 @@ const BlockWrap = styled.ul`
   @media screen and (min-width: 768px) {
     justify-content: start;
     margin-bottom: 32px;
-   
-  
   }
 
   @media screen and (min-width: 1440px) {
@@ -27,18 +25,15 @@ const TextBlockWrap = styled.div`
   gap: 8px;
 `;
 
-
 const NextTextBlockWrap = styled(TextBlockWrap)`
   justify-content: space-between;
 `;
-
-
 
 const TextWrap = styled.div`
   display: flex;
   gap: 8px;
   justify-content: center;
-  
+
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     order: 3;
@@ -58,7 +53,6 @@ const Text = styled.p`
   font-style: normal;
   line-height: 18px;
 `;
-
 
 const MainDiaryWrap = styled.div`
   display: flex;

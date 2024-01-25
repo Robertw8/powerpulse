@@ -81,7 +81,7 @@ const StatisticsWrapper = styled.div`
     scale: 0.9;
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1440px) {
+  @media screen and (min-width: 768px) and (max-width: 1440px) {
     position: absolute;
     top: 135%;
     left: 0px;
@@ -109,7 +109,7 @@ const BlockBtns = styled.div`
   gap: 14px;
   margin-top: 40px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     display: flex;
     gap: 20px;
   }
@@ -127,7 +127,7 @@ const BtnSignInWelcome = styled(Button)`
     border-color: #e6533c !important;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 190px;
     height: 56px;
     font-size: 20px;
