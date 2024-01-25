@@ -6,15 +6,13 @@ import { ConfigProvider } from 'antd';
 import { palette } from '../../../styles';
 import { selectSelectedDate } from '../../../redux/diary/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../../redux'
+import { AppDispatch } from '../../../redux';
 import { getDiary } from '../../../redux/diary';
 import { setSelectedDate } from '../../../redux/diary/operations';
-import { date } from 'yup';
-
 
 const CustomDatePicker: React.FC = () => {
-const selectedDate=useSelector(selectSelectedDate)
-const dispatch = useDispatch<AppDispatch>();
+  const selectedDate = useSelector(selectSelectedDate);
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <>
       <WrapDatePicker>
@@ -27,13 +25,13 @@ const dispatch = useDispatch<AppDispatch>();
                 colorText: `${palette.colors.white}`,
                 fontSize: 14,
                 borderRadiusSM: 50,
-                colorIcon:'#EF8964;'
+                colorIcon: '#EF8964;',
               },
             },
           }}
         >
           <DatePickerCustom
-    disabledDate={(date)=>date>dayjs()}
+            disabledDate={date => date > dayjs()}
             defaultValue={dayjs(selectedDate)}
             value={dayjs(selectedDate)}
             format={'DD/MM/YYYY'}
@@ -44,9 +42,11 @@ const dispatch = useDispatch<AppDispatch>();
               color: `${palette.colors.white}`,
             }}
             showToday={false}
-            onChange={(selectedDate)=>{ dispatch(getDiary(dayjs(selectedDate).format('DD/MM/YYYY')));
-           dispatch(setSelectedDate(selectedDate))}}
-           allowClear={false}
+            onChange={selectedDate => {
+              dispatch(getDiary(dayjs(selectedDate).format('DD/MM/YYYY')));
+              dispatch(setSelectedDate(selectedDate));
+            }}
+            allowClear={false}
           />
         </ConfigProvider>
       </WrapDatePicker>
