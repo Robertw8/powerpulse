@@ -11,7 +11,7 @@ import {
 import { Title } from '../PageTitle/PageTitle.styled.ts';
 
 const FormContainer = styled.form`
-  width: 335px;
+  width: 320px;
   display: flex;
   flex-direction: column;
 
@@ -26,6 +26,7 @@ const FormContainer = styled.form`
 const TitleSignUp = styled(Title)`
   margin-top: 90px;
   margin-bottom: 14px;
+  margin-left: 0px;
 
   @media screen and (min-width: 768px) {
     margin-top: 140px;
@@ -101,7 +102,7 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 
   .ant-input-password-icon {
     color: #fff !important;
-    padding: 14px;
+    padding: 12px;
     &:hover,
     &:focus,
     &:focus-within {
@@ -114,27 +115,27 @@ const ContainerSignUp = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 355px;
+  width: 335px;
   height: auto;
 
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 769px;
+
   }
 `;
 
 const ImgSignUp = styled.img`
-  width: 100%;
+  width: 335px;
   height: auto;
   position: absolute;
   top: 180px;
   z-index: -1;
-  @media screen and (min-width: 768px) {
-    width: 100%;
+  @media screen and (min-width: 769px) {
+   width: 670px;
     height: auto;
     position: absolute;
     top: -30px;
-    left: 60px;
+    left: 40px;
     overflow-x: hidden !important;
   }
   @media screen and (min-width: 1440px) {
