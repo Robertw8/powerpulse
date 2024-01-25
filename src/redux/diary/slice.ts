@@ -101,7 +101,7 @@ const slice = createSlice({
         state.exercises = state.exercises.filter(
           exercise => exercise._id !== payload.id
         );
-        state.caloriesBurned = payload.data.caloriesBurnedTotal;
+        state.caloriesBurned = payload.data.caloriesBurned;
         state.isLoading = false;
         state.error = '';
         state.sportsTime = payload.data.sportsRemaining;
