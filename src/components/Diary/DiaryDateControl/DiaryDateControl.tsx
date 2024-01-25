@@ -9,6 +9,8 @@ import { useDispatch,
   } 
    from 'react-redux';
 import { getDiary, setSelectedDate } from '../../../redux/diary/operations';
+// import { DatePicker } from '../DatePicker';
+// import { DatePicker } from '../DatePicker';
 // import { useEffect } from 'react';
 
 
@@ -33,7 +35,8 @@ const handleDeleteDate= () => {
 
 
   return (
-    <>
+    // <><div> <DatePicker></DatePicker>      </div>
+
       <StyledDateControl>
  
         <SelectedDate>{dayjs(selectedDate).format('DD/MM/YYYY')}</SelectedDate>
@@ -60,7 +63,7 @@ const handleDeleteDate= () => {
          
         </ArrowControl>
       </StyledDateControl>
-    </>
+    
   );
 };
 export default DiaryDateControl;

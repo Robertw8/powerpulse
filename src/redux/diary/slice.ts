@@ -72,6 +72,7 @@ const slice = createSlice({
         state.products = state.products.filter(
           product => product._id !== payload.id
         );
+        state.caloriesRemaining=payload.caloriesRemainingTotal
         state.caloriesConsumed = payload.caloriesConsumedTotal;
         state.isLoading = false;
         state.error = '';
@@ -103,7 +104,7 @@ const slice = createSlice({
         state.caloriesBurned = payload.data.caloriesBurnedTotal;
         state.isLoading = false;
         state.error = '';
-        state.sportsTime = payload.data.timeTotal;
+        state.sportsTime = payload.data.sportsRemaining;
       })
       .addCase(deleteDiaryExercise.rejected, (state, action) => {
         state.isLoading = false;
