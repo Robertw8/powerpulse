@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux'
 import { getDiary } from '../../../redux/diary';
 import { setSelectedDate } from '../../../redux/diary/operations';
+import { date } from 'yup';
 
 
 const CustomDatePicker: React.FC = () => {
@@ -32,7 +33,7 @@ const dispatch = useDispatch<AppDispatch>();
           }}
         >
           <DatePickerCustom
-    
+    disabledDate={(date)=>date>dayjs()}
             defaultValue={dayjs(selectedDate)}
             value={dayjs(selectedDate)}
             format={'DD/MM/YYYY'}

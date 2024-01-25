@@ -43,8 +43,8 @@ const DiaryDateControl: React.FC = () => {
           iconHeight={{ mobile: '20px', tablet: '24px' }}
         /> */}
         <ArrowControl>
-          <ReverseIcon>
-            <Icon
+          <ReverseIcon >
+            <Icon 
               onClick={handleDeleteDate}
               name="arrow"
               iconWidth={{ mobile: '16px', tablet: '16px' }}
