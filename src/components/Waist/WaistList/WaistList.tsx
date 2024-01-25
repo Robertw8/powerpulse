@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch } from '../../../redux';
-import WaistItem from '../WaistItem/WaistItem';
 import { getExercises, selectIsLoading } from '../../../redux/exercises';
-import { WaistItemUl, WaistListContainer } from './WaistList.styled';
 import { selectExercises, selectFilters } from '../../../redux/exercises';
+
 import NotFoundExercises from './NotFoundExercises';
 import { Loader } from '../..';
 import { BackButton } from '../../Exercises/BackButton';
+import WaistItem from '../WaistItem/WaistItem';
+import { WaistItemUl, WaistListContainer } from './WaistList.styled';
+
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +18,8 @@ const WaistList: React.FC = () => {
   const filters = useSelector(selectFilters);
   const isLoading = useSelector(selectIsLoading);
   const [showNotFound, setShowNotFound] = useState(false);
+
+
   useEffect(() => {
     dispatch(
       getExercises({
@@ -30,7 +34,6 @@ const WaistList: React.FC = () => {
       const timeoutId = setTimeout(() => {
         setShowNotFound(true);
       }, 100);
-
       return () => {
         clearTimeout(timeoutId);
       };
