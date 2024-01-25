@@ -17,6 +17,7 @@ import {
   InputAuth,
   InputPassword,
   ColorErrorInput,
+  StatisticsWrapper,
 } from './SignUp.styled';
 
 import SignUpSchema from './SignUpSchema';
@@ -27,7 +28,6 @@ import { AuthImg } from '../Welcome/WelcomeImg';
 import { SignUpArgs } from '../../services/types';
 
 import { Statistics } from '../Statistics';
-import { StatisticsWrapper } from './SignUp.styled';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();

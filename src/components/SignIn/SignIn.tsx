@@ -15,6 +15,7 @@ import {
   ParagraphAfterBtnUp,
   ParagraphSignIn,
   TitleSignIn,
+  StatisticsWrapper,
 } from './SignIn.styled';
 import { InputPrimary } from '../InputPrimary';
 import { AuthImg } from '../Welcome/WelcomeImg';
@@ -24,6 +25,8 @@ import { SignInArgs } from '../../services/types';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux';
 import { loginUser } from '../../redux/auth';
+
+import { Statistics } from '../Statistics';
 
 const SignInForm = () => {
   const { isLoading } = useAuth();
@@ -92,6 +95,9 @@ const SignInForm = () => {
         </FormContainer>
       </BlockSignUp>
       <AuthImg />
+      <StatisticsWrapper>
+        <Statistics />
+      </StatisticsWrapper>
     </ContainerSignUp>
   );
 };
