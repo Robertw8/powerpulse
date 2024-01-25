@@ -12,6 +12,7 @@ import { ProductsItem } from '../ProductsItem';
 
 
 
+
 const ProductsList: React.FC = () => {
 
   const products= useSelector(selectProducts);
@@ -32,7 +33,7 @@ const ProductsList: React.FC = () => {
   return (
 
      
-      <List  >
+      <List   className='scrollbar-inner ' >
           <DesktopTitleWrap>
   <DesktopTitle><p>Title</p></DesktopTitle>
   <DesktopCategory><p>Category</p></DesktopCategory>

@@ -48,7 +48,7 @@ export const LinkLogo = styled(Link)`
 export const NavWrap = styled.nav`
   margin-right: 32px;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     display: none;
   }
 `;

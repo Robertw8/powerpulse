@@ -22,7 +22,7 @@ import {
 } from './ProductsItem.styled';
 import { deleteDiaryProduct } from '../../../redux/diary';
 import { useDispatch } from 'react-redux';
-// import { Popconfirm, Button } from 'antd';
+import { ConfigProvider,Popover, Popconfirm} from 'antd';
 
 interface ProductsItemProps {
   product: Products;
@@ -42,6 +42,15 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
     dispatch(deleteDiaryProduct(id));
   };
   return (
+    <ConfigProvider
+    theme={{
+      components: {
+        Popover: {
+         colorText:'#EFEDE8',
+        },
+       
+      },
+    }}>
 
     <Product>
      
@@ -49,15 +58,19 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
         {' '}
         <Row>
           <TitleCol>Title</TitleCol>
+          <Popover placement="topLeft" content={product.title}>
           <ValueColTitle>
             <p >{ucFirst(product.title)}</p>
           </ValueColTitle>
+          </Popover>
         </Row>
         <Row>
           <TitleCol>Category</TitleCol>
+          <Popover placement="topLeft" content={product.category}>
           <ValueCol>
             <p>{ucFirst(product.category)}</p>
           </ValueCol>
+          </Popover>
         </Row>
       </TopRow>
 <BottomRow >
@@ -79,25 +92,26 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
             {product.recommend ? 'Yes' : 'No'}
           </Status>
         </MiniValueCol>
-        <IconWrap onClick={handleProductDelete}>
-          {/* <Popconfirm
-            title="Delete an exercise"
-            description="Are you sure to delete this exercise?"
-            
+        <IconWrap >
+        <Popconfirm
+            title="Delete a product"
+            description="Are you sure to delete this product?"
+            onConfirm={handleProductDelete}
           >
-            <Button type="text" > */}
+   
               <Icon 
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
                 iconHeight={{ mobile: '20px', tablet: '20px' }}
                 stroke="#EF8964"
               />
-            {/* </Button>
-          </Popconfirm> */}
+         
+          </Popconfirm> 
         </IconWrap>
       </MobileRow>
       </BottomRow>
     </Product>
+    </ConfigProvider>
   );
 };
 
