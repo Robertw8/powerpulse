@@ -3,14 +3,14 @@ type OptionalString = string | undefined;
 interface User {
   email: OptionalString;
   name: OptionalString;
-  dailyCalories: OptionalString;
-  dailyActivity: OptionalString;
+  dailyCalories: number;
+  dailyActivity: number;
   settings: {
-    height: OptionalString;
-    currentWeight: OptionalString;
-    desiredWeight: OptionalString;
+    height: number;
+    currentWeight: number;
+    desiredWeight: number;
     birthday: string;
-    blood: OptionalString;
+    blood: number;
     sex: OptionalString;
     levelActivity: OptionalString;
   };

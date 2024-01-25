@@ -7,7 +7,7 @@ interface InitialState {
   sportsTime: number;
   isLoading: boolean;
   error: string;
-  selectedDate:string
+  selectedDate: string;
 }
 
 interface Products {
@@ -38,5 +38,6 @@ interface Exercise {
   target: string;
   time: number;
   _id: string;
+  burnedCalories: number; // ????????????????????????????
 }
 export type { InitialState, Products, Exercises, Exercise };

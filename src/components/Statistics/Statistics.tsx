@@ -6,7 +6,6 @@ import {
   UsergroupAddOutlined,
   DashboardOutlined,
   FireFilled,
-  UserOutlined,
 } from '@ant-design/icons';
 
 import { Icon } from '../Icon';
@@ -89,8 +88,8 @@ const Statistics: React.FC = () => {
             avatar={
               <Icon
                 name="statistics"
-                iconWidth={{ mobile: '30px' }}
-                iconHeight={{ mobile: '30px' }}
+                iconWidth={{ mobile: '30px', tablet: '30px' }}
+                iconHeight={{ mobile: '30px', tablet: '30px' }}
               />
             }
             title={totalTrainingUsers + ' workouts'}

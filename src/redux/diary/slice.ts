@@ -5,7 +5,6 @@ import {
   deleteDiaryProduct,
   addDiaryExercise,
   deleteDiaryExercise,
-
 } from '.';
 
 import { Exercise, InitialState } from './types';
@@ -21,7 +20,7 @@ const initialState: InitialState = {
   sportsTime: 0,
   isLoading: false,
   error: '',
-  selectedDate:dayjs().format()
+  selectedDate: dayjs().format(),
 };
 
 const slice = createSlice({
@@ -30,17 +29,15 @@ const slice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-    .addCase(setSelectedDate.pending, state => {
-      state.isLoading = true;
-    })
-    .addCase(setSelectedDate.fulfilled, (state,{payload}) => {
-
-      state.selectedDate = payload;
-      state.isLoading = false;
-    })
-      .addCase(getDiary.pending, (state )=> {
-        state.isLoading=true
-     
+      .addCase(setSelectedDate.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(setSelectedDate.fulfilled, (state, { payload }) => {
+        state.selectedDate = payload as string;
+        state.isLoading = false;
+      })
+      .addCase(getDiary.pending, state => {
+        state.isLoading = true;
       })
       .addCase(getDiary.fulfilled, (state, { payload }) => {
         state.products = payload.productsResult.products;
@@ -48,7 +45,7 @@ const slice = createSlice({
         state.caloriesRemaining = payload.productsResult.caloriesRemainingTotal;
         state.exercises = payload.exercisesResult.exercises as Exercise[];
         state.caloriesBurned = payload.exercisesResult.caloriesBurned;
-        state.sportsTime=payload.exercisesResult.sportsRemaining;
+        state.sportsTime = payload.exercisesResult.sportsRemaining;
         state.isLoading = false;
         state.error = '';
       })

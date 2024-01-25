@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../redux/rootReducer';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../redux';
 import {
@@ -9,7 +8,7 @@ import {
   selectExercises,
   selectProducts,
   selectSportsTime,
-  selectCaloriesRemaining
+  selectCaloriesRemaining,
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
@@ -22,20 +21,18 @@ import {
 import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
-
-
+import { useAuth } from '../../hooks';
 
 const Diary = () => {
-  const userData = useSelector((state: RootState) => state.auth.user);
-  const caloriesBurned=useSelector(selectCaloriesBurned)
-const caloriesConsumed=useSelector(selectCaloriesConsumed)
-const diaryExercises=useSelector(selectExercises)
-const diaryProducts=useSelector(selectProducts)
-const sportsRemaining=useSelector(selectSportsTime)
-const caloriesRemaining=useSelector(selectCaloriesRemaining)
-const caloriesComplete=caloriesRemaining<userData.dailyCalories
-const sportsComplete=sportsRemaining>userData.dailyActivity
-
+  const { user } = useAuth();
+  const caloriesBurned = useSelector(selectCaloriesBurned);
+  const caloriesConsumed = useSelector(selectCaloriesConsumed);
+  const diaryExercises = useSelector(selectExercises);
+  const diaryProducts = useSelector(selectProducts);
+  const sportsRemaining = useSelector(selectSportsTime);
+  const caloriesRemaining = useSelector(selectCaloriesRemaining);
+  const caloriesComplete = caloriesRemaining < user.dailyCalories;
+  const sportsComplete = sportsRemaining > user.dailyActivity;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -45,12 +42,10 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
 
   return (
     <>
-    
       <MainDiaryWrap>
         <DesktopWrap>
           <BlockWrap>
             <DailyStatusBlock
-            
               text={'Daily calorie intake'}
               backgroundColor="#E6533C"
               textColor="rgba(239, 237, 232, 0.80)"
@@ -62,10 +57,9 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value={userData.dailyCalories || 0}
+              value={user.dailyCalories || 0}
             ></DailyStatusBlock>
-            <DailyStatusBlock 
-            
+            <DailyStatusBlock
               text={'Daily physical activity'}
               backgroundColor="#E6533C"
               borderColor={'rgba(239, 237, 232, 0.20)'}
@@ -78,10 +72,10 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
                 />
               }
               whiteSpace="none"
-              value={(userData.dailyActivity || 0) + ' min'}
+              value={(user.dailyActivity || 0) + ' min'}
             ></DailyStatusBlock>
             <DailyStatusBlock
-            borderColor={'rgba(239, 237, 232, 0.20)'}
+              borderColor={'rgba(239, 237, 232, 0.20)'}
               text={'Сalories consumed'}
               children={
                 <Icon
@@ -93,7 +87,7 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
               value={caloriesConsumed}
             ></DailyStatusBlock>
             <DailyStatusBlock
-            borderColor={'rgba(239, 237, 232, 0.20)'}
+              borderColor={'rgba(239, 237, 232, 0.20)'}
               text={'Сalories burned'}
               children={
                 <Icon
@@ -105,7 +99,7 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
               value={caloriesBurned}
             ></DailyStatusBlock>
             <DailyStatusBlock
-        borderColor={caloriesComplete?'#3CBF61':'#E9101D'}
+              borderColor={caloriesComplete ? '#3CBF61' : '#E9101D'}
               text={'Сalories remaining'}
               children={
                 <Icon
@@ -117,8 +111,7 @@ const sportsComplete=sportsRemaining>userData.dailyActivity
               value={caloriesRemaining}
             ></DailyStatusBlock>
             <DailyStatusBlock
-             borderColor={sportsComplete?'#3CBF61':'#E9101D'}
-  
+              borderColor={sportsComplete ? '#3CBF61' : '#E9101D'}
               text={'Sports remaining'}
               children={
                 <Icon
