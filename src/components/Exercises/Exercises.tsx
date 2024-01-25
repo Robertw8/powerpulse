@@ -22,6 +22,7 @@ const Exercises: React.FC = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
+    dispatch(setFilters("bodyPart", filters.category))
     if (location.pathname !== '/exercises' &&
       location.pathname !== '/exercises/bodyPart' &&
       location.pathname !== '/exercises/muscles' &&
@@ -30,15 +31,10 @@ const Exercises: React.FC = () => {
     } else {
       setBackground(false)
     }
-        
-    dispatch(setFilters(filters.filter ? filters.filter : 'bodyPart', ""))
+
     
     if (location.pathname === `/exercises`)
       navigate("/exercises/bodyPart");
-
-      return () => {
-      dispatch(setFilters("bodyPart",""))
-    };
 
   }, [dispatch, filters.category, filters.filter, location.pathname, navigate])
 
