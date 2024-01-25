@@ -6,6 +6,7 @@ const TitleWelcomePage = styled.h1`
   width: 335px;
   height: 120px;
   font-size: 38px;
+
   margin-top: 90px;
 
   @media screen and (min-width: 769px) {
@@ -16,7 +17,7 @@ const TitleWelcomePage = styled.h1`
     margin-top: 140px;
   }
 
-  @media screen and (min-width: 1140px) {
+  @media screen and (min-width: 1440px) {
   }
 `;
 
@@ -46,10 +47,10 @@ const ContainerWelcomePage = styled.div`
 
 const ImgWelcomePage = styled.img`
   width: 350px;
-  height: 800px;
+  height: 755px;
   position: absolute;
   top: 215px;
-  left: 0px;
+  left: 5px;
   z-index: -1;
   overflow-x: hidden !important;
 
@@ -63,7 +64,7 @@ const ImgWelcomePage = styled.img`
     overflow-x: hidden;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: 670px;
     height: auto;
     position: absolute;
@@ -86,14 +87,14 @@ const StatisticsWrapper = styled.div`
     left: 0px;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     position: absolute;
     /* top: 40%;
     left: 1150px;
     scale: 1.2; */
 
     top: 35%;
-    right: -6%;
+    right: -78%;
     scale: 0.95;
   }
 `;

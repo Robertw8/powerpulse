@@ -13,10 +13,10 @@ export const WelcomeImg: React.FC = () => {
       <picture>
         <source media="(max-width: 768px)" srcSet={ImgForWelcomePageMob} />
         <source
-          media="((min-width: 769px) and (max-width: 1440px))"
+          media="((min-width: 769px) and (max-width: 1439px))"
           srcSet={imgForWelcomePageTablet}
         />
-        <source media="(min-width: 1441px)" srcSet={imgForWelcomePage} />
+        <source media="(min-width: 1440px)" srcSet={imgForWelcomePage} />
         <ImgWelcomePage
           alt="Example of a lunge forward on the leg"
           loading="lazy"
@@ -34,10 +34,10 @@ export const AuthImg: React.FC = () => {
     <picture>
       <source media="(max-width: 768px)" srcSet={imgAuthPageMob} />
       <source
-        media="((min-width: 769px) and (max-width: 1440px))"
+        media="((min-width: 769px) and (max-width: 1439px))"
         srcSet={imgForWelcomePageTablet}
       />
-      <source media="(min-width: 1441px)" srcSet={imgForWelcomePage} />
+      <source media="(min-width: 1440px)" srcSet={imgForWelcomePage} />
 
       <ImgSignUp alt="Example of a lunge forward on the leg" loading="lazy" />
     </picture>

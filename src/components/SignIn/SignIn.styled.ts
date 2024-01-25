@@ -15,7 +15,7 @@ margin-top: 140px;
 margin-bottom: 16px;
  }
 
-   @media screen and (min-width: 1441px) {
+   @media screen and (min-width: 1440px) {
  margin-top: 151px;
 
   }
