@@ -98,7 +98,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
             description="Are you sure to delete this product?"
             onConfirm={handleProductDelete}
           >
-   
+         <div style={{cursor:'pointer'}}>
               <Icon 
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
@@ -106,6 +106,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
                 stroke="#EF8964"
               />
          
+         </div>
           </Popconfirm> 
         </IconWrap>
       </MobileRow>

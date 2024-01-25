@@ -8,12 +8,14 @@ const ArrowControl=styled.div`
 display:flex;
 gap:8px;
 margin-left:20px;
-@media screen and (min-width: 768px) {margin-left:40px; }`
+@media screen and (min-width: 768px) {margin-left:40px; 
+cursor:pointer;}`
 
 const ReverseIcon=styled.div`
 transform: rotate(180deg);
 width:16px;
-height:16px`
+height:16px
+`
 
 const SelectedDate=styled.div`
 color: #EFEDE8;

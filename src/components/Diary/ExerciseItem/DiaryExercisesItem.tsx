@@ -98,14 +98,14 @@ const DiaryExercisesItem: React.FC<ExerciseItemProps> = ({ exercise, id }) => {
             description="Are you sure to delete this product?"
             onConfirm={handleExerciseDelete}
           >
-         
+         <div style={{cursor:'pointer'}}>
               <Icon
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
                 iconHeight={{ mobile: '20px', tablet: '20px' }}
                 stroke="#EF8964"
               />
-    
+    </div>
           </Popconfirm> 
         </IconWrap>
       </MobileRow>
