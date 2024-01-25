@@ -14,7 +14,7 @@ export const StyledCard = styled(Card)`
     align-items: center;
   }
 
-  width: 270px;
+  width: 275px;
   background-color: #ef8964;
   height: 80px;
   opacity: 0.95;
