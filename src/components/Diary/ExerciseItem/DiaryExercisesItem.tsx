@@ -20,7 +20,7 @@ import {
 } from './DiaryExercisesItem.styled';
 import { deleteDiaryExercise } from '../../../redux/diary';
 import { useDispatch } from 'react-redux';
-// import { Button, Popconfirm } from 'antd';
+import {  ConfigProvider, Popconfirm,Popover} from 'antd';
 const ucFirst=(str)=> {
   if (!str) return str;
 
@@ -37,26 +37,43 @@ const DiaryExercisesItem: React.FC<ExerciseItemProps> = ({ exercise, id }) => {
     dispatch(deleteDiaryExercise(id));
   };
   return (
+    <ConfigProvider
+    theme={{
+      components: {
+        Popover: {
+         colorText:'#EFEDE8',
+        },
+       
+      },
+    }}>
     <ExerciseWrap>
       <TopRow>
         {' '}
         <Row>
           <TitleCol>Body Part</TitleCol>
+          <Popover placement="topLeft"  
+          content={exercise.bodyPart}
+          >
           <ValueCol>
             <p>{ucFirst(exercise.bodyPart)}</p>
           </ValueCol>
+          </Popover>
         </Row>
         <Row>
           <TitleCol>Equipment</TitleCol>
+          <Popover placement="topLeft" content={exercise.equipment} >
           <ValueColTitle>
             <p>{ucFirst(exercise.equipment)}</p>
           </ValueColTitle>
+          </Popover>
         </Row>
         <Row>
           <TitleCol>Name</TitleCol>
+          <Popover placement="topLeft" content={exercise.name} >
           <ValueColName>
             <p style={{width:'fit-content',height:"18px"}}>{ucFirst(exercise.name)}</p>
           </ValueColName>
+          </Popover>
         </Row>
       </TopRow>
       <BottomRow >
@@ -75,25 +92,26 @@ const DiaryExercisesItem: React.FC<ExerciseItemProps> = ({ exercise, id }) => {
           <p>{exercise.calories ||0}</p>
         </MiniValueCol>
         <MiniValueCol>{exercise.time}</MiniValueCol>
-        <IconWrap  className='icon-delete' onClick={handleExerciseDelete}>
-          {/* <Popconfirm
+        <IconWrap  className='icon-delete' >
+           <Popconfirm
             title="Delete a product"
             description="Are you sure to delete this product?"
             onConfirm={handleExerciseDelete}
           >
-            <Button type="text"> */}
+         
               <Icon
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
                 iconHeight={{ mobile: '20px', tablet: '20px' }}
                 stroke="#EF8964"
               />
-            {/* </Button>
-          </Popconfirm> */}
+    
+          </Popconfirm> 
         </IconWrap>
       </MobileRow>
       </BottomRow>
     </ExerciseWrap>
+    </ConfigProvider>
   );
 };
 

@@ -7,11 +7,16 @@ const BlockWrap = styled.ul`
   justify-content: center;
   gap: 13px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
     justify-content: start;
     margin-bottom: 32px;
    
-  
+  li:nth-of-type(1){order:1};
+li:nth-of-type(2){order:4};
+li:nth-of-type(5){order:3};
+li:nth-of-type(3){order:2};
+li:nth-of-type(4){order:5};
+li:nth-of-type(6){order:6};
   }
 
   @media screen and (min-width: 1440px) {

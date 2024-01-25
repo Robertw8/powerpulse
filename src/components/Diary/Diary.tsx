@@ -32,10 +32,13 @@ const Diary = () => {
   const sportsRemaining = useSelector(selectSportsTime);
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
  
-  // const sportsComplete = sportsRemaining > user.dailyActivity;
+const convertTime=(number)=>{
+  if (Math.sign(number)===1){return -number}
+return ('+'+Math.abs(number))
+}
+
   const resultSports=Math.sign(sportsRemaining)===-1
   const resultCalories=Math.sign(caloriesRemaining)===1
-console.log(resultCalories);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -124,7 +127,7 @@ console.log(resultCalories);
                   fill="#EF8964"
                 />
               }
-              value={sportsRemaining}
+              value={convertTime(sportsRemaining)}
             ></DailyStatusBlock>
           </BlockWrap>
           <TextWrap>

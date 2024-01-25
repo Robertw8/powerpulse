@@ -28,8 +28,9 @@ const ValueCol = styled.li`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   margin-bottom: 16px;
+  overflow-x: hidden;
   @media screen and (min-width: 768px) {
-    overflow-x: auto;
+
     margin-bottom:0px;
     width:128px;
     font-size: 16px;
@@ -46,8 +47,9 @@ padding: 10px 0 10px 14px;
 border-radius: 12px;
 border: 1px solid rgba(239, 237, 232, 0.3);
 margin-bottom: 16px;
+overflow-x: hidden;
 @media screen and (min-width: 768px) {
-  overflow-x: auto;
+
   width:204px;
   max-height:40px;
   margin-bottom:0px;
