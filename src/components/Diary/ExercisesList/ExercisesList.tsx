@@ -9,10 +9,6 @@ import { Loader } from '../..';
 import {selectExercises ,selectIsLoading} from '../../../redux/diary';
 import { DiaryExercisesItem } from '../ExerciseItem';
 
-
-
-
-
 const ExercisesList: React.FC = () => {
 
   const exercises= useSelector(selectExercises);
@@ -32,7 +28,7 @@ const ExercisesList: React.FC = () => {
 
   return (
 
-      <List  >
+      <List className='scrollbar-inner' >
             <DesktopTitleWrap>
   <DesktopTitle><p>Body Part</p></DesktopTitle>
   <DesktopCategory><p>Equipment</p></DesktopCategory>

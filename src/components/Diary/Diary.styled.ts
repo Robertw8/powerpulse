@@ -17,7 +17,6 @@ li:nth-of-type(5){order:3};
 li:nth-of-type(3){order:2};
 li:nth-of-type(4){order:5};
 li:nth-of-type(6){order:6};
-
   }
 
   @media screen and (min-width: 1440px) {
@@ -41,7 +40,6 @@ const TextWrap = styled.div`
   display: flex;
   gap: 8px;
   justify-content: center;
-
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     order: 3;
@@ -65,11 +63,9 @@ const Text = styled.p`
 const MainDiaryWrap = styled.div`
   display: flex;
   flex-direction: column;
-
   @media screen and (min-width: 768px) {
     flex-direction: column-reverse;
   }
-
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;

@@ -1,6 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
 
-// import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
 import {
   GrayBlockTitle,
   RedBlockTitle,

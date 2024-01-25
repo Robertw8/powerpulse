@@ -28,7 +28,8 @@ const ValueCol = styled.li`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   margin-bottom: 16px;
-  overflow-x: hidden;
+  text-overflow: ellipsis;
+   overflow:hidden;
   @media screen and (min-width: 768px) {
 
     margin-bottom:0px;
@@ -47,7 +48,8 @@ padding: 10px 0 10px 14px;
 border-radius: 12px;
 border: 1px solid rgba(239, 237, 232, 0.3);
 margin-bottom: 16px;
-overflow-x: hidden;
+text-overflow: ellipsis;
+overflow:hidden;
 @media screen and (min-width: 768px) {
 
   width:204px;
@@ -86,6 +88,7 @@ gap:8px;
   }
   &:nth-of-type(1){display:none;}
 `;
+
 const MobileTitleRow=styled.ul`
 display: flex;
 gap: 16px;
@@ -96,6 +99,7 @@ display:none:
 
  
 }`
+
 const MiniValueCol = styled(ValueCol)`
   margin-bottom: 0px;
   width: 80px;
@@ -107,6 +111,7 @@ const MiniValueCol = styled(ValueCol)`
     
     }
 `;
+
 const MiniTitleCol = styled(TitleCol)`
   width: 80px;
 
@@ -116,11 +121,14 @@ const DesktopTitleWrap=styled.ul`
 display:flex:
 `
 const DesktopTitle=styled.li``
+
 const IconWrap = styled.li`
   width: 20px;
   height: 20px;
 `;
+
 const TitlesRowDesktop= styled.ul``
+
 const Status = styled.p`
   display: flex;
   gap: 8px;
@@ -136,6 +144,8 @@ const StatusRound = styled.span<{ recommended: boolean }>`
     recommended ? '#419B09' : '#E9101D'};
   border-radius: 50%;
 `;
+
+
 export {
   Product,
   TitleCol,

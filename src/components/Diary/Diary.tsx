@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { AppDispatch } from '../../redux';
+import { useAuth } from '../../hooks';
 import {
   getDiary,
   selectCaloriesBurned,
@@ -21,7 +22,7 @@ import {
 import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
-import { useAuth } from '../../hooks';
+
 
 const Diary = () => {
   const { user } = useAuth();
@@ -33,7 +34,7 @@ const Diary = () => {
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
  
 const convertTime=(number)=>{
-  if (Math.sign(number)===1){return -number}
+  if (Math.sign(number)===1){return (number+' min')}
 return ('+ '+Math.abs(number)+' min')
 }
 
