@@ -6,7 +6,7 @@ interface FormValues {
   currentWeight: string | number;
   desiredWeight: string | number;
   birthday: string;
-  blood: 1 | 2 | 3 | 4 | string;
+  blood: 1 | 2 | 3 | 4 | number;
   sex: 'male' | 'female' | string;
   levelActivity: 1 | 2 | 3 | 4 | 5 | string;
 }

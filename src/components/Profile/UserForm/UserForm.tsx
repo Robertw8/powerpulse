@@ -19,7 +19,7 @@ const UserForm: React.FC = () => {
     currentWeight: user?.settings?.currentWeight || 0,
     desiredWeight: user?.settings?.desiredWeight || 0,
     birthday: user?.settings?.birthday.split('T')[0] || '1990-01-01',
-    blood: user?.settings?.blood || '',
+    blood: user?.settings?.blood || 0,
     sex: user?.settings?.sex || '',
     levelActivity: user?.settings?.levelActivity || '',
   };
