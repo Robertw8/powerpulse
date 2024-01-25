@@ -10,6 +10,8 @@ import {
 
 import { Title } from '../PageTitle/PageTitle.styled.ts';
 
+import { StatisticsWrapper } from '../Welcome/Welcome.styled';
+
 const FormContainer = styled.form`
   width: 320px;
   display: flex;
@@ -96,7 +98,9 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input {
     &::placeholder {
       color: #efede84d !important;
+
       background-color: transparent !important;
+
     }
   }
 
@@ -131,7 +135,7 @@ const ImgSignUp = styled.img`
   top: 180px;
   z-index: -1;
   @media screen and (min-width: 769px) {
-   width: 670px;
+    width: 670px;
     height: auto;
     position: absolute;
     top: -30px;
@@ -198,6 +202,33 @@ const ColorErrorInput = styled.div`
   }
 `;
 
+const StatisticsWrapper = styled.div`
+  position: absolute;
+
+  @media screen and (max-width: 768px) {
+    bottom: -83%;
+
+    leftt: 0%;
+
+    transform: translate(-20%) scale(0.6);
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1440px) {
+    top: 110%;
+    left: 0px;
+  }
+
+  @media screen and (min-width: 1441px) {
+    /* top: 40%;
+    left: 1150px;
+    scale: 1.2; */
+
+    top: 35%;
+    right: -6%;
+    scale: 0.95;
+  }
+`;
+
 export {
   ColorErrorInput,
   InputPassword,
@@ -213,4 +244,5 @@ export {
   FormContainer,
   TitleSignUp,
   WidthInput,
+  StatisticsWrapper,
 };

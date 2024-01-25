@@ -17,6 +17,7 @@ import {
   InputAuth,
   InputPassword,
   ColorErrorInput,
+  StatisticsWrapper,
 } from './SignUp.styled';
 
 import SignUpSchema from './SignUpSchema';
@@ -25,6 +26,8 @@ import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
 import { AuthImg } from '../Welcome/WelcomeImg';
 import { SignUpArgs } from '../../services/types';
+
+import { Statistics } from '../Statistics';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -114,6 +117,9 @@ const SignUpForm = () => {
         </ParagraphAfterBtn>
       </BlockSignUp>
       <AuthImg />
+      <StatisticsWrapper>
+        <Statistics />
+      </StatisticsWrapper>
     </ContainerSignUp>
   );
 };
