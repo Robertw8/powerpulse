@@ -3,29 +3,37 @@ import React from 'react';
 import { Icon } from '../../Icon';
 import { Products } from '../../../redux/diary/types';
 import { AppDispatch } from '../../../redux';
-import {
-  Status,
-  StatusRound,
-} from '../../Products/ProductsItem/ProductsItem.styled';
+
 import {
   TitleCol,
   ValueCol,
+  ValueColTitle,
   Row,
   MobileRow,
+  MobileTitleRow,
   MiniValueCol,
   IconWrap,
   MiniTitleCol,
   Product,
   TopRow,
+  BottomRow,
+  Status,
+  StatusRound,
 } from './ProductsItem.styled';
 import { deleteDiaryProduct } from '../../../redux/diary';
 import { useDispatch } from 'react-redux';
-import { Button, Popconfirm } from 'antd';
+// import { Popconfirm, Button } from 'antd';
 
 interface ProductsItemProps {
   product: Products;
   id: string;
 }
+const ucFirst=(str)=> {
+  if (!str) return str;
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
 
 const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,28 +42,30 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
     dispatch(deleteDiaryProduct(id));
   };
   return (
+
     <Product>
+     
       <TopRow>
         {' '}
         <Row>
           <TitleCol>Title</TitleCol>
-          <ValueCol>
-            <p>{product.title}</p>
-          </ValueCol>
+          <ValueColTitle>
+            <p >{ucFirst(product.title)}</p>
+          </ValueColTitle>
         </Row>
         <Row>
           <TitleCol>Category</TitleCol>
           <ValueCol>
-            <p>{product.category}</p>
+            <p>{ucFirst(product.category)}</p>
           </ValueCol>
         </Row>
       </TopRow>
-
-      <MobileRow>
+<BottomRow >
+      <MobileTitleRow>
         <MiniTitleCol>Calories</MiniTitleCol>
         <MiniTitleCol>Weight</MiniTitleCol>
         <MiniTitleCol>Recommend</MiniTitleCol>
-      </MobileRow>
+      </MobileTitleRow>
       <MobileRow>
         <MiniValueCol>
           <p>{product.calories}</p>
@@ -69,22 +79,24 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
             {product.recommend ? 'Yes' : 'No'}
           </Status>
         </MiniValueCol>
-        <IconWrap>
-          <Popconfirm
+        <IconWrap onClick={handleProductDelete}>
+          {/* <Popconfirm
             title="Delete an exercise"
             description="Are you sure to delete this exercise?"
-            onConfirm={handleProductDelete}
+            
           >
-            <Button type="text">
-              <Icon
+            <Button type="text" > */}
+              <Icon 
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
+                iconHeight={{ mobile: '20px', tablet: '20px' }}
                 stroke="#EF8964"
               />
-            </Button>
-          </Popconfirm>
+            {/* </Button>
+          </Popconfirm> */}
         </IconWrap>
       </MobileRow>
+      </BottomRow>
     </Product>
   );
 };

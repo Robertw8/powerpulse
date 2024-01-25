@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import {  useSelector } from 'react-redux';
-import { List } from './ProductsList.styled';
+import { List,
+  DesktopTitleWrap,
+  DesktopTitle,
+  DesktopCategory,
+  DesktopStyled
+} from './ProductsList.styled';
 import { Loader } from '../..';
 import {selectProducts ,selectIsLoading} from '../../../redux/diary';
 import { ProductsItem } from '../ProductsItem';
@@ -27,7 +32,14 @@ const ProductsList: React.FC = () => {
   return (
 
      
-      <List className="scrollbar-outer" >
+      <List  >
+          <DesktopTitleWrap>
+  <DesktopTitle><p>Title</p></DesktopTitle>
+  <DesktopCategory><p>Category</p></DesktopCategory>
+  <  DesktopStyled><p>Calories</p></  DesktopStyled>
+  <  DesktopStyled><p>Weight</p></  DesktopStyled>
+  <  DesktopStyled><p>Recommended</p></  DesktopStyled>
+  </DesktopTitleWrap>
         {products.map((product,index) => (
           <ProductsItem
           product={product} key={index} id={product._id} />

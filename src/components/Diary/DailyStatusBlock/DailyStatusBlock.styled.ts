@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
-const StyledStatusBlock=styled.li<{backgroundColor?: string; }>`
+const StyledStatusBlock=styled.li<{backgroundColor?: string,borderColor?:string }>`
 width: 157px;
 height: 96px;
 padding: 14px;
 border-radius: 12px;
-border: 1px solid rgba(239, 237, 232, 0.20);
+border: 1px solid ${({borderColor})=>borderColor} ;
 background:${({backgroundColor})=>backgroundColor ||'rgba(239, 237, 232, 0.05);'} ;
 display: flex;
 justify-content: space-between;

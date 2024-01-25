@@ -64,7 +64,7 @@ const MainDiaryWrap = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     flex-direction: column-reverse;
   }
 

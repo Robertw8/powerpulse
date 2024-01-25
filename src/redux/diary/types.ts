@@ -7,6 +7,7 @@ interface InitialState {
   sportsTime: number;
   isLoading: boolean;
   error: string;
+  selectedDate:string
 }
 
 interface Products {
@@ -31,7 +32,7 @@ interface Exercises {
 }
 interface Exercise {
   bodyPart: string;
-  burnedCalories: number;
+  calories: number;
   equipment: string;
   name: string;
   target: string;

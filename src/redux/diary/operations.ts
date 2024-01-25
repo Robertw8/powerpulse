@@ -7,7 +7,7 @@ const getDiary = operationWrapper('diary/getDiary', async date => {
     url: 'diary',
     config: { params: { date } },
   });
-
+console.log(response.data);
   return response.data;
 });
 
@@ -17,6 +17,7 @@ interface AddDiaryProduct {
   amount: number;
   calories: number;
 }
+const setSelectedDate=operationWrapper('diary/setSelectedDate',async(date)=>date )
 
 const addDiaryProduct = operationWrapper(
   'diary/addDiaryProduct',
@@ -110,4 +111,5 @@ export {
   deleteDiaryProduct,
   addDiaryExercise,
   deleteDiaryExercise,
+  setSelectedDate
 };

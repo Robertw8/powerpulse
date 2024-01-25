@@ -5,20 +5,27 @@ import { Exercise } from '../../../redux/diary/types';
 import { AppDispatch } from '../../../redux';
 
 import {
+  ExerciseWrap,
   TitleCol,
   ValueCol,
+  ValueColTitle,ValueColName,
   Row,
   MobileRow,
+  MobileTitleRow,
   MiniValueCol,
   IconWrap,
   MiniTitleCol,
-  ExerciseWrap,
   TopRow,
+  BottomRow
 } from './DiaryExercisesItem.styled';
 import { deleteDiaryExercise } from '../../../redux/diary';
 import { useDispatch } from 'react-redux';
-import { Button, Popconfirm } from 'antd';
+// import { Button, Popconfirm } from 'antd';
+const ucFirst=(str)=> {
+  if (!str) return str;
 
+  return str[0].toUpperCase() + str.slice(1);
+}
 interface ExerciseItemProps {
   exercise: Exercise;
   id: string;
@@ -36,54 +43,56 @@ const DiaryExercisesItem: React.FC<ExerciseItemProps> = ({ exercise, id }) => {
         <Row>
           <TitleCol>Body Part</TitleCol>
           <ValueCol>
-            <p>{exercise.bodyPart}</p>
+            <p>{ucFirst(exercise.bodyPart)}</p>
           </ValueCol>
         </Row>
         <Row>
           <TitleCol>Equipment</TitleCol>
-          <ValueCol>
-            <p>{exercise.equipment}</p>
-          </ValueCol>
+          <ValueColTitle>
+            <p>{ucFirst(exercise.equipment)}</p>
+          </ValueColTitle>
         </Row>
         <Row>
           <TitleCol>Name</TitleCol>
-          <ValueCol>
-            <p>{exercise.name}</p>
-          </ValueCol>
+          <ValueColName>
+            <p style={{width:'fit-content',height:"18px"}}>{ucFirst(exercise.name)}</p>
+          </ValueColName>
         </Row>
       </TopRow>
-
-      <MobileRow>
+      <BottomRow >
+      <MobileTitleRow>
         <MiniTitleCol>Target</MiniTitleCol>
         <MiniTitleCol style={{ fontSize: '11px' }}>
           Burned Calories
         </MiniTitleCol>
         <MiniTitleCol>Time</MiniTitleCol>
-      </MobileRow>
+      </MobileTitleRow>
       <MobileRow>
         <MiniValueCol>
           <p>{exercise.target}</p>
         </MiniValueCol>
         <MiniValueCol>
-          <p>{exercise.burnedCalories}</p>
+          <p>{exercise.calories ||0}</p>
         </MiniValueCol>
         <MiniValueCol>{exercise.time}</MiniValueCol>
-        <IconWrap>
-          <Popconfirm
+        <IconWrap  className='icon-delete' onClick={handleExerciseDelete}>
+          {/* <Popconfirm
             title="Delete a product"
             description="Are you sure to delete this product?"
             onConfirm={handleExerciseDelete}
           >
-            <Button type="text">
+            <Button type="text"> */}
               <Icon
                 name="delete"
                 iconWidth={{ mobile: '20px', tablet: '20px' }}
+                iconHeight={{ mobile: '20px', tablet: '20px' }}
                 stroke="#EF8964"
               />
-            </Button>
-          </Popconfirm>
+            {/* </Button>
+          </Popconfirm> */}
         </IconWrap>
       </MobileRow>
+      </BottomRow>
     </ExerciseWrap>
   );
 };
