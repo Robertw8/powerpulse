@@ -31,13 +31,25 @@ const Statistics: React.FC = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
-  const {
-    totalVideo,
-    totalUsersCalories,
-    totalUsers,
-    totalTrainingHoursUsers,
-    totalTrainingUsers,
-  } = statistics;
+  let totalVideo;
+  let totalUsersCalories;
+  let totalUsers;
+  let totalTrainingHoursUsers;
+  let totalTrainingUsers;
+
+  if (!statistics.totalVideo) {
+    totalVideo = 'Data is coming';
+    totalUsersCalories = 'Data is coming';
+    totalUsers = 'Data is coming';
+    totalTrainingHoursUsers = 'Data is coming';
+    totalTrainingUsers = 'Data is coming';
+  } else {
+    totalVideo = statistics.totalVideo;
+    totalUsersCalories = statistics.totalUsersCalories + ' cal';
+    totalUsers = statistics.totalUsers + ' users';
+    totalTrainingHoursUsers = statistics.totalTrainingHoursUsers + ' hours';
+    totalTrainingUsers = statistics.totalTrainingUsers + ' workouts';
+  }
 
   useEffect(() => {
     dispatch(getStatistics({}));
@@ -65,21 +77,21 @@ const Statistics: React.FC = () => {
         <StyledCard bordered={false} size="default">
           <Meta
             avatar={<FireFilled style={iconStyle} />}
-            title={totalUsersCalories + ' cal'}
+            title={totalUsersCalories}
             description="Calories burned"
           />
         </StyledCard>
         <StyledCard bordered={false} size="default">
           <Meta
             avatar={<UsergroupAddOutlined style={iconStyle} />}
-            title={totalUsers + ' users'}
+            title={totalUsers}
             description="Registered users"
           />
         </StyledCard>
         <StyledCard bordered={false} size="default">
           <Meta
             avatar={<DashboardOutlined style={iconStyle} />}
-            title={totalTrainingHoursUsers + ' hours'}
+            title={totalTrainingHoursUsers}
             description="Total training time"
           />
         </StyledCard>
@@ -92,7 +104,7 @@ const Statistics: React.FC = () => {
                 iconHeight={{ mobile: '30px', tablet: '30px' }}
               />
             }
-            title={totalTrainingUsers + ' workouts'}
+            title={totalTrainingUsers}
             description="Number of trainings"
           />
         </StyledCard>
