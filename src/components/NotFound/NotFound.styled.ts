@@ -4,7 +4,7 @@ import imgForWelcomePage from '../../assets/images/ImgForWelcomePage/imgForWelco
 import imgForWelcomePage2 from '../../assets/images/ImgForWelcomePage/imgForWelcomePage@2.jpg';
 import imgForWelcomePageTab from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
 import imgForWelcomePageTab2 from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet@2.jpg';
-import imgForWelcomePageMob from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.png';
+import imgForWelcomePageMob from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 import imgForWelcomePageMob2 from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob@2.jpg';
 
 export const Container = styled.div`

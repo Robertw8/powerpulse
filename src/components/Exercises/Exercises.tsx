@@ -8,7 +8,7 @@ import { PageTitle } from '..';
 import { ExercisesWrap, TopWrap, BackgroundImage} from './Exercises.styled';
 import { setFilters } from '../../redux/exercises';
 
-import bg from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
+import bg from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 
 
 export type Category = 'bodyPart' | 'muscles' | 'equipment';

@@ -1,8 +1,8 @@
 import { ImgWelcomePage, StatisticsWrapper } from './Welcome.styled';
 import imgForWelcomePage from '..//../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.png';
+import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 import imgForWelcomePageTablet from '..//../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
-import imgAuthPageMob from '..//../assets/images/ImgForWelcomePage/imgAuthPageMob.png';
+import imgAuthPageMob from '..//../assets/images/ImgForWelcomePage/imgAuthPageMob.webp';
 import { ImgSignUp } from '..//SignUp/SignUp.styled';
 
 import { Statistics } from '../Statistics';

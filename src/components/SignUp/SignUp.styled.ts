@@ -95,6 +95,20 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input {
     &::placeholder {
       color: #efede84d !important;
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus input:-webkit-autofill {
+    -webkit-text-fill-color: #efede8;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
+    background: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 174, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0) 51%,
+      rgba(0, 174, 255, 0.03) 100%
+    );
+  }
     }
   }
 
@@ -129,11 +143,11 @@ const ImgSignUp = styled.img`
   top: 180px;
   z-index: -1;
   @media screen and (min-width: 769px) {
-    width: 100%;
+   width: 670px;
     height: auto;
     position: absolute;
-    top: -80px;
-    left: 60px;
+    top: -30px;
+    left: 95px;
     overflow-x: hidden !important;
   }
   @media screen and (min-width: 1441px) {
