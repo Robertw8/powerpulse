@@ -56,18 +56,14 @@ const StatisticsWrapper = styled.div`
     transform: translate(-20%) scale(0.6);
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1440px) {
+  @media screen and (min-width: 769px) and (max-width: 1439px) {
     top: 110%;
     left: 0px;
   }
 
-  @media screen and (min-width: 1441px) {
-    /* top: 40%;
-    left: 1150px;
-    scale: 1.2; */
-
-    top: 35%;
-    right: -6%;
+  @media screen and (min-width: 1440px) {
+    top: 31.7%;
+    right: -872px;
     scale: 0.95;
   }
 `;
