@@ -41,27 +41,27 @@ const ContainerWelcomePage = styled.div`
 
   @media screen and (min-width: 769px) {
     display: flex;
-    width: 769px;
+    
+
   }
 `;
 
 const ImgWelcomePage = styled.img`
-  width: 350px;
+  width: 335px;
   height: 755px;
   position: absolute;
   top: 215px;
-  left: 5px;
+  left: 0px;
   z-index: -1;
-  overflow-x: hidden !important;
-
-  @media screen and (min-width: 769px) {
-    width: 100%;
+  
+  @media screen and (min-width: 768px) {
+    width: 670px;
     height: auto;
     position: absolute;
     z-index: -100;
     top: 30px;
-    left: 60px;
-    overflow-x: hidden;
+    left: 40px;
+  
   }
 
   @media screen and (min-width: 1440px) {
@@ -94,7 +94,7 @@ const StatisticsWrapper = styled.div`
     scale: 1.2; */
 
     top: 35%;
-    right: -78%;
+    right: -8%;
     scale: 0.95;
   }
 `;

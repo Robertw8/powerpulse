@@ -1,4 +1,4 @@
-import { Container, Welcome } from '../components';
+import {Container, Welcome } from '../components';
 
 const WelcomePage: React.FC = () => {
   return (
