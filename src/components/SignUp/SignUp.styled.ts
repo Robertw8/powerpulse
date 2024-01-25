@@ -10,8 +10,6 @@ import {
 
 import { Title } from '../PageTitle/PageTitle.styled.ts';
 
-import { StatisticsWrapper } from '../Welcome/Welcome.styled';
-
 const FormContainer = styled.form`
   width: 320px;
   display: flex;
@@ -100,7 +98,6 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
       color: #efede84d !important;
 
       background-color: transparent !important;
-
     }
   }
 
@@ -124,7 +121,6 @@ const ContainerSignUp = styled.div`
 
   @media screen and (min-width: 768px) {
     display: flex;
-
   }
 `;
 
@@ -147,7 +143,7 @@ const ImgSignUp = styled.img`
     height: auto;
     position: absolute;
     top: -0px;
-   left: 550px;
+    left: 550px;
   }
 `;
 
