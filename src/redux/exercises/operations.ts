@@ -13,11 +13,6 @@ const getExercises = operationWrapper(
     const response = await apiService({
       method: 'get',
       url: `exercises/${filter}/${category}`,
-      config: {
-        params: {
-          filter,
-        },
-      },
     });
     return response.data;
   }
