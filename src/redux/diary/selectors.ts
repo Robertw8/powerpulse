@@ -11,3 +11,4 @@ export const selectCaloriesRemaining = (state: RootState) =>
 export const selectSportsTime = (state: RootState) => state.diary.sportsTime;
 export const selectIsLoading = (state: RootState) => state.diary.isLoading;
 export const selectError = (state: RootState) => state.diary.error;
+export const selectSelectedDate = (state: RootState) => state.diary.selectedDate;

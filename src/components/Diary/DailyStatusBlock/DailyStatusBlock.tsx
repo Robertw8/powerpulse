@@ -10,10 +10,11 @@ import {
 interface DailyProps {
   text: string;
   backgroundColor?: string;
-  value: number | string;
+  value: number|string;
   textColor?: string;
   whiteSpace?: string;
   children?: React.ReactElement;
+  borderColor?:string
 }
 
 const DailyStatusBlock: React.FC<DailyProps> = ({
@@ -23,9 +24,10 @@ const DailyStatusBlock: React.FC<DailyProps> = ({
   whiteSpace,
   children,
   value,
+  borderColor
 }) => {
   return (
-    <StyledStatusBlock backgroundColor={backgroundColor}>
+    <StyledStatusBlock backgroundColor={backgroundColor} borderColor={borderColor}>
       <IconTextWrap whiteSpace={whiteSpace}>
         {children}
         <TitleBlock textColor={textColor}>{text}</TitleBlock>

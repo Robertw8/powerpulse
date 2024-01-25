@@ -1,22 +1,29 @@
 import styled from '@emotion/styled';
 import { Icon } from '../..';
 const InfoBox = styled.div`
-  width: 100%;
-
   min-height:335px;
   max-height:824px;
-  padding: 13px;
+  padding: 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
+ 
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   @media screen and (min-width: 768px) {
-    width: 100%;
+ 
     height: 240px;
     max-height:none;
-    min-height:none;
+    min-height:240px;
+  }
+  @media screen and (min-width: 1440px) {
+  padding-left:32px;
+  padding-bottom:12px;
+    height: 234px;
+    width:826px;
+    max-height:none;
+    min-height:234px;
   }
 `;
 const TopRow = styled.div`
@@ -45,7 +52,7 @@ const InfoBoxWrap = styled.div`
   flex-direction: column;
   margin-bottom: 64px;
   gap: 40px;
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: 100%;
   }
 `;
@@ -57,7 +64,7 @@ const DiaryWrapper = styled.div`
 `;
 
 const DesktopWrap = styled.div`
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     display: flex;
     flex-direction: column;
     order: 2;

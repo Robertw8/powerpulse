@@ -7,7 +7,9 @@ import {
   selectCaloriesBurned,
   selectCaloriesConsumed,
   selectExercises,
-  selectProducts
+  selectProducts,
+  selectSportsTime,
+  selectCaloriesRemaining
 } from '../../redux/diary';
 import dayjs from 'dayjs';
 import {
@@ -21,21 +23,18 @@ import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
 
-// import { MyCalendar } from './Calendar';
+
 
 const Diary = () => {
   const userData = useSelector((state: RootState) => state.auth.user);
-
-  const caloriesBured=useSelector(selectCaloriesBurned)
+  const caloriesBurned=useSelector(selectCaloriesBurned)
 const caloriesConsumed=useSelector(selectCaloriesConsumed)
-
 const diaryExercises=useSelector(selectExercises)
 const diaryProducts=useSelector(selectProducts)
-
-
-  // const sportsTime = useSelector(selectSportsTime);
-  // const sportsRemaining: number = sportsTime - userData.dailyActivity;
-  // const caloriesRemaining: number = userData.dailyCalories - caloriesConsumed;
+const sportsRemaining=useSelector(selectSportsTime)
+const caloriesRemaining=useSelector(selectCaloriesRemaining)
+const caloriesComplete=caloriesRemaining<userData.dailyCalories
+const sportsComplete=sportsRemaining>userData.dailyActivity
 
 
   const dispatch = useDispatch<AppDispatch>();
@@ -46,14 +45,16 @@ const diaryProducts=useSelector(selectProducts)
 
   return (
     <>
-      {/* <MyCalendar></MyCalendar> */}
+    
       <MainDiaryWrap>
         <DesktopWrap>
           <BlockWrap>
             <DailyStatusBlock
+            
               text={'Daily calorie intake'}
               backgroundColor="#E6533C"
               textColor="rgba(239, 237, 232, 0.80)"
+              borderColor={'rgba(239, 237, 232, 0.20)'}
               children={
                 <Icon
                   name="food"
@@ -63,9 +64,11 @@ const diaryProducts=useSelector(selectProducts)
               }
               value={userData.dailyCalories || 0}
             ></DailyStatusBlock>
-            <DailyStatusBlock
+            <DailyStatusBlock 
+            
               text={'Daily physical activity'}
               backgroundColor="#E6533C"
+              borderColor={'rgba(239, 237, 232, 0.20)'}
               textColor="rgba(239, 237, 232, 0.80)"
               children={
                 <Icon
@@ -78,6 +81,7 @@ const diaryProducts=useSelector(selectProducts)
               value={(userData.dailyActivity || 0) + ' min'}
             ></DailyStatusBlock>
             <DailyStatusBlock
+            borderColor={'rgba(239, 237, 232, 0.20)'}
               text={'Сalories consumed'}
               children={
                 <Icon
@@ -89,6 +93,7 @@ const diaryProducts=useSelector(selectProducts)
               value={caloriesConsumed}
             ></DailyStatusBlock>
             <DailyStatusBlock
+            borderColor={'rgba(239, 237, 232, 0.20)'}
               text={'Сalories burned'}
               children={
                 <Icon
@@ -97,9 +102,10 @@ const diaryProducts=useSelector(selectProducts)
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value={caloriesBured}
+              value={caloriesBurned}
             ></DailyStatusBlock>
             <DailyStatusBlock
+        borderColor={caloriesComplete?'#3CBF61':'#E9101D'}
               text={'Сalories remaining'}
               children={
                 <Icon
@@ -108,9 +114,11 @@ const diaryProducts=useSelector(selectProducts)
                   iconHeight={{ mobile: '20px', tablet: '20px' }}
                 />
               }
-              value={0}
+              value={caloriesRemaining}
             ></DailyStatusBlock>
             <DailyStatusBlock
+             borderColor={sportsComplete?'#3CBF61':'#E9101D'}
+  
               text={'Sports remaining'}
               children={
                 <Icon
@@ -120,7 +128,7 @@ const diaryProducts=useSelector(selectProducts)
                   fill="#EF8964"
                 />
               }
-              value={0}
+              value={sportsRemaining}
             ></DailyStatusBlock>
           </BlockWrap>
           <TextWrap>
