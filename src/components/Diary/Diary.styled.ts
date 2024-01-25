@@ -17,6 +17,7 @@ li:nth-of-type(5){order:3};
 li:nth-of-type(3){order:2};
 li:nth-of-type(4){order:5};
 li:nth-of-type(6){order:6};
+
   }
 
   @media screen and (min-width: 1440px) {
@@ -32,18 +33,15 @@ const TextBlockWrap = styled.div`
   gap: 8px;
 `;
 
-
 const NextTextBlockWrap = styled(TextBlockWrap)`
   justify-content: space-between;
 `;
-
-
 
 const TextWrap = styled.div`
   display: flex;
   gap: 8px;
   justify-content: center;
-  
+
   margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     order: 3;
@@ -63,7 +61,6 @@ const Text = styled.p`
   font-style: normal;
   line-height: 18px;
 `;
-
 
 const MainDiaryWrap = styled.div`
   display: flex;
