@@ -20,7 +20,7 @@ export const LogoutBtn = styled.button`
   }
 
   &.desktop {
-    @media screen and (max-width: 1439px) {
+    @media screen and (max-width: 1440px) {
       display: none;
     }
   }

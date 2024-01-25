@@ -7,7 +7,7 @@ const getDiary = operationWrapper('diary/getDiary', async date => {
     url: 'diary',
     config: { params: { date } },
   });
-console.log(response.data);
+
   return response.data;
 });
 
@@ -102,6 +102,7 @@ const deleteDiaryExercise = operationWrapper(
     });
 
     const exerciseResponse = { ...response, id: exerciseId };
+
     return exerciseResponse;
   }
 );

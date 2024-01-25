@@ -8,7 +8,7 @@ import LogOutBtn from '../../LogoutBtn/LogoutBtn';
 import MobileMenuBtn from '../MobileMenuBtn/MobileMenuBtn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Icon from '../../Icon/Icon';
-import { Container } from '../..';
+
 import {
   HeaderContainer,
   LinkLogo,
@@ -18,6 +18,7 @@ import {
   NavWrap,
   Wrapper,
 } from './Header.styled';
+import Container from '../../Container/Container';
 
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();

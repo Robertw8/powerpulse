@@ -31,8 +31,14 @@ const Diary = () => {
   const diaryProducts = useSelector(selectProducts);
   const sportsRemaining = useSelector(selectSportsTime);
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
-  const caloriesComplete = caloriesRemaining < user.dailyCalories;
-  const sportsComplete = sportsRemaining > user.dailyActivity;
+ 
+const convertTime=(number)=>{
+  if (Math.sign(number)===1){return -number}
+return ('+ '+Math.abs(number)+' min')
+}
+
+  const resultSports=Math.sign(sportsRemaining)===-1
+  const resultCalories=Math.sign(caloriesRemaining)===1
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -99,7 +105,7 @@ const Diary = () => {
               value={caloriesBurned}
             ></DailyStatusBlock>
             <DailyStatusBlock
-              borderColor={caloriesComplete ? '#3CBF61' : '#E9101D'}
+              borderColor={resultCalories ? '#3CBF61' : '#E9101D'}
               text={'Сalories remaining'}
               children={
                 <Icon
@@ -111,7 +117,7 @@ const Diary = () => {
               value={caloriesRemaining}
             ></DailyStatusBlock>
             <DailyStatusBlock
-              borderColor={sportsComplete ? '#3CBF61' : '#E9101D'}
+              borderColor={resultSports ? '#3CBF61' : '#E9101D'}
               text={'Sports remaining'}
               children={
                 <Icon
@@ -121,7 +127,7 @@ const Diary = () => {
                   fill="#EF8964"
                 />
               }
-              value={sportsRemaining}
+              value={convertTime(sportsRemaining)}
             ></DailyStatusBlock>
           </BlockWrap>
           <TextWrap>

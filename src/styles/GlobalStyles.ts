@@ -112,6 +112,10 @@ const GlobalStyles = css`
     background-color: ${palette.colors.gray} !important;
     color: ${palette.colors.white} !important;
   }
+
+  .ant-picker-header-view {
+    color: ${palette.colors.white};
+  }
 `;
 
 export default GlobalStyles;

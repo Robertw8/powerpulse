@@ -22,7 +22,7 @@ export const DrawerStyled = styled(Drawer)`
     display: none;
   }
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     &.shown {
       right: 0;
     }

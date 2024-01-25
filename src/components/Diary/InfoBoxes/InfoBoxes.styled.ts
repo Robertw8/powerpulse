@@ -45,6 +45,13 @@ const GrayBlockTitle = styled.p`
 const RedBlockTitle = styled(GrayBlockTitle)`
 display:inline-flex;
   color: rgba(230, 83, 60, 1);
+   &:hover {
+    color: #efede8 !important;
+    transform: translateX(5px);
+
+    svg {
+      stroke: #efede8;
+    }
   `;
 
 const InfoBoxWrap = styled.div`
