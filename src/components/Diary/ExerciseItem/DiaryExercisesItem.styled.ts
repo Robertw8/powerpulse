@@ -32,6 +32,7 @@ const ValueCol = styled.li`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   margin-bottom: 16px;
+  overflow-x: hidden;
   @media screen and (min-width: 768px) {
     width:90px;
     margin-bottom:0px;
@@ -52,8 +53,9 @@ padding: 8px 0 8px 14px;
 border-radius: 12px;
 border: 1px solid rgba(239, 237, 232, 0.3);
 margin-bottom: 16px;
+overflow-x: hidden;
 @media screen and (min-width: 768px) {
-  overflow-x: auto;
+
   width:132px;
   max-height:40px;
   margin-bottom:0px;
@@ -66,11 +68,12 @@ margin-bottom: 16px;
  `
  const ValueColName=styled(ValueColTitle)`
  @media screen and (min-width: 768px) {
-    overflow-x: auto;
+   
     width:128px;
     font-size: 16px;
     line-height: 18px;
     margin-bottom:0px;
+    overflow-x: hidden;
    }
    @media screen and (min-width: 1440px) {
     width:131px;

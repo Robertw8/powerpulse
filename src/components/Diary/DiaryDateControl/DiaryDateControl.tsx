@@ -1,7 +1,6 @@
 import { AppDispatch } from '../../../redux';
 import { Icon } from '../../Icon';
 import { StyledDateControl, ArrowControl, ReverseIcon, SelectedDate } from './DiaryDateControl.styled';
-
 import dayjs from 'dayjs';
 import { selectSelectedDate } from '../../../redux/diary/selectors';
 import { useDispatch,
@@ -9,9 +8,7 @@ import { useDispatch,
   } 
    from 'react-redux';
 import { getDiary, setSelectedDate } from '../../../redux/diary/operations';
-// import { DatePicker } from '../DatePicker';
-// import { DatePicker } from '../DatePicker';
-// import { useEffect } from 'react';
+
 
 
 const DiaryDateControl: React.FC = () => {
@@ -19,8 +16,6 @@ const DiaryDateControl: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
  
   
-
-
   const handleAddDate = () => {
    const result = dayjs(selectedDate).add(1, 'day')
    dispatch(getDiary(dayjs(result).format('DD/MM/YYYY')))
@@ -35,7 +30,8 @@ const handleDeleteDate= () => {
 
 
   return (
-    // <><div> <DatePicker></DatePicker>      </div>
+    <>
+
 
       <StyledDateControl>
  
@@ -63,7 +59,7 @@ const handleDeleteDate= () => {
          
         </ArrowControl>
       </StyledDateControl>
-    
+    </>
   );
 };
 export default DiaryDateControl;
