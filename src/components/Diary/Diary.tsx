@@ -31,8 +31,10 @@ const Diary = () => {
   const diaryProducts = useSelector(selectProducts);
   const sportsRemaining = useSelector(selectSportsTime);
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
-  const caloriesComplete = caloriesRemaining < user.dailyCalories;
+ 
   const sportsComplete = sportsRemaining > user.dailyActivity;
+  const resultCalories=Math.sign(caloriesRemaining)===1?true:false
+console.log(resultCalories);
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -99,7 +101,7 @@ const Diary = () => {
               value={caloriesBurned}
             ></DailyStatusBlock>
             <DailyStatusBlock
-              borderColor={caloriesComplete ? '#3CBF61' : '#E9101D'}
+              borderColor={resultCalories ? '#3CBF61' : '#E9101D'}
               text={'Сalories remaining'}
               children={
                 <Icon
