@@ -84,7 +84,7 @@ const StatisticsWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     top: 35%;
-    right: 26px;
+    right: 41px;
     scale: 0.95;
   }
 `;
