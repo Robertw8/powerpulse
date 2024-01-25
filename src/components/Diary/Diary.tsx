@@ -34,7 +34,7 @@ const Diary = () => {
  
 const convertTime=(number)=>{
   if (Math.sign(number)===1){return -number}
-return ('+'+Math.abs(number))
+return ('+ '+Math.abs(number)+' min')
 }
 
   const resultSports=Math.sign(sportsRemaining)===-1

@@ -102,6 +102,7 @@ const deleteDiaryExercise = operationWrapper(
     });
 
     const exerciseResponse = { ...response, id: exerciseId };
+
     return exerciseResponse;
   }
 );
