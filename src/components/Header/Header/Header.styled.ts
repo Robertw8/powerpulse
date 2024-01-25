@@ -19,7 +19,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
     padding-bottom: 32px;
     position: ${props => (props.isLoggedIn ? 'relative' : 'absolute')};
     z-index: 10;
-    width: 100%;
+    /* width: 100%;  */       //тут прибрала
   }
 `;
 
@@ -42,6 +42,7 @@ export const LinkLogo = styled(Link)`
   text-decoration: none;
   @media screen and (min-width: 768px) {
     font-size: 19px;
+    width: 700px;         // тут змінила 
   }
 `;
 

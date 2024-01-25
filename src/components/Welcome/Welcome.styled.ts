@@ -38,17 +38,19 @@ const ContainerWelcomePage = styled.div`
   position: relative;
   flex-direction: column;
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 769px) {
     display: flex;
+      width: 769px;
   }
+   
 `;
 
 const ImgWelcomePage = styled.img`
-  width: 430px;
-  height: auto;
+  width: 350px;
+  height: 800px;
   position: absolute;
   top: 215px;
-  right: -0px;
+  left: 0px;
   z-index: -1;
   overflow-x: hidden !important;
 
@@ -56,17 +58,18 @@ const ImgWelcomePage = styled.img`
     width: 100%;
     height: auto;
     position: absolute;
+     z-index: -100;
     top: 30px;
-    left: 200px;
+     left: 60px;
     overflow-x: hidden;
   }
 
   @media screen and (min-width: 1441px) {
-    width: 700px;
+    width: 670px;
     height: auto;
     position: absolute;
     top: -0px;
-    left: 640px;
+    left: 700px;
   }
 `;
 
@@ -88,7 +91,7 @@ const StatisticsWrapper = styled.div`
   @media screen and (min-width: 1441px) {
     position: absolute;
     top: 40%;
-    right: -3.5%;
+    left: 1150px;
     scale: 1.2;
   }
 `;

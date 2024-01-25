@@ -20,6 +20,7 @@ import {
 } from './SignUp.styled';
 
 import SignUpSchema from './SignUpSchema';
+
 import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
 import { AuthImg } from '../Welcome/WelcomeImg';
