@@ -7,24 +7,16 @@ import {
   WidthInput,
 } from '../SignUp/SignUp.styled.ts';
 
-
-import { StatisticsWrapper } from '../SignUp/SignUp.styled';
-
-
 const TitleSignIn = styled(Title)`
   margin-top: 90px;
   margin-bottom: 14px;
 
-
   @media screen and (min-width: 768px) {
-
     margin-top: 140px;
     margin-bottom: 16px;
   }
 
-
   @media screen and (min-width: 1440px) {
-
     margin-top: 151px;
   }
 `;
@@ -32,9 +24,7 @@ const ParagraphSignIn = styled(ParagraphAuth)`
   height: 36px;
   color: rgba(239, 237, 232, 0.3);
 
-
   @media screen and (min-width: 768px) {
-
     width: 496px;
 
     margin-bottom: 32px;
@@ -47,7 +37,6 @@ const BlockInput = styled(WidthInput)`
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
-
     gap: 20px;
     margin-bottom: 0px;
   }
@@ -55,7 +44,6 @@ const BlockInput = styled(WidthInput)`
 const ParagraphAfterBtnUp = styled(ParagraphAfterBtn)`
   margin-top: 12px;
 `;
-
 
 const StatisticsWrapper = styled.div`
   position: absolute;
@@ -68,18 +56,14 @@ const StatisticsWrapper = styled.div`
     transform: translate(-20%) scale(0.6);
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1440px) {
+  @media screen and (min-width: 769px) and (max-width: 1439px) {
     top: 110%;
     left: 0px;
   }
 
-  @media screen and (min-width: 1441px) {
-    /* top: 40%;
-    left: 1150px;
-    scale: 1.2; */
-
-    top: 35%;
-    right: -6%;
+  @media screen and (min-width: 1440px) {
+    top: 31.7%;
+    right: -264.7%;
     scale: 0.95;
   }
 `;
@@ -91,4 +75,3 @@ export {
   ParagraphAfterBtnUp,
   StatisticsWrapper,
 };
-
