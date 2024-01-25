@@ -21,7 +21,7 @@
   <img src="https://img.icons8.com/fluency/48/vite.png" alt="vite" width="40" height="40"/>
 </div>
 
-#### [Backend](https://github.com/Ksuyaresko/fitness-app-backend): 
+#### Backend [(Link)](https://github.com/Ksuyaresko/fitness-app-backend): 
 
 <div align="left">
   <img src="https://img.icons8.com/color/48/nodejs.png" alt="nodejs" width="40" height="40" />
