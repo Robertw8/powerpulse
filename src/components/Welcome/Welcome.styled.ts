@@ -72,7 +72,7 @@ const StatisticsWrapper = styled.div`
   position: absolute;
 
   @media screen and (max-width: 768px) {
-    bottom: -240%;
+    bottom: -233%;
     left: 0;
     scale: 0.9;
   }
