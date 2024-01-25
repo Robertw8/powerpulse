@@ -10,9 +10,6 @@ import { Loader } from '../..';
 import {selectProducts ,selectIsLoading} from '../../../redux/diary';
 import { ProductsItem } from '../ProductsItem';
 
-
-
-
 const ProductsList: React.FC = () => {
 
   const products= useSelector(selectProducts);
@@ -32,7 +29,6 @@ const ProductsList: React.FC = () => {
 
   return (
 
-     
       <List   className='scrollbar-inner ' >
           <DesktopTitleWrap>
   <DesktopTitle><p>Title</p></DesktopTitle>
@@ -47,7 +43,6 @@ const ProductsList: React.FC = () => {
         ))}
         {isLoading && <Loader />}
       </List>
-   
   );
 };
 export default ProductsList;

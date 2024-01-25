@@ -9,7 +9,6 @@ const ExerciseWrap=styled.li`
   
    };
 `
-
 const TitleCol = styled.li`
   color: #ef8964;
   font-size: 12px;

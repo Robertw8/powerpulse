@@ -45,6 +45,7 @@ const dispatch = useDispatch<AppDispatch>();
             showToday={false}
             onChange={(selectedDate)=>{ dispatch(getDiary(dayjs(selectedDate).format('DD/MM/YYYY')));
            dispatch(setSelectedDate(selectedDate))}}
+           allowClear={false}
           />
         </ConfigProvider>
       </WrapDatePicker>

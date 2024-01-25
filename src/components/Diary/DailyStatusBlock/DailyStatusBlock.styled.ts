@@ -12,16 +12,8 @@ justify-content: space-between;
 flex-direction: column;
 @media screen and (min-width: 768px) { 
    flex: 0 0 187px;
-  
 
-
- 
    }  
-   @media screen and (min-width: 1441px) {
-
-
-
-   }
 `
 const TitleBlock = styled.p<{textColor?:string}>`
 color:${({textColor})=>textColor || 'rgba(239, 237, 232, 0.40)'};

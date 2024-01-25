@@ -53,7 +53,6 @@ display:inline-flex;
       stroke: #efede8;
     }
   `;
-
 const InfoBoxWrap = styled.div`
   display: flex;
   flex-direction: column;

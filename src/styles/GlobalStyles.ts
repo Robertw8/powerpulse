@@ -57,6 +57,7 @@ const GlobalStyles = css`
 
   .scrollbar-inner {
     &::-webkit-scrollbar {
+    
       width: 6px;
     }
 
