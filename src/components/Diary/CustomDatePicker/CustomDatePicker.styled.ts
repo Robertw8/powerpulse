@@ -28,7 +28,7 @@ const DatePickerCustom = styled(DatePicker)`
   }
 
   .anticon > * {
-    color: ${palette.colors.white};
+    color: ${palette.colors.orange};
   }
 
   &:hover,
