@@ -1,12 +1,12 @@
 
-import { Container } from '../components';
+import ContainerAuth from '../components/Container/ContainerAuth';
 import SignInForm from '../components/SignIn/SignIn';
 
 const SignInPage: React.FC = () => {
   return (
-    <Container>
+    <ContainerAuth>
       <SignInForm />
-    </Container>
+    </ContainerAuth>
   );
 };
 

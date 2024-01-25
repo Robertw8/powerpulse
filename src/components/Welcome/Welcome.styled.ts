@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 const TitleWelcomePage = styled.h1`
   position: relative;
-  width: 335px;
+  width: 320px;
   height: 120px;
   font-size: 38px;
 
@@ -38,7 +38,6 @@ const ContainerWelcomePage = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-
   @media screen and (min-width: 769px) {
     display: flex;
     
@@ -47,8 +46,8 @@ const ContainerWelcomePage = styled.div`
 `;
 
 const ImgWelcomePage = styled.img`
-  width: 335px;
-  height: 755px;
+  width: 325px;
+  height: 750px;
   position: absolute;
   top: 215px;
   left: 0px;
@@ -60,7 +59,7 @@ const ImgWelcomePage = styled.img`
     position: absolute;
     z-index: -100;
     top: 30px;
-    left: 40px;
+    
   
   }
 
@@ -69,7 +68,7 @@ const ImgWelcomePage = styled.img`
     height: auto;
     position: absolute;
     top: -0px;
-    left: 700px;
+    left: 550px;
   }
 `;
 
@@ -94,7 +93,7 @@ const StatisticsWrapper = styled.div`
     scale: 1.2; */
 
     top: 35%;
-    right: -8%;
+    right: 25px;
     scale: 0.95;
   }
 `;

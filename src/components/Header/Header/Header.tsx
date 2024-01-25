@@ -18,7 +18,7 @@ import {
   NavWrap,
   Wrapper,
 } from './Header.styled';
-import Container from '../../Container/Container';
+import ContainerAuth from '../../Container/ContainerAuth';
 
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
           : { borderBottom: 'none' }
       }
     >
-      <Container>
+      <ContainerAuth>
         <HeaderContainer isLoggedIn={isLoggedIn}>
           <HeaderWrap>
             <LinkLogo
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
             )}
           </HeaderWrap>
         </HeaderContainer>
-      </Container>
+      </ContainerAuth>
     </Wrapper>
   );
 };
