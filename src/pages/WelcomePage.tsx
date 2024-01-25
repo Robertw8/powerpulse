@@ -1,10 +1,11 @@
-import {Container, Welcome } from '../components';
+import { Welcome } from '../components';
+import ContainerAuth from '../components/Container/ContainerAuth';
 
 const WelcomePage: React.FC = () => {
   return (
-    <Container>
+    <ContainerAuth>
       <Welcome />
-    </Container>
+    </ContainerAuth>
   );
 };
 

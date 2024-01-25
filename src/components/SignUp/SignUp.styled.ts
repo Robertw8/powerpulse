@@ -129,7 +129,7 @@ const ContainerSignUp = styled.div`
 `;
 
 const ImgSignUp = styled.img`
-  width: 335px;
+  width: 350px;
   height: auto;
   position: absolute;
   top: 180px;
@@ -147,7 +147,7 @@ const ImgSignUp = styled.img`
     height: auto;
     position: absolute;
     top: -0px;
-    left: 700px;
+   left: 550px;
   }
 `;
 
