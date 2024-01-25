@@ -26,6 +26,9 @@ import { AppDispatch } from '../../redux';
 import { AuthImg } from '../Welcome/WelcomeImg';
 import { SignUpArgs } from '../../services/types';
 
+import { Statistics } from '../Statistics';
+import { StatisticsWrapper } from './SignUp.styled';
+
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -114,6 +117,9 @@ const SignUpForm = () => {
         </ParagraphAfterBtn>
       </BlockSignUp>
       <AuthImg />
+      <StatisticsWrapper>
+        <Statistics />
+      </StatisticsWrapper>
     </ContainerSignUp>
   );
 };
