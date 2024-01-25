@@ -13,11 +13,11 @@ import { Title } from '../PageTitle/PageTitle.styled.ts';
 import { StatisticsWrapper } from '../Welcome/Welcome.styled';
 
 const FormContainer = styled.form`
-  width: 335px;
+  width: 320px;
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 364px;
     display: flex;
     flex-direction: column;
@@ -28,13 +28,14 @@ const FormContainer = styled.form`
 const TitleSignUp = styled(Title)`
   margin-top: 90px;
   margin-bottom: 14px;
+  margin-left: 0px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     margin-top: 140px;
     margin-bottom: 16px;
   }
 
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     margin-top: 151px;
   }
 `;
@@ -46,7 +47,7 @@ const ParagraphAuth = styled.p`
   font-size: 14px;
   color: rgba(239, 237, 232, 0.3);
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 496px;
 
     margin-bottom: 32px;
@@ -97,26 +98,15 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input {
     &::placeholder {
       color: #efede84d !important;
-      &:-webkit-autofill,
-      &:-webkit-autofill:hover,
-      &:-webkit-autofill:focus input:-webkit-autofill {
-        -webkit-text-fill-color: #efede8;
-        -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-        transition: background-color 5000s ease-in-out 0s;
-        background: -webkit-linear-gradient(
-          top,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(0, 174, 255, 0.04) 50%,
-          rgba(255, 255, 255, 0) 51%,
-          rgba(0, 174, 255, 0.03) 100%
-        );
-      }
+
+      background-color: transparent !important;
+
     }
   }
 
   .ant-input-password-icon {
     color: #fff !important;
-    padding: 14px;
+    padding: 12px;
     &:hover,
     &:focus,
     &:focus-within {
@@ -129,17 +119,17 @@ const ContainerSignUp = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 355px;
+  width: 335px;
   height: auto;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     display: flex;
-    width: 769px;
+
   }
 `;
 
 const ImgSignUp = styled.img`
-  width: 100%;
+  width: 335px;
   height: auto;
   position: absolute;
   top: 180px;
@@ -149,10 +139,10 @@ const ImgSignUp = styled.img`
     height: auto;
     position: absolute;
     top: -30px;
-    left: 95px;
+    left: 40px;
     overflow-x: hidden !important;
   }
-  @media screen and (min-width: 1441px) {
+  @media screen and (min-width: 1440px) {
     width: 670px;
     height: auto;
     position: absolute;
@@ -170,7 +160,7 @@ const WidthInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     gap: 20px;
   }
 `;
@@ -179,7 +169,7 @@ const BtnSignUp = styled(Button)`
   height: 42px;
   font-size: 16px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     width: 190px;
     height: 56px;
     font-size: 20px;
@@ -207,7 +197,7 @@ const BtnSignPage = styled(BtnSignUp)`
 const ColorErrorInput = styled.div`
   color: #d80027;
   font-size: 16px;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     font-size: 14px;
   }
 `;

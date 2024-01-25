@@ -1,5 +1,4 @@
 import { ExercisesList } from './ExercisesSubcategoriesList.styled';
-
 import { ExercisesItem } from '../ExercisesItem';
 
 interface ExercisesSubcategoriesListProps {
@@ -12,15 +11,15 @@ interface ExercisesSubcategoriesListProps {
 }
 
 const ExercisesSubcategoriesList: React.FC<ExercisesSubcategoriesListProps> = ({
-  exercisesList
+  exercisesList,
 }) => {
   return (
     <ExercisesList>
-      {exercisesList.length && exercisesList.map(({ _id, filter, name, imgURL}) => (
-        <ExercisesItem
-          key={_id} name={name} img={imgURL} filter={filter} />
-      ))}
-    </ExercisesList >
+      {exercisesList.length &&
+        exercisesList.map(({ _id, filter, name, imgURL }) => (
+          <ExercisesItem key={_id} name={name} img={imgURL} filter={filter} />
+        ))}
+    </ExercisesList>
   );
 };
 

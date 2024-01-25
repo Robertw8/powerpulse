@@ -21,7 +21,7 @@ const StyledModal = styled(Modal)`
       flex-direction: column;
       align-items: center;
 
-      @media screen and (min-width: 769px) {
+      @media screen and (min-width: 768px) {
         flex-direction: row;
         align-items: flex-start;
         gap: 16px;
@@ -87,7 +87,7 @@ const Value = styled.span`
 const InfoWrapper = styled.div`
   margin-top: 40px;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     margin-top: 0;
   }
 `;

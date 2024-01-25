@@ -1,3 +1,4 @@
+
 import { Container } from '../components';
 import SignUpForm from '../components/SignUp/SignUp';
 

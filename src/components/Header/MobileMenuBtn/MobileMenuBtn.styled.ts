@@ -7,7 +7,7 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 0px;
 
-  @media screen and (max-width: 1439px) {
+  @media screen and (max-width: 1440px) {
     display: block;
   }
 `;
