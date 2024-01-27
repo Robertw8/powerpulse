@@ -97,11 +97,12 @@ const BlockTitleBtn = styled.div`
 const BlockBtns = styled.div`
   display: flex;
   gap: 14px;
-  margin-top: 40px;
+  margin-top: 100px;
 
   @media screen and (min-width: 768px) {
     display: flex;
     gap: 20px;
+    margin-top: 40px;
   }
 `;
 
