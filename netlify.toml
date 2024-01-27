@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  publish="path-to-react-app/build"
-  base = "path-to-react-app"
+  publish="fitness-app-frontend/dist"
+  base = "/fitness-app-frontend/"
 
 [[redirects]]
   from = "/*"
