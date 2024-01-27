@@ -13,7 +13,6 @@ const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  overflow-x: hidden;
 
   @media screen and (min-width: 768px) {
     height: 240px;
