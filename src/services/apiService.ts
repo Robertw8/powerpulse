@@ -5,8 +5,8 @@ import { clearToken, setToken } from './token.ts';
 const baseURL = 'https://goit-be.onrender.com/';
 
 interface RetryQueueItem {
-  resolve: (value?: any) => void;
-  reject: (error?: any) => void;
+  resolve: (value?: unknown) => void;
+  reject: (error?: unknown) => void;
   config: AxiosRequestConfig;
 }
 
@@ -99,7 +99,7 @@ axiosInstance.interceptors.response.use(
           }
           return axios(config);
         } catch (e) {
-          clearToken()
+          clearToken();
         } finally {
           isRefreshing = false;
         }
