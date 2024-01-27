@@ -1,11 +1,13 @@
-import { AutoCompleteProps, Empty } from 'antd';
-import { Icon } from '../../Icon';
-import { apiService } from '../../../services';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../../redux';
-import { selectFilters, setFilters } from '../../../redux/products';
+
+import { AutoCompleteProps, Empty } from 'antd';
+import { Icon } from '../../Icon';
 import { StyledSearchInput, StyledSearchContent } from './SearchFilter.styled';
+
+import { apiService } from '../../../services';
+import { selectFilters, setFilters } from '../../../redux/products';
+import { AppDispatch } from '../../../redux';
 
 interface SearchFilterProps extends AutoCompleteProps {}
 

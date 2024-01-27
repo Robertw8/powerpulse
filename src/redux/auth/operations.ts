@@ -58,7 +58,6 @@ const loginUser = operationWrapper(
     );
 
     setToken(response.data.accessToken, response.data.refreshToken);
-    // to get users data for header
     dispatch(getCurrentUser({}));
     return response.data;
   }
@@ -67,7 +66,6 @@ const loginUser = operationWrapper(
 const getCurrentUser = operationWrapper(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
-    // @todo add token with persist
     const token = getToken();
     if (!token) return thunkAPI.rejectWithValue('Unable to refresh user');
 
@@ -127,7 +125,10 @@ const getUserAvatar = operationWrapper(
         },
       },
       () => {
-        callToast('error', 'Request error, try again');
+        callToast(
+          'error',
+          'Please upload a valid format of image and try again'
+        );
         return '';
       }
     );

@@ -10,19 +10,18 @@ import {
   ListItemImg,
 } from './ExercisesItem.styled';
 
-
 interface ExercisesItemProps {
   name: string;
   img: string;
   filter: string;
 }
 
-const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter}) => {
+const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const filters = useSelector(selectFilters);
-  
+
   const onClick = () => {
     navigate(`/exercises/${filters.filter}/${name}`);
     dispatch(setFilters(filters.filter, name));
@@ -30,11 +29,11 @@ const ExercisesItem: React.FC<ExercisesItemProps> = ({ name, img, filter}) => {
 
   return (
     <ExercisesListItem onClick={onClick}>
-        <ItemTextWrapper>
-          <ListItemTitle>{name}</ListItemTitle>
-          <ListItemCategory>{filter}</ListItemCategory>
-        </ItemTextWrapper>
-          <ListItemImg src={img} alt={name} />
+      <ItemTextWrapper>
+        <ListItemTitle>{name}</ListItemTitle>
+        <ListItemCategory>{filter}</ListItemCategory>
+      </ItemTextWrapper>
+      <ListItemImg src={img} alt={name} />
     </ExercisesListItem>
   );
 };

@@ -1,1 +1,1 @@
-export {default as InfoBoxes} from './InfoBoxes'
+export { default as InfoBoxes } from './InfoBoxes';

@@ -1,21 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { setFilters } from '../../../redux/exercises';
-import { AppDispatch } from '../../../redux';
 import { useDispatch } from 'react-redux';
-
-import { Tabs } from 'antd';
-import type { TabsProps } from 'antd';
 
 import { Category } from '../Exercises';
 import { CategoryList } from './ExercisesCategories.styled';
+import { Tabs } from 'antd';
+
+import type { TabsProps } from 'antd';
+import { setFilters } from '../../../redux/exercises';
+import { AppDispatch } from '../../../redux';
 
 const ExercisesCategories: React.FC = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const onChange = (key: Category) => {
-    dispatch(setFilters(key, ""));
+    dispatch(setFilters(key, ''));
     navigate(`/exercises/${key}`);
   };
 
@@ -40,7 +39,7 @@ const ExercisesCategories: React.FC = () => {
   return (
     <CategoryList>
       <Tabs
-        defaultActiveKey={"bodyPart"}
+        defaultActiveKey={'bodyPart'}
         items={items}
         onChange={value => {
           onChange?.(value as Category);

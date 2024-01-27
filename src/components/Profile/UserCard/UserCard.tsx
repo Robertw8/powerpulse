@@ -75,6 +75,7 @@ const UserCard: React.FC = () => {
                   name="file"
                   type="file"
                   onChange={handleChangeImg}
+                  accept=".jpeg, .jpg, .img, .svg, .webp"
                 />
               </label>
             </form>

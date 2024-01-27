@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useAuth } from '../../../hooks';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Item,
@@ -18,9 +20,8 @@ import {
 } from './ProductsItem.styled';
 import { Icon } from '../../Icon';
 import { Product } from '../../../redux/products/types';
-import { useAuth } from '../../../hooks';
 import { AddProductModal, ProductAddedModal } from '..';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { selectCalculatedCalories } from '../../../redux/products/selectors';
 import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';

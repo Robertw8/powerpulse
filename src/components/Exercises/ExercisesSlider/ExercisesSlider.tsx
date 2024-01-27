@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilters } from '../../../redux/exercises';
-import { apiService } from '../../../services';
 
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 import NotFoundPage from '../../../pages/NotFoundPage';
 import { Loader } from '../..';
+
+import { selectFilters } from '../../../redux/exercises';
+import { apiService } from '../../../services';
 import currentFilter from './setCurrentFilter';
 
 const Slider: React.FC = () => {
@@ -14,11 +15,11 @@ const Slider: React.FC = () => {
   const [limit, setLimit] = useState<number>(10);
   const [total, setTotal] = useState<number>(1);
   const [exercisesList, setExercisesList] = useState([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [errorPage, setErrorPage] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorPage, setErrorPage] = useState<boolean>(false);
 
   const filters = useSelector(selectFilters);
-  
+
   useEffect(() => {
     setIsLoading(true);
     window.screen.width >= 768 && window.screen.width < 1440
@@ -61,9 +62,10 @@ const Slider: React.FC = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {exercisesList.length > 0 &&
-        <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>}
-      {errorPage &&  <NotFoundPage/>}
+      {exercisesList.length > 0 && (
+        <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>
+      )}
+      {errorPage && <NotFoundPage />}
     </>
   );
 };

@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+
 import { Form } from 'antd';
 import { FormProps } from 'react-router-dom';
 import { InputPrimary } from '../../InputPrimary';
@@ -10,8 +13,7 @@ import {
   Value,
 } from './AddProductForm.styled';
 import { PrimaryButton } from '../..';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 import { setCalculatedCalories } from '../../../redux/products';
 import { AppDispatch } from '../../../redux';
 import { addDiaryProduct } from '../../../redux/diary';
@@ -54,11 +56,12 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
       })
     );
   };
+
   return (
     <Form>
       <InputsWrapper>
         <InputPrimary
-          placeholder="Pablo"
+          placeholder=""
           bordercolor="default"
           style={{ height: '40px' }}
           value={product.title}
@@ -78,7 +81,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
         />
       </InputsWrapper>
       <Calories>
-        Calories:{' '}
+        Calories:
         <Value>{calculateCalories(amountValue, product.calories)}</Value>
       </Calories>
       <ButtonsWrapper>

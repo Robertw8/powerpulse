@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { List, ListWrapper } from './ProductsList.styled';
 import { NotFoundMessage, ProductsItem } from '..';
+import { Loader } from '../..';
 
 import {
   getProducts,
@@ -11,9 +12,9 @@ import {
   selectIsLoading,
   selectProducts,
 } from '../../../redux/products';
+
 import { AppDispatch } from '../../../redux';
 import throttle from 'lodash.throttle';
-import { Loader } from '../..';
 
 const ProductsList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,14 +1,14 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { FormikValues } from 'formik';
-import { DatePickerCustom, WraoDatePicker } from './DatePicker.styled';
+import { DatePickerCustom, WrapDatePicker } from './DatePicker.styled';
 import { ConfigProvider } from 'antd';
 import { palette } from '../../../../styles/theme';
 
 const DatePicker: React.FC<FormikValues> = ({ formik }) => {
   return (
     <>
-      <WraoDatePicker>
+      <WrapDatePicker>
         <ConfigProvider
           theme={{
             components: {
@@ -27,12 +27,9 @@ const DatePicker: React.FC<FormikValues> = ({ formik }) => {
             name="birthday"
             size="large"
             onChange={(_, from) => {
-              // const isoTime = new Date(from).toISOString();
-              // const unixTimeZero = new Date(from).toISOString();
               formik.setFieldValue('birthday', from);
             }}
             defaultValue={dayjs(formik.values.birthday)}
-            // format={'DD.MM.YYYY'}
             style={{
               border: `1px solid ${palette.colors.white30}`,
               background: `${palette.colors.black}`,
@@ -42,7 +39,7 @@ const DatePicker: React.FC<FormikValues> = ({ formik }) => {
             showToday={false}
           />
         </ConfigProvider>
-      </WraoDatePicker>
+      </WrapDatePicker>
     </>
   );
 };

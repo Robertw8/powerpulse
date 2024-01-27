@@ -1,1 +1,1 @@
-export { default as DiaryExercisesItem } from './DiaryExercisesItem';
+export { default as ExerciseItem } from './ExerciseItem';

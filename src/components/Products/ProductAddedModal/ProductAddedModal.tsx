@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+
 import { Icon } from '../../Icon';
 import { PrimaryButton } from '../..';
 import {
@@ -10,7 +12,6 @@ import {
   Value,
 } from './ProductAddedModal.styled';
 
-import { useDispatch } from 'react-redux';
 import { ModalProps } from 'antd';
 import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';

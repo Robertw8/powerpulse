@@ -1,62 +1,59 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
   GrayBlockTitle,
-  RedBlockTitle,
   TopRow,
   InfoBoxWrap,
   InfoBox,
-  StyledIcon,
 } from './InfoBoxes.styled';
+import { AddButton } from '../../Products/ProductsItem/ProductsItem.styled';
 import { ProductsList } from '../ProductsList';
 import { ExercisesList } from '../ExercisesList';
-import { DiaryNotFoundItems } from '../DiaryNotFoundItems';
-interface InfoBoxesProps{products:number,exercises:number}
+import { Icon } from '../..';
 
-const InfoBoxes: React.FC<InfoBoxesProps> = ({exercises,products}) => {
+const InfoBoxes: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <InfoBoxWrap>
       <InfoBox>
         <TopRow>
           <GrayBlockTitle>Products</GrayBlockTitle>
-          <Link to={`/products`} state={{ from: location }}>
-            <RedBlockTitle>
-              Add product
-              <StyledIcon
-                name="arrow-right"
-                iconWidth={{ mobile: '16px', tablet: '16px' }}
-                iconHeight={{ mobile: '16px', tablet: '16px' }}
-                fill="#E6533C"
-                stroke="#E6533C"
-              />
-            </RedBlockTitle>
-          </Link>
+          <AddButton
+            type="text"
+            onClick={() => navigate('/products', { state: { from: location } })}
+          >
+            <span>Add product</span>
+            <Icon
+              name="arrow-right"
+              iconWidth={{ mobile: '16px', tablet: '16px' }}
+              iconHeight={{ mobile: '16px', tablet: '16px' }}
+              stroke="#E6533C"
+            />
+          </AddButton>
         </TopRow>
-       {products?
-       <ProductsList/>
-      :
-      <DiaryNotFoundItems items='products'/>}
-       
+        <ProductsList />
       </InfoBox>
       <InfoBox>
         <TopRow>
           <GrayBlockTitle>Exercises</GrayBlockTitle>
-          <Link to={`/exercises`} state={{ from: location }}>
-            <RedBlockTitle>
-              Add exercise
-              <StyledIcon
-                name="arrow-right"
-                iconWidth={{ mobile: '16px', tablet: '16px' }}
-                iconHeight={{ mobile: '16px', tablet: '16px' }}
-                fill="#E6533C"
-                stroke="#E6533C"
-              />
-            </RedBlockTitle>
-          </Link>
+          <AddButton
+            type="text"
+            onClick={() =>
+              navigate('/exercises', { state: { from: location } })
+            }
+          >
+            <span>Add exercise</span>
+            <Icon
+              name="arrow-right"
+              iconWidth={{ mobile: '16px', tablet: '16px' }}
+              iconHeight={{ mobile: '16px', tablet: '16px' }}
+              stroke="#E6533C"
+            />
+          </AddButton>
         </TopRow>
-{exercises?<ExercisesList/>:<DiaryNotFoundItems items='exercises'/>}
+        <ExercisesList />
       </InfoBox>
     </InfoBoxWrap>
   );

@@ -79,10 +79,12 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   width: 100%;
   color: #fff;
   line-height: calc(18 / 14);
+  height: 46px;
 
-  .ant-input-affix-wrapper {
-    height: 46px !important;
+  @media screen and (min-width: 768px) {
+    height: 52px;
   }
+
   border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
   background-color: transparent !important;
   box-shadow: 0;
@@ -156,6 +158,7 @@ const WidthInput = styled.div`
   display: flex;
   flex-direction: column;
   gap: 18px;
+
   @media screen and (min-width: 768px) {
     gap: 20px;
   }
@@ -178,6 +181,7 @@ const BtnSignUp = styled(Button)`
     }
   }
 `;
+
 const BtnSignPage = styled(BtnSignUp)`
   width: 136px;
   height: 42px;
@@ -190,9 +194,11 @@ const BtnSignPage = styled(BtnSignUp)`
     background-color: #ef8964 !important;
   }
 `;
+
 const ColorErrorInput = styled.div`
   color: #d80027;
   font-size: 16px;
+
   @media screen and (min-width: 768px) {
     font-size: 14px;
   }
@@ -204,7 +210,7 @@ const StatisticsWrapper = styled.div`
   @media screen and (max-width: 768px) {
     bottom: -83%;
 
-    leftt: 0%;
+    left: 0%;
 
     transform: translate(-20%) scale(0.6);
   }

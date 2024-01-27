@@ -53,6 +53,11 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
   const { isLoading } = useDiary();
 
   const handleOk = () => {
+    if (timerValue < 12)
+      return callToast(
+        'error',
+        'You need to do exercise for at least 10 seconds to add to the diary'
+      );
     dispatch(setBurnedCalories(caloriesBurnedByTime));
     dispatch(
       addDiaryExercise({

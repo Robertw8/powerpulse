@@ -2,8 +2,6 @@ import styled from '@emotion/styled';
 import { Modal } from 'antd';
 
 const StyledModal = styled(Modal)`
-  /* animation-duration: 500ms !important; */
-
   .ant-modal-content {
     padding: 64px 12px 48px 12px;
     background-color: #10100f !important;

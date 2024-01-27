@@ -6,8 +6,6 @@ import {
   getDiary,
   selectCaloriesBurned,
   selectCaloriesConsumed,
-  selectExercises,
-  selectProducts,
   selectSportsTime,
   selectCaloriesRemaining,
 } from '../../redux/diary';
@@ -23,23 +21,22 @@ import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
 
-
 const Diary = () => {
   const { user } = useAuth();
   const caloriesBurned = useSelector(selectCaloriesBurned);
   const caloriesConsumed = useSelector(selectCaloriesConsumed);
-  const diaryExercises = useSelector(selectExercises);
-  const diaryProducts = useSelector(selectProducts);
   const sportsRemaining = useSelector(selectSportsTime);
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
- 
-const convertTime=(number)=>{
-  if (Math.sign(number)===1){return (number+' min')}
-return ('+ '+Math.abs(number)+' min')
-}
 
-  const resultSports=Math.sign(sportsRemaining)===-1
-  const resultCalories=Math.sign(caloriesRemaining)===1
+  const convertTime = number => {
+    if (Math.sign(number) === 1) {
+      return number + ' min';
+    }
+    return '+ ' + Math.abs(number) + ' min';
+  };
+
+  const resultSports = Math.sign(sportsRemaining) === -1;
+  const resultCalories = Math.sign(caloriesRemaining) === 1;
 
   const dispatch = useDispatch<AppDispatch>();
 
@@ -143,10 +140,7 @@ return ('+ '+Math.abs(number)+' min')
             </Text>
           </TextWrap>
         </DesktopWrap>
-        <InfoBoxes
-          exercises={diaryExercises.length}
-          products={diaryProducts.length}
-        />
+        <InfoBoxes />
       </MainDiaryWrap>
     </>
   );

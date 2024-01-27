@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { DatePicker } from 'antd';
 import { palette } from '../../../../styles/theme';
 
-const WraoDatePicker = styled.div`
+const WrapDatePicker = styled.div`
   margin-top: 5px;
 
   @media screen and (min-width: 769px) {
@@ -32,4 +32,4 @@ const DatePickerCustom = styled(DatePicker)`
   }
 `;
 
-export { DatePickerCustom, WraoDatePicker };
+export { DatePickerCustom, WrapDatePicker };
