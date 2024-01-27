@@ -14,7 +14,7 @@ import { persistor, store } from './redux';
 import { Toaster } from 'react-hot-toast';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename="/fitness-app-frontend/">
+    <BrowserRouter basename="/powerpulse/">
       <Provider store={store}>
         <Global styles={GlobalStyles} />
         <PersistGate loading={null} persistor={persistor}>
