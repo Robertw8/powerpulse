@@ -5,7 +5,6 @@ const InfoBox = styled.div`
   min-height: 335px;
   max-height: 824px;
   padding: 16px;
-  padding-right: 0;
   border: 1px solid rgba(239, 237, 232, 0.2);
 
   display: flex;
@@ -20,6 +19,7 @@ const InfoBox = styled.div`
     height: 240px;
     max-height: none;
     min-height: 240px;
+    padding-right: 0;
   }
 
   @media screen and (min-width: 1440px) {

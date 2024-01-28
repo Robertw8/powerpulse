@@ -24,7 +24,7 @@ const ContentWrapper = styled.div`
 const ModalTitle = styled.div`
   margin-top: 5px;
 
-  color: ${palette.colors.orange};
+  color: ${palette.colors.white};
   font-weight: 700;
   font-size: 24px;
   line-height: calc(32 / 24);
