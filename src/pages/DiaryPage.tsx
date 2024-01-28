@@ -18,7 +18,8 @@ const DiaryPage: React.FC = () => {
       const timeout = setTimeout(() => {
         callToast(
           'loading',
-          'If you are experiencing a long load time, please wait, our servers go into hibernation when not in use for a long time and need time to get up and running.'
+          'If you are experiencing a long load time, please wait, our servers go into hibernation when not in use for a long time and need time to get up and running.',
+          10000
         );
       }, 5000);
 
