@@ -5,6 +5,7 @@ const InfoBox = styled.div`
   min-height: 335px;
   max-height: 824px;
   padding: 16px;
+  padding-right: 8px;
   border: 1px solid rgba(239, 237, 232, 0.2);
 
   display: flex;
