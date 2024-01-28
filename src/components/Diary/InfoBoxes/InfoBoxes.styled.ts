@@ -10,7 +10,6 @@ const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  overflow-x: hidden;
 
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
