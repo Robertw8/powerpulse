@@ -17,7 +17,7 @@ import {
   StatusRound,
 } from './ProductsItem.styled';
 import { Icon } from '../../Icon';
-import { ConfigProvider, Popover, Popconfirm, Button } from 'antd';
+import { ConfigProvider, Popover, Popconfirm } from 'antd';
 
 import { deleteDiaryProduct } from '../../../redux/diary';
 import { Products } from '../../../redux/diary/types';
@@ -91,14 +91,23 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
                 description="Are you sure to delete this product?"
                 onConfirm={handleProductDelete}
               >
-                <Button type="text" style={{ padding: 0, height: 0 }}>
+                <button
+                  type="button"
+                  style={{
+                    padding: 0,
+                    cursor: 'pointer',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                  }}
+                  aria-label="delete product"
+                >
                   <Icon
                     name="delete"
                     iconWidth={{ mobile: '20px', tablet: '20px' }}
                     iconHeight={{ mobile: '20px', tablet: '20px' }}
                     stroke="#EF8964"
                   />
-                </Button>
+                </button>
               </Popconfirm>
             </IconWrap>
           </MobileRow>

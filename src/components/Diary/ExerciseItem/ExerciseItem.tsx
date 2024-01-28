@@ -16,7 +16,7 @@ import {
   BottomRow,
 } from './ExerciseItem.styled';
 import { Icon } from '../../Icon';
-import { Button, ConfigProvider, Popconfirm, Popover } from 'antd';
+import { ConfigProvider, Popconfirm, Popover } from 'antd';
 
 import { deleteDiaryExercise } from '../../../redux/diary';
 import { Exercise } from '../../../redux/diary/types';
@@ -93,14 +93,23 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({ exercise, id }) => {
                 description="Are you sure to delete this product?"
                 onConfirm={handleExerciseDelete}
               >
-                <Button type="text" style={{ padding: 0, height: 0 }}>
+                <button
+                  type="button"
+                  style={{
+                    padding: 0,
+                    cursor: 'pointer',
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                  }}
+                  aria-label="delete exercise"
+                >
                   <Icon
                     name="delete"
                     iconWidth={{ mobile: '20px', tablet: '20px' }}
                     iconHeight={{ mobile: '20px', tablet: '20px' }}
                     stroke="#EF8964"
                   />
-                </Button>
+                </button>
               </Popconfirm>
             </IconWrap>
           </MobileRow>
