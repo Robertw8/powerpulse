@@ -1,13 +1,11 @@
 import styled from '@emotion/styled';
 import { Button, Input } from 'antd';
 import { Link } from 'react-router-dom';
-
 import InputPrimary from '../InputPrimary/InputPrimary.tsx';
 import {
   StyledInputProps,
   validationStatuses,
 } from '../InputPrimary/InputPrimary.styled.ts';
-
 import { Title } from '../PageTitle/PageTitle.styled.ts';
 
 const FormContainer = styled.form`
@@ -17,10 +15,11 @@ const FormContainer = styled.form`
 
   @media screen and (min-width: 768px) {
     width: 364px;
+    margin-bottom: 10px;
+
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 10px;
   }
 `;
 const TitleSignUp = styled(Title)`
@@ -40,15 +39,15 @@ const TitleSignUp = styled(Title)`
 const ParagraphAuth = styled.p`
   width: 335px;
   height: 54px;
-
   margin-bottom: 28px;
+
   font-size: 14px;
   color: rgba(239, 237, 232, 0.3);
 
   @media screen and (min-width: 768px) {
     width: 496px;
-
     margin-bottom: 32px;
+
     font-size: 16px;
     color: rgba(239, 237, 232, 0.3);
   }
@@ -56,6 +55,7 @@ const ParagraphAuth = styled.p`
 const ParagraphAfterBtn = styled.p`
   width: 176px;
   height: 18px;
+
   font-size: 12px;
   color: rgba(239, 237, 232, 0.3);
 `;
@@ -63,6 +63,7 @@ const ParagraphAfterBtn = styled.p`
 const LinkAuth = styled(Link)`
   color: rgba(239, 237, 232, 0.6);
   transition-duration: 150ms;
+
   &:hover,
   &:focus,
   &:focus-within {
@@ -88,6 +89,7 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   border-color: ${({ bordercolor }) => validationStatuses[bordercolor]};
   background-color: transparent !important;
   box-shadow: 0;
+
   &:hover,
   &:focus,
   &:focus-within {
@@ -98,7 +100,6 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input {
     &::placeholder {
       color: #efede84d !important;
-
       background-color: transparent !important;
     }
   }
@@ -106,6 +107,7 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
   .ant-input-password-icon {
     color: #fff !important;
     padding: 12px;
+
     &:hover,
     &:focus,
     &:focus-within {
@@ -115,11 +117,12 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 `;
 
 const ContainerSignUp = styled.div`
+  width: 335px;
+  height: auto;
+
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 335px;
-  height: auto;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -127,25 +130,30 @@ const ContainerSignUp = styled.div`
 `;
 
 const ImgSignUp = styled.img`
-  width: 350px;
-  height: auto;
   position: absolute;
   top: 180px;
   z-index: -1;
+
+  width: 350px;
+  height: auto;
+
   @media screen and (min-width: 769px) {
-    width: 670px;
-    height: auto;
     position: absolute;
     top: -30px;
     left: 40px;
     overflow-x: hidden !important;
-  }
-  @media screen and (min-width: 1440px) {
+
     width: 670px;
     height: auto;
+  }
+
+  @media screen and (min-width: 1440px) {
     position: absolute;
     top: -0px;
     left: 550px;
+
+    width: 670px;
+    height: auto;
   }
 `;
 
@@ -171,9 +179,10 @@ const BtnSignUp = styled(Button)`
   @media screen and (min-width: 768px) {
     width: 190px;
     height: 56px;
+    margin-top: 64px;
+
     font-size: 20px;
     color: #fff !important;
-    margin-top: 64px;
 
     &:hover,
     &:focus {
@@ -185,10 +194,12 @@ const BtnSignUp = styled(Button)`
 const BtnSignPage = styled(BtnSignUp)`
   width: 136px;
   height: 42px;
-  font-size: 16px;
-  color: #fff !important;
   margin-top: 28px;
   margin-bottom: 16px;
+
+  font-size: 16px;
+  color: #fff !important;
+
   &:hover,
   &:focus {
     background-color: #ef8964 !important;
@@ -209,9 +220,7 @@ const StatisticsWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     bottom: -83%;
-
     left: 0%;
-
     transform: translate(-20%) scale(0.6);
   }
 

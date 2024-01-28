@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
+import { useDispatch } from 'react-redux';
 
 import {
   BlockSignUp,
@@ -19,14 +20,12 @@ import {
 } from './SignIn.styled';
 import { InputPrimary } from '../InputPrimary';
 import { AuthImg } from '../Welcome/WelcomeImg';
+import { Statistics } from '../Statistics';
 
 import SignInSchema from './SignInSchema';
 import { SignInArgs } from '../../services/types';
-import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux';
 import { loginUser } from '../../redux/auth';
-
-import { Statistics } from '../Statistics';
 
 const SignInForm = () => {
   const { isLoading } = useAuth();

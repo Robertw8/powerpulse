@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 import { Modal } from 'antd';
 import { Link } from 'react-router-dom';
+import { palette } from '../../../styles';
 
 const StyledModal = styled(Modal)`
   .ant-modal-content {
     padding: 48px 24px;
-    background-color: #10100f !important;
-    border: 1px solid #efede833;
+    background-color: ${palette.colors.bg} !important;
+    border: 1px solid ${palette.colors.white20};
 
     @media screen and (min-width: 768px) {
       padding: 64px;
@@ -22,7 +23,8 @@ const ContentWrapper = styled.div`
 
 const ModalTitle = styled.div`
   margin-top: 5px;
-  color: #efede8;
+
+  color: ${palette.colors.orange};
   font-weight: 700;
   font-size: 24px;
   line-height: calc(32 / 24);
@@ -31,13 +33,13 @@ const ModalTitle = styled.div`
 
 const Calories = styled.p`
   margin-top: 15px;
-  color: #efede84d;
+  color: ${palette.colors.white30};
   font-size: 14px;
   line-height: calc(18 / 14);
 `;
 
 const Value = styled.span`
-  color: #e6533c;
+  color: ${palette.colors.orange};
 `;
 
 const ButtonWrapper = styled.div`
@@ -51,16 +53,16 @@ const StyledLink = styled(Link)`
   margin-top: 15px;
 
   font-weight: 'Roboto', sans-serif;
-  color: #efede84d;
+  color: ${palette.colors.white30};
   font-size: 14px;
   line-height: calc(18 / 14);
 
   &:hover,
   :focus {
-    color: #e6533c;
+    color: ${palette.colors.orange};
 
     svg {
-      stroke: #e6533c;
+      stroke: ${palette.colors.orange};
     }
   }
 `;

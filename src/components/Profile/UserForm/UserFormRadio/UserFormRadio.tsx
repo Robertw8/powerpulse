@@ -1,6 +1,5 @@
-import React from 'react';
-import { FormikValues } from 'formik';
 import { useAuth } from '../../../../hooks';
+
 import {
   RadioWrap,
   BtnWrap,
@@ -15,6 +14,8 @@ import {
 } from './UserFormRadio.styled';
 import { PrimaryButton } from '../../..';
 
+import { FormikValues } from 'formik';
+
 const bloodUser = [1, 2, 3, 4];
 const sexUser = ['Male', 'Female'];
 const levelActivityUser = [
@@ -27,6 +28,7 @@ const levelActivityUser = [
 
 const UserFormRadio: React.FC<FormikValues> = ({ formik }) => {
   const { isLoading } = useAuth();
+
   return (
     <>
       <Label>Blood</Label>

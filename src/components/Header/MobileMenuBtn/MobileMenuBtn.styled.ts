@@ -1,13 +1,16 @@
 import styled from '@emotion/styled';
 
-export const Button = styled.button`
+const Button = styled.button`
   display: none;
-  background: none;
   border: none;
-  cursor: pointer;
   padding: 0px;
+
+  background: none;
+  cursor: pointer;
 
   @media screen and (max-width: 1440px) {
     display: block;
   }
 `;
+
+export { Button };

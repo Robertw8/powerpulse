@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { Modal } from 'antd';
+import { palette } from '../../../styles';
 
 const StyledModal = styled(Modal)`
   .ant-modal-content {
     padding: 64px 12px 48px 12px;
-    background-color: #10100f !important;
+    background-color: ${palette.colors.bg} !important;
     border: 1px solid #efede833;
 
     @media screen and (min-width: 375px) {

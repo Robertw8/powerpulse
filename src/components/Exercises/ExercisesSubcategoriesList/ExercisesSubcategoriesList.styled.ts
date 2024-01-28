@@ -7,7 +7,6 @@ const ExercisesList = styled.ul`
   align-items: baseline;
   flex-direction: column;
   gap: 20px;
-
   height: 2240px;
 
   @media screen and (min-width: 768px) {

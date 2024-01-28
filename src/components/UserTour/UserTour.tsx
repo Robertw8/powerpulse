@@ -1,5 +1,6 @@
-import { TourProps, Tour } from 'antd';
 import { useEffect, useState } from 'react';
+
+import { TourProps, Tour } from 'antd';
 import { Icon } from '..';
 
 interface UserTourProps extends TourProps {}

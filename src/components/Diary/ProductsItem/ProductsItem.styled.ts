@@ -12,41 +12,49 @@ const Product = styled.li`
 const TitleCol = styled.li`
   color: #ef8964;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
+
   margin-bottom: 8px;
+
   @media screen and (min-width: 768px) {
     display: none;
   }
 `;
 
 const ValueCol = styled.li`
-  font-size: 14px;
-  line-height: 18px;
   padding: 10px 0 10px 14px;
-  border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
   margin-bottom: 16px;
-  text-overflow: ellipsis;
   overflow: hidden;
+
+  font-size: 14px;
+  line-height: 18px;
+  border-radius: 12px;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 0px;
     width: 128px;
+
     font-size: 16px;
     line-height: 18px;
-    @media screen and (min-width: 1440px) {
-      width: 166px;
-    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 166px;
   }
 `;
+
 const ValueColTitle = styled.li`
+  margin-bottom: 16px;
+  padding: 10px 0 10px 14px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+
   font-size: 14px;
   line-height: 18px;
-  padding: 10px 0 10px 14px;
+  text-transform: capitalize;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
-  margin-bottom: 16px;
 
   p {
     text-overflow: ellipsis;
@@ -85,9 +93,11 @@ const MobileRow = styled.ul`
   gap: 16px;
   justify-content: start;
   align-items: center;
+
   @media screen and (min-width: 768px) {
     gap: 8px;
   }
+
   &:nth-of-type(1) {
     display: none;
   }
@@ -98,6 +108,7 @@ const MobileTitleRow = styled.ul`
   gap: 16px;
   justify-content: start;
   align-items: center;
+
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -106,13 +117,16 @@ const MobileTitleRow = styled.ul`
 const MiniValueCol = styled(ValueCol)`
   margin-bottom: 0px;
   width: 80px;
+  text-transform: capitalize;
+
   @media screen and (min-width: 768px) {
     width: 90px;
     font-size: 16px;
     line-height: 18px;
-    @media screen and (min-width: 1440px) {
-      width: 110px;
-    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 110px;
   }
 `;
 
@@ -128,7 +142,6 @@ const DesktopTitle = styled.li``;
 const IconWrap = styled.li`
   width: 20px;
   height: 20px;
-  cursor: pointer;
 `;
 
 const TitlesRowDesktop = styled.ul``;
@@ -144,6 +157,7 @@ const StatusRound = styled.span<{ recommended: boolean }>`
   display: inline-block;
   width: 14px;
   height: 14px;
+
   background-color: ${({ recommended }) =>
     recommended ? '#419B09' : '#E9101D'};
   border-radius: 50%;

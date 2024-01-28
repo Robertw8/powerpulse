@@ -1,13 +1,14 @@
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/auth/selectors';
-import { DrawerStyled, Appeal } from '../MobileMenu/MobileMenu.styled';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logOutUser } from '../../../redux/auth/operations';
-import { AppDispatch } from '../../../redux';
 
+import { DrawerStyled, Appeal } from '../MobileMenu/MobileMenu.styled';
 import { NavMenu, NavLinkStyled, CloseBtn, Logout } from './MobileMenu.styled';
 import Icon from '../../Icon/Icon';
+
+import { logOutUser } from '../../../redux/auth/operations';
+import { selectUser } from '../../../redux/auth/selectors';
+import { AppDispatch } from '../../../redux';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -24,8 +25,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
       const isTablet = window.matchMedia('(min-width: 768px)').matches;
       setDrawerWidth(isTablet ? '350px' : '200px');
     };
+
     updateDrawerWidth();
     window.addEventListener('resize', updateDrawerWidth);
+
     return () => {
       window.removeEventListener('resize', updateDrawerWidth);
     };
@@ -34,6 +37,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
   if (!user) {
     return null;
   }
+
   const areSomeSettingsPresent = Object.values(user.settings || {}).some(
     setting => setting
   );

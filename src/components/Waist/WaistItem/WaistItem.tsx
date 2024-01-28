@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../redux/store.ts';
+import { useExercises } from '../../../hooks';
 
 import { Exercise } from '../../../redux/exercises/types';
-import { setBurnedCalories } from '../../../redux/exercises/operations.ts';
-
-import useExercises from '../../../hooks/useExercises.ts';
 import { Icon } from '../../';
+
+import { setBurnedCalories } from '../../../redux/exercises/operations.ts';
+import { AppDispatch } from '../../../redux/store.ts';
 
 import {
   AddButton,

@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { palette } from '../../../styles';
 
 const Message = styled.p`
   max-width: 100%;
-  color: #efede84d;
+  color: ${palette.colors.white30};
   font-size: 14px;
   line-height: calc(18 / 14);
 
@@ -15,7 +16,7 @@ const Message = styled.p`
 
 const OrangeText = styled.span`
   display: inline-block;
-  color: #e6533c;
+  color: ${palette.colors.orange};
   font-size: 14px;
   line-height: calc(18 / 14);
 

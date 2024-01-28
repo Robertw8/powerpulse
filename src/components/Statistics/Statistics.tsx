@@ -1,4 +1,6 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Card, Space } from 'antd';
 const { Meta } = Card;
 import {
@@ -7,12 +9,7 @@ import {
   DashboardOutlined,
   FireFilled,
 } from '@ant-design/icons';
-
 import { Icon } from '../Icon';
-
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import Loader from '../Loader/Loader';
 
 import {

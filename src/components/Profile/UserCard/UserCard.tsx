@@ -1,9 +1,9 @@
-import React from 'react';
 import { useState } from 'react';
 import { useAuth } from '../../../hooks';
+import { useDispatch } from 'react-redux';
+
 import { LogOutBtn } from '../../LogoutBtn';
 import { Icon } from '../../Icon';
-
 import {
   ImgWrap,
   Text,
@@ -24,8 +24,8 @@ import {
   Img,
   WrapIcon,
 } from './UserCard.styled';
+
 import { AppDispatch } from '../../../redux';
-import { useDispatch } from 'react-redux';
 import { getUserAvatar } from '../../../redux/auth';
 
 const UserCard: React.FC = () => {

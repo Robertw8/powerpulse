@@ -1,13 +1,14 @@
 import { ImgWelcomePage, StatisticsWrapper } from './Welcome.styled';
-import imgForWelcomePage from '..//../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
-import ImgForWelcomePageMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
-import imgForWelcomePageTablet from '..//../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
-import imgAuthPageMob from '..//../assets/images/ImgForWelcomePage/imgAuthPageMob.webp';
-import { ImgSignUp } from '..//SignUp/SignUp.styled';
+import { ImgSignUp } from '../SignUp/SignUp.styled';
+
+import imgForWelcomePage from '../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import ImgForWelcomePageMob from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
+import imgForWelcomePageTablet from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
+import imgAuthPageMob from '../../assets/images/ImgForWelcomePage/imgAuthPageMob.webp';
 
 import { Statistics } from '../Statistics';
 
-export const WelcomeImg: React.FC = () => {
+const WelcomeImg: React.FC = () => {
   return (
     <>
       <picture>
@@ -29,7 +30,7 @@ export const WelcomeImg: React.FC = () => {
   );
 };
 
-export const AuthImg: React.FC = () => {
+const AuthImg: React.FC = () => {
   return (
     <picture>
       <source media="(max-width: 768px)" srcSet={imgAuthPageMob} />
@@ -43,3 +44,5 @@ export const AuthImg: React.FC = () => {
     </picture>
   );
 };
+
+export { WelcomeImg, AuthImg };

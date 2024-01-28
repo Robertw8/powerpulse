@@ -1,8 +1,4 @@
-import React from 'react';
-
-import { Icon } from '../../Icon';
-import { Products } from '../../../redux/diary/types';
-import { AppDispatch } from '../../../redux';
+import { useDispatch } from 'react-redux';
 
 import {
   TitleCol,
@@ -20,19 +16,17 @@ import {
   Status,
   StatusRound,
 } from './ProductsItem.styled';
+import { Icon } from '../../Icon';
+import { ConfigProvider, Popover, Popconfirm, Button } from 'antd';
+
 import { deleteDiaryProduct } from '../../../redux/diary';
-import { useDispatch } from 'react-redux';
-import { ConfigProvider, Popover, Popconfirm } from 'antd';
+import { Products } from '../../../redux/diary/types';
+import { AppDispatch } from '../../../redux';
 
 interface ProductsItemProps {
   product: Products;
   id: string;
 }
-const ucFirst = str => {
-  if (!str) return str;
-
-  return str[0].toUpperCase() + str.slice(1);
-};
 
 const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -40,6 +34,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
   const handleProductDelete = () => {
     dispatch(deleteDiaryProduct(id));
   };
+
   return (
     <ConfigProvider
       theme={{
@@ -56,7 +51,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
             <TitleCol>Title</TitleCol>
             <Popover placement="topLeft" content={product.title}>
               <ValueColTitle>
-                <p>{ucFirst(product.title)}</p>
+                <p>{product.title}</p>
               </ValueColTitle>
             </Popover>
           </Row>
@@ -64,7 +59,7 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
             <TitleCol>Category</TitleCol>
             <Popover placement="topLeft" content={product.category}>
               <ValueCol>
-                <p>{ucFirst(product.category)}</p>
+                <p>{product.category}</p>
               </ValueCol>
             </Popover>
           </Row>
@@ -96,12 +91,14 @@ const ProductsItem: React.FC<ProductsItemProps> = ({ product, id }) => {
                 description="Are you sure to delete this product?"
                 onConfirm={handleProductDelete}
               >
-                <Icon
-                  name="delete"
-                  iconWidth={{ mobile: '20px', tablet: '20px' }}
-                  iconHeight={{ mobile: '20px', tablet: '20px' }}
-                  stroke="#EF8964"
-                />
+                <Button type="text" style={{ padding: 0, height: 0 }}>
+                  <Icon
+                    name="delete"
+                    iconWidth={{ mobile: '20px', tablet: '20px' }}
+                    iconHeight={{ mobile: '20px', tablet: '20px' }}
+                    stroke="#EF8964"
+                  />
+                </Button>
               </Popconfirm>
             </IconWrap>
           </MobileRow>

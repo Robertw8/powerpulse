@@ -1,20 +1,21 @@
 import styled from '@emotion/styled';
 import { palette } from '../../styles/theme';
 
-export const LogoutBtn = styled.button`
+const LogoutBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
+  padding: 0;
+
   color: ${palette.colors.white};
   text-decoration: none;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
+
   background-color: transparent;
   outline: none;
-  border: none;
-  padding: 0;
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
@@ -25,7 +26,9 @@ export const LogoutBtn = styled.button`
     }
   }
 `;
-export const Text = styled.span`
+const Text = styled.span`
   margin-right: 8px;
   color: ${palette.colors.white};
 `;
+
+export { LogoutBtn, Text };

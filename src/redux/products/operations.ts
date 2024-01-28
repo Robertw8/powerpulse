@@ -71,7 +71,6 @@ const getProductsCategories = operationWrapper(
   }
 );
 
-// ! temp
 const setCalculatedCalories = createAction<number>(
   'products/setCalculatedCalories'
 );

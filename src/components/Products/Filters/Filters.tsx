@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useProducts } from '../../../hooks';
 
 import { FilterDropdown } from '..';
-
 import { SearchFilter } from '../SearchFilter';
 import {
   DropdownWrapper,
@@ -12,15 +12,10 @@ import {
 
 import { AppDispatch } from '../../../redux';
 import { getProductsCategories, setFilters } from '../../../redux/products';
-import {
-  selectCategories,
-  selectFilters,
-} from '../../../redux/products/selectors';
 
 const Filters: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const categories = useSelector(selectCategories);
-  const filters = useSelector(selectFilters);
+  const { categories, filters } = useProducts();
 
   useEffect(() => {
     dispatch(getProductsCategories({}));

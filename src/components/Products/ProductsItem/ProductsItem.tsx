@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from '../../../hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAuth, useProducts } from '../../../hooks';
+import { useDispatch } from 'react-redux';
 
 import {
   Item,
@@ -22,7 +22,6 @@ import { Icon } from '../../Icon';
 import { Product } from '../../../redux/products/types';
 import { AddProductModal, ProductAddedModal } from '..';
 
-import { selectCalculatedCalories } from '../../../redux/products/selectors';
 import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';
 
@@ -33,11 +32,11 @@ interface ProductsItemProps {
 const ProductsItem: React.FC<ProductsItemProps> = ({ product }) => {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState<boolean>(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState<boolean>(false);
+  const dispatch = useDispatch<AppDispatch>();
   const { groupBloodNotAllowed } = product;
+  const { calculatedCalories } = useProducts();
   const { user } = useAuth();
   const userBloodGroup = user.settings.blood;
-  const calculatedCalories = useSelector(selectCalculatedCalories);
-  const dispatch = useDispatch<AppDispatch>();
 
   const isRecommended = userBloodGroup
     ? groupBloodNotAllowed[userBloodGroup]

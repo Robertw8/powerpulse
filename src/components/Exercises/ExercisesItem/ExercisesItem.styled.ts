@@ -1,15 +1,18 @@
 import styled from '@emotion/styled';
 
 const ExercisesListItem = styled.li`
+  position: relative;
+  overflow: hidden;
+
   display: flex;
   width: 335px;
   height: 206px;
-  position: relative;
-  overflow: hidden;
+  border: 1px solid rgba(239, 237, 232, 0.2);
+
   border-radius: 12px;
   cursor: pointer;
-  border: 1px solid rgba(239, 237, 232, 0.2);
   transition-duration: 300ms;
+
   :hover,
   :active {
     border-color: #e6533c;
@@ -18,21 +21,25 @@ const ExercisesListItem = styled.li`
   @media screen and (min-width: 768px) and (max-width: 1440px) {
     width: 224px;
   }
+
   @media screen and (min-width: 1440px) {
     width: 237px;
   }
 `;
 
 const ItemTextWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
+
   transform: translate(-50%, -50%);
   background-color: rgba(4, 4, 4, 0.5);
 `;
@@ -42,9 +49,7 @@ const ListItemTitle = styled.h2`
   font-size: 20px;
   line-height: 1.2;
   color: #efede8;
-  ::first-letter {
-    text-transform: uppercase;
-  }
+  text-transform: capitalize;
 `;
 
 const ListItemCategory = styled.p`

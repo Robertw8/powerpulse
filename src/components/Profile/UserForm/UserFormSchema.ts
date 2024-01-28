@@ -11,7 +11,6 @@ interface FormValues {
   levelActivity: 1 | 2 | 3 | 4 | 5 | string;
 }
 
-//yup validation
 const schema = object({
   name: string().required('Required field'),
   height: number().min(150, 'minimum 150(cm)').required('Required field'),

@@ -1,8 +1,8 @@
-import React from 'react';
+import { ConfigProvider } from 'antd';
+import { DatePickerCustom, WrapDatePicker } from './DatePicker.styled';
+
 import dayjs from 'dayjs';
 import { FormikValues } from 'formik';
-import { DatePickerCustom, WrapDatePicker } from './DatePicker.styled';
-import { ConfigProvider } from 'antd';
 import { palette } from '../../../../styles/theme';
 
 const DatePicker: React.FC<FormikValues> = ({ formik }) => {

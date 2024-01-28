@@ -28,8 +28,8 @@ const registerUser = operationWrapper(
     );
 
     setToken(response.data.accessToken, response.data.refreshToken);
-    // to get users data for header
     dispatch(getCurrentUser({}));
+
     return response.data;
   }
 );

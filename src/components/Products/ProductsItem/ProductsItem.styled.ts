@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
+import { palette } from '../../../styles';
 
 const Item = styled.li`
   width: 100%;
   height: 150px;
   padding: 16px;
-  border: 1px solid #efede833;
+  border: 1px solid ${palette.colors.white20};
 
   border-radius: 12px;
-  background-color: #efede80d;
+  background-color: ${palette.colors.white5};
   transition-duration: 150ms;
 
   @media screen and (min-width: 375px) {
@@ -24,7 +25,7 @@ const Item = styled.li`
   }
 
   &:hover {
-    background-color: #efede80a;
+    background-color: ${palette.colors.white5};
   }
 `;
 
@@ -41,7 +42,7 @@ const Badge = styled.p`
   font-size: 12px;
   line-height: calc(14 / 12);
 
-  background-color: #efede80d;
+  background-color: ${palette.colors.white5};
   border-radius: 4px;
 `;
 
@@ -75,14 +76,14 @@ const AddButton = styled(Button)`
 
   font-size: 14px;
   line-height: calc(18 / 14);
-  color: #e6533c;
+  color: ${palette.colors.orange};
 
   &:hover {
-    color: #efede8 !important;
+    color: ${palette.colors.white} !important;
     transform: translateX(5px);
 
     svg {
-      stroke: #efede8;
+      stroke: ${palette.colors.white};
     }
   }
 
@@ -131,7 +132,7 @@ const NameIconWrapper = styled.span`
   width: 24px;
   height: 24px;
 
-  background-color: #efa082;
+  background-color: ${palette.colors.beige};
   border-radius: 50%;
 `;
 
@@ -150,11 +151,11 @@ const SpecificationsItem = styled.li`
 `;
 
 const SpecificationName = styled.p`
-  color: #efede866;
+  color: ${palette.colors.white40};
 `;
 
 const SpecificationValue = styled.p`
-  color: #efa082;
+  color: ${palette.colors.beige};
   text-transform: capitalize;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const CategoryList = styled.div`
   display: flex;
   gap: 28px;
+
   & .ant-tabs {
     color: #efede8;
   }

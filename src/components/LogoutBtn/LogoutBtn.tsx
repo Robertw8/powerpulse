@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../redux';
-import { logOutUser } from '../../redux/auth/operations';
 import Icon from '../Icon/Icon';
 import { Text, LogoutBtn } from './LogoutBtn.styled';
+
+import { AppDispatch } from '../../redux';
+import { logOutUser } from '../../redux/auth/operations';
 
 const LogOutBtn: React.FC<{ className?: string }> = ({ className }) => {
   const dispatch = useDispatch<AppDispatch>();

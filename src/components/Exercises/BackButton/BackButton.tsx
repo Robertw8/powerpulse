@@ -1,19 +1,20 @@
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useExercises } from '../../../hooks';
 
 import { BackBtn } from './BackButton.styled';
 import { Icon } from '../../Icon';
 
-import { selectFilters, setFilters } from '../../../redux/exercises';
+import { setFilters } from '../../../redux/exercises';
 import { AppDispatch } from '../../../redux';
 
 const BackButton: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const filters = useSelector(selectFilters);
+  const { exercisesFilters } = useExercises();
 
   const onClick = () => {
-    dispatch(setFilters(filters.filter, ''));
+    dispatch(setFilters(exercisesFilters.filter, ''));
     navigate(-1);
   };
 

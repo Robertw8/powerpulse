@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/theme';
-
 import { Link } from 'react-router-dom';
 
 interface HeaderContainerProps {
   isLoggedIn: boolean;
 }
 
-export const Wrapper = styled.div`
+const Wrapper = styled.div`
   background-color: ${palette.colors.black};
 `;
-export const HeaderContainer = styled.header<HeaderContainerProps>`
+
+const HeaderContainer = styled.header<HeaderContainerProps>`
   padding-top: 24px;
   padding-bottom: 24px;
 
@@ -22,30 +22,32 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   }
 `;
 
-export const HeaderWrap = styled.div`
+const HeaderWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const LinkLogo = styled(Link)`
+const LinkLogo = styled(Link)`
   margin-right: auto;
   display: inline-flex;
   align-items: center;
-  background-color: transparent;
   gap: 8px;
+
   font-size: 16px;
   font-weight: 400;
   line-height: 1.33;
   color: rgba(239, 237, 232, 1);
   text-decoration: none;
+  background-color: transparent;
+
   @media screen and (min-width: 768px) {
     font-size: 19px;
     width: 150px;
   }
 `;
 
-export const NavWrap = styled.nav`
+const NavWrap = styled.nav`
   margin-right: 32px;
 
   @media screen and (max-width: 1440px) {
@@ -53,7 +55,7 @@ export const NavWrap = styled.nav`
   }
 `;
 
-export const UserContainer = styled.div`
+const UserContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,8 +63,18 @@ export const UserContainer = styled.div`
   padding: 0;
 `;
 
-export const UserBarWrapper = styled.div`
+const UserBarWrapper = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
 `;
+
+export {
+  Wrapper,
+  HeaderContainer,
+  HeaderWrap,
+  LinkLogo,
+  NavWrap,
+  UserContainer,
+  UserBarWrapper,
+};

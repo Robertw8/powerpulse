@@ -8,7 +8,6 @@ import LogOutBtn from '../../LogoutBtn/LogoutBtn';
 import MobileMenuBtn from '../MobileMenuBtn/MobileMenuBtn';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import Icon from '../../Icon/Icon';
-
 import {
   HeaderContainer,
   LinkLogo,

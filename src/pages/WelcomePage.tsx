@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { Welcome } from '../components';
-import ContainerAuth from '../components/Container/ContainerAuth';
 import { useAuth } from '../hooks';
+
+import { Welcome, ContainerAuth } from '../components';
 import { callToast } from '../helpers';
 
 const WelcomePage: React.FC = () => {

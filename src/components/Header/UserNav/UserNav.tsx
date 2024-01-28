@@ -8,6 +8,7 @@ const UserNav: React.FC = () => {
   if (!user) {
     return null;
   }
+
   const areSomeSettingsPresent = Object.values(user.settings || {}).some(
     setting => setting
   );

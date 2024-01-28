@@ -1,13 +1,20 @@
+import { useDispatch } from 'react-redux';
+import { useAuth } from '../hooks';
+
 import { Suspense, lazy, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Layout, PublicRoute, PrivateRoute, Loader } from '.';
+import {
+  Layout,
+  PublicRoute,
+  PrivateRoute,
+  Loader,
+  WaistList,
+  ExercisesSlider,
+} from '.';
+
 import routes from '../routes';
-import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux';
-import { getCurrentUser } from '../redux/auth/operations';
-import { useAuth } from '../hooks';
-import { WaistList } from './Waist';
-import { ExercisesSlider } from './Exercises/ExercisesSlider';
+import { getCurrentUser } from '../redux/auth';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));

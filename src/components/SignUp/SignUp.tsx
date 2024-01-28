@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-
 import { useFormik } from 'formik';
 import { useAuth } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
@@ -19,15 +18,13 @@ import {
   ColorErrorInput,
   StatisticsWrapper,
 } from './SignUp.styled';
+import { Statistics } from '../Statistics';
+import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignUpSchema from './SignUpSchema';
-
 import { registerUser } from '../../redux/auth';
 import { AppDispatch } from '../../redux';
-import { AuthImg } from '../Welcome/WelcomeImg';
 import { SignUpArgs } from '../../services/types';
-
-import { Statistics } from '../Statistics';
 
 const SignUpForm = () => {
   const dispatch = useDispatch<AppDispatch>();

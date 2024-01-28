@@ -6,12 +6,14 @@ const WaistItemLi = styled.li`
   width: 100%;
   min-height: 141px;
   padding: 16px;
-  border-radius: 12px;
   border: 1px solid ${palette.colors.white30};
-  background: ${palette.colors.gray};
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  border-radius: 12px;
+  background: ${palette.colors.gray};
   transition-duration: 150ms;
   text-transform: capitalize;
 
@@ -28,7 +30,7 @@ const WaistItemLi = styled.li`
   }
 
   &:hover {
-    background-color: #efede80a;
+    background-color: ${palette.colors.white5};
   }
 `;
 
@@ -44,11 +46,11 @@ const CardLabel = styled.p`
   font-weight: 700;
   line-height: normal;
   color: ${palette.colors.white};
+  text-transform: uppercase;
 
   padding: 5px 7.5px;
   border-radius: 4px;
-  background: rgba(239, 237, 232, 0.05);
-  text-transform: uppercase;
+  background: ${palette.colors.white5};
 `;
 
 const AddButton = styled(Button)`
@@ -65,11 +67,11 @@ const AddButton = styled(Button)`
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    color: #efede8 !important;
+    color: ${palette.colors.white} !important;
     transform: translateX(5px);
 
     svg {
-      stroke: #efede8;
+      stroke: ${palette.colors.white};
     }
   }
 
@@ -84,6 +86,7 @@ const ExercisesTitleBox = styled.div`
   align-items: center;
   margin-bottom: 8px;
 `;
+
 const Title = styled.h3`
   position: relative;
   font-size: 24px;
@@ -126,7 +129,7 @@ const ListItem = styled.li`
 `;
 
 const ListItemValue = styled.span`
-  color: #efa082;
+  color: ${palette.colors.beige};
   text-transform: capitalize;
   text-overflow: ellipsis;
   overflow: hidden;

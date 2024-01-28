@@ -1,5 +1,5 @@
-import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
+import { Navigate } from 'react-router-dom';
 
 interface PublicRouteProps {
   component: React.ReactElement;

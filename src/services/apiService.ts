@@ -57,14 +57,19 @@ axiosInstance.interceptors.response.use(
   response => response,
   async error => {
     const config = error?.config;
+
     if (error?.response?.status === 401 && !config?.sent) {
       if (!isRefreshing) {
         isRefreshing = true;
         config.sent = true;
+
         try {
           const sessionString = localStorage.getItem('session');
+
           if (!sessionString) throw new Error('no token');
+
           const session = JSON.parse(sessionString);
+
           const {
             data: { data },
           } = await axios.request({
@@ -76,6 +81,7 @@ axiosInstance.interceptors.response.use(
               authorization: `Bearer ${session?.refreshToken}`,
             },
           });
+
           if (data) {
             setToken(data.accessToken, data.refreshToken);
 
@@ -84,7 +90,6 @@ axiosInstance.interceptors.response.use(
               authorization: `Bearer ${data?.accessToken}`,
             };
 
-            // Retry all requests in the queue with the new token
             refreshAndRetryQueue.forEach(({ config, resolve, reject }) => {
               axiosInstance
                 .request(config)
@@ -92,7 +97,6 @@ axiosInstance.interceptors.response.use(
                 .catch(err => reject(err));
             });
 
-            // Clear the queue
             refreshAndRetryQueue.length = 0;
           }
           return axios(config);
@@ -102,7 +106,7 @@ axiosInstance.interceptors.response.use(
           isRefreshing = false;
         }
       }
-      // Add the original request to the queue
+
       return new Promise<void>((resolve, reject) => {
         refreshAndRetryQueue.push({ config, resolve, reject });
       });

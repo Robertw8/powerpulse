@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import ContainerAuth from '../components/Container/ContainerAuth';
-import SignUpForm from '../components/SignUp/SignUp';
 import { useAuth } from '../hooks';
+
+import { ContainerAuth, SignUpForm } from '../components';
 import { callToast } from '../helpers';
 
 const SignUpPage: React.FC = () => {
@@ -19,6 +19,7 @@ const SignUpPage: React.FC = () => {
       return () => clearTimeout(timeout);
     }
   }, [isRefreshing]);
+
   return (
     <ContainerAuth>
       <SignUpForm />

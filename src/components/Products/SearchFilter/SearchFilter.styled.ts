@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { AutoComplete } from 'antd';
+import { palette } from '../../../styles';
 
 const StyledSearchInput = styled(AutoComplete)`
   height: 46px;
@@ -10,14 +11,14 @@ const StyledSearchInput = styled(AutoComplete)`
   }
 
   .ant-select-selector {
-    color: #efedee;
+    height: 50px;
+    color: ${palette.colors.white};
     font-size: 14px;
     line-height: calc(18 / 14);
     text-transform: capitalize;
-    height: 50px;
 
     background-color: transparent !important;
-    border-color: #efede84d !important;
+    border-color: ${palette.colors.white30} !important;
 
     @media screen and (min-width: 768px) {
       font-size: 16px;
@@ -26,7 +27,7 @@ const StyledSearchInput = styled(AutoComplete)`
 
     &:hover,
     :focus {
-      border-color: #e6533c !important;
+      border-color: ${palette.colors.orange} !important;
     }
 
     .ant-select-selection-search {
@@ -34,7 +35,7 @@ const StyledSearchInput = styled(AutoComplete)`
     }
 
     .ant-select-selection-item {
-      color: #efedee;
+      color: ${palette.colors.white};
       font-size: 14px;
       line-height: calc(18 / 14);
 
@@ -45,7 +46,7 @@ const StyledSearchInput = styled(AutoComplete)`
     }
 
     .ant-select-selection-placeholder {
-      color: #efedee;
+      color: ${palette.colors.white};
       position: absolute;
       left: 22px;
     }
@@ -54,7 +55,7 @@ const StyledSearchInput = styled(AutoComplete)`
 
 const StyledSearchContent = styled.div`
   .ant-select-item {
-    color: #efede8;
+    color: ${palette.colors.white};
     font-size: 14px;
     line-height: calc(18 / 14);
     text-transform: capitalize;
@@ -66,13 +67,13 @@ const StyledSearchContent = styled.div`
   }
 
   .ant-select-item-option-active {
-    color: #e6533c !important;
+    color: ${palette.colors.orange} !important;
     font-weight: 600;
-    background-color: #efede80d !important;
+    background-color: ${palette.colors.white5} !important;
   }
 
   .ant-empty-description {
-    color: #efede8 !important;
+    color: ${palette.colors.white} !important;
   }
 `;
 

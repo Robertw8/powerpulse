@@ -6,10 +6,10 @@ import {
   selectCaloriesConsumed,
   selectCaloriesRemaining,
   selectSportsTime,
- 
   selectIsLoading,
   selectError,
 } from '../redux/diary';
+import { selectSelectedDate } from '../redux/diary/selectors';
 
 const useDiary = () => {
   const diaryProducts = useSelector(selectProducts);
@@ -18,9 +18,9 @@ const useDiary = () => {
   const caloriesConsumed = useSelector(selectCaloriesConsumed);
   const caloriesRemaining = useSelector(selectCaloriesRemaining);
   const sportsTime = useSelector(selectSportsTime);
-
   const isLoading = useSelector(selectIsLoading);
   const diaryError = useSelector(selectError);
+  const selectedDate = useSelector(selectSelectedDate);
 
   return {
     diaryProducts,
@@ -29,9 +29,9 @@ const useDiary = () => {
     caloriesConsumed,
     caloriesRemaining,
     sportsTime,
-
     isLoading,
     diaryError,
+    selectedDate,
   };
 };
 

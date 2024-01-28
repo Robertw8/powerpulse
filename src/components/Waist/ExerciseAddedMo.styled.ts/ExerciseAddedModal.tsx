@@ -1,4 +1,6 @@
-import { ModalProps } from 'antd';
+import { useDispatch } from 'react-redux';
+import { useExercises } from '../../../hooks';
+
 import { Icon, PrimaryButton } from '../..';
 import {
   StyledModal,
@@ -9,11 +11,11 @@ import {
   StyledLink,
   Value,
 } from '../../Products/ProductAddedModal/ProductAddedModal.styled';
+
 import thumb from '../../../assets/images/Exercises/thumb.png';
-import { useDispatch } from 'react-redux';
+import { ModalProps } from 'antd';
 import { AppDispatch } from '../../../redux';
 import { setBurnedCalories } from '../../../redux/exercises';
-import { useExercises } from '../../../hooks';
 import { formatTime } from '../../../helpers';
 
 interface ExerciseAddedModalProps extends ModalProps {

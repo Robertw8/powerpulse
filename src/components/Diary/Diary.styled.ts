@@ -53,12 +53,14 @@ const TextWrap = styled.div`
   gap: 8px;
   justify-content: center;
   margin-bottom: 40px;
+
   @media screen and (min-width: 768px) {
     order: 3;
     justify-content: start;
     margin-bottom: 64px;
     width: 561px;
   }
+
   @media screen and (min-width: 1440px) {
     width: fit-content;
   }
@@ -68,16 +70,17 @@ const Text = styled.p`
   width: 310px;
   color: rgba(239, 237, 232, 0.3);
   font-size: 14px;
-  font-style: normal;
   line-height: 18px;
 `;
 
 const MainDiaryWrap = styled.div`
   display: flex;
   flex-direction: column;
+
   @media screen and (min-width: 768px) {
     flex-direction: column-reverse;
   }
+
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 32px;

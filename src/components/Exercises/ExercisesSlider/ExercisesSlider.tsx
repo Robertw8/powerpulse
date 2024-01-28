@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useExercises } from '../../../hooks';
 
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 import NotFoundPage from '../../../pages/NotFoundPage';
 import { Loader } from '../..';
 
-import { selectFilters } from '../../../redux/exercises';
 import { apiService } from '../../../services';
 import currentFilter from './setCurrentFilter';
 
@@ -17,8 +16,7 @@ const Slider: React.FC = () => {
   const [exercisesList, setExercisesList] = useState([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorPage, setErrorPage] = useState<boolean>(false);
-
-  const filters = useSelector(selectFilters);
+  const { exercisesFilters } = useExercises();
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,8 +24,8 @@ const Slider: React.FC = () => {
       ? setLimit(9)
       : setLimit(10);
 
-    const filter = filters.filter
-      ? currentFilter(filters.filter)
+    const filter = exercisesFilters.filter
+      ? currentFilter(exercisesFilters.filter)
       : currentFilter('bodyPart');
     const responce = apiService({
       method: 'get',
@@ -45,7 +43,7 @@ const Slider: React.FC = () => {
         setErrorPage(true);
       })
       .finally(() => setIsLoading(false));
-  }, [filters.filter, limit, page]);
+  }, [exercisesFilters.filter, limit, page]);
 
   const onChange = (currentSlide: number) => {
     setPage(currentSlide + 1);

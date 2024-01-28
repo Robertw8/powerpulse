@@ -51,10 +51,10 @@ const TimerWrapper = styled.div`
 `;
 
 const TimerTitle = styled.p`
+  margin: 10px 0;
   color: ${palette.colors.white40};
   font-size: 10px;
   line-height: calc(14 / 10);
-  margin: 10px 0;
 `;
 
 const TimeRemaining = styled.span`
@@ -73,10 +73,10 @@ const TimerButton = styled(Button)`
 `;
 
 const BurnedCalories = styled.p`
+  margin-top: 8px;
   color: ${palette.colors.white30};
   font-size: 14px;
   line-height: calc(18 / 14);
-  margin-top: 8px;
 `;
 
 const Value = styled.span`
@@ -103,9 +103,9 @@ const InfoList = styled.ul`
 `;
 
 const InfoItem = styled.li`
+  width: 130px;
   padding: 12px 18px;
   border: 1px solid ${palette.colors.white20};
-  width: 130px;
 
   background-color: ${palette.colors.white5};
   border-radius: 12px;
@@ -126,12 +126,12 @@ const ItemName = styled.p`
 `;
 
 const ItemValue = styled.p`
+  margin-top: 4px;
   color: ${palette.colors.white};
   font-size: 14px;
   line-height: calc(18 / 14);
   font-weight: 700;
   text-transform: capitalize;
-  margin-top: 4px;
 `;
 
 const ButtonWrapper = styled.div`

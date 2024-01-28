@@ -3,16 +3,19 @@ import { Drawer } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { palette } from '../../../styles/theme';
 
-export const DrawerStyled = styled(Drawer)`
+const DrawerStyled = styled(Drawer)`
   .ant-drawer-header-close-only {
     display: none;
   }
+
   .ant-drawer-body {
     padding: 20px;
+
     @media screen and (min-width: 768px) {
       padding: 32px;
     }
   }
+
   &.ant-drawer-content {
     background-color: ${palette.colors.orange};
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
@@ -35,21 +38,24 @@ export const DrawerStyled = styled(Drawer)`
   }
 `;
 
-export const Logout = styled.button`
+const Logout = styled.button`
   position: absolute;
   bottom: 26px;
   left: 20px;
+
   display: inline-flex;
   align-items: center;
-  background-color: transparent;
   gap: 8px;
+  border: none;
+  padding: 0px;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 1.33;
   color: rgba(239, 237, 232, 1);
+
+  background-color: transparent;
   outline: none;
-  border: none;
-  padding: 0px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -57,12 +63,13 @@ export const Logout = styled.button`
   }
 `;
 
-export const NavMenu = styled.nav`
+const NavMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
+
   margin-top: 202px;
   margin-left: auto;
   margin-right: auto;
@@ -73,20 +80,22 @@ export const NavMenu = styled.nav`
   }
 `;
 
-export const NavLinkStyled = styled(NavLink)`
+const NavLinkStyled = styled(NavLink)`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
+  text-decoration: none;
+  color: ${palette.colors.white};
+
   padding: 10px 27px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
-  text-decoration: none;
-  color: ${palette.colors.white};
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
+
   &.active,
   &:hover,
   &:focus {
@@ -96,32 +105,37 @@ export const NavLinkStyled = styled(NavLink)`
   }
 `;
 
-export const CloseBtn = styled.button`
+const CloseBtn = styled.button`
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: transparent;
+
   padding: 0px;
-  border: none;
-  cursor: pointer;
   margin-right: 0;
   margin-left: auto;
+  border: none;
+
+  background-color: transparent;
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
     top: 26px;
     right: 32px;
   }
 `;
-export const Appeal = styled.div`
+const Appeal = styled.div`
   margin-top: 202px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
+  width: auto;
+
   color: ${palette.colors.white};
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 30px;
-  width: auto;
   text-transform: uppercase;
   text-align: center;
 `;
+
+export { DrawerStyled, Logout, NavMenu, NavLinkStyled, CloseBtn, Appeal };

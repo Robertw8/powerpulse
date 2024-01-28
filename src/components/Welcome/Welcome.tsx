@@ -9,7 +9,6 @@ import {
   BtnSignInWelcome,
 } from './Welcome.styled';
 import { BtnSignUp } from '../SignUp/SignUp.styled';
-
 import { Icon } from '../Icon';
 import { WelcomeImg } from './WelcomeImg';
 

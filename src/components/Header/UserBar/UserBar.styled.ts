@@ -7,25 +7,20 @@ const rotate = keyframes`
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 `;
 
-export const SettingsLink = styled(Link)`
+const SettingsLink = styled(Link)`
   &:active,
   &:focus {
     svg {
       stroke: ${palette.colors.orange};
+    }
+  }
 
-    }
-  }
-  &:hover {
-    svg {
-      stroke: ${palette.colors.orange};
-      animation: ${rotate} 2s linear infinite;
-    }
-  }
   &:hover {
     svg {
       stroke: ${palette.colors.orange};
@@ -33,13 +28,15 @@ export const SettingsLink = styled(Link)`
     }
   }
 `;
-export const LinkStyled = styled(Link)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const LinkStyled = styled(Link)`
   width: 37px;
   height: 37px;
   border: 1px solid ${palette.colors.orange};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 50%;
   background-color: rgba(48, 48, 48, 0.3);
 
@@ -49,15 +46,16 @@ export const LinkStyled = styled(Link)`
   }
 `;
 
-export const Avatar = styled.img`
+const Avatar = styled.img`
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  border-radius: 50%;
   border: 1px solid ${palette.colors.orange};
+  border-radius: 50%;
 
   @media screen and (min-width: 768px) {
     width: 46px;
     height: 46px;
   }
 `;
+
+export { SettingsLink, LinkStyled, Avatar };

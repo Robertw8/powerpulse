@@ -1,8 +1,13 @@
-import { Container, PageTitle, Diary } from '../components';
-import { DiaryWrapper } from '../components/Diary/Diary.styled';
-import { CustomDatePicker } from '../components/Diary/CustomDatePicker';
-import { useEffect } from 'react';
 import { useAuth } from '../hooks';
+import { useEffect } from 'react';
+
+import {
+  Container,
+  PageTitle,
+  Diary,
+  CustomDatePicker,
+  DiaryWrapper,
+} from '../components';
 import { callToast } from '../helpers';
 
 const DiaryPage: React.FC = () => {
@@ -20,6 +25,7 @@ const DiaryPage: React.FC = () => {
       return () => clearTimeout(timeout);
     }
   }, [isRefreshing]);
+
   return (
     <Container>
       <DiaryWrapper>

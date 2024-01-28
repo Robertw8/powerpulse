@@ -1,29 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { List, ListWrapper } from './ProductsList.styled';
 import { NotFoundMessage, ProductsItem } from '..';
 import { Loader } from '../..';
 
-import {
-  getProducts,
-  getProductsByPage,
-  selectFilters,
-  selectIsLoading,
-  selectProducts,
-} from '../../../redux/products';
-
+import { getProducts, getProductsByPage } from '../../../redux/products';
 import { AppDispatch } from '../../../redux';
 import throttle from 'lodash.throttle';
+import { useProducts } from '../../../hooks';
 
 const ProductsList: React.FC = () => {
+  const [showNotFound, setShowNotFound] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const products = useSelector(selectProducts);
-  const isLoading = useSelector(selectIsLoading);
+  const { products, isLoading, filters } = useProducts();
   const productsListRef = useRef<HTMLUListElement>(null);
   const pageRef = useRef<number>(1);
-  const filters = useSelector(selectFilters);
-  const [showNotFound, setShowNotFound] = useState(false);
 
   useEffect(() => {
     dispatch(

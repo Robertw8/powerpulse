@@ -4,7 +4,6 @@ const ExercisesPage: React.FC = () => {
   return (
     <Container>
       <Exercises />
-      {/* <WaistList /> */}
     </Container>
   );
 };

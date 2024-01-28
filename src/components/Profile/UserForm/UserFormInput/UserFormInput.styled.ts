@@ -32,11 +32,12 @@ const LabelWrap = styled.div`
 `;
 
 const Label = styled.label`
+  display: inline-block;
+  margin: 0 0 5px;
+
   color: ${palette.colors.white40};
   font-size: ${palette.fontSizes.caption}px;
   line-height: 18px;
-  display: inline-block;
-  margin: 0 0 5px;
 
   @media screen and (min-width: 769px) {
     font-size: 14px;
@@ -45,12 +46,13 @@ const Label = styled.label`
 `;
 
 const ErrorText = styled.div`
+  margin: 5px 0 0;
+
   color: ${palette.colors.red};
   font-size: ${palette.fontSizes.caption}px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0.12px;
-  margin: 5px 0 0;
 `;
 
 export { BlockWrapInput, LabelWrapBlock, LabelWrap, Label, ErrorText };

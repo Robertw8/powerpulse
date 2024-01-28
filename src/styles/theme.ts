@@ -21,7 +21,7 @@ const palette: Palette = {
     orange: '#E6533C',
     lightOrange: '#EF8964',
     beige: '#EFA082',
-    white: '#EFEDE8',
+    white: '#EFEDEE',
     white40: ' #EFEDE866',
     white30: '#EFEDE84D',
     white20: '#EFEDE833',

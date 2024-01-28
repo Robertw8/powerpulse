@@ -1,18 +1,19 @@
-import React from 'react';
-import dayjs from 'dayjs';
+import { useDispatch } from 'react-redux';
+import { useDiary } from '../../../hooks';
 
 import { DatePickerCustom, WrapDatePicker } from './CustomDatePicker.styled';
 import { ConfigProvider } from 'antd';
+
 import { palette } from '../../../styles';
-import { selectSelectedDate } from '../../../redux/diary/selectors';
-import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../../redux';
+import dayjs from 'dayjs';
 import { getDiary } from '../../../redux/diary';
 import { setSelectedDate } from '../../../redux/diary/operations';
 
 const CustomDatePicker: React.FC = () => {
-  const selectedDate = useSelector(selectSelectedDate);
+  const { selectedDate } = useDiary();
   const dispatch = useDispatch<AppDispatch>();
+
   return (
     <>
       <WrapDatePicker>

@@ -1,1 +1,1 @@
-export{default as DiaryNotFoundItems} from './DiaryNotFoundItems'
+export { default as DiaryNotFoundItems } from './DiaryNotFoundItems';

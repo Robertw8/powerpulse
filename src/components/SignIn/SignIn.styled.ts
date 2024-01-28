@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-
 import { Title } from '../PageTitle/PageTitle.styled.ts';
 import {
   ParagraphAfterBtn,
@@ -26,7 +25,6 @@ const ParagraphSignIn = styled(ParagraphAuth)`
 
   @media screen and (min-width: 768px) {
     width: 496px;
-
     margin-bottom: 32px;
     font-size: 16px;
     color: rgba(239, 237, 232, 0.3);
@@ -50,9 +48,6 @@ const StatisticsWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     bottom: -103%;
-
-    leftt: 0%;
-
     transform: translate(-20%) scale(0.6);
   }
 

@@ -12,10 +12,11 @@ import { useAuth } from '../hooks';
 
 const ProfilePage: React.FC = () => {
   const [isTourOpen, setIsTourOpen] = useState<boolean>(false);
+  const { isLoggedIn, isRefreshing, userSettings } = useAuth();
+  1;
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
-  const { isLoggedIn, isRefreshing, userSettings } = useAuth();
 
   useEffect(() => {
     if (isLoggedIn && !isRefreshing && !userSettings) setIsTourOpen(true);

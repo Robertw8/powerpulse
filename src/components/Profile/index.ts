@@ -1,4 +1,2 @@
-import { UserCard } from './UserCard';
-import { UserForm } from './UserForm';
-
-export { UserCard, UserForm };
+export { UserCard } from './UserCard';
+export { UserForm } from './UserForm';

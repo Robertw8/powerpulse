@@ -10,8 +10,6 @@ const ExerciseWrap = styled.li`
 const TitleCol = styled.li`
   color: #ef8964;
   font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
   margin-bottom: 8px;
 
@@ -23,9 +21,9 @@ const TitleCol = styled.li`
 const ValueCol = styled.li`
   font-family: Roboto;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
+  text-transform: capitalize;
+
   padding: 8px 8px 8px 10px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -42,6 +40,7 @@ const ValueCol = styled.li`
     font-size: 16px;
     line-height: 18px;
   }
+
   @media screen and (min-width: 1440px) {
     width: 115px;
   }
@@ -49,9 +48,9 @@ const ValueCol = styled.li`
 const ValueColTitle = styled.li`
   font-family: Roboto;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
   line-height: 18px;
+  text-transform: capitalize;
+
   padding: 8px 0 8px 14px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -66,9 +65,11 @@ const ValueColTitle = styled.li`
     width: 132px;
     max-height: 40px;
     margin-bottom: 0px;
+
     font-size: 16px;
     line-height: 18px;
   }
+
   @media screen and (min-width: 1440px) {
     width: 157px;
   }
@@ -89,6 +90,7 @@ const ValueColName = styled(ValueColTitle)`
       overflow: hidden;
     }
   }
+
   @media screen and (min-width: 1440px) {
     width: 131px;
   }
@@ -115,6 +117,7 @@ const MobileRow = styled.ul`
   gap: 16px;
   justify-content: start;
   align-items: center;
+
   @media screen and (min-width: 768px) {
     gap: 8px;
   }
@@ -133,6 +136,7 @@ const MiniValueCol = styled(ValueCol)`
   margin-bottom: 0px;
   width: 80px;
   overflow: hidden;
+  text-transform: capitalize;
 
   p {
     overflow: hidden;
@@ -161,15 +165,8 @@ const MiniTitleCol = styled(TitleCol)`
 const IconWrap = styled.li`
   width: 20px;
   height: 20px;
-  @media screen and (min-width: 768px) {
-    position: absolute;
-    left: 106%;
-  }
-  @media screen and (min-width: 1440px) {
-    position: absolute;
-    left: 108%;
-  }
 `;
+
 const TitlesRowDesktop = styled.ul``;
 
 export {

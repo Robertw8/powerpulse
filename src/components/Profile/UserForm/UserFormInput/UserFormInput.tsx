@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   BlockWrapInput,
   Label,
@@ -7,9 +6,10 @@ import {
   LabelWrapBlock,
 } from './UserFormInput.styled';
 import { StyledInput } from '../../../InputPrimary/InputPrimary.styled';
+import { DatePicker } from '../DatePicker';
+
 import { User } from '../../../../redux/auth/types';
 import { FormikValues } from 'formik';
-import { DatePicker } from '../DatePicker';
 
 const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
   formik,

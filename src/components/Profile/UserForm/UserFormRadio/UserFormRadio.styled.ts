@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 import { palette } from '../../../../styles/theme';
 
 const Label = styled.label`
+  display: inline-block;
+  margin: 0 0 5px;
+
   color: ${palette.colors.white40};
   font-size: ${palette.fontSizes.caption}px;
   line-height: 18px;
-  display: inline-block;
-  margin: 0 0 5px;
 
   @media screen and (min-width: 769px) {
     font-size: ${palette.fontSizes.tiny}px;
@@ -56,49 +57,55 @@ const Input = styled.input`
   &:checked + span {
     border: 2px solid ${palette.colors.lightOrange};
   }
+
   &:checked + span:after {
     opacity: 1;
   }
 `;
 
 const CheckRadio = styled.span`
+  position: relative;
   top: 2px;
   left: 0px;
-  cursor: pointer;
+
   width: 18px;
   height: 18px;
   border: 2px solid ${palette.colors.white40};
+
+  cursor: pointer;
   border-radius: 50%;
   display: flex;
-  position: relative;
+
   &::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    background: ${palette.colors.lightOrange};
     position: absolute;
-    border-radius: 50%;
+    content: '';
     top: 50%;
     left: 50%;
+
+    width: 10px;
+    height: 10px;
+
+    background: ${palette.colors.lightOrange};
+    border-radius: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
   }
 `;
 
 const ErrorText = styled.div`
+  margin: 5px 0 0;
   color: ${palette.colors.red};
   font-size: ${palette.fontSizes.caption}px;
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0.12px;
-  margin: 5px 0 0;
 `;
 
 const TextRadio = styled.span`
+  margin: 3px 0 0 8px;
   color: ${palette.colors.white};
   font-size: ${palette.fontSizes.tiny}px;
   line-height: 18px;
-  margin: 3px 0 0 8px;
 
   @media screen and (min-width: 769px) {
     font-size: ${palette.fontSizes.default}px;

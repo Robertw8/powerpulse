@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { palette } from '../../../styles/theme';
 
-//ProfilePage style
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;

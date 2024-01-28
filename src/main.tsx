@@ -7,11 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Toaster } from 'react-hot-toast';
 
 import 'modern-normalize/modern-normalize.css';
 import { GlobalStyles, theme } from './styles';
 import { persistor, store } from './redux';
-import { Toaster } from 'react-hot-toast';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter basename="/powerpulse/">

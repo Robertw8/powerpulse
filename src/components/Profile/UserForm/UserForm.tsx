@@ -1,13 +1,14 @@
-import React from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../../redux';
-import { FormValues, schema } from './UserFormSchema';
-import useAuth from '../../../hooks/useAuth';
+import { useAuth } from '../../../hooks';
+
 import { UserFormInput } from './UserFormInput';
 import { UserFormRadio } from './UserFormRadio';
-import { getCurrentUser, getUserValue } from '../../../redux/auth';
 import { WrapForm } from './UserForm.styled';
+
+import { AppDispatch } from '../../../redux';
+import { FormValues, schema } from './UserFormSchema';
+import { getCurrentUser, getUserValue } from '../../../redux/auth';
 
 const UserForm: React.FC = () => {
   const { user } = useAuth();

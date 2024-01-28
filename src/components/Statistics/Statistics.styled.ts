@@ -15,9 +15,9 @@ export const StyledCard = styled(Card)`
   }
 
   width: 275px;
-  background-color: #ef8964;
   height: 80px;
   opacity: 0.95;
+  background-color: #ef8964;
 
   .ant-card-meta-title,
   .ant-card-meta-description {

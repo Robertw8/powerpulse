@@ -1,15 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { AppDispatch } from '../../redux';
-import { useAuth } from '../../hooks';
-import {
-  getDiary,
-  selectCaloriesBurned,
-  selectCaloriesConsumed,
-  selectSportsTime,
-  selectCaloriesRemaining,
-} from '../../redux/diary';
-import dayjs from 'dayjs';
+import { useAuth, useDiary } from '../../hooks';
+
 import {
   Text,
   TextWrap,
@@ -21,24 +13,19 @@ import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
 
+import { AppDispatch } from '../../redux';
+import { getDiary } from '../../redux/diary';
+import dayjs from 'dayjs';
+import { convertTime } from '../../helpers';
+
 const Diary = () => {
   const { user } = useAuth();
-  const caloriesBurned = useSelector(selectCaloriesBurned);
-  const caloriesConsumed = useSelector(selectCaloriesConsumed);
-  const sportsRemaining = useSelector(selectSportsTime);
-  const caloriesRemaining = useSelector(selectCaloriesRemaining);
-
-  const convertTime = number => {
-    if (Math.sign(number) === 1) {
-      return number + ' min';
-    }
-    return '+ ' + Math.abs(number) + ' min';
-  };
-
-  const resultSports = Math.sign(sportsRemaining) === -1;
-  const resultCalories = Math.sign(caloriesRemaining) === 1;
-
+  const { caloriesBurned, caloriesConsumed, caloriesRemaining, sportsTime } =
+    useDiary();
   const dispatch = useDispatch<AppDispatch>();
+
+  const resultSports = Math.sign(sportsTime) === -1;
+  const resultCalories = Math.sign(caloriesRemaining) === 1;
 
   useEffect(() => {
     dispatch(getDiary(dayjs().format('DD/MM/YYYY')));
@@ -125,7 +112,7 @@ const Diary = () => {
                   fill="#EF8964"
                 />
               }
-              value={convertTime(sportsRemaining)}
+              value={convertTime(sportsTime)}
             ></DailyStatusBlock>
           </BlockWrap>
           <TextWrap>

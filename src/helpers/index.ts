@@ -6,3 +6,4 @@ export { default as getCurrentDate } from './getCurrentDate';
 export { default as calculateCalories } from './calculateCalories';
 export { default as formatTime } from './formatTime';
 export { default as calculateBurnedCalories } from './calculateBurnedCalories';
+export { default as convertTime } from './convertTime';

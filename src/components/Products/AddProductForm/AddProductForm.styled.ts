@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { InputNumber } from 'antd';
+import { palette } from '../../../styles';
 
 const InputsWrapper = styled.fieldset`
   border: none;
@@ -16,18 +17,18 @@ const StyledInputNumber = styled(InputNumber)`
 
   .ant-input-number {
     background-color: transparent;
-    border-color: #efede84d;
+    border-color: ${palette.colors.white30};
 
-    color: #efede8;
+    color: ${palette.colors.white};
     font-size: 14px;
     line-height: calc(18 / 14);
 
     .ant-input-number-input {
-      color: #efede8 !important;
+      color: ${palette.colors.white} !important;
       height: 40px;
 
       &::placeholder {
-        color: #efede84d;
+        color: ${palette.colors.white30};
       }
     }
 
@@ -35,7 +36,7 @@ const StyledInputNumber = styled(InputNumber)`
     &:focus,
     &:focus-within {
       background-color: transparent !important;
-      border-color: #e6533c !important;
+      border-color: ${palette.colors.orange} !important;
     }
 
     @media screen and (min-width: 768px) {
@@ -45,7 +46,7 @@ const StyledInputNumber = styled(InputNumber)`
   }
 
   .ant-input-number-group-addon {
-    border-color: #efede84d !important;
+    border-color: ${palette.colors.white30} !important;
   }
 
   @media screen and (min-width: 768px) {
@@ -55,20 +56,21 @@ const StyledInputNumber = styled(InputNumber)`
 `;
 
 const InputAddon = styled.span`
-  color: #efede866;
+  color: ${palette.colors.white40};
   font-size: 12px;
   line-height: calc(18 / 12);
 `;
 
 const Calories = styled.p`
   margin-top: 16px;
-  color: #efede866;
+  color: ${palette.colors.white40};
   font-size: 12px;
   line-height: calc(18 / 12);
 `;
 
 const Value = styled.span`
-  color: #efede8;
+  color: ${palette.colors.white};
+  margin-left: 4px;
 `;
 
 const ButtonsWrapper = styled.div`

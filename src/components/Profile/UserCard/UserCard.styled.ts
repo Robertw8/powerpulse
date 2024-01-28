@@ -26,10 +26,10 @@ const WrapIcon = styled.div`
   width: 90px;
   height: 90px;
   border: 2px solid ${palette.colors.orange};
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
 
   @media screen and (min-width: 769px) {
     width: 150px;
@@ -39,6 +39,7 @@ const WrapIcon = styled.div`
 
 const Img = styled.img`
   border-radius: 50%;
+
   @media screen and (min-width: 769px) {
   }
 `;
@@ -61,12 +62,12 @@ const InputFile = styled.input`
 const UserWrap = styled.div`
   text-align: center;
 `;
+
 const UserName = styled.h3`
+  margin: 0 0 4px;
   font-size: ${palette.fontSizes.small}px;
-  font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  margin: 0 0 4px;
 
   @media screen and (min-width: 769px) {
     font-size: ${palette.fontSizes.medium}px;
@@ -92,13 +93,14 @@ const BlockData = styled.div`
   width: 157px;
   height: 96px;
   padding: 13px;
-  border-radius: 12px;
   border: 1px solid ${palette.colors.white20};
-  background: ${palette.colors.orange};
 
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  border-radius: 12px;
+  background: ${palette.colors.orange};
 
   @media screen and (min-width: 769px) {
     width: 214px;

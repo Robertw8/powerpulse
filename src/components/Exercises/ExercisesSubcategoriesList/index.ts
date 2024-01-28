@@ -1,1 +1,1 @@
-export {default as ExercisesSubcategoriesList} from './ExercisesSubcategoriesList'
+export { default as ExercisesSubcategoriesList } from './ExercisesSubcategoriesList';

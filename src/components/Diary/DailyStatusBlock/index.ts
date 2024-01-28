@@ -1,2 +1,1 @@
-export {default as DailyStatusBlock } from "./DailyStatusBlock";
-
+export { default as DailyStatusBlock } from './DailyStatusBlock';

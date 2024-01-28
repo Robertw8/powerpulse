@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useDiary } from '../../../hooks';
 
 import { Form } from 'antd';
 import { FormProps } from 'react-router-dom';
@@ -15,10 +16,9 @@ import {
 import { PrimaryButton } from '../..';
 
 import { setCalculatedCalories } from '../../../redux/products';
-import { AppDispatch } from '../../../redux';
 import { addDiaryProduct } from '../../../redux/diary';
+import { AppDispatch } from '../../../redux';
 import { getCurrentDate, calculateCalories } from '../../../helpers';
-import { useDiary } from '../../../hooks';
 
 interface AddProductFormProps extends FormProps {
   product: {
