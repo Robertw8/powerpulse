@@ -11,10 +11,10 @@ import {
 import { callToast } from '../helpers';
 
 const DiaryPage: React.FC = () => {
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, error } = useAuth();
 
   useEffect(() => {
-    if (isRefreshing) {
+    if (isRefreshing || error === 'Unable to get current user') {
       const timeout = setTimeout(() => {
         callToast(
           'loading',
@@ -25,7 +25,7 @@ const DiaryPage: React.FC = () => {
 
       return () => clearTimeout(timeout);
     }
-  }, [isRefreshing]);
+  }, [isRefreshing, error]);
 
   return (
     <Container>

@@ -49,6 +49,7 @@ const authSlice = createSlice({
       })
       .addCase(getCurrentUser.pending, state => {
         state.isRefreshing = true;
+        state.error = '';
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
         state.user = action.payload;
@@ -58,11 +59,13 @@ const authSlice = createSlice({
           state.isLoggedIn = false;
           state.token = '';
         }
+        state.error = '';
       })
       .addCase(getCurrentUser.rejected, state => {
         state.token = '';
         state.isLoggedIn = false;
         state.isRefreshing = false;
+        state.error = 'Unable to get current user';
       })
       .addCase(logOutUser.pending, state => {
         state.isLoading = true;
