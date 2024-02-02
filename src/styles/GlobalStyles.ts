@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import Roboto from '../assets/fonts/Roboto-Regular.ttf';
-import { palette } from '.';
 
 const GlobalStyles = css`
   @font-face {
@@ -16,8 +15,8 @@ const GlobalStyles = css`
 
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: ${palette.colors.black};
-    color: ${palette.colors.white};
+    background-color: #040404;
+    color: #efedee;
     scroll-behavior: smooth;
   }
 
@@ -57,7 +56,6 @@ const GlobalStyles = css`
 
   .scrollbar-inner {
     &::-webkit-scrollbar {
-    
       width: 6px;
     }
 
@@ -110,12 +108,12 @@ const GlobalStyles = css`
   .ant-tour-inner,
   .ant-popconfirm-title,
   .ant-popconfirm-description {
-    background-color: ${palette.colors.gray} !important;
-    color: ${palette.colors.white} !important;
+    background-color: #1c1c1c !important;
+    color: #efedee !important;
   }
 
   .ant-picker-header-view {
-    color: ${palette.colors.white};
+    color: #efedee;
   }
 `;
 

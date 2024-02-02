@@ -82,8 +82,8 @@ const ProductsList: React.FC = () => {
     <ListWrapper>
       {showNotFound && <NotFoundMessage />}
       <List className="scrollbar-outer" ref={productsListRef}>
-        {filteredProducts.map((product, index) => (
-          <ProductsItem product={product} key={index} />
+        {filteredProducts.map(product => (
+          <ProductsItem product={product} key={product._id} />
         ))}
         {isLoading && <Loader />}
       </List>

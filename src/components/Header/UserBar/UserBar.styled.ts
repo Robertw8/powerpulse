@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { palette } from '../../../styles/theme';
+import { palette } from '../../../styles';
 import { Link } from 'react-router-dom';
 
 const rotate = keyframes`

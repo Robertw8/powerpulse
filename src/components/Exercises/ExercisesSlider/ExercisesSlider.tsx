@@ -27,6 +27,7 @@ const Slider: React.FC = () => {
     const filter = exercisesFilters.filter
       ? currentFilter(exercisesFilters.filter)
       : currentFilter('bodyPart');
+
     const responce = apiService({
       method: 'get',
       url: `/exercises/${filter}?page=${page}&limit=${limit}`,

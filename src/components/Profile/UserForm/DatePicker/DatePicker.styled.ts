@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { DatePicker } from 'antd';
-import { palette } from '../../../../styles/theme';
+import { palette } from '../../../../styles';
 
 const WrapDatePicker = styled.div`
   margin-top: 5px;

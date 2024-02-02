@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Drawer } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { palette } from '../../../styles/theme';
+import { palette } from '../../../styles';
 
 const DrawerStyled = styled(Drawer)`
   .ant-drawer-header-close-only {

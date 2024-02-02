@@ -3,7 +3,7 @@ import { DatePickerCustom, WrapDatePicker } from './DatePicker.styled';
 
 import dayjs from 'dayjs';
 import { FormikValues } from 'formik';
-import { palette } from '../../../../styles/theme';
+import { palette } from '../../../../styles';
 
 const DatePicker: React.FC<FormikValues> = ({ formik }) => {
   return (

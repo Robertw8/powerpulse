@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { palette } from '../../../styles/theme';
+import { palette } from '../../../styles';
 import { Link } from 'react-router-dom';
 
 interface HeaderContainerProps {

@@ -26,7 +26,6 @@ const CustomDatePicker: React.FC = () => {
                 colorText: `${palette.colors.white}`,
                 fontSize: 14,
                 borderRadiusSM: 50,
-                colorIcon: '#EF8964;',
               },
             },
           }}
