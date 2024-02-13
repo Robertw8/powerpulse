@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useExercises } from '../../../hooks';
+import { useExercises, useNotFoundTimeout } from '../../../hooks';
 
 import NotFoundExercises from './NotFoundExercises';
 import { WaistItem } from '..';
@@ -14,7 +14,6 @@ import type { AppDispatch } from '../../../redux';
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { exercises, filters, isLoading } = useExercises();
-  const [showNotFound, setShowNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(
@@ -25,23 +24,12 @@ const WaistList: React.FC = () => {
     );
   }, [dispatch, filters.category, filters.filter]);
 
-  useEffect(() => {
-    if (!exercises.length && !isLoading) {
-      const timeoutId = setTimeout(() => {
-        setShowNotFound(true);
-      }, 100);
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    } else {
-      setShowNotFound(false);
-    }
-  }, [exercises, isLoading]);
+  const notFound = useNotFoundTimeout(exercises, isLoading);
 
   return (
     <WaistListContainer>
       <BackButton />
-      {showNotFound && <NotFoundExercises />}
+      {notFound && <NotFoundExercises />}
       <WaistItemUl className="scrollbar-outer">
         {exercises.map((waistItem, key) => (
           <WaistItem key={key} exercise={waistItem} />
