@@ -4,7 +4,6 @@ import { useExercises } from '../../../hooks';
 import { ExercisesSubcategoriesList } from '../ExercisesSubcategoriesList';
 import { Carousel } from 'antd';
 import NotFoundPage from '../../../pages/NotFoundPage';
-import { Loader } from '../..';
 
 import { apiService } from '../../../services';
 import { setCurrentFilter } from '../../../helpers';
@@ -14,12 +13,10 @@ const Slider: React.FC = () => {
   const [limit, setLimit] = useState<number>(10);
   const [total, setTotal] = useState<number>(1);
   const [exercisesList, setExercisesList] = useState([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorPage, setErrorPage] = useState<boolean>(false);
   const { exercisesFilters } = useExercises();
 
   useEffect(() => {
-    setIsLoading(true);
     window.screen.width >= 768 && window.screen.width < 1440
       ? setLimit(9)
       : setLimit(10);
@@ -42,8 +39,7 @@ const Slider: React.FC = () => {
       })
       .catch(() => {
         setErrorPage(true);
-      })
-      .finally(() => setIsLoading(false));
+      });
   }, [exercisesFilters.filter, limit, page]);
 
   const onChange = (currentSlide: number) => {
@@ -60,7 +56,6 @@ const Slider: React.FC = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
       {exercisesList.length > 0 && (
         <Carousel afterChange={onChange}>{sliderBlocks}</Carousel>
       )}
