@@ -1,10 +1,21 @@
-# PowerPulse
-### An application for personalized diet adjustment based on the user's physical characteristics and lifestyle. A huge selection of food and exercises, all the functionality you need to track your diet every day.
+<h1 align="center">PowerPulse fitness</h1>
+<p>An application for personalized diet adjustment based on the user's physical characteristics and lifestyle. A huge selection of food and exercises, all the functionality you need to track your diet every day.</h2>
 
-## Stack
+<h2>Functionalities</h2>
+<ul>
+  <li>Authentification</li>
+  <li>Statistics on the number of tutorial videos, the total number of calories burned by all users, the number of registered users, the total number of hours of training and the total number of exercises performed</li>
+  <li>Customization of user data, based on which the recommended amount of daily calories and exercises will be calculated</li>
+  <li>Adding products and exercises to the diary, depending on the calories/time of performing which will recalculate the daily norms</li>
+  <li>Diary tracking by day</li>
+  <li>Search filters by name, category and recommendations on the products page</li>
+  <li>Pagination as an infinite scroll on the products page</li>
+  <li>Timer during exercise performing, which dynamically calculates calories and then adds them to the diary.</li>
+  <li>A small guide for new users after registration</li>
+</ul>
 
-#### Frontend:
-
+<h2>Built with</h2>
+<h4>Frontend</h3>
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40" alt="typescript logo"  />
   <img width="12" />
@@ -21,8 +32,7 @@
   <img src="https://img.icons8.com/fluency/48/vite.png" alt="vite" width="40" height="40"/>
 </div>
 
-#### Backend [(Link)](https://github.com/Ksuyaresko/fitness-app-backend): 
-
+<h4>Backend <a href="https://github.com/Ksuyaresko/fitness-app-backend">(Link)</a></h4>
 <div align="left">
   <img src="https://img.icons8.com/color/48/nodejs.png" alt="nodejs" width="40" height="40" />
   <img width="12" />
@@ -31,21 +41,26 @@
   <img src="https://img.icons8.com/color/48/mongodb.png" alt="mongodb" width="40" height="40" />
 </div>
 
-## Authors:
+<h2>Authors</h2>
+<ul>
+  <li><a href="https://github.com/Robertw8">Arsenii Brovchuk - Frontend Lead</a></li>
+  <li><a href="https://github.com/ViktoriaReminna">Viktoria Reminna - Frontend</a></li>
+  <li><a href="https://github.com/KostiantynSS">Kostiantyn Storozhenko - Frontend</a></li>
+  <li><a href="https://github.com/gladja">Oleksandr Hladkykh - Frontend</a></li>
+  <li><a href="https://github.com/anastasiiahmel">Anastasiia Khmelenko - Frontend</a></li>
+  <li><a href="https://github.com/ruden4">Oleksandr Rudenko - Frontend</a></li>
+  <li><a href="https://github.com/Svitly4nyi-Vla2yslav">Vladyslav Svitlychnyi - Frontend</a></li>
+</ul>
+<ul>
+  <li><a href="https://github.com/Ksuyaresko">Kseniia Yaresko - Backend Lead</a></li>
+  <li><a href="https://github.com/Vitalii-Malyk">Vitalii Malyk - Backend</a></li>
+  <li><a href="https://github.com/Alexblack19">Oleksandr Lohvinenko - Backend</a></li>
+  <li><a href="https://github.com/AntonZinchenko32">Anton Zinchenko - Backend</a></li>
+</ul>
 
-#### Frontend:
-
-- [Arsenii Brovchuk - Frontend Lead](https://github.com/Robertw8)
-- [Viktoriia Reminna](https://github.com/ViktoriaReminna)
-- [Kostiantyn Storozhenko](https://github.com/KostiantynSS)
-- [Anton Zinchenko](https://github.com/AntonZinchenko32)
-- [Oleksandr Hladkykh](https://github.com/gladja)
-- [Anastasiia Khmelenko](https://github.com/anastasiiahmel)
-- [Oleksandr Rudenko](https://github.com/ruden4)
-- [Vladyslav Svitlychnyi](https://github.com/Svitly4nyi-Vla2yslav)
-
-#### Backend:
-- [Kseniia Yaresko - Backend Lead](https://github.com/Ksuyaresko)
-- [Vitalii Malyk](https://github.com/Vitalii-Malyk)
-- [Oleksandr Lohvinenko](https://github.com/Alexblack19)
-- [Anton Zinchenko](https://github.com/AntonZinchenko32)
+<h2>Preview</h2>
+<img src="https://i.imgur.com/HQQ0fJp.png" alt="welcome page" />
+<img src="https://i.imgur.com/6twh5zi.png" alt="profile page" />
+<img src="https://i.imgur.com/UEjFN5P.png" alt="diary page" />
+<img src="https://i.imgur.com/ftQ80bc.png" alt="products page" />
+<img src="https://i.imgur.com/SKkmWH0.png" alt="exercises page" />
