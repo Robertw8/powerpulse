@@ -24,7 +24,7 @@ const List = styled.ul`
     flex-direction: row;
     gap: 32px 16px;
 
-    max-height: 560px;
+    height: 560px;
   }
 
   @media screen and (min-width: 1440px) {
