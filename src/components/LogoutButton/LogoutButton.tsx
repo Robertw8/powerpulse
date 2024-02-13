@@ -1,11 +1,16 @@
 import { useDispatch } from 'react-redux';
-import Icon from '../Icon/Icon';
-import { Text, LogoutBtn } from './LogoutBtn.styled';
 
-import { AppDispatch } from '../../redux';
-import { logOutUser } from '../../redux/auth/operations';
+import { Icon } from '..';
+import { Text, LogoutBtn } from './LogoutButton.styled';
 
-const LogOutBtn: React.FC<{ className?: string }> = ({ className }) => {
+import { logOutUser } from '../../redux/auth';
+import type { AppDispatch } from '../../redux';
+
+interface LogoutButtonProps {
+  className?: string;
+}
+
+const LogoutButton: React.FC<LogoutButtonProps> = ({ className }) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleLogOut = () => {
@@ -26,4 +31,4 @@ const LogOutBtn: React.FC<{ className?: string }> = ({ className }) => {
   );
 };
 
-export default LogOutBtn;
+export default LogoutButton;

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../../hooks';
 import { useDispatch } from 'react-redux';
 
-import { LogOutBtn } from '../../LogoutBtn';
-import { Icon } from '../../Icon';
+import { Icon, LogoutButton } from '../..';
 import {
   ImgWrap,
   Text,
@@ -25,11 +24,11 @@ import {
   WrapIcon,
 } from './UserCard.styled';
 
-import { AppDispatch } from '../../../redux';
 import { getUserAvatar } from '../../../redux/auth';
+import type { AppDispatch } from '../../../redux';
 
 const UserCard: React.FC = () => {
-  const [buttonHover, setButtonHover] = useState(false);
+  const [buttonHover, setButtonHover] = useState<boolean>(false);
   const { user } = useAuth();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -121,7 +120,7 @@ const UserCard: React.FC = () => {
           </Text>
         </TextWrap>
         <WrapLogOut>
-          <LogOutBtn />
+          <LogoutButton />
         </WrapLogOut>
       </Wrap>
     </>

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+
 import imgForWelcomePage from '../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 import imgForWelcomePage2 from '../../assets/images/ImgForWelcomePage/imgForWelcomePage@2.jpg';
 import imgForWelcomePageTab from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';

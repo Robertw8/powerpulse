@@ -18,9 +18,8 @@ import {
 import { Icon } from '../../Icon';
 import { ConfigProvider, Popconfirm, Popover } from 'antd';
 
-import { deleteDiaryExercise } from '../../../redux/diary';
-import { Exercise } from '../../../redux/diary/types';
-import { AppDispatch } from '../../../redux';
+import { deleteDiaryExercise, type Exercise } from '../../../redux/diary';
+import type { AppDispatch } from '../../../redux';
 
 interface ExerciseItemProps {
   exercise: Exercise;

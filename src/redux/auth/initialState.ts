@@ -1,4 +1,4 @@
-import { User, InitialAuthState } from './types';
+import { User, InitialAuthState } from '.';
 
 const user: User = {
   email: '',

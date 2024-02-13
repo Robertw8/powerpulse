@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { palette } from '../../../styles/index';
+import { palette } from '../../../styles';
 import { Button } from 'antd';
 
 const WaistItemLi = styled.li`

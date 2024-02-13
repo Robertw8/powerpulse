@@ -13,10 +13,11 @@ import {
 } from '../../Products/ProductAddedModal/ProductAddedModal.styled';
 
 import thumb from '../../../assets/images/Exercises/thumb.png';
-import { ModalProps } from 'antd';
-import { AppDispatch } from '../../../redux';
 import { setBurnedCalories } from '../../../redux/exercises';
 import { formatTime } from '../../../helpers';
+
+import type { ModalProps } from 'antd';
+import type { AppDispatch } from '../../../redux';
 
 interface ExerciseAddedModalProps extends ModalProps {
   handleClose: () => void;
@@ -63,7 +64,7 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
             type="primary"
             sizes="small"
             htmlType="button"
-            onclick={handleClose}
+            onClick={handleClose}
           />
         </ButtonWrapper>
         <StyledLink to="/diary" onClick={() => dispatch(setBurnedCalories(0))}>

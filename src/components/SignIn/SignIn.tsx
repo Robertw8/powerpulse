@@ -18,16 +18,16 @@ import {
   TitleSignIn,
   StatisticsWrapper,
 } from './SignIn.styled';
-import { InputPrimary } from '../InputPrimary';
+import { InputPrimary } from '..';
 import { AuthImg } from '../Welcome/WelcomeImg';
 import { Statistics } from '../Statistics';
 
 import SignInSchema from './SignInSchema';
-import { SignInArgs } from '../../services/types';
-import { AppDispatch } from '../../redux';
 import { loginUser } from '../../redux/auth';
+import type { SignInArgs } from '../../services';
+import type { AppDispatch } from '../../redux';
 
-const SignInForm = () => {
+const SignIn: React.FC = () => {
   const { isLoading } = useAuth();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -101,4 +101,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignIn;

@@ -4,7 +4,7 @@ import { useDiary } from '../../../hooks';
 
 import { Form } from 'antd';
 import { FormProps } from 'react-router-dom';
-import { InputPrimary } from '../../InputPrimary';
+import { InputPrimary, PrimaryButton } from '../..';
 import {
   InputsWrapper,
   StyledInputNumber,
@@ -13,11 +13,10 @@ import {
   Calories,
   Value,
 } from './AddProductForm.styled';
-import { PrimaryButton } from '../..';
 
 import { setCalculatedCalories } from '../../../redux/products';
 import { addDiaryProduct } from '../../../redux/diary';
-import { AppDispatch } from '../../../redux';
+import type { AppDispatch } from '../../../redux';
 import { getCurrentDate, calculateCalories } from '../../../helpers';
 
 interface AddProductFormProps extends FormProps {
@@ -90,14 +89,14 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           text="Add product"
           sizes="small"
           type="primary"
-          onclick={handleSubmit}
+          onClick={handleSubmit}
           loading={isLoading}
         />
         <PrimaryButton
           text="Cancel"
           sizes="small"
           type="default"
-          onclick={handleCancel}
+          onClick={handleCancel}
         />
       </ButtonsWrapper>
     </Form>

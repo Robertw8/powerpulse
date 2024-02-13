@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import { palette } from '../../../styles';
 import { Link } from 'react-router-dom';
 
-interface HeaderContainerProps {
-  isLoggedIn: boolean;
-}
-
 const Wrapper = styled.div`
   background-color: ${palette.colors.black};
 `;
+
+interface HeaderContainerProps {
+  isLoggedIn: boolean;
+}
 
 const HeaderContainer = styled.header<HeaderContainerProps>`
   padding-top: 24px;

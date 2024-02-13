@@ -1,5 +1,5 @@
 import { StyledLoader } from './Loader.styled';
-import { StyledLoaderProps } from './Loader.styled';
+import type { StyledLoaderProps } from './Loader.styled';
 
 const Loader: React.FC<StyledLoaderProps> = ({
   position = { top: '50%', left: '50%' },

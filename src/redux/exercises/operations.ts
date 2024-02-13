@@ -1,6 +1,6 @@
+import { createAction } from '@reduxjs/toolkit';
 import { operationWrapper } from '../../helpers';
 import { apiService } from '../../services';
-import { createAction } from '@reduxjs/toolkit';
 
 interface GetExercises {
   filter: string | (string | null)[] | null;

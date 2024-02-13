@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getExercises, setBurnedCalories, setFilters, setTime } from '.';
-import { Exercise, InitialState } from './types';
+import {
+  getExercises,
+  setBurnedCalories,
+  setFilters,
+  setTime,
+  type Exercise,
+  type InitialState,
+} from '.';
 
 const initialState: InitialState = {
   exercises: [],

@@ -13,3 +13,4 @@ export {
   selectFilters,
 } from './selectors';
 export { productsReducer } from './slice';
+export type { Product, InitialState } from './types';

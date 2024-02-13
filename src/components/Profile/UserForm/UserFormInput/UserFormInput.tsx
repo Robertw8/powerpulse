@@ -8,13 +8,15 @@ import {
 import { StyledInput } from '../../../InputPrimary/InputPrimary.styled';
 import { DatePicker } from '../DatePicker';
 
-import { User } from '../../../../redux/auth/types';
-import { FormikValues } from 'formik';
+import type { User } from '../../../../redux/auth';
+import type { FormikValues } from 'formik';
 
-const UserFormInput: React.FC<{ formik: FormikValues; user: User }> = ({
-  formik,
-  user,
-}) => {
+interface UserFormInputProps {
+  formik: FormikValues;
+  user: User;
+}
+
+const UserFormInput: React.FC<UserFormInputProps> = ({ formik, user }) => {
   return (
     <>
       <BlockWrapInput>

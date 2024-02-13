@@ -1,4 +1,4 @@
-const currentFilter = (category: string): string => {
+const setCurrentFilter = (category: string): string => {
   if (category === 'bodyPart') {
     return 'Body parts';
   } else if (category === 'muscles') {
@@ -8,4 +8,4 @@ const currentFilter = (category: string): string => {
   }
 };
 
-export default currentFilter;
+export default setCurrentFilter;

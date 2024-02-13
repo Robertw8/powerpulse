@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useExercises } from '../../../hooks';
-import { setFilters } from '../../../redux/exercises';
 
 import {
   ExercisesListItem,
@@ -10,6 +9,7 @@ import {
   ListItemCategory,
   ListItemImg,
 } from './ExercisesItem.styled';
+import { setFilters } from '../../../redux/exercises';
 
 interface ExercisesItemProps {
   name: string;

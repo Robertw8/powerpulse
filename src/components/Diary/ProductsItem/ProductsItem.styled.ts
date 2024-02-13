@@ -137,6 +137,7 @@ const MiniTitleCol = styled(TitleCol)`
 const DesktopTitleWrap = styled.ul`
   display: flex;
 `;
+
 const DesktopTitle = styled.li``;
 
 const IconWrap = styled.li`

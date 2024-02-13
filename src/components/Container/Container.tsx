@@ -1,6 +1,10 @@
 import { ResponsiveContainer } from './Container.styled';
 
-const Container: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+interface ContainerProps {
+  children: React.ReactNode;
+}
+
+const Container: React.FC<ContainerProps> = ({ children }) => {
   return <ResponsiveContainer>{children}</ResponsiveContainer>;
 };
 

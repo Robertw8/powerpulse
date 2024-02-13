@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getStatistics } from './operations';
-import { InitialState } from './types';
+import { getStatistics, type InitialState } from '.';
 
 const initialState: InitialState = {
   isLoading: false,

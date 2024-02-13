@@ -2,12 +2,13 @@ import styled from '@emotion/styled';
 
 const ExercisesList = styled.ul`
   width: 100%;
+  height: 2240px;
+
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   flex-direction: column;
   gap: 20px;
-  height: 2240px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;

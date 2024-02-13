@@ -56,7 +56,11 @@ const Status = styled.p`
   line-height: calc(18 / 12);
 `;
 
-const StatusRound = styled.span<{ recommended: boolean }>`
+interface StatusRoundProps {
+  recommended: boolean;
+}
+
+const StatusRound = styled.span<StatusRoundProps>`
   display: inline-block;
   width: 14px;
   height: 14px;

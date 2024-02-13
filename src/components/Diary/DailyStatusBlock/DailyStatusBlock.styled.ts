@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 
-const StyledStatusBlock = styled.li<{
+interface StyledStatusBlockProps {
   backgroundColor?: string;
   borderColor?: string;
-}>`
+}
+
+const StyledStatusBlock = styled.li<StyledStatusBlockProps>`
   width: 157px;
   height: 96px;
   padding: 14px;
@@ -21,11 +23,18 @@ const StyledStatusBlock = styled.li<{
     flex: 0 0 187px;
   }
 `;
-const TitleBlock = styled.p<{ textColor?: string }>`
+
+interface TitleBlockProps {
+  textColor?: string;
+  whiteSpace?: string;
+}
+
+const TitleBlock = styled.p<TitleBlockProps>`
   color: ${({ textColor }) => textColor || 'rgba(239, 237, 232, 0.40)'};
   font-size: 12px;
   line-height: 16px;
 `;
+
 const IconTextWrap = styled.div<{ whiteSpace?: string }>`
   display: flex;
   align-items: center;

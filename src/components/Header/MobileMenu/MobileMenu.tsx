@@ -1,14 +1,19 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '../../../hooks';
 
-import { DrawerStyled, Appeal } from '../MobileMenu/MobileMenu.styled';
-import { NavMenu, NavLinkStyled, CloseBtn, Logout } from './MobileMenu.styled';
-import Icon from '../../Icon/Icon';
+import {
+  DrawerStyled,
+  Appeal,
+  NavMenu,
+  NavLinkStyled,
+  CloseBtn,
+  Logout,
+} from './MobileMenu.styled';
+import { Icon } from '../..';
 
-import { logOutUser } from '../../../redux/auth/operations';
-import { selectUser } from '../../../redux/auth/selectors';
-import { AppDispatch } from '../../../redux';
+import { logOutUser } from '../../../redux/auth';
+import type { AppDispatch } from '../../../redux';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -17,8 +22,8 @@ interface MobileMenuProps {
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const user = useSelector(selectUser);
-  const [drawerWidth, setDrawerWidth] = useState('200px');
+  const { user } = useAuth();
+  const [drawerWidth, setDrawerWidth] = useState<string>('200px');
 
   useEffect(() => {
     const updateDrawerWidth = () => {
@@ -48,51 +53,49 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, toggleMenu }) => {
   };
 
   return (
-    <>
-      <DrawerStyled
-        placement="right"
-        onClose={toggleMenu}
-        open={isOpen}
-        width={drawerWidth}
-      >
-        <CloseBtn onClick={toggleMenu}>
-          <Icon
-            name="x"
-            iconWidth={{ mobile: '24px', tablet: '32px' }}
-            iconHeight={{ mobile: '24px', tablet: '32px' }}
-            stroke="#ffffff"
-          />
-        </CloseBtn>
-        {areSomeSettingsPresent ? (
-          <NavMenu>
-            <NavLinkStyled to="/diary" onClick={toggleMenu}>
-              Diary
-            </NavLinkStyled>
-            <NavLinkStyled to="/products" onClick={toggleMenu}>
-              Products
-            </NavLinkStyled>
-            <NavLinkStyled to="/exercises" onClick={toggleMenu}>
-              Exercises
-            </NavLinkStyled>
-          </NavMenu>
-        ) : (
-          <Appeal>
-            Dear {user.name}, please complete your profile settings to continue
-            enjoying our app.
-            <p>We appreciate your choice to use our application!</p>
-          </Appeal>
-        )}
-        <Logout type="button" onClick={handleLogOut}>
-          <span>Logout</span>
-          <Icon
-            name="logout"
-            iconWidth={{ mobile: '20px', tablet: '20px' }}
-            iconHeight={{ mobile: '20px', tablet: '20px' }}
-            stroke="#fff"
-          />
-        </Logout>
-      </DrawerStyled>
-    </>
+    <DrawerStyled
+      placement="right"
+      onClose={toggleMenu}
+      open={isOpen}
+      width={drawerWidth}
+    >
+      <CloseBtn onClick={toggleMenu}>
+        <Icon
+          name="x"
+          iconWidth={{ mobile: '24px', tablet: '32px' }}
+          iconHeight={{ mobile: '24px', tablet: '32px' }}
+          stroke="#ffffff"
+        />
+      </CloseBtn>
+      {areSomeSettingsPresent ? (
+        <NavMenu>
+          <NavLinkStyled to="/diary" onClick={toggleMenu}>
+            Diary
+          </NavLinkStyled>
+          <NavLinkStyled to="/products" onClick={toggleMenu}>
+            Products
+          </NavLinkStyled>
+          <NavLinkStyled to="/exercises" onClick={toggleMenu}>
+            Exercises
+          </NavLinkStyled>
+        </NavMenu>
+      ) : (
+        <Appeal>
+          Dear {user.name}, please complete your profile settings to continue
+          enjoying our app.
+          <p>We appreciate your choice to use our application!</p>
+        </Appeal>
+      )}
+      <Logout type="button" onClick={handleLogOut}>
+        <span>Logout</span>
+        <Icon
+          name="logout"
+          iconWidth={{ mobile: '20px', tablet: '20px' }}
+          iconHeight={{ mobile: '20px', tablet: '20px' }}
+          stroke="#fff"
+        />
+      </Logout>
+    </DrawerStyled>
   );
 };
 

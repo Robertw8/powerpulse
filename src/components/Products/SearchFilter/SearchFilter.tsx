@@ -1,34 +1,19 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useProducts } from '../../../hooks';
 
-import { AutoCompleteProps, Empty } from 'antd';
-import { Icon } from '../../Icon';
+import { Empty, type AutoCompleteProps } from 'antd';
+import { Icon } from '../..';
 import { StyledSearchInput, StyledSearchContent } from './SearchFilter.styled';
 
-import { apiService } from '../../../services';
-import { selectFilters, setFilters } from '../../../redux/products';
-import { AppDispatch } from '../../../redux';
+import { setFilters } from '../../../redux/products';
+import { getProductsNames } from '../../../helpers';
+import type { AppDispatch } from '../../../redux';
 
-interface SearchFilterProps extends AutoCompleteProps {}
-
-const getProductsNames = async (query: string, callback) => {
-  const response = await apiService({
-    method: 'get',
-    url: `products?search=${query}`,
-    config: {
-      params: {
-        limit: 200,
-      },
-    },
-  });
-
-  callback(response.data);
-};
-
-const SearchFilter: React.FC<SearchFilterProps> = () => {
+const SearchFilter: React.FC<AutoCompleteProps> = () => {
   const [data, setData] = useState<AutoCompleteProps['options']>([]);
   const dispatch = useDispatch<AppDispatch>();
-  const filters = useSelector(selectFilters);
+  const { filters } = useProducts();
 
   const handleSearch = (value: string) => {
     dispatch(setFilters({ ...filters, search: value && value.toLowerCase() }));

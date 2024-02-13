@@ -5,8 +5,9 @@ import {
   getProductsCategories,
   setCalculatedCalories,
   setFilters,
+  type Product,
+  type InitialState,
 } from '.';
-import { Product, InitialState } from './types';
 
 const initialState: InitialState = {
   products: [],

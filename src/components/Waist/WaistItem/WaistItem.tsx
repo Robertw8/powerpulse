@@ -2,12 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useExercises } from '../../../hooks';
 
-import { Exercise } from '../../../redux/exercises/types';
-import { Icon } from '../../';
-
-import { setBurnedCalories } from '../../../redux/exercises/operations.ts';
-import { AppDispatch } from '../../../redux/store.ts';
-
 import {
   AddButton,
   BtnWrapper,
@@ -21,7 +15,11 @@ import {
   WaistItemLi,
 } from './WaistItem.styled';
 import { AddExerciseModal } from '../AddExerciseModal';
-import { ExerciseAddedModal } from '../ExerciseAddedMo.styled.ts';
+import { ExerciseAddedModal } from '../ExercisesAddedModal';
+import { Icon } from '../..';
+
+import { setBurnedCalories, type Exercise } from '../../../redux/exercises';
+import type { AppDispatch } from '../../../redux';
 
 interface List {
   burnedCalories: string;
@@ -29,9 +27,6 @@ interface List {
   target: string;
 }
 
-interface WaistProps {
-  exercise: Exercise;
-}
 interface Texts {
   cardLabel: string;
   btnLabel: string;
@@ -48,9 +43,13 @@ const texts: Texts = {
   },
 };
 
+interface WaistProps {
+  exercise: Exercise;
+}
+
 const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
-  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
-  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState<boolean>(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
   const { burnedCalories } = useExercises();
 
@@ -109,7 +108,7 @@ const WaistItem: React.FC<WaistProps> = ({ exercise }) => {
       <AddExerciseModal
         open={isFirstModalOpen}
         exercise={exercise}
-        handleCancel={() => setIsFirstModalOpen(false)}
+        onCancel={() => setIsFirstModalOpen(false)}
       />
       <ExerciseAddedModal
         open={isSecondModalOpen}

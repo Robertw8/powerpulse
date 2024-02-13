@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import { useAuth } from '../../../hooks';
-import routes from '../../../routes';
 
-import UserBar from '../UserBar/UserBar';
-import UserNav from '../UserNav/UserNav';
-import LogOutBtn from '../../LogoutBtn/LogoutBtn';
-import MobileMenuBtn from '../MobileMenuBtn/MobileMenuBtn';
-import MobileMenu from '../MobileMenu/MobileMenu';
-import Icon from '../../Icon/Icon';
+import { UserBar, MobileMenu, MobileMenuBtn, UserNav } from '..';
+import { Icon, LogoutButton } from '../..';
 import {
   HeaderContainer,
   LinkLogo,
@@ -17,11 +12,12 @@ import {
   NavWrap,
   Wrapper,
 } from './Header.styled';
-import ContainerAuth from '../../Container/ContainerAuth';
+import { ContainerAuth } from '../../Container';
+import routes from '../../../routes';
 
 const Header: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -56,7 +52,7 @@ const Header: React.FC = () => {
                 </NavWrap>
                 <UserBarWrapper>
                   <UserBar />
-                  <LogOutBtn className="desktop" />
+                  <LogoutButton className="desktop" />
                   <MobileMenuBtn onClick={toggleMenu} />
                   <MobileMenu isOpen={isOpen} toggleMenu={toggleMenu} />
                 </UserBarWrapper>

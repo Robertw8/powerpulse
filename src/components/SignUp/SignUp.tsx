@@ -23,10 +23,12 @@ import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignUpSchema from './SignUpSchema';
 import { registerUser } from '../../redux/auth';
-import { AppDispatch } from '../../redux';
-import { SignUpArgs } from '../../services/types';
+import routes from '../../routes';
 
-const SignUpForm = () => {
+import type { AppDispatch } from '../../redux';
+import type { SignUpArgs } from '../../services';
+
+const SignUp: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { isLoading } = useAuth();
@@ -41,7 +43,7 @@ const SignUpForm = () => {
     onSubmit: async (values: SignUpArgs) => {
       const response = await dispatch(registerUser(values));
       if (response) {
-        navigate('/profile');
+        navigate(routes.PROFILE);
       }
     },
   });
@@ -121,4 +123,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignUp;

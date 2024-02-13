@@ -14,7 +14,7 @@ import {
 } from './UserFormRadio.styled';
 import { PrimaryButton } from '../../..';
 
-import { FormikValues } from 'formik';
+import type { FormikValues } from 'formik';
 
 const bloodUser = [1, 2, 3, 4];
 const sexUser = ['Male', 'Female'];

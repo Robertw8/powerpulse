@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks';
-import routes from '../../routes.ts';
 
 import {
   Container,
@@ -11,8 +10,8 @@ import {
   Description,
   Img,
 } from './NotFound.styled.ts';
-import Icon from '../../components/Icon/Icon.tsx';
-import { PrimaryButton } from '../../components';
+import { Icon, PrimaryButton } from '..';
+import routes from '../../routes.ts';
 
 const NotFound: React.FC = () => {
   const { isLoggedIn, isRefreshing } = useAuth();

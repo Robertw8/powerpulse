@@ -2,7 +2,11 @@ import { useDiary } from '../../../hooks';
 import { NotFound } from './DiaryNotFoundItems.styled';
 import dayjs from 'dayjs';
 
-const DiaryNotFoundItems: React.FC<{ items: string }> = ({ items }) => {
+interface DiaryNotFoundItemsProps {
+  items: string;
+}
+
+const DiaryNotFoundItems: React.FC<DiaryNotFoundItemsProps> = ({ items }) => {
   const { selectedDate } = useDiary();
   const isCurrentDate = dayjs().isSame(dayjs(selectedDate), 'day');
 

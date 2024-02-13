@@ -13,10 +13,10 @@ import { Icon } from '../Icon';
 import { DailyStatusBlock } from './DailyStatusBlock';
 import { InfoBoxes } from './InfoBoxes';
 
-import { AppDispatch } from '../../redux';
-import { getDiary } from '../../redux/diary';
-import dayjs from 'dayjs';
 import { convertTime } from '../../helpers';
+import dayjs from 'dayjs';
+import { getDiary } from '../../redux/diary';
+import type { AppDispatch } from '../../redux';
 
 const Diary = () => {
   const { user } = useAuth();

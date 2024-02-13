@@ -1,5 +1,5 @@
 import { StyledInput } from './InputPrimary.styled';
-import { InputProps } from 'antd';
+import type { InputProps } from 'antd';
 
 interface InputPrimaryProps extends InputProps {
   placeholder: string;

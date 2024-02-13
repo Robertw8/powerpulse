@@ -9,8 +9,8 @@ import {
   DashboardOutlined,
   FireFilled,
 } from '@ant-design/icons';
-import { Icon } from '../Icon';
-import Loader from '../Loader/Loader';
+import { Icon, Loader } from '..';
+import { StyledCard } from './Statistics.styled';
 
 import {
   getStatistics,
@@ -18,9 +18,7 @@ import {
   selectIsLoading,
   selectError,
 } from '../../redux/statistics';
-import { AppDispatch } from '../../redux';
-
-import { StyledCard } from './Statistics.styled';
+import type { AppDispatch } from '../../redux';
 
 const Statistics: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

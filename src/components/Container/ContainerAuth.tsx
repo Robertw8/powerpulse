@@ -1,8 +1,10 @@
 import { ResponsiveContainerAuth } from './Container.styled';
 
-const ContainerAuth: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+interface ContainerAuthProps {
+  children: React.ReactNode;
+}
+
+const ContainerAuth: React.FC<ContainerAuthProps> = ({ children }) => {
   return <ResponsiveContainerAuth>{children}</ResponsiveContainerAuth>;
 };
 

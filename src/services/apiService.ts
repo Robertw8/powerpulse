@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { ApiServiceOptions } from './types';
-import { clearToken, setToken } from './token.ts';
+import { clearToken, setToken, type ApiServiceOptions } from '.';
 
 const baseURL = 'https://goit-be.onrender.com/';
 

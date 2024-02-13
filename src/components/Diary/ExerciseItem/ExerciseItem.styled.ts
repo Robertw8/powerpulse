@@ -122,6 +122,7 @@ const MobileRow = styled.ul`
     gap: 8px;
   }
 `;
+
 const MobileTitleRow = styled.ul`
   display: flex;
   gap: 16px;
@@ -132,6 +133,7 @@ const MobileTitleRow = styled.ul`
     display: none;
   }
 `;
+
 const MiniValueCol = styled(ValueCol)`
   margin-bottom: 0px;
   width: 80px;
@@ -153,6 +155,7 @@ const MiniValueCol = styled(ValueCol)`
     width: 93px;
   }
 `;
+
 const MiniTitleCol = styled(TitleCol)`
   width: 80px;
 

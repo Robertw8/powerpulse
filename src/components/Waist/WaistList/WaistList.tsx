@@ -1,22 +1,20 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useExercises } from '../../../hooks';
 
 import NotFoundExercises from './NotFoundExercises';
-import WaistItem from '../WaistItem/WaistItem';
+import { WaistItem } from '..';
 import { BackButton } from '../../Exercises/BackButton';
 import { Loader } from '../..';
 import { WaistItemUl, WaistListContainer } from './WaistList.styled';
 
-import { getExercises, selectIsLoading } from '../../../redux/exercises';
-import { selectExercises, selectFilters } from '../../../redux/exercises';
-import { AppDispatch } from '../../../redux';
+import { getExercises } from '../../../redux/exercises';
+import type { AppDispatch } from '../../../redux';
 
 const WaistList: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const exercises = useSelector(selectExercises);
-  const filters = useSelector(selectFilters);
-  const isLoading = useSelector(selectIsLoading);
-  const [showNotFound, setShowNotFound] = useState(false);
+  const { exercises, filters, isLoading } = useExercises();
+  const [showNotFound, setShowNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     dispatch(

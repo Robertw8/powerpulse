@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { Title } from '../PageTitle/PageTitle.styled.ts';
+import { Title } from '../PageTitle/PageTitle.styled';
 import {
   ParagraphAfterBtn,
   ParagraphAuth,
   WidthInput,
-} from '../SignUp/SignUp.styled.ts';
+} from '../SignUp/SignUp.styled';
 
 const TitleSignIn = styled(Title)`
   margin-top: 90px;

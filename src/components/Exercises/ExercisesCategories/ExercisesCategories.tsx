@@ -5,9 +5,9 @@ import { Category } from '../Exercises';
 import { CategoryList } from './ExercisesCategories.styled';
 import { Tabs } from 'antd';
 
-import type { TabsProps } from 'antd';
 import { setFilters } from '../../../redux/exercises';
-import { AppDispatch } from '../../../redux';
+import type { TabsProps } from 'antd';
+import type { AppDispatch } from '../../../redux';
 
 const ExercisesCategories: React.FC = () => {
   const navigate = useNavigate();

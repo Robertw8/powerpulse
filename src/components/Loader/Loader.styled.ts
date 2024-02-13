@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Spin, SpinProps } from 'antd';
+import { Spin, type SpinProps } from 'antd';
 
 interface StyledLoaderProps extends SpinProps {
   position?: {

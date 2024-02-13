@@ -1,8 +1,12 @@
-import { SignInArgs, SignUpArgs } from '../../services/types';
-import { operationWrapper } from '../../helpers';
-import { apiService, clearToken, setToken } from '../../services';
-import { callToast } from '../../helpers';
-import { getToken } from '../../services/token.ts';
+import { operationWrapper, callToast } from '../../helpers';
+import {
+  apiService,
+  clearToken,
+  setToken,
+  getToken,
+  type SignInArgs,
+  type SignUpArgs,
+} from '../../services';
 
 const registerUser = operationWrapper(
   'auth/register',

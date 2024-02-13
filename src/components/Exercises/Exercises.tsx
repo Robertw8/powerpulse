@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useExercises } from '../../hooks';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 
 import { ExercisesCategories } from './ExercisesCategories';
@@ -8,7 +9,7 @@ import { ExercisesWrap, TopWrap, BackgroundImage } from './Exercises.styled';
 
 import { setFilters } from '../../redux/exercises';
 import bg from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
-import { useExercises } from '../../hooks';
+import type { AppDispatch } from '../../redux';
 
 export type Category = 'bodyPart' | 'muscles' | 'equipment';
 
@@ -17,7 +18,7 @@ const Exercises: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { exercisesFilters } = useExercises();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(setFilters('bodyPart', exercisesFilters.category));

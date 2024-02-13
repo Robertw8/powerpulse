@@ -9,9 +9,9 @@ import {
   logOutUser,
   getUserValue,
   getUserAvatar,
-} from './operations';
+  type User,
+} from '.';
 import initialState from './initialState';
-import { User } from './types';
 
 const authSlice = createSlice({
   name: 'auth',

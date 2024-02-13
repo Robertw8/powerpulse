@@ -3,17 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 import { Icon, PrimaryButton } from '../..';
+import { Timer } from '../Timer';
 import {
   StyledModal,
   GifWrapper,
-  TimerWrapper,
-  TimerTitle,
   InfoWrapper,
   ButtonWrapper,
-  TimeRemaining,
-  TimerButton,
-  BurnedCalories,
-  Value,
   InfoList,
   InfoItem,
   ItemName,
@@ -21,30 +16,31 @@ import {
   TimerColumn,
   InfoColumn,
 } from './AddExerciseModal.styled';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 import {
   calculateBurnedCalories,
   callToast,
-  formatTime,
   getCurrentDate,
 } from '../../../helpers';
-import { Exercise } from '../../../redux/exercises/types';
-import { AppDispatch } from '../../../redux';
 import { addDiaryExercise } from '../../../redux/diary';
-import { setBurnedCalories, setTime } from '../../../redux/exercises';
-import { ModalProps } from 'antd';
+import {
+  setBurnedCalories,
+  setTime,
+  type Exercise,
+} from '../../../redux/exercises';
 import fallback from '../../../assets/images/fallback.jpg';
 
+import type { ModalProps } from 'antd';
+import type { AppDispatch } from '../../../redux';
+
 interface AddExerciseModalProps extends ModalProps {
-  handleCancel: () => void;
   exercise: Exercise;
 }
 
 const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
   exercise,
   open,
-  handleCancel,
+  onCancel,
 }) => {
   const [isTimerStarted, setIsTimerStarted] = useState<boolean>(false);
   const [timerValue, setTimerValue] = useState<number>(0);
@@ -58,6 +54,7 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
         'error',
         'You need to do exercise for at least 10 seconds to add to the diary'
       );
+
     dispatch(setBurnedCalories(caloriesBurnedByTime));
     dispatch(
       addDiaryExercise({
@@ -71,10 +68,11 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
 
   const handleTimerChange = () => {
     setTimerValue(prevTimerValue => prevTimerValue + 1);
-    dispatch(setTime(timerValue));
     setCaloriesBurnedByTime(
       calculateBurnedCalories(timerValue, exercise.burnedCalories)
     );
+
+    dispatch(setTime(timerValue));
   };
 
   const handleTimerStart = () => {
@@ -95,7 +93,7 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
       footer={null}
       maskClosable
       onOk={handleOk}
-      onCancel={handleCancel}
+      onCancel={onCancel}
       focusTriggerAfterClose={false}
       destroyOnClose
     >
@@ -103,52 +101,13 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
         <GifWrapper>
           <img src={exercise.gifUrl || fallback} alt="exercise" />
         </GifWrapper>
-        <TimerWrapper>
-          <TimerTitle>Time</TimerTitle>
-          <CountdownCircleTimer
-            colors={'#E6533C'}
-            isPlaying={isTimerStarted}
-            duration={exercise.time * 60}
-            strokeWidth={4}
-            trailColor="#EFEDE81A"
-            trailStrokeWidth={2}
-            rotation="counterclockwise"
-            onUpdate={handleTimerChange}
-            onComplete={() =>
-              callToast(
-                'success',
-                `You've finished exercise with ${caloriesBurnedByTime} calories burned. Great work!`,
-                10000
-              )
-            }
-          >
-            {({ remainingTime }) => (
-              <TimeRemaining>{formatTime(remainingTime)}</TimeRemaining>
-            )}
-          </CountdownCircleTimer>
-          <TimerButton type="primary" onClick={handleTimerStart}>
-            {!isTimerStarted ? (
-              <Icon
-                iconWidth={{ mobile: '16px', tablet: '16px' }}
-                iconHeight={{
-                  mobile: '16px',
-                  tablet: '16px',
-                }}
-                name="play"
-              />
-            ) : (
-              <Icon
-                iconWidth={{ mobile: '16px', tablet: '16px' }}
-                iconHeight={{ mobile: '16px', tablet: '16px' }}
-                name="pause"
-              />
-            )}
-          </TimerButton>
-          <BurnedCalories>
-            Burned calories:
-            <Value>{caloriesBurnedByTime}</Value>
-          </BurnedCalories>
-        </TimerWrapper>
+        <Timer
+          exercise={exercise}
+          isStarted={isTimerStarted}
+          handleChange={handleTimerChange}
+          handleStart={handleTimerStart}
+          burnedCalories={caloriesBurnedByTime}
+        />
       </TimerColumn>
       <InfoColumn>
         <InfoWrapper>
@@ -176,7 +135,7 @@ const AddExerciseModal: React.FC<AddExerciseModalProps> = ({
             text="Add to diary"
             sizes="small"
             type="primary"
-            onclick={handleOk}
+            onClick={handleOk}
             loading={isLoading}
           />
         </ButtonWrapper>

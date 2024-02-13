@@ -10,8 +10,8 @@ import {
   SearchWrapper,
 } from './Filters.styled';
 
-import { AppDispatch } from '../../../redux';
 import { getProductsCategories, setFilters } from '../../../redux/products';
+import type { AppDispatch } from '../../../redux';
 
 const Filters: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +21,7 @@ const Filters: React.FC = () => {
     dispatch(getProductsCategories({}));
   }, [dispatch]);
 
-  const handleCategoriesChange = value => {
+  const handleCategoriesChange = (value: string) => {
     dispatch(
       setFilters({ ...filters, categories: value && value.toLowerCase() })
     );

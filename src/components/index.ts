@@ -1,5 +1,5 @@
 export { default as App } from './App';
-export { Layout } from './Layout';
+export { default as Layout } from './Layout';
 export { Header } from './Header';
 export { PrimaryButton } from './PrimaryButton';
 export { Container, ContainerAuth } from './Container';
@@ -24,5 +24,7 @@ export { Icon } from './Icon';
 export { UserTour } from './UserTour';
 export { WaistList } from './Waist';
 export { ExercisesSlider } from './Exercises';
-export { SignInForm } from './SignIn';
-export { SignUpForm } from './SignUp';
+export { SignIn } from './SignIn';
+export { SignUp } from './SignUp';
+export { LogoutButton } from './LogoutButton';
+export { InputPrimary } from './InputPrimary';

@@ -31,6 +31,7 @@ const InfoBox = styled.div`
     min-height: 234px;
   }
 `;
+
 const TopRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -73,6 +74,7 @@ const DesktopWrap = styled.div`
     order: 2;
   }
 `;
+
 const StyledIcon = styled(Icon)`
   display: block;
 `;

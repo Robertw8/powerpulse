@@ -1,8 +1,9 @@
-import useAuth from '../../../hooks/useAuth';
-import { LinkStyled, SettingsLink, Avatar } from './UserBar.styled';
-import Icon from '../../Icon/Icon';
+import { useAuth } from '../../../hooks';
 
-export const UserBar = () => {
+import { LinkStyled, SettingsLink, Avatar } from './UserBar.styled';
+import { Icon } from '../..';
+
+const UserBar = () => {
   const { user } = useAuth();
   const { avatarURL } = user;
 

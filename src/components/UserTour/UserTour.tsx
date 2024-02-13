@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { TourProps, Tour } from 'antd';
+import { Tour, type TourProps } from 'antd';
 import { Icon } from '..';
 
-interface UserTourProps extends TourProps {}
-
-const UserTour: React.FC<UserTourProps> = ({ open, steps, onClose }) => {
+const UserTour: React.FC<TourProps> = ({ open, steps, onClose }) => {
   const [shouldRender, setShouldRender] = useState<boolean>(true);
 
   useEffect(() => {

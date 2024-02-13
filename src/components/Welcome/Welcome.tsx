@@ -9,7 +9,7 @@ import {
   BtnSignInWelcome,
 } from './Welcome.styled';
 import { BtnSignUp } from '../SignUp/SignUp.styled';
-import { Icon } from '../Icon';
+import { Icon } from '..';
 import { WelcomeImg } from './WelcomeImg';
 
 const Welcome: React.FC = () => {

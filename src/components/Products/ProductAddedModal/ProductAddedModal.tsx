@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { Icon } from '../../Icon';
-import { PrimaryButton } from '../..';
+import { Icon, PrimaryButton } from '../..';
 import {
   StyledModal,
   ButtonWrapper,
@@ -12,10 +11,11 @@ import {
   Value,
 } from './ProductAddedModal.styled';
 
-import { ModalProps } from 'antd';
-import { AppDispatch } from '../../../redux';
 import { setCalculatedCalories } from '../../../redux/products';
 import avocado from '../../../assets/images/Products/avocado.png';
+
+import type { ModalProps } from 'antd';
+import type { AppDispatch } from '../../../redux';
 
 interface ProductAddedModalProps extends ModalProps {
   handleClose: () => void;
@@ -60,7 +60,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
             type="primary"
             sizes="small"
             htmlType="button"
-            onclick={handleClose}
+            onClick={handleClose}
           />
         </ButtonWrapper>
         <StyledLink

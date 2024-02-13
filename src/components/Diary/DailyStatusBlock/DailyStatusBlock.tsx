@@ -5,7 +5,7 @@ import {
   StatusValue,
 } from './DailyStatusBlock.styled';
 
-interface DailyProps {
+interface DailyStatusBlockProps {
   text: string;
   backgroundColor?: string;
   value: number | string;
@@ -15,7 +15,7 @@ interface DailyProps {
   borderColor?: string;
 }
 
-const DailyStatusBlock: React.FC<DailyProps> = ({
+const DailyStatusBlock: React.FC<DailyStatusBlockProps> = ({
   text,
   backgroundColor,
   textColor,

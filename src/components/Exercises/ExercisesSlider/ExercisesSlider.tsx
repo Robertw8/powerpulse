@@ -7,7 +7,7 @@ import NotFoundPage from '../../../pages/NotFoundPage';
 import { Loader } from '../..';
 
 import { apiService } from '../../../services';
-import currentFilter from './setCurrentFilter';
+import { setCurrentFilter } from '../../../helpers';
 
 const Slider: React.FC = () => {
   const [page, setPage] = useState<number>(1);
@@ -25,15 +25,15 @@ const Slider: React.FC = () => {
       : setLimit(10);
 
     const filter = exercisesFilters.filter
-      ? currentFilter(exercisesFilters.filter)
-      : currentFilter('bodyPart');
+      ? setCurrentFilter(exercisesFilters.filter)
+      : setCurrentFilter('bodyPart');
 
-    const responce = apiService({
+    const response = apiService({
       method: 'get',
       url: `/exercises/${filter}?page=${page}&limit=${limit}`,
     });
 
-    responce
+    response
       .then(({ data, totalItems }) => {
         if (!data.length) return setErrorPage(true);
         if (!data.length) return;

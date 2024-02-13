@@ -1,6 +1,10 @@
 import { Title } from './PageTitle.styled';
 
-const PageTitle: React.FC<{ text: string }> = ({ text }) => {
+interface PageTitleProps {
+  text: string;
+}
+
+const PageTitle: React.FC<PageTitleProps> = ({ text }) => {
   return <Title>{text}</Title>;
 };
 

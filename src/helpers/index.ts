@@ -7,3 +7,5 @@ export { default as calculateCalories } from './calculateCalories';
 export { default as formatTime } from './formatTime';
 export { default as calculateBurnedCalories } from './calculateBurnedCalories';
 export { default as convertTime } from './convertTime';
+export { default as setCurrentFilter } from './setCurrentFilter';
+export { default as getProductsNames } from './getProductsNames';

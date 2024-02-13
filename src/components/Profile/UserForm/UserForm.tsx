@@ -7,7 +7,7 @@ import { UserFormRadio } from './UserFormRadio';
 import { WrapForm } from './UserForm.styled';
 
 import { AppDispatch } from '../../../redux';
-import { FormValues, schema } from './UserFormSchema';
+import { type FormValues, schema } from './UserFormSchema';
 import { getCurrentUser, getUserValue } from '../../../redux/auth';
 
 const UserForm: React.FC = () => {
@@ -46,14 +46,12 @@ const UserForm: React.FC = () => {
   });
 
   return (
-    <>
-      <WrapForm>
-        <form onSubmit={formik.handleSubmit}>
-          <UserFormInput formik={formik} user={user} />
-          <UserFormRadio formik={formik} />
-        </form>
-      </WrapForm>
-    </>
+    <WrapForm>
+      <form onSubmit={formik.handleSubmit}>
+        <UserFormInput formik={formik} user={user} />
+        <UserFormRadio formik={formik} />
+      </form>
+    </WrapForm>
   );
 };
 

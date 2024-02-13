@@ -4,6 +4,7 @@ export {
   deleteDiaryProduct,
   addDiaryExercise,
   deleteDiaryExercise,
+  setSelectedDate,
 } from './operations';
 export { diaryReducer } from './slice';
 export {
@@ -13,7 +14,7 @@ export {
   selectCaloriesConsumed,
   selectCaloriesRemaining,
   selectSportsTime,
-
   selectIsLoading,
   selectError,
 } from './selectors';
+export type { InitialState, Products, Exercises, Exercise } from './types';

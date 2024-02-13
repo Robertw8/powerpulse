@@ -1,6 +1,6 @@
-import { ModalProps } from 'antd';
+import type { ModalProps } from 'antd';
 import { StyledModal, FormWrapper } from './AddProductModal.styled';
-import { Icon } from '../../Icon';
+import { Icon } from '../..';
 import { AddProductForm } from '..';
 
 interface AddProductModalProps extends ModalProps {

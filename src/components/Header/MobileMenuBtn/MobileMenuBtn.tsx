@@ -1,5 +1,5 @@
 import { Button } from './MobileMenuBtn.styled';
-import Icon from '../../Icon/Icon';
+import { Icon } from '../..';
 
 interface MobileMenuBtnProps {
   onClick: () => void;

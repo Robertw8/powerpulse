@@ -18,12 +18,11 @@ import {
   SpecificationName,
   SpecificationValue,
 } from './ProductsItem.styled';
-import { Icon } from '../../Icon';
-import { Product } from '../../../redux/products/types';
+import { Icon } from '../..';
 import { AddProductModal, ProductAddedModal } from '..';
 
-import { AppDispatch } from '../../../redux';
-import { setCalculatedCalories } from '../../../redux/products';
+import { setCalculatedCalories, type Product } from '../../../redux/products';
+import type { AppDispatch } from '../../../redux';
 
 interface ProductsItemProps {
   product: Product;

@@ -1,16 +1,12 @@
 import { CustomButton } from './PrimaryButton.styled';
-import { ButtonProps } from 'antd';
+import type { ButtonProps } from 'antd';
 
 interface PrimaryButtonProps extends ButtonProps {
-  type: 'default' | 'primary' | 'dashed';
   text: string;
   sizes: 'large' | 'middle' | 'small' | 'extraSmall';
   padding?: string;
   fontSize?: number;
-  onclick?: () => void;
-  disabled?: boolean;
   htmlType?: 'submit' | 'reset' | 'button';
-  loading?: boolean;
 }
 
 const PrimaryButton: React.FC<PrimaryButtonProps> = ({
@@ -19,7 +15,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
   sizes,
   padding,
   fontSize,
-  onclick,
+  onClick,
   disabled,
   htmlType,
   loading,
@@ -30,7 +26,7 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       sizes={sizes}
       fontSize={fontSize}
       padding={padding}
-      onClick={onclick}
+      onClick={onClick}
       disabled={disabled}
       htmlType={htmlType}
       loading={loading}

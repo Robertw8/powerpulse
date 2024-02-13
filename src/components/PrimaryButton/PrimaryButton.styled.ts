@@ -1,12 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
 
-interface ButtonStyleProps {
-  sizes: 'large' | 'middle' | 'small' | 'extraSmall';
-  padding?: string;
-  fontSize?: number;
-}
-
 interface Sizes {
   mobile: {
     large: string;
@@ -52,7 +46,13 @@ const buttonHeight: Sizes = {
   },
 };
 
-const CustomButton = styled(Button)<ButtonStyleProps>`
+interface CustomButtonProps {
+  sizes: 'large' | 'middle' | 'small' | 'extraSmall';
+  padding?: string;
+  fontSize?: number;
+}
+
+const CustomButton = styled(Button)<CustomButtonProps>`
   box-sizing: content-box;
   min-width: ${({ sizes }) => buttonWidth.mobile[sizes]} !important;
   min-height: ${({ sizes }) => buttonHeight.mobile[sizes]} !important;

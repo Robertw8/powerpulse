@@ -40,4 +40,5 @@ interface Exercise {
   _id: string;
   burnedCalories: number;
 }
+
 export type { InitialState, Products, Exercises, Exercise };

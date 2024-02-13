@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import { Button, Input } from 'antd';
 import { Link } from 'react-router-dom';
-import InputPrimary from '../InputPrimary/InputPrimary.tsx';
+import { InputPrimary } from '../InputPrimary';
 import {
   StyledInputProps,
   validationStatuses,
-} from '../InputPrimary/InputPrimary.styled.ts';
-import { Title } from '../PageTitle/PageTitle.styled.ts';
+} from '../InputPrimary/InputPrimary.styled';
+import { Title } from '../PageTitle/PageTitle.styled';
 
 const FormContainer = styled.form`
   width: 320px;

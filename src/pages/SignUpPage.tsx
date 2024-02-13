@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAuth } from '../hooks';
 
-import { ContainerAuth, SignUpForm } from '../components';
+import { ContainerAuth, SignUp } from '../components';
 import { callToast } from '../helpers';
 
 const SignUpPage: React.FC = () => {
@@ -23,7 +23,7 @@ const SignUpPage: React.FC = () => {
 
   return (
     <ContainerAuth>
-      <SignUpForm />
+      <SignUp />
     </ContainerAuth>
   );
 };

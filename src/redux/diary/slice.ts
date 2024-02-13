@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
+
 import {
   getDiary,
   addDiaryProduct,
   deleteDiaryProduct,
   addDiaryExercise,
   deleteDiaryExercise,
+  setSelectedDate,
+  type Exercise,
+  type InitialState,
 } from '.';
-
-import { Exercise, InitialState } from './types';
-import dayjs from 'dayjs';
-import { setSelectedDate } from './operations';
 
 const initialState: InitialState = {
   products: [],
@@ -72,7 +73,7 @@ const slice = createSlice({
         state.products = state.products.filter(
           product => product._id !== payload.id
         );
-        state.caloriesRemaining=payload.caloriesRemainingTotal
+        state.caloriesRemaining = payload.caloriesRemainingTotal;
         state.caloriesConsumed = payload.caloriesConsumedTotal;
         state.isLoading = false;
         state.error = '';

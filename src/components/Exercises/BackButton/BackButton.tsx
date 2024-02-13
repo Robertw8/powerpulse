@@ -6,7 +6,7 @@ import { BackBtn } from './BackButton.styled';
 import { Icon } from '../../Icon';
 
 import { setFilters } from '../../../redux/exercises';
-import { AppDispatch } from '../../../redux';
+import type { AppDispatch } from '../../../redux';
 
 const BackButton: React.FC = () => {
   const navigate = useNavigate();

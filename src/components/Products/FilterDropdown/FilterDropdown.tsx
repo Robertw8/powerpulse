@@ -1,7 +1,8 @@
-import { SelectProps } from 'antd';
 import { StyledSelect, StyledPopupContent } from './FilterDropdown.styled';
-import { Icon } from '../../Icon';
-import { DefaultOptionType } from 'antd/es/select';
+import { Icon } from '../..';
+
+import type { SelectProps } from 'antd';
+import type { DefaultOptionType } from 'antd/es/select';
 
 interface FilterDropdownProps extends SelectProps {
   items: string[];

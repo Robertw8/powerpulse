@@ -1,9 +1,8 @@
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/auth/selectors';
+import { useAuth } from '../../../hooks';
 import { NavList, LinkStyled } from './UserNav.styled';
 
 const UserNav: React.FC = () => {
-  const user = useSelector(selectUser);
+  const { user } = useAuth();
 
   if (!user) {
     return null;

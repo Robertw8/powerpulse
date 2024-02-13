@@ -13,3 +13,9 @@ export {
   selectBurnedCalories,
   selectTime,
 } from './selectors';
+export type {
+  Exercise,
+  InitialState,
+  ExercisesResponse,
+  Filters,
+} from './types';

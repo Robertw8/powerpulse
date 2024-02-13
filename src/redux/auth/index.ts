@@ -16,3 +16,4 @@ export {
   selectType,
 } from './selectors';
 export { persistedAuthReducer } from './slice';
+export type { User, InitialAuthState } from './types';

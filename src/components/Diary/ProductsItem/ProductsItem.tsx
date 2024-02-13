@@ -19,9 +19,8 @@ import {
 import { Icon } from '../../Icon';
 import { ConfigProvider, Popover, Popconfirm } from 'antd';
 
-import { deleteDiaryProduct } from '../../../redux/diary';
-import { Products } from '../../../redux/diary/types';
-import { AppDispatch } from '../../../redux';
+import { deleteDiaryProduct, type Products } from '../../../redux/diary';
+import type { AppDispatch } from '../../../redux';
 
 interface ProductsItemProps {
   product: Products;

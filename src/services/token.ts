@@ -1,4 +1,3 @@
-
 const setToken = (accessToken: string | null, refreshToken: string | null) => {
   if (accessToken && refreshToken)
     localStorage.setItem(
@@ -13,5 +12,5 @@ const clearToken = () => {
 
 const getToken = () => {
   return localStorage.getItem('session');
-}
+};
 export { setToken, clearToken, getToken };

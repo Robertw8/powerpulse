@@ -1,5 +1,5 @@
-import { useAuth } from '../hooks';
 import { useEffect } from 'react';
+import { useAuth } from '../hooks';
 
 import {
   Container,

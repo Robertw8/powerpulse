@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNotFoundTimeout, useProducts } from '../../../hooks';
 
 import { List, ListWrapper } from './ProductsList.styled';
 import { NotFoundMessage, ProductsItem } from '..';
 import { Loader } from '../..';
 
 import { getProducts, getProductsByPage } from '../../../redux/products';
-import { AppDispatch } from '../../../redux';
 import throttle from 'lodash.throttle';
-import { useProducts } from '../../../hooks';
+import type { AppDispatch } from '../../../redux';
 
 const ProductsList: React.FC = () => {
-  const [showNotFound, setShowNotFound] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const { products, isLoading, filters } = useProducts();
   const productsListRef = useRef<HTMLUListElement>(null);
@@ -58,29 +57,17 @@ const ProductsList: React.FC = () => {
     };
   }, [dispatch, pageRef, filters]);
 
-  useEffect(() => {
-    if (!products.length && !isLoading) {
-      const timeoutId = setTimeout(() => {
-        setShowNotFound(true);
-      }, 100);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    } else {
-      setShowNotFound(false);
-    }
-  }, [products, isLoading]);
-
   const filteredProducts = products.filter(({ title }) =>
     filters.search
       ? title.toLowerCase().includes(filters.search.toLowerCase())
       : products
   );
 
+  const notFound = useNotFoundTimeout(filteredProducts, isLoading);
+
   return (
     <ListWrapper>
-      {showNotFound && <NotFoundMessage />}
+      {notFound && <NotFoundMessage />}
       <List className="scrollbar-outer" ref={productsListRef}>
         {filteredProducts.map(product => (
           <ProductsItem product={product} key={product._id} />
@@ -90,4 +77,5 @@ const ProductsList: React.FC = () => {
     </ListWrapper>
   );
 };
+
 export default ProductsList;

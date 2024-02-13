@@ -15,6 +15,7 @@ const useExercises = () => {
   const exercises = useSelector(selectExercises);
   const burnedCalories = useSelector(selectBurnedCalories);
   const time = useSelector(selectTime);
+  const filters = useSelector(selectFilters);
 
   return {
     bodyPart,
@@ -23,6 +24,7 @@ const useExercises = () => {
     exercises,
     burnedCalories,
     time,
+    filters,
   };
 };
 
