@@ -16,8 +16,8 @@ const ExercisesCategories: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const currentCategory = useSelector(selectFilters);
-  
+  const {filter} = useSelector(selectFilters);
+
   const onChange = (key: Category) => {
     dispatch(setFilters(key, ''));
     navigate(`/exercises/${key}`);
@@ -44,7 +44,7 @@ const ExercisesCategories: React.FC = () => {
   return (
     <CategoryList>
       <Tabs
-        defaultActiveKey={`${currentCategory.filter}`}
+        defaultActiveKey={`${filter}`}
         items={items}
         onChange={value => {
           onChange?.(value as Category);
