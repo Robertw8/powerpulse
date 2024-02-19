@@ -11,7 +11,7 @@ const Slider: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(10);
   const [total, setTotal] = useState<number>(1);
-  const [exercisesList, setExercisesList] = useState([]);
+  const [exercisesList, setExercisesList] = useState<[]>([]);
   const { exercisesFilters } = useExercises();
 
   useEffect(() => {
