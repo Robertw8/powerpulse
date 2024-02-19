@@ -7,7 +7,6 @@ import { ExercisesCategories } from './ExercisesCategories';
 import { PageTitle } from '..';
 import { ExercisesWrap, TopWrap, BackgroundImage } from './Exercises.styled';
 
-import { setFilters } from '../../redux/exercises';
 import bg from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 import type { AppDispatch } from '../../redux';
 
@@ -21,7 +20,6 @@ const Exercises: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(setFilters('bodyPart', exercisesFilters.category));
     if (
       location.pathname !== '/exercises' &&
       location.pathname !== '/exercises/bodyPart' &&
