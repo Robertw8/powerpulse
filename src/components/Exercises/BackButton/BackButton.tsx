@@ -15,7 +15,7 @@ const BackButton: React.FC = () => {
 
   const onClick = () => {
     dispatch(setFilters(exercisesFilters.filter, ''));
-    navigate(-1);
+    navigate(`/exercises/${exercisesFilters.filter}`);
   };
 
   return (

@@ -1,4 +1,4 @@
-export { exercisesReducer } from './slice';
+export { persistedExercisesReducer } from './slice';
 export {
   getExercises,
   setFilters,

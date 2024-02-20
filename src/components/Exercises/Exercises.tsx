@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useExercises } from '../../hooks';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-
-import { selectFilters } from '../../redux/exercises';
 
 import { ExercisesCategories } from './ExercisesCategories';
 import { PageTitle } from '..';
@@ -16,8 +14,7 @@ const Exercises: React.FC = () => {
   const [backgound, setBackground] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const {filter} = useSelector(selectFilters);
+  const { exercisesFilters } = useExercises();
 
   useEffect(() => {
     if (
@@ -31,8 +28,8 @@ const Exercises: React.FC = () => {
       setBackground(false);
     }
 
-    if (location.pathname === `/exercises`) navigate(`/exercises/${filter}`);
-  }, [filter, location.pathname, navigate]);
+    if (location.pathname === `/exercises`) navigate(`/exercises/${exercisesFilters.filter}`);
+  }, [exercisesFilters.filter, location.pathname, navigate]);
 
   return (
     <ExercisesWrap>
