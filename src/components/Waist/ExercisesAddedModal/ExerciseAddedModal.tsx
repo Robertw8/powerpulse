@@ -49,7 +49,7 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
     >
       <ContentWrapper>
         <div style={{ marginBottom: 30 }}>
-          <img src={thumb} alt="well done" />
+          <img src={thumb} alt="well done" width={120} height={75} />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>

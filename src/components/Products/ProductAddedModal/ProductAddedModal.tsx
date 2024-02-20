@@ -48,7 +48,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
     >
       <ContentWrapper>
         <div>
-          <img src={avocado} alt="avocado" />
+          <img src={avocado} alt="avocado" width={125} height={100} />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>
