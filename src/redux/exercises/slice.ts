@@ -1,4 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+import persistReducer from 'redux-persist/es/persistReducer';
+import storage from 'redux-persist/lib/storage';
+
 import {
   getExercises,
   setBurnedCalories,
@@ -56,4 +59,14 @@ const exercisesSlice = createSlice({
   },
 });
 
-export const { reducer: exercisesReducer } = exercisesSlice;
+const persistConfig = {
+  key: 'exercises',
+  storage,
+  whitelist: ['filters'],
+};
+
+// export const { reducer: exercisesReducer } = exercisesSlice;
+export const persistedExercisesReducer = persistReducer(
+  persistConfig,
+  exercisesSlice.reducer
+);
