@@ -9,6 +9,7 @@ import {
   ModalTitle,
   StyledLink,
   Value,
+  Image,
 } from './ProductAddedModal.styled';
 
 import { setCalculatedCalories } from '../../../redux/products';
@@ -48,7 +49,7 @@ const ProductAddedModal: React.FC<ProductAddedModalProps> = ({
     >
       <ContentWrapper>
         <div>
-          <img src={avocado} alt="avocado" width={125} height={100} />
+          <Image src={avocado} alt="avocado" />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>

@@ -10,6 +10,7 @@ import {
   ModalTitle,
   StyledLink,
   Value,
+  Image,
 } from '../../Products/ProductAddedModal/ProductAddedModal.styled';
 
 import thumb from '../../../assets/images/Exercises/thumb.png';
@@ -49,7 +50,7 @@ const ExerciseAddedModal: React.FC<ExerciseAddedModalProps> = ({
     >
       <ContentWrapper>
         <div style={{ marginBottom: 30 }}>
-          <img src={thumb} alt="well done" width={120} height={75} />
+          <Image src={thumb} alt="well done" />
         </div>
         <ModalTitle>Well done</ModalTitle>
         <Calories>

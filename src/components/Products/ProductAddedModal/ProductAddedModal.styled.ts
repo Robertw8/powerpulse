@@ -67,6 +67,11 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Image = styled.img`
+  width: 120px;
+  height: 85px;
+`;
+
 export {
   StyledModal,
   ContentWrapper,
@@ -75,4 +80,5 @@ export {
   Value,
   ButtonWrapper,
   StyledLink,
+  Image,
 };
