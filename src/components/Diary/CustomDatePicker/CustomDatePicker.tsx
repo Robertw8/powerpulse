@@ -46,6 +46,7 @@ const CustomDatePicker: React.FC = () => {
             dispatch(setSelectedDate(selectedDate));
           }}
           allowClear={false}
+          inputReadOnly={true}
         />
       </ConfigProvider>
     </WrapDatePicker>
