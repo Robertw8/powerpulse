@@ -7,10 +7,13 @@ import {
   BlockBtns,
   IconContainer,
   BtnSignInWelcome,
+  ImgWelcomePage,
+  StatisticsWrapper,
 } from './Welcome.styled';
 import { BtnSignUp } from '../SignUp/SignUp.styled';
 import { Icon } from '..';
-import { WelcomeImg } from './WelcomeImg';
+import { Statistics } from '../Statistics';
+// import { WelcomeImg } from './WelcomeImg';
 
 const Welcome: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +41,11 @@ const Welcome: React.FC = () => {
           </BtnSignInWelcome>
         </BlockBtns>
       </BlockTitleBtn>
-      <WelcomeImg />
+      <ImgWelcomePage>
+        <StatisticsWrapper>
+        <Statistics />
+      </StatisticsWrapper>
+      </ImgWelcomePage>
     </ContainerWelcomePage>
   );
 };
