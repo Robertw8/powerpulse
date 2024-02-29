@@ -1,17 +1,23 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
+import photoMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
+import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
+import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
 
 const TitleWelcomePage = styled.h1`
-  position: relative;
-  width: 320px;
+ position: relative;
+  @media screen and (max-width: 768px) {
+  max-width: 335px; 
+  width: 100%;
   height: 120px;
   margin-top: 90px;
   font-size: 38px;
-
-  @media screen and (min-width: 769px) {
+  }
+ 
+  @media screen and (min-width: 768px) {
     position: relative;
-
-    width: 598px;
+    max-width: 598px;
+    width: 100%;
     height: 234px;
     margin-top: 140px;
     font-size: 70px;
@@ -20,11 +26,13 @@ const TitleWelcomePage = styled.h1`
 
 const IconContainer = styled.div`
   position: absolute;
+  @media screen and (max-width: 768px) {
   top: 48px;
   left: -10px;
   z-index: -1;
+    }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 768px) {
     position: absolute;
     top: 85px;
     left: -30px;
@@ -32,40 +40,55 @@ const IconContainer = styled.div`
 `;
 
 const ContainerWelcomePage = styled.div`
-  display: flex;
   position: relative;
+  @media screen and (max-width: 768px) {
+  display: flex;
+  max-width: 767px; 
+  width: 100%; 
   flex-direction: column;
-
-  @media screen and (min-width: 769px) {
+    }
+  @media screen and (min-width: 768px) {
     display: flex;
+    width: 100%; 
   }
 `;
 
-const ImgWelcomePage = styled.img`
-  position: absolute;
-  top: 215px;
-  left: 0px;
-  z-index: -1;
-
-  width: 325px;
-  height: 750px;
+const ImgWelcomePage = styled.div`
+ position: absolute;
+ 
+ max-width: 768px; 
+  width: 100%;
+  left: 10px;
+  top: 150px;
+  z-index: -100;
+  height: 700px;
+  background-image: url(${photoMob});
+  background-size: cover;
+  background-position: right  bottom; 
+  background-size: auto 90%;
+  background-repeat: no-repeat;
 
   @media screen and (min-width: 768px) {
-    position: absolute;
     z-index: -100;
-    top: 30px;
-
-    width: 670px;
-    height: auto;
+    top: 0px;
+    height: 900px;
+    max-width: 1400px;
+    width: 100%;
+    background-image: url(${photoTablet});
+    background-size: cover;
+    background-position:   center right;
+    background-size: auto 100%;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 670px;
-    height: auto;
-
-    position: absolute;
-    top: -0px;
-    left: 550px;
+    z-index: -100;
+    max-width: 1300px;
+    height: 800px;
+    background-image: url(${photoDesktop});
+    background-size: cover;
+    background-position:   center right;
+    background-size: auto 100%;
+    left: 80px;
   }
 `;
 
@@ -73,26 +96,32 @@ const StatisticsWrapper = styled.div`
   position: absolute;
 
   @media screen and (max-width: 768px) {
-    bottom: -233%;
+    bottom: -10%;
     left: 0;
-    scale: 0.9;
+    scale: 0.7;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    top: 135%;
-    left: 0px;
+    top: 40%;
+    scale: 0.7;
+    left: 450px;
   }
 
   @media screen and (min-width: 1440px) {
     top: 35%;
-    right: 41px;
-    scale: 0.95;
+    left: 660px;
+    scale: 0.9;
   }
 `;
 
 const BlockTitleBtn = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 768px) {
+     position: relative;
+    /* width: 100%;  */
+  
+  }
 `;
 
 const BlockBtns = styled.div`
