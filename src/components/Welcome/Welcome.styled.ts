@@ -49,7 +49,6 @@ const ContainerWelcomePage = styled.div`
     }
   @media screen and (min-width: 768px) {
     display: flex;
-    max-width: 1200px;
     width: 100%; 
   }
 `;
@@ -71,8 +70,9 @@ const ImgWelcomePage = styled.div`
 
   @media screen and (min-width: 768px) {
     z-index: -100;
-    top: 125px;
-    max-width: 1200px;
+    top: 0px;
+    height: 900px;
+    max-width: 1400px;
     width: 100%;
     background-image: url(${photoTablet});
     background-size: cover;
@@ -81,15 +81,14 @@ const ImgWelcomePage = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    position: absolute;
-    max-width: 800px;
-     width: 100%;
+    z-index: -100;
+    max-width: 1300px;
+    height: 800px;
+    background-image: url(${photoDesktop});
     background-size: cover;
     background-position:   center right;
     background-size: auto 100%;
-    background-image: url(${photoDesktop});
-    top: -0px;
-    left: 550px;
+    left: 80px;
   }
 `;
 
@@ -110,7 +109,7 @@ const StatisticsWrapper = styled.div`
 
   @media screen and (min-width: 1440px) {
     top: 35%;
-    left: 220px;
+    left: 660px;
     scale: 0.9;
   }
 `;
@@ -120,7 +119,7 @@ const BlockTitleBtn = styled.div`
   flex-direction: column;
   @media screen and (min-width: 768px) {
      position: relative;
-    width: 100%; 
+    /* width: 100%;  */
   
   }
 `;
