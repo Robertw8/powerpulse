@@ -96,12 +96,14 @@ const ItemValue = styled.p`
 
 const ButtonWrapper = styled.div`
   margin-top: 24px;
-  display: flex;
-  justify-content: center;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
 
   @media screen and (min-width: 768px) {
     width: 162px;
-    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 0;
     margin-top: 320px;
   }
 `;
