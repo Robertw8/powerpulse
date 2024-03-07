@@ -12,8 +12,8 @@ import {
 } from './Welcome.styled';
 import { BtnSignUp } from '../SignUp/SignUp.styled';
 import { Icon } from '..';
+
 import { Statistics } from '../Statistics';
-// import { WelcomeImg } from './WelcomeImg';
 
 const Welcome: React.FC = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Welcome: React.FC = () => {
         <StatisticsWrapper>
         <Statistics />
       </StatisticsWrapper>
-      </ImgWelcomePage>
+        </ImgWelcomePage>
     </ContainerWelcomePage>
   );
 };

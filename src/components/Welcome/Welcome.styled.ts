@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Button } from 'antd';
+
 import photoMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
 import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
@@ -15,7 +16,6 @@ const TitleWelcomePage = styled.h1`
   }
  
   @media screen and (min-width: 768px) {
-    position: relative;
     max-width: 598px;
     width: 100%;
     height: 234px;
@@ -44,6 +44,7 @@ const ContainerWelcomePage = styled.div`
   @media screen and (max-width: 768px) {
   display: flex;
   max-width: 767px; 
+  height: 100%;
   width: 100%; 
   flex-direction: column;
     }
@@ -55,7 +56,6 @@ const ContainerWelcomePage = styled.div`
 
 const ImgWelcomePage = styled.div`
  position: absolute;
- 
  max-width: 768px; 
   width: 100%;
   left: 10px;
@@ -71,10 +71,10 @@ const ImgWelcomePage = styled.div`
   @media screen and (min-width: 768px) {
     z-index: -100;
     top: 0px;
-    height: 900px;
+    height: 1150px;
     max-width: 1400px;
     width: 100%;
-    background-image: url(${photoTablet});
+  background-image: url(${photoTablet}); 
     background-size: cover;
     background-position:   center right;
     background-size: auto 100%;
@@ -82,9 +82,9 @@ const ImgWelcomePage = styled.div`
 
   @media screen and (min-width: 1440px) {
     z-index: -100;
-    max-width: 1300px;
-    height: 800px;
-    background-image: url(${photoDesktop});
+    max-width: 1500px;
+    height: 900px;
+    background-image: url(${photoDesktop });
     background-size: cover;
     background-position:   center right;
     background-size: auto 100%;
@@ -92,35 +92,54 @@ const ImgWelcomePage = styled.div`
   }
 `;
 
+
+
 const StatisticsWrapper = styled.div`
   position: absolute;
+  left: 65%;
+  transform: translate(-50%, -50%);
 
   @media screen and (max-width: 768px) {
     bottom: -10%;
-    left: 0;
-    scale: 0.7;
+    left: 67%;
+    transform: translateX(-50%) scale(0.6);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    top: 40%;
-    scale: 0.7;
-    left: 450px;
+  @media screen and (min-width: 768px)  {
+    bottom: 60%;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%) scale(0.9); 
   }
 
-  @media screen and (min-width: 1440px) {
-    top: 35%;
-    left: 660px;
-    scale: 0.9;
+   @media screen and (min-width: 1440px) {
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%) scale(0.9); 
   }
 `;
+// const ContinerImgStatistic = styled.div`
+// position: relative;
+// @media screen and (max-width: 768px) {
+//   max-width: 768px; 
+//   width: 100%;
+//   top: -180px;
+//   }
+  
+//   @media screen and (min-width: 768px) {
+//  max-width:1300px; 
+//   width: 100%;
+// /* margin-left: 20px; */
+  
 
+//   }
+   
+// `
 const BlockTitleBtn = styled.div`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 768px) {
      position: relative;
-    /* width: 100%;  */
-  
   }
 `;
 

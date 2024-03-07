@@ -1,15 +1,23 @@
+import { Link } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 import { Button, Input } from 'antd';
-import { Link } from 'react-router-dom';
+
 import { InputPrimary } from '../InputPrimary';
 import {
   StyledInputProps,
   validationStatuses,
 } from '../InputPrimary/InputPrimary.styled';
+
 import { Title } from '../PageTitle/PageTitle.styled';
 
+import photoMob from '..//..//assets/images/ImgForWelcomePage/imgAuthPageMob.webp';
+import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
+import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+
 const FormContainer = styled.form`
-  width: 320px;
+  width: 100%;
+  max-width: 335px;
   display: flex;
   flex-direction: column;
 
@@ -37,7 +45,8 @@ const TitleSignUp = styled(Title)`
   }
 `;
 const ParagraphAuth = styled.p`
-  width: 335px;
+ width: 100%;
+  max-width: 335px;
   height: 54px;
   margin-bottom: 28px;
 
@@ -117,45 +126,81 @@ const InputPassword = styled(Input.Password)<StyledInputProps>`
 `;
 
 const ContainerSignUp = styled.div`
-  width: 335px;
-  height: auto;
-
+ position: relative;
+  @media screen and (max-width: 768px) {
   display: flex;
+  max-width: 767px; 
+  width: 100%; 
   flex-direction: column;
-  position: relative;
-
+    }
   @media screen and (min-width: 768px) {
     display: flex;
+    width: 100%; 
   }
 `;
 
-const ImgSignUp = styled.img`
-  position: absolute;
-  top: 180px;
-  z-index: -1;
 
-  width: 350px;
-  height: auto;
+const ImgSignUp = styled.div`
+position: absolute;
+ max-width: 768px; 
+  width: 100%;
+  left: 10px;
+  top: 150px;
+  z-index: -100;
+  height: 700px;
+  background-image: url(${photoMob});
+  background-size: cover;
+  background-position: right  bottom; 
+  background-size: auto 90%;
+  background-repeat: no-repeat;
 
-  @media screen and (min-width: 769px) {
-    position: absolute;
-    top: -30px;
-    left: 40px;
-    overflow-x: hidden !important;
-
-    width: 670px;
-    height: auto;
+  @media screen and (min-width: 768px) {
+    z-index: -100;
+    top: 0px;
+    height: 1150px;
+    max-width: 1400px;
+    width: 100%;
+  background-image: url(${photoTablet}); 
+    background-size: cover;
+    background-position:   center right;
+    background-size: auto 100%;
   }
 
   @media screen and (min-width: 1440px) {
-    position: absolute;
-    top: -0px;
-    left: 550px;
-
-    width: 670px;
-    height: auto;
+    z-index: -100;
+    max-width: 1500px;
+    height: 900px;
+    background-image: url(${photoDesktop });
+    background-size: cover;
+    background-position:   center right;
+    background-size: auto 100%;
+    left: 80px;
   }
 `;
+
+const StatisticsWrapper = styled.div`
+  position: absolute;
+  @media screen and (max-width: 768px) {
+    bottom: -10%;
+    left: 67%;
+    transform: translateX(-50%) scale(0.6); 
+  }
+
+  @media screen and (min-width: 768px) {
+    bottom: 60%;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%) scale(0.9); 
+  }
+  @media screen and (min-width: 1440px) {
+    top: 50%;   
+    left: 60%;
+    transform: translate(-50%, -50%) scale(0.9); 
+  }
+`;
+
+
+
 
 const BlockSignUp = styled.div`
   display: flex;
@@ -215,26 +260,7 @@ const ColorErrorInput = styled.div`
   }
 `;
 
-const StatisticsWrapper = styled.div`
-  position: absolute;
 
-  @media screen and (max-width: 768px) {
-    bottom: -83%;
-    left: 0%;
-    transform: translate(-20%) scale(0.6);
-  }
-
-  @media screen and (min-width: 769px) and (max-width: 1439px) {
-    top: 110%;
-    left: 0px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    top: 28%;
-    right: -872px;
-    scale: 0.95;
-  }
-`;
 
 export {
   ColorErrorInput,

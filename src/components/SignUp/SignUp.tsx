@@ -17,9 +17,9 @@ import {
   InputPassword,
   ColorErrorInput,
   StatisticsWrapper,
+  ImgSignUp,
 } from './SignUp.styled';
 import { Statistics } from '../Statistics';
-import { AuthImg } from '../Welcome/WelcomeImg';
 
 import SignUpSchema from './SignUpSchema';
 import { registerUser } from '../../redux/auth';
@@ -115,10 +115,11 @@ const SignUp: React.FC = () => {
           Already have an account? <LinkAuth to="/signin">Sign In</LinkAuth>
         </ParagraphAfterBtn>
       </BlockSignUp>
-      <AuthImg />
+      <ImgSignUp>
       <StatisticsWrapper>
         <Statistics />
       </StatisticsWrapper>
+        </ImgSignUp>
     </ContainerSignUp>
   );
 };

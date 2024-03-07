@@ -10,16 +10,16 @@ import {
   LinkAuth,
   InputPassword,
   ColorErrorInput,
+  ImgSignUp,
+  StatisticsWrapper
 } from '../SignUp/SignUp.styled';
 import {
   BlockInput,
   ParagraphAfterBtnUp,
   ParagraphSignIn,
   TitleSignIn,
-  StatisticsWrapper,
 } from './SignIn.styled';
 import { InputPrimary } from '..';
-import { AuthImg } from '../Welcome/WelcomeImg';
 import { Statistics } from '../Statistics';
 
 import SignInSchema from './SignInSchema';
@@ -93,10 +93,11 @@ const SignIn: React.FC = () => {
           </ParagraphAfterBtnUp>
         </FormContainer>
       </BlockSignUp>
-      <AuthImg />
+      <ImgSignUp>
       <StatisticsWrapper>
         <Statistics />
       </StatisticsWrapper>
+        </ImgSignUp>
     </ContainerSignUp>
   );
 };
