@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { Button } from 'antd';
 
 import photoMob from '..//..//assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
-import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
-import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.webp';
+import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.webp';
 
 const TitleWelcomePage = styled.h1`
  position: relative;
@@ -68,6 +68,7 @@ const ImgWelcomePage = styled.div`
   background-size: auto 90%;
   background-repeat: no-repeat;
 
+  
   @media screen and (min-width: 768px) {
     z-index: -100;
     top: 0px;

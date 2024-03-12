@@ -12,8 +12,8 @@ import {
 import { Title } from '../PageTitle/PageTitle.styled';
 
 import photoMob from '..//..//assets/images/ImgForWelcomePage/imgAuthPageMob.webp';
-import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
-import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import photoTablet from '..//..//assets/images/ImgForWelcomePage/imgWelcomePageTablet.webp';
+import photoDesktop from '..//..//assets/images/ImgForWelcomePage/imgForWelcomePage.webp';
 
 const FormContainer = styled.form`
   width: 100%;
@@ -199,9 +199,6 @@ const StatisticsWrapper = styled.div`
   }
 `;
 
-
-
-
 const BlockSignUp = styled.div`
   display: flex;
   flex-direction: column;
@@ -259,8 +256,6 @@ const ColorErrorInput = styled.div`
     font-size: 14px;
   }
 `;
-
-
 
 export {
   ColorErrorInput,

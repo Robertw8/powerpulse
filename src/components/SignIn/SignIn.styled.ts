@@ -43,25 +43,6 @@ const ParagraphAfterBtnUp = styled(ParagraphAfterBtn)`
   margin-top: 12px;
 `;
 
-// const StatisticsWrapper = styled.div`
-//   position: absolute;
-
-//   @media screen and (max-width: 768px) {
-//     bottom: -103%;
-//     transform: translate(-20%) scale(0.6);
-//   }
-
-//   @media screen and (min-width: 769px) and (max-width: 1439px) {
-//     top: 110%;
-//     left: 0px;
-//   }
-
-//   @media screen and (min-width: 1440px) {
-//     top: 31.7%;
-//     right: -872px;
-//     scale: 0.95;
-//   }
-// `;
 
 export {
   TitleSignIn,
