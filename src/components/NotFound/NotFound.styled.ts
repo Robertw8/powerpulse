@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
-import imgForWelcomePage from '../../assets/images/ImgForWelcomePage/imgForWelcomePage.jpg';
+import imgForWelcomePage from '../../assets/images/ImgForWelcomePage/imgForWelcomePage.webp';
 import imgForWelcomePage2 from '../../assets/images/ImgForWelcomePage/imgForWelcomePage@2.jpg';
-import imgForWelcomePageTab from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet.png';
+import imgForWelcomePageTab from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet.webp';
 import imgForWelcomePageTab2 from '../../assets/images/ImgForWelcomePage/imgWelcomePageTablet@2.jpg';
 import imgForWelcomePageMob from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob.webp';
 import imgForWelcomePageMob2 from '../../assets/images/ImgForWelcomePage/ImgForWelcomePageMob@2.jpg';
